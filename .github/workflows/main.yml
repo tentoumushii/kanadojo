@@ -1,0 +1,31 @@
+name: Sync preview with main
+
+on:
+  push:
+    branches:
+      - main # Trigger when main branch is updated
+
+jobs:
+  sync-branch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensures full history is available
+
+      - name: Push main branch to preview
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+          # Fetch the latest branches
+          git fetch origin
+
+          # Create or update 'preview' branch with the latest main branch
+          git checkout -B preview origin/main
+
+          # Push the preview branch forcefully to ensure it matches main exactly
+          git push --force origin preview

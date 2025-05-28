@@ -1,0 +1,247 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@tailwind utilities;
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 110rem;
+}
+
+body {
+  touch-action: manipulation; /* Prevents pinch-to-zoom */
+  overscroll-behavior: none; /* Prevents zooming on iOS */
+  font-family: 'Noto Sans JP', sans-serif;
+  scroll-behavior: smooth;
+}
+
+:root {
+  /* Default theme (using light theme as default) */
+  --background-color: hsl(40, 18%, 95%);
+  --card-color: hsl(40, 18%, 99%);
+  --border-color: hsl(40, 18%, 75%);
+
+  --main-color: hsl(0, 0%, 0%);
+  --secondary-color: hsl(0, 0%, 45%);
+
+  }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: hsl(40, 18%, 95%);
+    --card-color: hsl(40, 18%, 99%);
+    --border-color: hsl(40, 18%, 75%);
+
+    --main-color: hsl(0, 0%, 0%);
+    --secondary-color: hsl(0, 0%, 45%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: hsl(204, 36%, 10%);
+    --card-color: hsl(204, 36%, 12%);
+    --border-color: hsl(204, 36%, 20%);
+
+    --main-color: hsl(0, 0%, 100%);
+    --secondary-color: hsl(0, 0%, 75%);
+  }
+}
+
+/* Light Theme */
+[data-theme='light'] {
+  --background-color: hsl(40, 18%, 95%);
+  --card-color: hsl(40, 18%, 99%);
+  --border-color: hsl(40, 18%, 75%);
+
+  --main-color: hsl(0, 0%, 0%);
+  --secondary-color: hsl(0, 0%, 45%);
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+  --background-color: hsl(204, 36%, 10%);
+  --card-color: hsl(204, 36%, 12%);
+  --border-color: hsl(204, 36%, 20%);
+
+  --main-color: hsl(0, 0%, 100%);
+  --secondary-color: hsl(0, 0%, 75%);
+}
+
+/* LIGHT THEMES */
+
+[data-theme='long'] {
+  --background-color: hsl(350, 100%, 85%);
+  --card-color: hsl(350, 100%, 87%);
+  --border-color: hsl(350, 100%, 80%);
+
+  --main-color: hsl(270, 100%, 50%);
+  --secondary-color: hsl(270, 100%, 70%);
+}
+
+[data-theme='amethyst'] {
+  --background-color: hsl(270, 80%, 90%);
+  --card-color: hsl(270, 80%, 94%);
+  --border-color: hsl(270, 80%, 80%);
+
+  --main-color: hsl(270, 100%, 50%);
+  --secondary-color: hsl(270, 100%, 70%);
+}
+
+/* DARK THEMES */
+
+/* Midnight Theme */
+[data-theme='midnight'] {
+  --background-color: hsl(221, 15%, 18%);
+  --card-color: hsl(221, 15%, 20%);
+  --border-color: hsl(221, 15%, 30%);
+
+  --main-color: hsl(207, 90%, 66%);
+  --secondary-color: hsl(207, 50%, 66%);
+}
+
+/* Bubblegum Theme */
+[data-theme='bubblegum'] {
+  --background-color: hsl(240, 25%, 16%);
+  --card-color: hsl(240, 25%, 18%);
+  --border-color: hsl(240, 25%, 30%);
+
+  --main-color: hsl(320, 90%, 50%);
+  --secondary-color: hsl(320, 50%, 50%);
+}
+
+/* Aurora Theme */
+[data-theme='aurora'] {
+  --background-color: hsl(201, 95%, 8%);
+  --card-color: hsl(201, 95%, 9%);
+  --border-color: hsl(201, 95%, 15%);
+
+  --main-color: hsl(153, 100%, 45%);
+  --secondary-color: hsl(153, 50%, 45%);
+}
+
+/* Nebula Theme */
+[data-theme='nebula'] {
+  --background-color: hsl(248, 35%, 12%);
+  --card-color: hsl(248, 35%, 14%);
+  --border-color: hsl(248, 35%, 20%);
+
+  --main-color: hsl(317, 97%, 73%);
+  --secondary-color: hsl(317, 50%, 73%);
+}
+
+/* Lavender Theme */
+[data-theme='lavender'] {
+  --background-color: hsl(220, 20%, 11%);
+  --card-color: hsl(220, 20%, 13%);
+  --border-color: hsl(220, 20%, 20%);
+
+  --main-color: hsl(270, 100%, 77%);
+  --secondary-color: hsl(270, 50%, 77%);
+}
+
+/* Matrix Theme */
+[data-theme='matrix'] {
+  --background-color: hsl(0, 0%, 0%);
+  --card-color: hsl(0, 0%, 2.5%);
+  --border-color: hsl(0, 0%, 5%);
+
+  --main-color: hsl(115, 100%, 50%);
+  --secondary-color: hsl(115, 50%, 50%);
+}
+
+/* Magic Sky Theme */
+[data-theme='magic-sky'] {
+  --background-color: hsl(202, 66%, 10%);
+  --card-color: hsl(202, 66%, 11%);
+  --border-color: hsl(202, 66%, 15%);
+
+  --main-color: hsl(336, 90%, 83%);
+  --secondary-color: hsl(336, 50%, 83%);
+}
+
+/* Incognito Theme */
+[data-theme='incognito'] {
+  --background-color: hsl(0, 0%, 5%);
+  --card-color: hsl(0, 0%, 6%);
+  --border-color: hsl(0, 0%, 12%);
+
+  --main-color: hsl(36, 100%, 50%);
+  --secondary-color: hsl(36, 50%, 50%);
+}
+
+/* Cherry Blossom Theme */
+[data-theme='cherry-blossom'] {
+  --background-color: hsl(200, 5%, 14%);
+  --card-color: hsl(200, 5%, 16%);
+  --border-color: hsl(200, 5%, 22%);
+
+  --main-color: hsl(305, 75%, 60%);
+  --secondary-color: hsl(305, 40%, 60%);
+}
+
+/* Bushido Theme */
+[data-theme='bushido'] {
+  --background-color: hsl(220, 17%, 16%);
+  --card-color: hsl(220, 17%, 18%);
+  --border-color: hsl(220, 17%, 25%);
+
+  --main-color: hsl(356, 90%, 60%);
+  --secondary-color: hsl(356, 50%, 60%);
+}
+
+[data-theme='luna'] {
+  --background-color: hsl(257, 30%, 15%);
+  --card-color: hsl(257, 30%, 17%);
+  --border-color: hsl(257, 30%, 25%);
+
+  --main-color: hsl(331, 78%, 65%);
+  --secondary-color: hsl(331, 50%, 65%);
+}
+
+[data-theme='grape'] {
+  --background-color: hsl(268, 100%, 18%);
+  --card-color: hsl(268, 100%, 22%);
+  --border-color: hsl(268, 100%, 45%);
+
+  --main-color: hsl(35, 100%, 50%);
+  --secondary-color: hsl(35, 60%, 50%);
+}
+
+[data-theme='hammerhead'] {
+  --background-color: hsl(204, 61%, 10%);
+  --card-color: hsl(204, 61%, 12%);
+  --border-color: hsl(204, 61%, 20%);
+
+  --main-color: hsl(176, 74%, 50%);
+  --secondary-color: hsl(176, 45%, 50%);
+}
+
+[data-theme='venus-flytrap'] {
+  --background-color: hsl(268, 100%, 18%);
+  --card-color: hsl(268, 100%, 22%);
+  --border-color: hsl(268, 100%, 45%);
+
+  --main-color: hsl(80, 87%, 46%);
+  --secondary-color: hsl(80, 50%, 46%);
+}
+
+[data-theme='fantasy'] {
+  --background-color: hsl(246, 85%, 9%);
+  --card-color: hsl(246, 85%, 11%);
+  --border-color: hsl(246, 85%, 20%);
+
+  --main-color: hsl(326, 100%, 54%);
+  --secondary-color: hsl(326, 60%, 54%);
+}
+
+[data-theme='phantom'] {
+  --background-color: hsl(233, 76%, 11%);
+  --card-color: hsl(233, 76%, 14%);
+  --border-color: hsl(233, 76%, 25%);
+  
+  --main-color: hsl(330, 73%, 62%);
+  --secondary-color: hsl(330, 40%, 62%);
+}
+
