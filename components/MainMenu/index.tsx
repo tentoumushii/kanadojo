@@ -10,9 +10,10 @@ import {
   Sun,
   Moon,
   Heart
+  // Github
 } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import clsx from 'clsx';
 import { useClick } from '@/lib/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
@@ -50,7 +51,7 @@ const MainMenu = () => {
   const legalLinks = [
     { name: 'terms', href: '/terms', icon: ScrollText },
     { name: 'privacy', href: '/privacy', icon: Cookie },
-    { name: 'security', href: '/security', icon: FileLock2 },
+    { name: 'security', href: '/security', icon: FileLock2 }
     // { name: 'patch notes', href: '/patch-notes', icon: FileDiff }
   ];
 
@@ -97,8 +98,8 @@ const MainMenu = () => {
                 window.open('https://discord.gg/CyvBNNrSmb', '_blank');
               }}
             />
-            {/* <FontAwesomeIcon
-              icon={faXTwitter}
+            <FontAwesomeIcon
+              icon={faGithub}
               size='2x'
               className={clsx(
                 'hover:cursor-pointer duration-225 hover:scale-120',
@@ -106,20 +107,12 @@ const MainMenu = () => {
               )}
               onClick={() => {
                 playClick();
-                window.open('https://x.com/langdojo', '_blank');
+                window.open(
+                  'https://github.com/tentoumushii/kanadojo',
+                  '_blank'
+                );
               }}
-            /> */}
-            {/* <Instagram
-              size={32}
-              className={clsx(
-                'hover:cursor-pointer duration-225 hover:scale-120',
-                'active:scale-100 active:duration-225'
-              )}
-              onClick={() => {
-                playClick();
-                window.open('https://instagram.com/langdojo', '_blank');
-              }}
-            /> */}
+            />
             <Heart
               size={32}
               className={clsx(
