@@ -13,6 +13,7 @@ import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
 // import ProgressBar from '@/components/reusable/ProgressBar';
 import useStatsStore from '@/store/useStatsStore';
+// import AnswerSummary from '@/components/reusable/AnswerSummary';
 
 const random = new Random();
 
@@ -84,6 +85,8 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
     []
   );
 
+  // const [displayAnswerSummary, setDisplayAnswerSummary] = useState(false);
+
   useEffect(() => {
     setShuffledVariants(
       [correctKanaChar, ...randomIncorrectKana].sort(
@@ -117,6 +120,7 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
   }, [isHidden]);
 
   const handleOptionClick = (kanaChar: string) => {
+    // setDisplayAnswerSummary(true);
     if (
       reversedPairs1[kanaChar] === correctRomajiChar ||
       reversedPairs2[kanaChar] === correctRomajiChar
@@ -173,32 +177,35 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
     >
       <GameIntel feedback={feedback} gameMode='reverse pick' />
       <p className='text-8xl sm:text-9xl font-medium'>{correctRomajiChar}</p>
-      <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
-        {shuffledVariants.map((kanaChar, i) => (
-          <button
-            ref={elem => {
-              buttonRefs.current[i] = elem;
-            }}
-            key={kanaChar + i}
-            type='button'
-            disabled={wrongSelectedAnswers.includes(kanaChar)}
-            className={clsx(
-              'text-5xl font-semibold py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
-              buttonBorderStyles,
-              'active:scale-95 md:active:scale-98 active:duration-200',
-              'text-[var(--border-color)]',
-              !wrongSelectedAnswers.includes(kanaChar) &&
-                'duration-200 hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
-            )}
-            onClick={() => handleOptionClick(kanaChar)}
-          >
-            <span>{kanaChar}</span>
-            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
-              {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
-            </span>
-          </button>
-        ))}
-      </div>
+      {/* {displayAnswerSummary && <AnswerSummary />} */}
+      {/* {!displayAnswerSummary && ( */}
+        <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
+          {shuffledVariants.map((kanaChar, i) => (
+            <button
+              ref={elem => {
+                buttonRefs.current[i] = elem;
+              }}
+              key={kanaChar + i}
+              type='button'
+              disabled={wrongSelectedAnswers.includes(kanaChar)}
+              className={clsx(
+                'text-5xl font-semibold py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
+                buttonBorderStyles,
+                'active:scale-95 md:active:scale-98 active:duration-200',
+                'text-[var(--border-color)]',
+                !wrongSelectedAnswers.includes(kanaChar) &&
+                  'duration-200 hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
+              )}
+              onClick={() => handleOptionClick(kanaChar)}
+            >
+              <span>{kanaChar}</span>
+              <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+                {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
+              </span>
+            </button>
+          ))}
+        </div>
+      {/* )} */}
       {/* <ProgressBar /> */}
     </div>
   );

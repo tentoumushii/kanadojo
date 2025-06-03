@@ -49,11 +49,11 @@ const KanjiSetDictionary = () => {
             <div
               key={kanjiObj.id}
               className={clsx(
-                'flex flex-row justify-start items-center gap-4  p-4 ',
+                'flex flex-row justify-start items-center gap-4 p-4',
                 i !== 9 && 'border-b-1 border-[var(--border-color)]'
               )}
             >
-              <div className='relative w-full max-w-[100px] aspect-square flex items-center justify-center mx-auto '>
+              <div className='relative w-full max-w-[100px] aspect-square flex items-center justify-center '>
                 {/* 4-segment square background */}
                 <div className='absolute inset-0 grid grid-cols-2 grid-rows-2 border-1 border-[var(--border-color)] rounded-xl bg-[var(--background-color)]'>
                   <div className=' border-r border-b border-[var(--border-color)]'></div>

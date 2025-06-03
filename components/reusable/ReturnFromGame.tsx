@@ -52,9 +52,8 @@ const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
         <button
           ref={buttonRef}
           className={clsx(
-            'w-full mt-4 py-4 px-4 text-3xl duration-150 hover:scale-y-105 hover:scale-x-102 rounded-2xl flex flex-row justify-center items-center gap-2 hover:cursor-pointer ',
+            'w-full mt-4 p-4 text-3xl hover:scale-y-105 hover:scale-x-102 rounded-2xl flex flex-row justify-center items-center gap-2',
             cardBorderStyles,
-            'active:scale-95 md:active:scale-98 active:duration-200'
           )}
           onClick={() => playClick()}
         >
@@ -64,9 +63,8 @@ const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
       </Link>
       <button
         className={clsx(
-          'md:w-1/2 mt-4 py-4 px-4 text-3xl duration-150 hover:scale-y-105 hover:scale-x-102 rounded-2xl flex flex-row justify-center items-center gap-2 hover:cursor-pointer ',
+          'md:w-1/2 mt-4 p-4 text-3xl hover:scale-y-105 hover:scale-x-102 rounded-2xl flex flex-row justify-center items-center gap-2',
           cardBorderStyles,
-          'active:scale-95 md:active:scale-98 active:duration-200'
         )}
         onClick={() => {
           playClick();

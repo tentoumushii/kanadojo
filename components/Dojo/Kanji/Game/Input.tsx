@@ -168,7 +168,6 @@ const Input = ({
           'text-xl font-medium py-4 px-16 rounded-3xl transform transition duration-150 hover:scale-105 hover:cursor-pointer ',
           buttonBorderStyles,
           'flex flex-row items-end gap-2',
-          'active:scale-95 md:active:scale-98 active:duration-225',
         )}
         onClick={handleSkip}
       >
