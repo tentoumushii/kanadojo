@@ -47,6 +47,13 @@ const themes = [
     icon: Moon,
     themes: [
       {
+        id: 'nord',
+        backgroundColor: 'hsl(221.05263, 16%, 23%)',
+        cardColor: 'hsl(220.8, 15%, 19%)',
+        borderColor: 'hsl(178.88889, 28%, 62%)',
+        mainColor: 'hsl(312.55814, 28%, 70%)'
+      },
+      {
         id: 'midnight',
         backgroundColor: 'hsl(221, 15%, 18%)',
         cardColor: 'hsl(221, 15%, 19%)',
