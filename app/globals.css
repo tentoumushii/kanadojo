@@ -93,11 +93,11 @@ body {
 
 [data-theme='nord'] {
   --background-color: hsl(221.05263, 16%, 23%);
-  --card-color: hsl(220.8, 16%, 30%);
+  --card-color:hsl(220.8, 16%, 30%);
   --border-color: hsl(312.55814, 28%, 70%);
 
-  --main-color: hsl(178.88889, 28%, 62%);
-  --secondary-color: hsl(40.396038, 69%, 71%);
+  --main-color: hsl(92.399994, 28%, 65%);
+  --secondary-color: hsl(92.399994, 28%, 65%);
 
 }
 
