@@ -165,10 +165,11 @@ const Pick = ({
             className={clsx(
               'text-3xl py-4 px-2 rounded-xl w-full md:w-1/4 flex flex-row justify-center items-center gap-1',
               buttonBorderStyles,
-              'active:scale-95 md:active:scale-98 active:duration-225',
               'text-[var(--border-color)]',
+              wrongSelectedAnswers.includes(meaning) &&
+                'hover:bg-[var(--card-color)]',
               !wrongSelectedAnswers.includes(meaning) &&
-                'duration-200 hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
+                'hover:scale-115 text-[var(--main-color)]'
             )}
             onClick={() => handleOptionClick(meaning)}
           >

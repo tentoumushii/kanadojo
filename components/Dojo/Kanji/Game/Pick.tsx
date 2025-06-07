@@ -166,8 +166,10 @@ const Pick = ({
               'text-4xl py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
               buttonBorderStyles,
               'text-[var(--border-color)]',
+              wrongSelectedAnswers.includes(meaning) &&
+                'hover:bg-[var(--card-color)]',
               !wrongSelectedAnswers.includes(meaning) &&
-                'duration-200 hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
+                'hover:scale-115 text-[var(--main-color)]'
             )}
             onClick={() => handleOptionClick(meaning)}
           >

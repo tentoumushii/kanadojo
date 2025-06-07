@@ -15,7 +15,6 @@ const DevNotice = () => {
         </Link>
         !
       </i> */}
-      楽しむ！
       {/* <i>
         KanaDojo is an independent project maintained by a solo developer. If you love
         KanaDojo and want to see it grow and improve, as well as to help us cover

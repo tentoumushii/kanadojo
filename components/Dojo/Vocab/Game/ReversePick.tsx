@@ -93,48 +93,46 @@ const ReversePick = ({
   }, [isHidden]);
 
   const handleOptionClick = (word: string) => {
-              if (word === correctWord) {
-                speedStopwatch.pause();
-                addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
-                speedStopwatch.reset();
-                playCorrect();
-                addCharacterToHistory(correctMeaning);
-                incrementCharacterScore(correctMeaning, 'correct');
-                incrementCorrectAnswers();
+    if (word === correctWord) {
+      speedStopwatch.pause();
+      addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
+      speedStopwatch.reset();
+      playCorrect();
+      addCharacterToHistory(correctMeaning);
+      incrementCharacterScore(correctMeaning, 'correct');
+      incrementCorrectAnswers();
 
-                let newRandomMeaning =
-                  selectedWordObjs[
-                    random.integer(0, selectedWordObjs.length - 1)
-                  ].meanings[0];
+      let newRandomMeaning =
+        selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)]
+          .meanings[0];
 
-                while (newRandomMeaning === correctMeaning) {
-                  newRandomMeaning =
-                    selectedWordObjs[
-                      random.integer(0, selectedWordObjs.length - 1)
-                    ].meanings[0];
-                }
-                setCorrectMeaning(newRandomMeaning);
-                setWrongSelectedAnswers([]);
-                setFeedback(
-                  <>
-                    <span>{`correct! ${correctMeaning} = ${word} `}</span>
-                    <CircleCheck className='inline' />
-                  </>
-                );
-              } else {
-                setWrongSelectedAnswers([...wrongSelectedAnswers, word]);
-                setFeedback(
-                  <>
-                    <span>{`incorrect! ${correctMeaning} ≠ ${word} `}</span>
-                    <CircleX className='inline' />
-                  </>
-                );
-                playErrorTwice();
+      while (newRandomMeaning === correctMeaning) {
+        newRandomMeaning =
+          selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)]
+            .meanings[0];
+      }
+      setCorrectMeaning(newRandomMeaning);
+      setWrongSelectedAnswers([]);
+      setFeedback(
+        <>
+          <span>{`correct! ${correctMeaning} = ${word} `}</span>
+          <CircleCheck className='inline' />
+        </>
+      );
+    } else {
+      setWrongSelectedAnswers([...wrongSelectedAnswers, word]);
+      setFeedback(
+        <>
+          <span>{`incorrect! ${correctMeaning} ≠ ${word} `}</span>
+          <CircleX className='inline' />
+        </>
+      );
+      playErrorTwice();
 
-                incrementCharacterScore(correctMeaning, 'wrong');
-                incrementWrongAnswers();
-              }
-            }
+      incrementCharacterScore(correctMeaning, 'wrong');
+      incrementWrongAnswers();
+    }
+  };
 
   return (
     <div
@@ -163,12 +161,13 @@ const ReversePick = ({
             className={clsx(
               'text-4xl py-4 px-2 rounded-xl w-full md:w-1/4 flex flex-row justify-center items-center gap-1',
               buttonBorderStyles,
-              'active:scale-95 md:active:scale-98 active:duration-225',
               'text-[var(--border-color)]',
+              wrongSelectedAnswers.includes(word) &&
+                'hover:bg-[var(--card-color)]',
               !wrongSelectedAnswers.includes(word) &&
-                'duration-200 hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
+                'hover:scale-115 text-[var(--main-color)]'
             )}
-            onClick={()=>handleOptionClick(word)}
+            onClick={() => handleOptionClick(word)}
           >
             <span lang='ja'>{word}</span>
             <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>

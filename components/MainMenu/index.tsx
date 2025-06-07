@@ -139,16 +139,18 @@ const MainMenu = () => {
             >
               <button
                 className={clsx(
-                  'flex w-full h-full text-2xl rounded-2xl duration-200 hover:scale-y-108 hover:scale-x-102 hover:cursor-pointer bg-[var(--card-color)] border-[var(--border-color)]',
+                  'flex w-full h-full text-2xl',
                   buttonBorderStyles,
-                  'active:scale-95 md:active:scale-98 active:duration-225',
                   'flex-col items-center justify-center',
                   'md:flex-row md:justify-center md:items-center md:gap-1.5',
-                  'max-md:aspect-square md:py-6'
+                  'max-md:aspect-square md:py-6',
+                  'group'
                 )}
                 onClick={() => playClick()}
               >
-                <span lang='en'>{link.name_en}</span>
+                <span lang='en' className='group-hover:underline'>
+                  {link.name_en}
+                </span>
                 <span lang='ja' className='font-normal'>
                   {link.name_ja}
                 </span>

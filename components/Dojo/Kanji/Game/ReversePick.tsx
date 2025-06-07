@@ -152,31 +152,33 @@ const ReversePick = ({
       <p className='text-6xl md:text-8xl'>{correctMeaning}</p>
       {/* {displayAnswerSummary && <AnswerSummary payload={correctKanjiObj} payloadType='kanji' />} */}
       {/* {!displayAnswerSummary && ( */}
-        <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
-          {shuffledKanjiChars.map((kanjiChar, i) => (
-            <button
-              ref={elem => {
-                buttonRefs.current[i] = elem;
-              }}
-              key={kanjiChar + i}
-              type='button'
-              disabled={wrongSelectedAnswers.includes(kanjiChar)}
-              className={clsx(
-                'text-5xl py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
-                buttonBorderStyles,
-                'text-[var(--border-color)]',
-                !wrongSelectedAnswers.includes(kanjiChar) &&
-                  'duration-200 hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
-              )}
-              onClick={() => handleOptionClick(kanjiChar)}
-            >
-              <span lang='ja'>{kanjiChar}</span>
-              <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
-                {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
-              </span>
-            </button>
-          ))}
-        </div>
+      <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
+        {shuffledKanjiChars.map((kanjiChar, i) => (
+          <button
+            ref={elem => {
+              buttonRefs.current[i] = elem;
+            }}
+            key={kanjiChar + i}
+            type='button'
+            disabled={wrongSelectedAnswers.includes(kanjiChar)}
+            className={clsx(
+              'text-5xl py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
+              buttonBorderStyles,
+              'text-[var(--border-color)]',
+              wrongSelectedAnswers.includes(kanjiChar) &&
+                'hover:bg-[var(--card-color)]',
+              !wrongSelectedAnswers.includes(kanjiChar) &&
+                'hover:scale-115 text-[var(--main-color)]'
+            )}
+            onClick={() => handleOptionClick(kanjiChar)}
+          >
+            <span lang='ja'>{kanjiChar}</span>
+            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+              {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
+            </span>
+          </button>
+        ))}
+      </div>
       {/* )} */}
     </div>
   );

@@ -2,8 +2,6 @@
 @import 'tw-animate-css';
 @tailwind utilities;
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
   --breakpoint-xs: 30rem;
   --breakpoint-3xl: 110rem;
@@ -18,16 +16,15 @@ body {
 
 :root {
   /* Default theme (using light theme as default) */
-  --background-color: hsl(40, 18%, 95%);
-  --card-color: hsl(40, 18%, 99%);
-  --border-color: hsl(40, 18%, 75%);
+  --background-color: hsla(210, 17%, 100%, 1);
+  --card-color: hsla(210, 17%, 91%, 1);
+  --border-color: hsla(210, 17%, 76%, 1);
 
   --main-color: hsl(0, 0%, 0%);
   --secondary-color: hsl(0, 0%, 45%);
+}
 
-  }
-
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     --background-color: hsl(40, 18%, 95%);
     --card-color: hsl(40, 18%, 99%);
@@ -47,13 +44,13 @@ body {
     --main-color: hsl(0, 0%, 100%);
     --secondary-color: hsl(0, 0%, 75%);
   }
-}
+} */
 
 /* Light Theme */
 [data-theme='light'] {
-  --background-color: hsl(40, 18%, 95%);
-  --card-color: hsl(40, 18%, 99%);
-  --border-color: hsl(40, 18%, 75%);
+  --background-color: hsla(210, 17%, 100%, 1);
+  --card-color: hsla(210, 17%, 91%, 1);
+  --border-color: hsla(210, 17%, 76%, 1);
 
   --main-color: hsl(0, 0%, 0%);
   --secondary-color: hsl(0, 0%, 45%);
@@ -61,9 +58,9 @@ body {
 
 /* Dark Theme */
 [data-theme='dark'] {
-  --background-color: hsl(204, 36%, 10%);
-  --card-color: hsl(204, 36%, 12%);
-  --border-color: hsl(204, 36%, 20%);
+  --background-color: hsla(0, 0%, 12%, 1);
+  --card-color: hsla(0, 0%, 16%, 1);
+  --border-color: hsla(0, 0%, 30%, 1);
 
   --main-color: hsl(0, 0%, 100%);
   --secondary-color: hsl(0, 0%, 75%);
@@ -240,8 +237,7 @@ body {
   --background-color: hsl(233, 76%, 11%);
   --card-color: hsl(233, 76%, 14%);
   --border-color: hsl(233, 76%, 25%);
-  
+
   --main-color: hsl(330, 73%, 62%);
   --secondary-color: hsl(330, 40%, 62%);
 }
-

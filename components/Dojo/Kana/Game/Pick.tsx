@@ -93,47 +93,43 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
   }, [isHidden]);
 
   const handleOptionClick = (romajiChar: string) => {
-              if (romajiChar === correctRomajiChar) {
-                speedStopwatch.pause();
-                addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
-                speedStopwatch.reset();
-                playCorrect();
-                addCharacterToHistory(correctKanaChar);
-                incrementCharacterScore(correctKanaChar, 'correct');
-                incrementCorrectAnswers();
+    if (romajiChar === correctRomajiChar) {
+      speedStopwatch.pause();
+      addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
+      speedStopwatch.reset();
+      playCorrect();
+      addCharacterToHistory(correctKanaChar);
+      incrementCharacterScore(correctKanaChar, 'correct');
+      incrementCorrectAnswers();
 
-                let newRandomKana =
-                  selectedKana[random.integer(0, selectedKana.length - 1)];
-                while (newRandomKana === correctKanaChar) {
-                  newRandomKana =
-                    selectedKana[random.integer(0, selectedKana.length - 1)];
-                }
-                setCorrectKanaChar(newRandomKana);
-                setWrongSelectedAnswers([]);
-                setFeedback(
-                  <>
-                    <span>
-                      {`correct! ${correctKanaChar} = ${correctRomajiChar} `}
-                    </span>
-                    <CircleCheck className='inline' />
-                  </>
-                );
-              } else {
-                setWrongSelectedAnswers([...wrongSelectedAnswers, romajiChar]);
-                setFeedback(
-                  <>
-                    <span>
-                      {`incorrect! ${correctKanaChar} ≠ ${romajiChar} `}
-                    </span>
-                    <CircleX className='inline' />
-                  </>
-                );
-                playErrorTwice();
+      let newRandomKana =
+        selectedKana[random.integer(0, selectedKana.length - 1)];
+      while (newRandomKana === correctKanaChar) {
+        newRandomKana =
+          selectedKana[random.integer(0, selectedKana.length - 1)];
+      }
+      setCorrectKanaChar(newRandomKana);
+      setWrongSelectedAnswers([]);
+      setFeedback(
+        <>
+          <span>{`correct! ${correctKanaChar} = ${correctRomajiChar} `}</span>
+          <CircleCheck className='inline' />
+        </>
+      );
+    } else {
+      setWrongSelectedAnswers([...wrongSelectedAnswers, romajiChar]);
+      setFeedback(
+        <>
+          <span>{`incorrect! ${correctKanaChar} ≠ ${romajiChar} `}</span>
+          <CircleX className='inline' />
+        </>
+      );
+      playErrorTwice();
 
-                incrementCharacterScore(correctKanaChar, 'wrong');
-                incrementWrongAnswers();
-              }
-            }
+      incrementCharacterScore(correctKanaChar, 'wrong');
+      incrementWrongAnswers();
+    }
+  };
 
   return (
     <div
@@ -156,10 +152,11 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
             className={clsx(
               'text-5xl font-semibold py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
               buttonBorderStyles,
-              'active:scale-95 md:active:scale-98 active:duration-200',
               'text-[var(--border-color)]',
+              wrongSelectedAnswers.includes(romajiChar) &&
+                'hover:bg-[var(--card-color)]',
               !wrongSelectedAnswers.includes(romajiChar) &&
-                'transform transition duration-200 hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
+                'hover:scale-115 text-[var(--main-color)]'
             )}
             onClick={() => handleOptionClick(romajiChar)}
           >

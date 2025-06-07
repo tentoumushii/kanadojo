@@ -179,32 +179,33 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
       <p className='text-8xl sm:text-9xl font-medium'>{correctRomajiChar}</p>
       {/* {displayAnswerSummary && <AnswerSummary />} */}
       {/* {!displayAnswerSummary && ( */}
-        <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
-          {shuffledVariants.map((kanaChar, i) => (
-            <button
-              ref={elem => {
-                buttonRefs.current[i] = elem;
-              }}
-              key={kanaChar + i}
-              type='button'
-              disabled={wrongSelectedAnswers.includes(kanaChar)}
-              className={clsx(
-                'text-5xl font-semibold py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
-                buttonBorderStyles,
-                'active:scale-95 md:active:scale-98 active:duration-200',
-                'text-[var(--border-color)]',
-                !wrongSelectedAnswers.includes(kanaChar) &&
-                  'duration-200 hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
-              )}
-              onClick={() => handleOptionClick(kanaChar)}
-            >
-              <span>{kanaChar}</span>
-              <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
-                {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
-              </span>
-            </button>
-          ))}
-        </div>
+      <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
+        {shuffledVariants.map((kanaChar, i) => (
+          <button
+            ref={elem => {
+              buttonRefs.current[i] = elem;
+            }}
+            key={kanaChar + i}
+            type='button'
+            disabled={wrongSelectedAnswers.includes(kanaChar)}
+            className={clsx(
+              'text-5xl font-semibold py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
+              buttonBorderStyles,
+              'text-[var(--border-color)]',
+              wrongSelectedAnswers.includes(kanaChar) &&
+                'hover:bg-[var(--card-color)]',
+              !wrongSelectedAnswers.includes(kanaChar) &&
+                'hover:scale-115 hover:cursor-pointer text-[var(--main-color)]'
+            )}
+            onClick={() => handleOptionClick(kanaChar)}
+          >
+            <span>{kanaChar}</span>
+            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+              {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
+            </span>
+          </button>
+        ))}
+      </div>
       {/* )} */}
       {/* <ProgressBar /> */}
     </div>
