@@ -5,10 +5,10 @@ import { CircleArrowRight } from 'lucide-react';
 
 const AnswerSummary = ({
   payload,
-  payloadType
+  // payloadType
 }: {
   payload: IKanjiObj;
-  payloadType: string;
+  // payloadType: string;
 }) => {
   return (
     <div className='flex flex-col items-center w-full gap-2'>
