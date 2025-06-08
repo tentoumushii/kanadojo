@@ -11,6 +11,8 @@ import GameIntel from '@/components/reusable/GameIntel';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
+import ProgressBar from '@/components/reusable/ProgressBar';
+import useStatsStore from '@/store/useStatsStore';
 
 const random = new Random();
 
@@ -21,6 +23,9 @@ const Pick = ({
   selectedWordObjs: IWordObj[];
   isHidden: boolean;
 }) => {
+  const score = useStatsStore(state => state.score);
+  const setScore = useStatsStore(state => state.setScore);
+
   const speedStopwatch = useStopwatch({ autoStart: false });
 
   const {
@@ -74,6 +79,8 @@ const Pick = ({
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
+    setScore(0);
+
     const handleKeyDown = (event: KeyboardEvent) => {
       const index = pickGameKeyMappings[event.code];
       if (index !== undefined && index < shuffledMeanings.length) {
@@ -93,48 +100,50 @@ const Pick = ({
   }, [isHidden]);
 
   const handleOptionClick = (meaning: string) => {
-              if (meaning === correctMeaning) {
-                speedStopwatch.pause();
-                addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
-                speedStopwatch.reset();
-                playCorrect();
-                addCharacterToHistory(correctWord);
-                incrementCharacterScore(correctWord, 'correct');
-                incrementCorrectAnswers();
+    if (meaning === correctMeaning) {
+      speedStopwatch.pause();
+      addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
+      speedStopwatch.reset();
+      playCorrect();
+      addCharacterToHistory(correctWord);
+      incrementCharacterScore(correctWord, 'correct');
+      incrementCorrectAnswers();
+      setScore(score + 1);
 
-                let newRandomWord =
-                  selectedWordObjs[
-                    random.integer(0, selectedWordObjs.length - 1)
-                  ].word;
+      let newRandomWord =
+        selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)].word;
 
-                while (newRandomWord === correctWord) {
-                  newRandomWord =
-                    selectedWordObjs[
-                      random.integer(0, selectedWordObjs.length - 1)
-                    ].word;
-                }
-                setCorrectWord(newRandomWord);
-                setWrongSelectedAnswers([]);
-                setFeedback(
-                  <>
-                    <span>{`correct! ${correctWord} = ${meaning} `}</span>
-                    <CircleCheck className='inline' />
-                  </>
-                );
-              } else {
-                setWrongSelectedAnswers([...wrongSelectedAnswers, meaning]);
-                setFeedback(
-                  <>
-                    <span>{`incorrect! ${correctWord} ≠ ${meaning} `}</span>
-                    <CircleX className='inline' />
-                  </>
-                );
-                playErrorTwice();
+      while (newRandomWord === correctWord) {
+        newRandomWord =
+          selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)].word;
+      }
+      setCorrectWord(newRandomWord);
+      setWrongSelectedAnswers([]);
+      setFeedback(
+        <>
+          <span>{`correct! ${correctWord} = ${meaning} `}</span>
+          <CircleCheck className='inline' />
+        </>
+      );
+    } else {
+      setWrongSelectedAnswers([...wrongSelectedAnswers, meaning]);
+      setFeedback(
+        <>
+          <span>{`incorrect! ${correctWord} ≠ ${meaning} `}</span>
+          <CircleX className='inline' />
+        </>
+      );
+      playErrorTwice();
 
-                incrementCharacterScore(correctWord, 'wrong');
-                incrementWrongAnswers();
-              }
-            }
+      incrementCharacterScore(correctWord, 'wrong');
+      incrementWrongAnswers();
+      if (score - 1 < 0) {
+        setScore(0);
+      } else {
+        setScore(score - 1);
+      }
+    }
+  };
 
   return (
     <div
@@ -180,6 +189,8 @@ const Pick = ({
           </button>
         ))}
       </div>
+
+      <ProgressBar />
     </div>
   );
 };

@@ -58,7 +58,7 @@ body {
 
 /* Dark Theme */
 [data-theme='dark'] {
-  --background-color: hsla(0, 0%, 12%, 1);
+  --background-color: hsla(0, 0%, 11%, 1);
   --card-color: hsla(0, 0%, 16%, 1);
   --border-color: hsla(0, 0%, 30%, 1);
 

@@ -9,6 +9,8 @@ import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
+import ProgressBar from '@/components/reusable/ProgressBar';
+import useStatsStore from '@/store/useStatsStore';
 
 const random = new Random();
 
@@ -19,6 +21,9 @@ const Input = ({
   selectedWordObjs: IWordObj[];
   isHidden: boolean;
 }) => {
+  const score = useStatsStore(state => state.score);
+  const setScore = useStatsStore(state => state.setScore);
+
   const speedStopwatch = useStopwatch({ autoStart: false });
 
   const {
@@ -49,6 +54,8 @@ const Input = ({
   const [feedback, setFeedback] = useState(<>{'feedback ~'}</>);
 
   useEffect(() => {
+    setScore(0);
+
     if (inputRef.current) {
       inputRef.current.focus(); // Automatically focuses on the input
     }
@@ -73,52 +80,54 @@ const Input = ({
   }, [isHidden]);
 
   const handleEnter = (e: React.KeyboardEvent) => {
-          if (e.key === 'Enter') {
-            if (correctMeanings.includes(inputValue.trim().toLowerCase())) {
-              speedStopwatch.pause();
-              addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
-              speedStopwatch.reset();
-              playCorrect();
-              addCharacterToHistory(correctWord);
-              incrementCharacterScore(correctWord, 'correct');
-              incrementCorrectAnswers();
+    if (e.key === 'Enter') {
+      if (correctMeanings.includes(inputValue.trim().toLowerCase())) {
+        speedStopwatch.pause();
+        addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
+        speedStopwatch.reset();
+        playCorrect();
+        addCharacterToHistory(correctWord);
+        incrementCharacterScore(correctWord, 'correct');
+        incrementCorrectAnswers();
+        setScore(score + 1);
 
-              setInputValue('');
-              let newRandomWord =
-                selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)]
-                  .word;
-              while (newRandomWord === correctWord) {
-                newRandomWord =
-                  selectedWordObjs[
-                    random.integer(0, selectedWordObjs.length - 1)
-                  ].word;
-              }
-              setCorrectWord(newRandomWord);
-              setFeedback(
-                <>
-                  <span>
-                    {`correct! ${correctWord} = ${inputValue
-                      .trim()
-                      .toLowerCase()} `}
-                  </span>
-                  <CircleCheck className='inline' />
-                </>
-              );
-            } else {
-              setInputValue('');
-              setFeedback(
-                <>
-                  <span>{`incorrect! ${correctWord} ≠ ${inputValue} `}</span>
-                  <CircleX className='inline' />
-                </>
-              );
-              playErrorTwice();
-
-              incrementCharacterScore(correctWord, 'wrong');
-              incrementWrongAnswers();
-            }
-          }
+        setInputValue('');
+        let newRandomWord =
+          selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)].word;
+        while (newRandomWord === correctWord) {
+          newRandomWord =
+            selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)]
+              .word;
         }
+        setCorrectWord(newRandomWord);
+        setFeedback(
+          <>
+            <span>
+              {`correct! ${correctWord} = ${inputValue.trim().toLowerCase()} `}
+            </span>
+            <CircleCheck className='inline' />
+          </>
+        );
+      } else {
+        setInputValue('');
+        setFeedback(
+          <>
+            <span>{`incorrect! ${correctWord} ≠ ${inputValue} `}</span>
+            <CircleX className='inline' />
+          </>
+        );
+        playErrorTwice();
+
+        incrementCharacterScore(correctWord, 'wrong');
+        incrementWrongAnswers();
+        if (score - 1 < 0) {
+          setScore(0);
+        } else {
+          setScore(score - 1);
+        }
+      }
+    }
+  };
 
   const handleSkip = (e: React.MouseEvent<HTMLButtonElement>) => {
     playClick();
@@ -128,14 +137,10 @@ const Input = ({
       selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)].word;
     while (newRandomWord === correctWord) {
       newRandomWord =
-        selectedWordObjs[
-          random.integer(0, selectedWordObjs.length - 1)
-        ].word;
+        selectedWordObjs[random.integer(0, selectedWordObjs.length - 1)].word;
     }
     setCorrectWord(newRandomWord);
-    setFeedback(
-      <>{`skipped ~ ${correctWord} = ${correctMeanings[0]}`}</>
-    );
+    setFeedback(<>{`skipped ~ ${correctWord} = ${correctMeanings[0]}`}</>);
   };
 
   return (
@@ -171,6 +176,8 @@ const Input = ({
         <span>skip</span>
         <CircleArrowRight />
       </button>
+
+      <ProgressBar />
     </div>
   );
 };

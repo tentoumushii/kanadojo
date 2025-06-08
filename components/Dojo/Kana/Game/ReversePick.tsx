@@ -11,7 +11,7 @@ import { buttonBorderStyles } from '@/static/styles';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
-// import ProgressBar from '@/components/reusable/ProgressBar';
+import ProgressBar from '@/components/reusable/ProgressBar';
 import useStatsStore from '@/store/useStatsStore';
 // import AnswerSummary from '@/components/reusable/AnswerSummary';
 
@@ -207,7 +207,7 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
         ))}
       </div>
       {/* )} */}
-      {/* <ProgressBar /> */}
+      <ProgressBar />
     </div>
   );
 };

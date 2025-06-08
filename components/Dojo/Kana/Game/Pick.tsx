@@ -12,10 +12,15 @@ import { buttonBorderStyles } from '@/static/styles';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
+import ProgressBar from '@/components/reusable/ProgressBar';
+import useStatsStore from '@/store/useStatsStore';
 
 const random = new Random();
 
 const Pick = ({ isHidden }: { isHidden: boolean }) => {
+  const score = useStatsStore(state => state.score);
+  const setScore = useStatsStore(state => state.setScore);
+
   const speedStopwatch = useStopwatch({ autoStart: false });
 
   const {
@@ -74,6 +79,8 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
+    setScore(0);
+
     const handleKeyDown = (event: KeyboardEvent) => {
       const index = pickGameKeyMappings[event.code];
       if (index !== undefined && index < shuffledVariants.length) {
@@ -101,6 +108,7 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
       addCharacterToHistory(correctKanaChar);
       incrementCharacterScore(correctKanaChar, 'correct');
       incrementCorrectAnswers();
+      setScore(score + 1);
 
       let newRandomKana =
         selectedKana[random.integer(0, selectedKana.length - 1)];
@@ -128,6 +136,11 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
 
       incrementCharacterScore(correctKanaChar, 'wrong');
       incrementWrongAnswers();
+      if (score - 1 < 0) {
+        setScore(0);
+      } else {
+        setScore(score - 1);
+      }
     }
   };
 
@@ -167,6 +180,7 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
           </button>
         ))}
       </div>
+      <ProgressBar />
     </div>
   );
 };

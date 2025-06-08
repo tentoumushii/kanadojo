@@ -17,7 +17,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({
-  max = 5
+  max = 100
 }: // checkpoints = [10, 25, 50, 75] // Default checkpoints at 25%, 50%, 75%
 ProgressBarProps) => {
   const score = useStatsStore(state => state.score);
@@ -29,8 +29,8 @@ ProgressBarProps) => {
 
   useIndefiniteConfetti({ active, emojis: emojiArray });
 
-  console.log('active', active);
-  console.log('score', score);
+  // console.log('active', active);
+  // console.log('score', score);
   useEffect(() => {
     if (score >= max) setActive(true);
   }, [score]);
@@ -46,7 +46,6 @@ ProgressBarProps) => {
         />
       </div>
 
-      {/* Checkpoints Container - removed flex and justify-between */}
     </div>
   );
 };

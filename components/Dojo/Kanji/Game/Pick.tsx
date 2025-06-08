@@ -11,6 +11,8 @@ import GameIntel from '@/components/reusable/GameIntel';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
+import ProgressBar from '@/components/reusable/ProgressBar';
+import useStatsStore from '@/store/useStatsStore';
 
 const random = new Random();
 
@@ -21,6 +23,9 @@ const Pick = ({
   selectedKanjiObjs: IKanjiObj[];
   isHidden: boolean;
 }) => {
+  const score = useStatsStore(state => state.score);
+  const setScore = useStatsStore(state => state.setScore);
+
   const speedStopwatch = useStopwatch({ autoStart: false });
 
   const {
@@ -74,6 +79,8 @@ const Pick = ({
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
+    setScore(0);
+
     const handleKeyDown = (event: KeyboardEvent) => {
       const index = pickGameKeyMappings[event.code];
       if (index !== undefined && index < shuffledMeanings.length) {
@@ -101,6 +108,7 @@ const Pick = ({
       addCharacterToHistory(correctKanjiChar);
       incrementCharacterScore(correctKanjiChar, 'correct');
       incrementCorrectAnswers();
+      setScore(score + 1);
 
       let newRandomKanjiChar =
         selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
@@ -131,6 +139,11 @@ const Pick = ({
 
       incrementCharacterScore(correctKanjiChar, 'wrong');
       incrementWrongAnswers();
+      if (score - 1 < 0) {
+        setScore(0);
+      } else {
+        setScore(score - 1);
+      }
     }
   };
 
@@ -180,6 +193,8 @@ const Pick = ({
           </button>
         ))}
       </div>
+
+      <ProgressBar />
     </div>
   );
 };

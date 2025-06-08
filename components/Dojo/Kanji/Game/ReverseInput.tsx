@@ -9,6 +9,8 @@ import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
+import ProgressBar from '@/components/reusable/ProgressBar';
+import useStatsStore from '@/store/useStatsStore';
 
 const random = new Random();
 
@@ -19,6 +21,9 @@ const ReverseInput = ({
   selectedKanjiObjs: IKanjiObj[];
   isHidden: boolean;
 }) => {
+  const score = useStatsStore(state => state.score);
+  const setScore = useStatsStore(state => state.setScore);
+
   const speedStopwatch = useStopwatch({ autoStart: false });
 
   const {
@@ -50,6 +55,8 @@ const ReverseInput = ({
   const [feedback, setFeedback] = useState(<>{'feedback ~'}</>);
 
   useEffect(() => {
+    setScore(0);
+
     if (inputRef.current) {
       inputRef.current.focus(); // Automatically focuses on the input
     }
@@ -74,69 +81,69 @@ const ReverseInput = ({
   }, [isHidden]);
 
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-          if (e.key === 'Enter') {
-            if (correctKanjiChar === inputValue.trim()) {
-              speedStopwatch.pause();
-              addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
-              speedStopwatch.reset();
-              playCorrect();
-              addCharacterToHistory(correctMeaning);
-              incrementCharacterScore(correctMeaning, 'correct');
-              incrementCorrectAnswers();
+    if (e.key === 'Enter') {
+      if (correctKanjiChar === inputValue.trim()) {
+        speedStopwatch.pause();
+        addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
+        speedStopwatch.reset();
+        playCorrect();
+        addCharacterToHistory(correctMeaning);
+        incrementCharacterScore(correctMeaning, 'correct');
+        incrementCorrectAnswers();
+        setScore(score + 1);
 
-              setInputValue('');
-              let newRandomMeaning =
-                selectedKanjiObjs[
-                  random.integer(0, selectedKanjiObjs.length - 1)
-                ].meanings[0];
-              while (newRandomMeaning === correctMeaning) {
-                newRandomMeaning =
-                  selectedKanjiObjs[
-                    random.integer(0, selectedKanjiObjs.length - 1)
-                  ].meanings[0];
-              }
-              setCorrectMeaning(newRandomMeaning);
-              setFeedback(
-                <>
-                  <span>
-                    {`correct! ${correctMeaning} = ${inputValue.trim()} `}
-                  </span>
-                  <CircleCheck className='inline' />
-                </>
-              );
-            } else {
-              setInputValue('');
-              setFeedback(
-                <>
-                  <span>{`incorrect! ${correctMeaning} ≠ ${inputValue} `}</span>
-                  <CircleX className='inline' />
-                </>
-              );
-              playErrorTwice();
-
-              incrementCharacterScore(correctMeaning, 'wrong');
-              incrementWrongAnswers();
-            }
-          }
-        }
-
-  const handleSkip = (e: React.MouseEvent<HTMLButtonElement>) => {
-          playClick();
-          e.currentTarget.blur();
-          setInputValue('');
-          let newRandomMeaning =
+        setInputValue('');
+        let newRandomMeaning =
+          selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
+            .meanings[0];
+        while (newRandomMeaning === correctMeaning) {
+          newRandomMeaning =
             selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
               .meanings[0];
-          while (newRandomMeaning === correctMeaning) {
-            newRandomMeaning =
-              selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
-                .meanings[0];
-          }
-          setCorrectMeaning(newRandomMeaning);
-          setFeedback(
-            <>{`skipped ~ ${correctMeaning} = ${correctKanjiChar}`}</>
-          );
         }
+        setCorrectMeaning(newRandomMeaning);
+        setFeedback(
+          <>
+            <span>{`correct! ${correctMeaning} = ${inputValue.trim()} `}</span>
+            <CircleCheck className='inline' />
+          </>
+        );
+      } else {
+        setInputValue('');
+        setFeedback(
+          <>
+            <span>{`incorrect! ${correctMeaning} ≠ ${inputValue} `}</span>
+            <CircleX className='inline' />
+          </>
+        );
+        playErrorTwice();
+
+        incrementCharacterScore(correctMeaning, 'wrong');
+        incrementWrongAnswers();
+        if (score - 1 < 0) {
+          setScore(0);
+        } else {
+          setScore(score - 1);
+        }
+      }
+    }
+  };
+
+  const handleSkip = (e: React.MouseEvent<HTMLButtonElement>) => {
+    playClick();
+    e.currentTarget.blur();
+    setInputValue('');
+    let newRandomMeaning =
+      selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
+        .meanings[0];
+    while (newRandomMeaning === correctMeaning) {
+      newRandomMeaning =
+        selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
+          .meanings[0];
+    }
+    setCorrectMeaning(newRandomMeaning);
+    setFeedback(<>{`skipped ~ ${correctMeaning} = ${correctKanjiChar}`}</>);
+  };
 
   return (
     <div
@@ -163,13 +170,15 @@ const ReverseInput = ({
         className={clsx(
           'text-xl font-medium  py-4 px-16 rounded-3xl transform transition duration-150 hover:scale-105 hover:cursor-pointer ',
           buttonBorderStyles,
-          'flex flex-row items-end gap-2',
+          'flex flex-row items-end gap-2'
         )}
         onClick={handleSkip}
       >
         <span>skip</span>
         <CircleArrowRight />
       </button>
+
+      <ProgressBar />
     </div>
   );
 };

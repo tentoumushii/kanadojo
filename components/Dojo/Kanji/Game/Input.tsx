@@ -9,6 +9,8 @@ import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
+import ProgressBar from '@/components/reusable/ProgressBar';
+import useStatsStore from '@/store/useStatsStore';
 
 const random = new Random();
 
@@ -19,6 +21,9 @@ const Input = ({
   selectedKanjiObjs: IKanjiObj[];
   isHidden: boolean;
 }) => {
+  const score = useStatsStore(state => state.score);
+  const setScore = useStatsStore(state => state.setScore);
+
   const speedStopwatch = useStopwatch({ autoStart: false });
 
   const {
@@ -49,6 +54,8 @@ const Input = ({
   const [feedback, setFeedback] = useState(<>{'feedback ~'}</>);
 
   useEffect(() => {
+    setScore(0);
+
     if (inputRef.current) {
       inputRef.current.focus(); // Automatically focuses on the input
     }
@@ -72,75 +79,74 @@ const Input = ({
     if (isHidden) speedStopwatch.pause();
   }, [isHidden]);
 
-
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-          if (e.key === 'Enter') {
-            if (correctMeanings.includes(inputValue.trim().toLowerCase())) {
-              speedStopwatch.pause();
-              addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
-              speedStopwatch.reset();
-              playCorrect();
-              addCharacterToHistory(correctKanjiChar);
-              incrementCharacterScore(correctKanjiChar, 'correct');
-              incrementCorrectAnswers();
+    if (e.key === 'Enter') {
+      if (correctMeanings.includes(inputValue.trim().toLowerCase())) {
+        speedStopwatch.pause();
+        addCorrectAnswerTime(speedStopwatch.totalMilliseconds / 1000);
+        speedStopwatch.reset();
+        playCorrect();
+        addCharacterToHistory(correctKanjiChar);
+        incrementCharacterScore(correctKanjiChar, 'correct');
+        incrementCorrectAnswers();
+        setScore(score + 1);
 
-              setInputValue('');
-              let newRandomKanjiChar =
-                selectedKanjiObjs[
-                  random.integer(0, selectedKanjiObjs.length - 1)
-                ].kanjiChar;
-              while (newRandomKanjiChar === correctKanjiChar) {
-                newRandomKanjiChar =
-                  selectedKanjiObjs[
-                    random.integer(0, selectedKanjiObjs.length - 1)
-                  ].kanjiChar;
-              }
-              setCorrectKanjiChar(newRandomKanjiChar);
-              setFeedback(
-                <>
-                  <span>
-                    {`correct! ${correctKanjiChar} = ${inputValue
-                      .trim()
-                      .toLowerCase()} `}
-                  </span>
-                  <CircleCheck className='inline' />
-                </>
-              );
-            } else {
-              setInputValue('');
-              setFeedback(
-                <>
-                  <span>
-                    {`incorrect! ${correctKanjiChar} ≠ ${inputValue} `}
-                  </span>
-                  <CircleX className='inline' />
-                </>
-              );
-              playErrorTwice();
-
-              incrementCharacterScore(correctKanjiChar, 'wrong');
-              incrementWrongAnswers();
-            }
-          }
-        }
-
-      const handleSkip = (e: React.MouseEvent<HTMLButtonElement>) => {
-          playClick();
-          e.currentTarget.blur();
-          setInputValue('');
-          let newRandomKanjiChar =
+        setInputValue('');
+        let newRandomKanjiChar =
+          selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
+            .kanjiChar;
+        while (newRandomKanjiChar === correctKanjiChar) {
+          newRandomKanjiChar =
             selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
               .kanjiChar;
-          while (newRandomKanjiChar === correctKanjiChar) {
-            newRandomKanjiChar =
-              selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
-                .kanjiChar;
-          }
-          setCorrectKanjiChar(newRandomKanjiChar);
-          setFeedback(
-            <>{`skipped ~ ${correctKanjiChar} = ${correctMeanings[0]}`}</>
-          );
         }
+        setCorrectKanjiChar(newRandomKanjiChar);
+        setFeedback(
+          <>
+            <span>
+              {`correct! ${correctKanjiChar} = ${inputValue
+                .trim()
+                .toLowerCase()} `}
+            </span>
+            <CircleCheck className='inline' />
+          </>
+        );
+      } else {
+        setInputValue('');
+        setFeedback(
+          <>
+            <span>{`incorrect! ${correctKanjiChar} ≠ ${inputValue} `}</span>
+            <CircleX className='inline' />
+          </>
+        );
+        playErrorTwice();
+
+        incrementCharacterScore(correctKanjiChar, 'wrong');
+        incrementWrongAnswers();
+        if (score - 1 < 0) {
+          setScore(0);
+        } else {
+          setScore(score - 1);
+        }
+      }
+    }
+  };
+
+  const handleSkip = (e: React.MouseEvent<HTMLButtonElement>) => {
+    playClick();
+    e.currentTarget.blur();
+    setInputValue('');
+    let newRandomKanjiChar =
+      selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
+        .kanjiChar;
+    while (newRandomKanjiChar === correctKanjiChar) {
+      newRandomKanjiChar =
+        selectedKanjiObjs[random.integer(0, selectedKanjiObjs.length - 1)]
+          .kanjiChar;
+    }
+    setCorrectKanjiChar(newRandomKanjiChar);
+    setFeedback(<>{`skipped ~ ${correctKanjiChar} = ${correctMeanings[0]}`}</>);
+  };
 
   return (
     <div
@@ -167,13 +173,15 @@ const Input = ({
         className={clsx(
           'text-xl font-medium py-4 px-16 rounded-3xl transform transition duration-150 hover:scale-105 hover:cursor-pointer ',
           buttonBorderStyles,
-          'flex flex-row items-end gap-2',
+          'flex flex-row items-end gap-2'
         )}
         onClick={handleSkip}
       >
         <span>skip</span>
         <CircleArrowRight />
       </button>
+
+      <ProgressBar />
     </div>
   );
 };
