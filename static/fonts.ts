@@ -11,7 +11,13 @@ import {
   Yuji_Mai,
   RocknRoll_One,
   Reggae_One,
-  Stick
+  Stick,
+  M_PLUS_Rounded_1c,
+  M_PLUS_1,
+  Yusei_Magic,
+  Dela_Gothic_One,
+  New_Tegomin,
+  Kosugi_Maru
 } from 'next/font/google';
 
 const notoSansJP = Noto_Sans_JP({
@@ -92,6 +98,39 @@ const stick = Stick({
   display: 'swap'
 });
 
+const mPlusRounded1c = M_PLUS_Rounded_1c({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
+const mPlus1 = M_PLUS_1({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
+const yuseiMagic = Yusei_Magic({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+const delaGothicOne = Dela_Gothic_One({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+const newTegomin = New_Tegomin({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+const kosugiMaru = Kosugi_Maru({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
 const fonts = [
   {
     name: 'Noto Sans JP',
@@ -144,6 +183,30 @@ const fonts = [
   {
     name: 'Stick',
     font: stick
+  },
+  {
+    name: 'M PLUS Rounded 1c',
+    font: mPlusRounded1c
+  },
+  {
+    name: 'M PLUS 1',
+    font: mPlus1
+  },
+  {
+    name: 'Yusei Magic',
+    font: yuseiMagic
+  },
+  {
+    name: 'Dela Gothic One',
+    font: delaGothicOne
+  },
+  {
+    name: 'New Tegomin',
+    font: newTegomin
+  },
+  {
+    name: 'Kosugi Maru',
+    font: kosugiMaru
   }
 ];
 

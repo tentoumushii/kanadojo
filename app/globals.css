@@ -120,7 +120,7 @@ body {
 
 /* Aurora Theme */
 [data-theme='aurora'] {
-  --background-color: hsl(201, 95%, 8%);
+  --background-color: hsl(201, 95%, 7%);
   --card-color: hsl(201, 95%, 9%);
   --border-color: hsl(201, 95%, 15%);
 
@@ -160,7 +160,7 @@ body {
 
 /* Magic Sky Theme */
 [data-theme='magic-sky'] {
-  --background-color: hsl(202, 66%, 10%);
+  --background-color: hsl(202, 66%, 9%);
   --card-color: hsl(202, 66%, 11%);
   --border-color: hsl(202, 66%, 15%);
 
@@ -170,7 +170,7 @@ body {
 
 /* Incognito Theme */
 [data-theme='incognito'] {
-  --background-color: hsl(0, 0%, 5%);
+  --background-color: hsl(0, 0%, 4%);
   --card-color: hsl(0, 0%, 6%);
   --border-color: hsl(0, 0%, 12%);
 
