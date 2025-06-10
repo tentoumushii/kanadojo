@@ -17,7 +17,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({
-  max = 100
+  max = 50
 }: // checkpoints = [10, 25, 50, 75] // Default checkpoints at 25%, 50%, 75%
 ProgressBarProps) => {
   const score = useStatsStore(state => state.score);
@@ -45,7 +45,6 @@ ProgressBarProps) => {
           style={{ width: `${percentage}%` }}
         />
       </div>
-
     </div>
   );
 };
