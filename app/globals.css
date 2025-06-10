@@ -88,6 +88,16 @@ body {
 
 /* DARK THEMES */
 
+/* Nord Theme */
+[data-theme='nord'] {
+  --background-color: hsl(220, 16%, 23%);
+  --card-color: hsl(220, 16%, 30%);
+  --border-color: hsl(220, 16%, 40%);
+
+  --main-color: hsl(92, 28%, 65%);
+  --secondary-color: hsl(92, 28%, 65%);
+}
+
 /* Midnight Theme */
 [data-theme='midnight'] {
   --background-color: hsl(221, 15%, 18%);
