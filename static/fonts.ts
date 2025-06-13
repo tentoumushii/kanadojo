@@ -17,7 +17,8 @@ import {
   Yusei_Magic,
   Dela_Gothic_One,
   New_Tegomin,
-  Kosugi_Maru
+  Kosugi_Maru,
+  Hina_Mincho
 } from 'next/font/google';
 
 const notoSansJP = Noto_Sans_JP({
@@ -131,6 +132,12 @@ const kosugiMaru = Kosugi_Maru({
   display: 'swap'
 });
 
+const hinaMincho = Hina_Mincho({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
 const fonts = [
   {
     name: 'Noto Sans JP',
@@ -207,6 +214,10 @@ const fonts = [
   {
     name: 'Kosugi Maru',
     font: kosugiMaru
+  },
+  {
+    name: 'Hina Mincho',
+    font: hinaMincho
   }
 ];
 
