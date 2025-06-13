@@ -38,6 +38,27 @@ const themes = [
         cardColor: 'hsl(270, 80%, 94%)',
         borderColor: 'hsl(270, 80%, 80%)',
         mainColor: 'hsl(270, 100%, 65%)'
+      },
+      {
+        id: 'ice-ice-baby',
+        backgroundColor: 'hsla(181, 84%, 79%, 1)',
+        cardColor: 'hsla(181, 84%, 70%, 1)',
+        borderColor: 'hsla(181, 84%, 50%, 1)',
+        mainColor: 'hsla(283, 44%, 50%, 1)'
+      },
+      {
+        id: 'miami',
+        backgroundColor: 'hsla(330, 100%, 66%, 1)',
+        cardColor: 'hsla(330, 100%, 62%, 1)',
+        borderColor: 'hsla(330, 100%, 55%, 1)',
+        mainColor: 'hsla(176, 74%, 50%, 1)'
+      },
+      {
+        id: 'mint',
+        backgroundColor: 'hsla(165, 100%, 41%, 1)',
+        cardColor: 'hsla(165, 100%, 38%, 1)',
+        borderColor: 'hsla(165, 100%, 30%, 1)',
+        mainColor: 'hsla(0, 0%, 100%, 1)'
       }
     ]
   },
@@ -117,6 +138,13 @@ const themes = [
         mainColor: '#d65ccc'
       },
       {
+        id: 'phantom',
+        backgroundColor: 'hsl(233, 76%, 13%)',
+        cardColor: 'hsl(233, 76%, 14%)',
+        borderColor: 'hsl(233, 76%, 20%)',
+        mainColor: 'hsl(330, 73%, 62%)'
+      },
+      {
         id: 'bushido',
         backgroundColor: 'hsl(220, 17%, 17%)',
         cardColor: 'hsl(220, 17%, 18%)',
@@ -159,11 +187,39 @@ const themes = [
         mainColor: 'hsl(326, 100%, 54%)'
       },
       {
-        id: 'phantom',
-        backgroundColor: 'hsl(233, 76%, 13%)',
-        cardColor: 'hsl(233, 76%, 14%)',
-        borderColor: 'hsl(233, 76%, 20%)',
-        mainColor: 'hsl(330, 73%, 62%)'
+        id: 'noir',
+        backgroundColor: 'hsla(0, 0%, 0%, 1)',
+        cardColor: 'hsla(0, 0%, 5%, 1)',
+        borderColor: 'hsla(0, 0%, 20%, 1)',
+        mainColor: 'hsla(0, 0%, 100%, 1)'
+      },
+      {
+        id: 'tron',
+        backgroundColor: 'hsla(160, 38%, 9%, 1)',
+        cardColor: 'hsla(160, 38%, 12%, 1)',
+        borderColor: 'hsla(160, 38%, 25%, 1)',
+        mainColor: 'hsla(59, 100%, 42%, 1)'
+      },
+      {
+        id: 'diamond',
+        backgroundColor: 'hsla(249, 45%, 17%, 1)',
+        cardColor: 'hsla(249, 45%, 22%, 1)',
+        borderColor: 'hsla(249, 45%, 30%, 1)',
+        mainColor: 'hsla(187, 100%, 42%, 1)'
+      },
+      {
+        id: 'pulse',
+        backgroundColor: 'hsla(180, 5%, 11%, 1)',
+        cardColor: 'hsla(180, 5%, 15%, 1)',
+        borderColor: 'hsla(180, 5%, 25%, 1)',
+        mainColor: 'hsla(191, 100%, 50%, 1)'
+      },
+      {
+        id: 'flora',
+        backgroundColor: 'hsla(195, 39%, 12%, 1)',
+        cardColor: 'hsla(195, 39%, 16%, 1)',
+        borderColor: 'hsla(195, 39%, 25%, 1)',
+        mainColor: 'hsla(113, 100%, 58%, 1)'
       }
     ]
   }

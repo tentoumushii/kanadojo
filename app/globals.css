@@ -79,11 +79,38 @@ body {
 
 [data-theme='amethyst'] {
   --background-color: hsl(270, 80%, 90%);
-  --card-color: hsl(270, 80%, 94%);
-  --border-color: hsl(270, 80%, 80%);
+  --card-color: hsl(270, 80%, 85%);
+  --border-color: hsl(270, 80%, 75%);
 
   --main-color: hsl(270, 100%, 50%);
   --secondary-color: hsl(270, 100%, 70%);
+}
+
+[data-theme='ice-ice-baby'] {
+  --background-color: hsla(181, 84%, 79%, 1);
+  --card-color: hsla(181, 84%, 70%, 1); 
+  --border-color: hsla(181, 84%, 50%, 1);
+
+  --main-color: hsla(283, 44%, 50%, 1);
+  --secondary-color: hsla(283, 44%, 50%, 1);
+}
+
+[data-theme='miami'] {
+  --background-color: hsla(330, 100%, 66%, 1);
+  --card-color: hsla(330, 100%, 62%, 1); 
+  --border-color: hsla(330, 100%, 55%, 1);
+
+  --main-color: hsla(176, 74%, 50%, 1);
+  --secondary-color: ;
+}
+
+[data-theme='mint'] {
+  --background-color: hsla(165, 100%, 41%, 1);
+  --card-color: hsla(165, 100%, 38%, 1); 
+  --border-color: hsla(165, 100%, 30%, 1);
+
+  --main-color: hsla(0, 0%, 100%, 1);
+  --secondary-color: ;
 }
 
 /* DARK THEMES */
@@ -250,4 +277,49 @@ body {
 
   --main-color: hsl(330, 73%, 62%);
   --secondary-color: hsl(330, 40%, 62%);
+}
+
+[data-theme='noir'] {
+  --background-color: hsla(0, 0%, 0%, 1);
+  --card-color: hsla(0, 0%, 5%, 1);
+  --border-color: hsla(0, 0%, 20%, 1);
+
+  --main-color: hsla(0, 0%, 100%, 1);
+  --secondary-color: hsla(0, 0%, 100%, 1);
+}
+
+[data-theme='tron'] {
+  --background-color: hsla(160, 38%, 9%, 1);
+  --card-color: hsla(160, 38%, 12%, 1);
+  --border-color: hsla(160, 38%, 25%, 1);
+
+  --main-color: hsla(59, 100%, 42%, 1);
+  --secondary-color: hsla(0, 0%, 100%, 1);
+}
+
+[data-theme='diamond'] {
+  --background-color: hsla(249, 45%, 17%, 1);
+  --card-color: hsla(249, 45%, 22%, 1);
+  --border-color: hsla(249, 45%, 30%, 1);
+
+  --main-color: hsla(187, 100%, 42%, 1);
+  --secondary-color: hsla(0, 0%, 100%, 1);
+}
+
+[data-theme='pulse'] {
+  --background-color: hsla(180, 5%, 11%, 1);
+  --card-color: hsla(180, 5%, 15%, 1);
+  --border-color: hsla(180, 5%, 25%, 1);
+
+  --main-color: hsla(191, 100%, 50%, 1);
+  --secondary-color: hsla(0, 0%, 100%, 1);
+}
+
+[data-theme='flora'] {
+  --background-color: hsla(195, 39%, 12%, 1);
+  --card-color: hsla(195, 39%, 16%, 1);
+  --border-color: hsla(195, 39%, 25%, 1);
+
+  --main-color: hsla(113, 100%, 58%, 1);
+  --secondary-color: hsla(0, 0%, 100%, 1);
 }
