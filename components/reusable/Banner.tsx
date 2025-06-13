@@ -34,7 +34,7 @@ const Banner = ({
       } else if (event.code === 'Space' || event.key === ' ') {
         event.preventDefault();
       } else if (event.key.toLowerCase() === 'p') {
-router.push('')
+        router.push('');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -58,14 +58,17 @@ router.push('')
               className={clsx(
                 buttonBorderStyles,
                 'pb-1 pt-2 px-14 w-full',
-                'hover:scale-105'
+                'hover:scale-105 group'
               )}
               onClick={() => {
                 playClick();
                 if (pathname === '/preferences') router.back();
               }}
             >
-              <ChevronsLeft size={32} className='justify-self-center' />
+              <ChevronsLeft
+                size={32}
+                className='justify-self-center group-hover:underline'
+              />
             </button>
           </Link>
           <Link href='/' className='w-1/2'>

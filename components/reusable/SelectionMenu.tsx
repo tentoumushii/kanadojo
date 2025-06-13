@@ -107,15 +107,18 @@ const SelectionMenu = () => {
             <Link href={link.href} key={i}>
               <button
                 className={clsx(
-                  'flex w-full h-full text-2xl p-2 hover:scale-y-108 hover:scale-x-102',
+                  'flex w-full h-full text-2xl p-2',
                   buttonBorderStyles,
                   'flex-col items-center justify-center',
                   'md:flex-row md:justify-center md:items-center md:gap-1.5',
-                  'max-md:aspect-square md:py-6'
+                  'max-md:aspect-square md:py-6',
+                  'group'
                 )}
                 onClick={() => playClick()}
               >
-                <span lang='en'>{link.name}</span>
+                <span lang='en' className='group-hover:underline'>
+                  {link.name}
+                </span>
                 {link.name_ja && <span>{link.name_ja}</span>}
               </button>
             </Link>

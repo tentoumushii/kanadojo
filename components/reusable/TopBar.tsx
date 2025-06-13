@@ -87,14 +87,15 @@ const TopBar: React.FC<ITopBarProps> = ({
       <Link
         href='/preferences'
         className={clsx(
-          'sm:w-1/3 text-2xl p-2 hover:scale-y-108 hover:scale-x-103 flex flex-row justify-center items-center gap-1.5',
+          'sm:w-1/3 text-2xl p-2 flex flex-row justify-center items-center gap-1.5',
           buttonBorderStyles
+          ,'group'
         )}
         onClick={() => playClick()}
       >
         <button className='flex flex-row gap-1.5 items-center py-2'>
           <Settings />
-          <span>Preferences</span>
+          <span className='group-hover:underline'>Preferences</span>
         </button>
       </Link>
       <button
@@ -131,7 +132,7 @@ const TopBar: React.FC<ITopBarProps> = ({
           setSelectedGameMode={setSelectedGameMode}
         />
       )}
-      <Link href={`${pathname}/train/${selectedGameMode}`} className='sm:w-1/3'>
+      <Link href={`${pathname}/train/${selectedGameMode}`} className='sm:w-1/3 group'>
         <button
           disabled={!selectedGameMode || !isFilled}
           ref={buttonRef}
@@ -141,14 +142,14 @@ const TopBar: React.FC<ITopBarProps> = ({
             'text-[var(--border-color)]',
             selectedGameMode &&
               isFilled &&
-              'duration-225 hover:scale-y-108 hover:scale-x-103 hover:cursor-pointer text-[var(--main-color)]'
+              'text-[var(--main-color)]'
           )}
           onClick={e => {
             e.currentTarget.blur();
             playClick();
           }}
         >
-          <span>Go!</span>
+          <span className='group-hover:underline'>Go!</span>
           <span className='inline text-base'>{'\u23CE'}</span>
         </button>
       </Link>
