@@ -122,16 +122,16 @@ const WordSet = ({
             .split(' ')
             .join('-')
             .toLowerCase()}`}
-          className='flex-1'
+          className='flex-1 group'
         >
           <button
             className={clsx(
-              'hover:scale-103 flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal',
+              'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal',
               miniButtonBorderStyles
             )}
             onClick={() => playClick()}
           >
-            <span className='text-lg'>inspect</span>
+            <span className='text-lg group-hover:underline'>inspect</span>
             <Search size={22} />
           </button>
         </Link>
