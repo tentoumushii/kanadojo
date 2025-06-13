@@ -19,6 +19,7 @@ import {
   New_Tegomin,
   Kosugi_Maru,
   Hina_Mincho
+  ,
 } from 'next/font/google';
 
 const notoSansJP = Noto_Sans_JP({
