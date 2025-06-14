@@ -148,7 +148,9 @@ const Hiragana = () => {
                   )}
                 </div>
 
-                <hr className='border-t-2 border-[var(--border-color)]' />
+                {i < kanaGroup.subsets.length - 1 && (
+                  <hr className='border-t-2 border-[var(--border-color)]' />
+                )}
               </div>
             ))}
         </form>

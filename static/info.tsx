@@ -5,11 +5,11 @@ const info = {
     header: <span>Welcome to KanaDojo!</span>,
     content: (
       <>
-        <p className='text-lg '>
+        <p className='text-lg text-[var(--secondary-color)]'>
           KanaDojo is a fun, minimalist, aesthetic platform for learning and
           practicing Japanese online.
         </p>
-        <p className='text-lg '>
+        <p className='text-lg text-[var(--secondary-color)]'>
           To begin, select a dojo, pick a training mode and start training now!
         </p>
         <DevNotice />
@@ -20,11 +20,11 @@ const info = {
     header: <span>Welcome to the kana (hiragana and katakana) dojo!</span>,
     content: (
       <>
-        <p className='text-lg'>
+        <p className='text-lg text-[var(--secondary-color)]'>
           This is the place where you can learn and practice the two core
           syllabaries of Japanese - Hiragana and Katakana.
         </p>
-        <p className='text-lg'>
+        <p className='text-lg text-[var(--secondary-color)]'>
           To begin, select at least one group of characters, pick a training
           mode, then hit <b>Go!</b> above and start training now!
         </p>
@@ -35,11 +35,11 @@ const info = {
     header: <span>Welcome to the kanji dojo!</span>,
     content: (
       <>
-        <p className='text-lg'>
+        <p className='text-lg text-[var(--secondary-color)]'>
           This is the place where you can learn and practice the main component
           of the Japanese writing system - the kanji characters.
         </p>
-        <p className='text-lg'>
+        <p className='text-lg text-[var(--secondary-color)]'>
           To begin, select at least 3 characters, pick a training mode, then hit{' '}
           <b>Go!</b> above and start training now!
         </p>
@@ -50,11 +50,11 @@ const info = {
     header: <span>Welcome to the vocabulary dojo!</span>,
     content: (
       <>
-        <p className='text-lg'>
+        <p className='text-lg text-[var(--secondary-color)]'>
           This is the place where you can learn and practice the most common
           words used in day-to-day Japanese.
         </p>
-        <p className='text-lg'>
+        <p className='text-lg text-[var(--secondary-color)]'>
           To begin, select at least 3 words, pick a training mode, then hit{' '}
           <b>Go!</b> above and start training now!
         </p>
@@ -65,7 +65,7 @@ const info = {
   jlptMenu: {
     header: <span>About the JLPT kanji/vocabulary groups</span>,
     content: (
-      <p className='text-lg'>
+      <p className='text-lg text-[var(--secondary-color)]'>
         The test consists of five levels, with N1 being the highest level and N5
         the lowest. N1 covers kanji characters and vocabulary that allow the user to understand
         Japanese used in business, academia and other high-level environments,
@@ -82,7 +82,7 @@ const info = {
   groupMenu: {
     header: <span>About the Japanese Language Proficiency Test (JLPT)</span>,
     content: (
-      <p className='text-lg'>
+      <p className='text-lg text-[var(--secondary-color)]'>
         JLPT (short for Japanese-Language Proficiency Test) is a standardized
         criterion-referenced test to evaluate and certify Japanese language
         proficiency for non-native speakers.
@@ -102,7 +102,7 @@ const info = {
   wordClassMenu: {
     header: <span>About word types</span>,
     content: (
-      <p className='text-lg'>
+      <p className='text-lg text-[var(--secondary-color)]'>
         Word types categorize words based on their function and meaning in a
         sentence. Nouns name people, places, things, or ideas - like
         &quot;dog&quot;, &quot;city&quot;, &quot;happiness&quot;, and so on.
