@@ -51,14 +51,14 @@ ProgressBarProps) => {
       <div className='w-full bg-[var(--card-color)] rounded-full h-4 overflow-hidden relative'>
         {/* Progress Indicator */}
         <div
-          className='bg-[var(--main-color)] h-4 rounded-full transition-all duration-500'
+          className='bg-[var(--secondary-color)] h-4 rounded-full transition-all duration-500 z-2'
           style={{ width: `${percentage}%` }}
         />
         {/* Checkpoints */}
         {[25, 50, 75].map(cp => (
           <div
             key={cp}
-            className='absolute top-0 h-4 w-1 bg-[var(--border-color)]'
+            className='absolute top-0 h-4 w-1 bg-[var(--border-color)] z-0'
             style={{
               left: `calc(${cp}% - 2px)`, // Adjust for marker width
               zIndex: 2
@@ -79,7 +79,9 @@ ProgressBarProps) => {
                   ? 'motion-safe:animate-bounce'
                   : stars >= 5
                   ? 'motion-safe:animate-pulse'
-                  : ''
+                  : '',
+
+                'text-[var(--secondary-color)]'
               )}
               style={{
                 animationDelay: `${index * 100}ms`
