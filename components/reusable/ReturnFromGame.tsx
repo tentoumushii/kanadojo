@@ -7,6 +7,7 @@ import { buttonBorderStyles } from '@/static/styles';
 import { ChartSpline } from 'lucide-react';
 import useStatsStore from '@/store/useStatsStore';
 import { useStopwatch } from 'react-timer-hook';
+import { X } from 'lucide-react';
 
 const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
   const totalTimeStopwatch = useStopwatch({ autoStart: false });
@@ -22,7 +23,7 @@ const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
     if (!isHidden) totalTimeStopwatch.start();
   }, [isHidden]);
 
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const buttonRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -42,33 +43,28 @@ const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
   return (
     <div
       className={clsx(
-        'mt-2 md:mt-10',
-        'w-full md:w-1/2 flex flex-col gap-2',
-        'md:flex-row md:gap-6',
+        'mt-4 md:mt-10',
+        'w-full md:w-1/2 flex flex-row gap-4 items-center justify-between',
+        'md:gap-6',
         isHidden ? 'hidden' : ''
       )}
     >
-      <Link href={href} className='w-full md:w-1/2'>
-        <button
-          ref={buttonRef}
-          className={clsx(
-            'w-full mt-4 p-4 text-3xl flex flex-row justify-center items-center gap-2',
-            buttonBorderStyles,
-            'group'
-          )}
-          onClick={() => playClick()}
-        >
-          <span lang='en' className='group-hover:underline'>
-            back to menu
-          </span>
-          <span className='inline text-2xl'>{'\u23CE'}</span>
-        </button>
+      <Link
+        href={href}
+        className=''
+        ref={buttonRef}
+        onClick={() => playClick()}
+      >
+        <X
+          size={32}
+          className={clsx('hover:cursor-pointer duration-225 hover:scale-120')}
+        />
       </Link>
       <button
         className={clsx(
-          'md:w-1/2 mt-4 p-4 text-3xl flex flex-row justify-center items-center gap-2',
+          'md:w-1/2 p-4 text-3xl flex flex-row justify-center items-center gap-2',
           buttonBorderStyles,
-          'group'
+          'group flex-1'
         )}
         onClick={() => {
           playClick();
