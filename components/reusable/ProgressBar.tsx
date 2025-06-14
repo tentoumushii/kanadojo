@@ -48,7 +48,7 @@ ProgressBarProps) => {
   return (
     <div className='relative w-full mt-8 flex flex-col items-center gap-12'>
       {/* Progress Bar Background */}
-      <div className='w-full bg-[var(--border-color)] rounded-full h-4 overflow-hidden relative'>
+      <div className='w-full bg-[var(--card-color)] rounded-full h-4 overflow-hidden relative'>
         {/* Progress Indicator */}
         <div
           className='bg-[var(--main-color)] h-4 rounded-full transition-all duration-500'
@@ -58,7 +58,7 @@ ProgressBarProps) => {
         {[25, 50, 75].map(cp => (
           <div
             key={cp}
-            className='absolute top-0 h-4 w-1 bg-[var(--main-color)]'
+            className='absolute top-0 h-4 w-1 bg-[var(--border-color)]'
             style={{
               left: `calc(${cp}% - 2px)`, // Adjust for marker width
               zIndex: 2
