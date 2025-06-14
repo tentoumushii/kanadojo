@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { ChevronsLeft, House } from 'lucide-react';
+import { Heart, ChevronsLeft, House } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/lib/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
@@ -51,7 +51,7 @@ const Banner = ({
           <span className='flex flex-row gap-2 items-center'>KanaDojo</span>
           <span className={clsx('font-normal')}>かな道場</span>
         </h1>
-        <div className='flex flex-row gap-3 max-md:w-full'>
+        <div className='flex flex-row gap-4 max-md:w-full items-end'>
           <Link href={href} className='w-1/2'>
             <button
               ref={escButtonRef}
@@ -88,6 +88,18 @@ const Banner = ({
               />
             </button>
           </Link>
+          <Heart
+            size={38}
+            className={clsx(
+              'hover:cursor-pointer duration-225 hover:scale-120',
+              'active:scale-100 active:duration-225',
+              'fill-current animate-bounce text-red-500'
+            )}
+            onClick={() => {
+              playClick();
+              window.open('https://ko-fi.com/kanadojo', '_blank');
+            }}
+          />
         </div>
       </div>
       {subheading && (
