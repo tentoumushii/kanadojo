@@ -20,7 +20,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({
-  max = 25
+  max = 20
 }: // checkpoints = [10, 25, 50, 75] // Default checkpoints at 25%, 50%, 75%
 ProgressBarProps) => {
   const score = useStatsStore(state => state.score);
@@ -48,12 +48,23 @@ ProgressBarProps) => {
   return (
     <div className='relative w-full mt-8 flex flex-col items-center gap-12'>
       {/* Progress Bar Background */}
-      <div className='w-full bg-[var(--border-color)] rounded-full h-4 overflow-hidden'>
+      <div className='w-full bg-[var(--border-color)] rounded-full h-4 overflow-hidden relative'>
         {/* Progress Indicator */}
         <div
           className='bg-[var(--main-color)] h-4 rounded-full transition-all duration-500'
           style={{ width: `${percentage}%` }}
         />
+        {/* Checkpoints */}
+        {[25, 50, 75].map(cp => (
+          <div
+            key={cp}
+            className='absolute top-0 h-4 w-1 bg-[var(--main-color)]'
+            style={{
+              left: `calc(${cp}% - 2px)`, // Adjust for marker width
+              zIndex: 2
+            }}
+          />
+        ))}
       </div>
       <div className='flex gap-2'>
         <div className='grid grid-cols-5 md:grid-cols-10 lg:grid-cols-15 xl:grid-cols-20 gap-2'>
@@ -63,11 +74,11 @@ ProgressBarProps) => {
               size={50}
               className={clsx(
                 stars >= 15
-                  ? 'animate-spin'
+                  ? 'motion-safe:animate-spin'
                   : stars >= 10
-                  ? 'animate-bounce'
+                  ? 'motion-safe:animate-bounce'
                   : stars >= 5
-                  ? 'animate-pulse'
+                  ? 'motion-safe:animate-pulse'
                   : ''
               )}
               style={{
