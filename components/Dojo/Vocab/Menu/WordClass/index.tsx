@@ -7,7 +7,7 @@ import { cardBorderStyles, buttonBorderStyles } from '@/static/styles';
 import { IWordClass } from '@/lib/interfaces';
 import useGridColumns from '@/lib/useGridColumns';
 import { useClick } from '@/lib/useAudio';
-import { ChevronUp } from 'lucide-react';
+import { ChevronUp, LibraryBig } from 'lucide-react';
 
 import N5Nouns from '@/static/vocab/jlpt/n5/nouns';
 import N5Adjectives from '@/static/vocab/jlpt/n5/adjectives';
@@ -80,28 +80,6 @@ const WordClass = ({ group, subgroup, wordClass }: IWordClass) => {
   const numColumns = useGridColumns();
 
   return (
-    // <div
-    //   className={clsx(
-    //     'flex flex-col w-full gap-4',
-    //     'md:items-start md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'
-    //   )}
-    // >
-    //   {vocabSetsTemp.map(vocabSetTemp => (
-    //     <div
-    //       key={vocabSetTemp.id + subgroup + vocabSetTemp.name}
-    //       className={clsx(
-    //         'flex flex-col gap-2 p-4 h-full',
-    //         cardBorderStyles,
-    //       )}
-    //     >
-    //       <p className='text-2xl'>{vocabSetTemp.name}</p>
-    //       <WordSet
-    //         words={words.slice(vocabSetTemp.start, vocabSetTemp.end)}
-    //         setName={vocabSetTemp.name}
-    //       />
-    //     </div>
-    //   ))}
-    // </div>
     <div className='flex flex-col w-full gap-4'>
       {chunkArray(vocabSetsTemp, numColumns).map((rowSets, rowIndex) => {
         const firstSetInRow = rowIndex * numColumns + 1;
@@ -123,7 +101,6 @@ const WordClass = ({ group, subgroup, wordClass }: IWordClass) => {
                 'group text-2xl text-left px-4 py-2',
                 buttonBorderStyles,
                 'flex flex-row items-center gap-1 rounded-xl',
-                'hover:scale-y-105 hover:scale-x-101',
                 'max-md:hidden'
               )}
             >
@@ -138,6 +115,7 @@ const WordClass = ({ group, subgroup, wordClass }: IWordClass) => {
                 size={24}
               />
               Sets {firstSetInRow}-{lastSetInRow}
+              <LibraryBig />
             </button>
 
             {/* Conditionally render the row content */}

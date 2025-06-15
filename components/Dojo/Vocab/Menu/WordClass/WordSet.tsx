@@ -104,7 +104,7 @@ const WordSet = ({
         <button
           type='button'
           className={clsx(
-            'p-2 duration-225 hover:scale-105 font-normal text-lg flex-none',
+            'p-2 font-normal text-lg flex-none',
             miniButtonBorderStyles,
             'flex flex-row justify-center items-center gap-1.5'
           )}

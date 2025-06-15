@@ -9,7 +9,7 @@ import N2Kanji from '@/static/kanji/N2';
 import { cardBorderStyles, buttonBorderStyles } from '@/static/styles';
 import { useParams } from 'next/navigation';
 import { chunkArray } from '@/lib/helperFunctions';
-import { ChevronUp } from 'lucide-react';
+import { ChevronUp, LibraryBig } from 'lucide-react';
 import { useClick } from '@/lib/useAudio';
 import useGridColumns from '@/lib/useGridColumns';
 
@@ -64,7 +64,6 @@ const Subgroup = () => {
                 'group text-2xl text-left px-4 py-2',
                 buttonBorderStyles,
                 'flex flex-row items-center gap-1 rounded-xl',
-                'hover:scale-y-105 hover:scale-x-101',
                 'max-md:hidden'
               )}
             >
@@ -79,6 +78,7 @@ const Subgroup = () => {
                 size={24}
               />
               Sets {firstSetInRow}-{lastSetInRow}
+              <LibraryBig />
             </button>
 
             {/* Conditionally render the row content */}

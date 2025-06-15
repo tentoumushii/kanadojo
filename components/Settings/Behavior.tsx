@@ -34,7 +34,6 @@ const Behavior = () => {
           className={clsx(
             buttonBorderStyles,
             'text-center text-lg',
-            'hover:scale-x-103 hover:scale-y-110',
             'w-1/2 md:w-1/4 p-4'
           )}
           onClick={() => {
@@ -49,7 +48,6 @@ const Behavior = () => {
           className={clsx(
             buttonBorderStyles,
             'text-center text-lg',
-            'hover:scale-x-103 hover:scale-y-110',
             'w-1/2 md:w-1/4 p-4'
           )}
           onClick={() => {
@@ -67,7 +65,6 @@ const Behavior = () => {
           className={clsx(
             buttonBorderStyles,
             'text-center text-lg',
-            'hover:scale-x-103 hover:scale-y-110',
             'w-1/2 md:w-1/4 p-4',
             'flex flex-row gap-1.5 justify-center items-end'
           )}
@@ -86,7 +83,6 @@ const Behavior = () => {
           className={clsx(
             buttonBorderStyles,
             'text-center text-lg',
-            'hover:scale-x-103 hover:scale-y-110',
             'w-1/2 md:w-1/4 p-4',
             'flex flex-row gap-1.5 justify-center items-end'
           )}
@@ -108,7 +104,6 @@ const Behavior = () => {
           className={clsx(
             buttonBorderStyles,
             'text-center text-lg',
-            'hover:scale-x-103 hover:scale-y-110',
             'w-1/2 md:w-1/4 p-4',
             'flex flex-row gap-1.5 justify-center items-end'
           )}
@@ -127,7 +122,6 @@ const Behavior = () => {
           className={clsx(
             buttonBorderStyles,
             'text-center text-lg',
-            'hover:scale-x-103 hover:scale-y-110',
             'w-1/2 md:w-1/4 p-4',
             'flex flex-row gap-1.5 justify-center items-end'
           )}

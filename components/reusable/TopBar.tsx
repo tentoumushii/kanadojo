@@ -100,7 +100,7 @@ const TopBar: React.FC<ITopBarProps> = ({
       </Link>
       <button
         className={clsx(
-          'text-2xl sm:w-1/3 p-2 duration-200 hover:scale-y-108 hover:scale-x-103 flex flex-row justify-center items-center gap-1',
+          'text-2xl sm:w-1/3 p-2 flex flex-row justify-center items-center gap-1',
           buttonBorderStyles
         )}
         onClick={e => {

@@ -58,7 +58,6 @@ const Banner = ({
               className={clsx(
                 buttonBorderStyles,
                 'pb-1 pt-2 px-14 w-full',
-                'hover:scale-105 group'
               )}
               onClick={() => {
                 playClick();
@@ -67,7 +66,7 @@ const Banner = ({
             >
               <ChevronsLeft
                 size={32}
-                className='justify-self-center group-hover:underline'
+                className='justify-self-center'
               />
             </button>
           </Link>
@@ -77,7 +76,6 @@ const Banner = ({
               className={clsx(
                 buttonBorderStyles,
                 'pb-1 pt-2 px-14 w-full',
-                'hover:scale-105'
               )}
               onClick={() => playClick()}
             >

@@ -5,12 +5,15 @@ import useThemeStore from '@/store/useThemeStore';
 import clsx from 'clsx';
 import { useClick, useLong } from '@/lib/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
+import { useState } from 'react';
 
 const Themes = () => {
   const { playClick } = useClick();
   const { playLong } = useLong();
 
   const { theme, setTheme } = useThemeStore();
+
+  const [isHovered, setIsHovered] = useState('');
 
   return (
     <div className='flex flex-col gap-6'>
@@ -30,16 +33,18 @@ const Themes = () => {
                 key={currentTheme.id}
                 style={{
                   color: currentTheme.mainColor,
-                  backgroundColor: currentTheme.backgroundColor,
+                  backgroundColor:
+                    isHovered === currentTheme.id
+                      ? currentTheme.borderColor
+                      : currentTheme.backgroundColor,
                   borderColor: currentTheme.borderColor
                 }}
+                onMouseEnter={() => setIsHovered(currentTheme.id)}
+                onMouseLeave={() => setIsHovered('')}
                 className={clsx(
                   currentTheme.id === 'long' && 'col-span-full',
-                  'py-4 flex justify-center items-center hover:scale-x-103 hover:scale-y-110',
-                  buttonBorderStyles,
-                  currentTheme.id !== 'long'
-                    ? 'hover:scale-x-103 hover:scale-y-110'
-                    : 'hover:scale-95'
+                  'py-4 flex justify-center items-center',
+                  buttonBorderStyles
                 )}
                 onClick={() => {
                   playClick();

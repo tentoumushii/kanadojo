@@ -20,7 +20,7 @@ const Fonts = () => {
           <label
             key={fontObj.name}
             className={clsx(
-              'flex justify-center items-center hover:scale-x-103 hover:scale-y-110',
+              'flex justify-center items-center ',
               buttonBorderStyles,
               'py-4 px-4'
             )}

@@ -101,9 +101,8 @@ displayKana
         <button
           type='button'
           className={clsx(
-            'p-2 duration-225 hover:scale-105 font-normal text-lg flex-none',
+            'p-2 duration-225 font-normal text-lg flex-none',
             miniButtonBorderStyles,
-            'active:scale-95 md:active:scale-98 active:duration-225',
             'flex flex-row justify-center items-center gap-1.5'
           )}
           onClick={e => {

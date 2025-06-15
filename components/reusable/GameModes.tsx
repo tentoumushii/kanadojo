@@ -40,7 +40,7 @@ const GameModes = ({
         <label
           key={gameMode}
           className={clsx(
-            'sm:w-1/4 flex flex-row justify-center items-center transform transition duration-200 hover:scale-x-103 hover:scale-y-110',
+            'sm:w-1/4 flex flex-row justify-center items-center',
             buttonBorderStyles,
           )}
           onClick={() => playClick()}

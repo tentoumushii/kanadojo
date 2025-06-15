@@ -110,7 +110,7 @@ const Subset = ({
         <button
           type='button'
           className={clsx(
-            'p-2 duration-225 hover:scale-103 font-normal text-lg md:w-1/2',
+            'p-2 font-normal text-lg md:w-1/2',
             miniButtonBorderStyles,
             'flex flex-row justify-center items-center gap-1.5'
           )}
