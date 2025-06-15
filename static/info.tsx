@@ -28,6 +28,10 @@ const info = {
           To begin, select at least one group of characters, pick a training
           mode, then hit <b>Go!</b> above and start training now!
         </p>
+        <p className='text-lg text-[var(--secondary-color)] italic'>
+          Make sure to check out the preferences menu above to customize your
+          learning experience!
+        </p>
       </>
     )
   },
@@ -42,6 +46,10 @@ const info = {
         <p className='text-lg text-[var(--secondary-color)]'>
           To begin, select at least 3 characters, pick a training mode, then hit{' '}
           <b>Go!</b> above and start training now!
+        </p>
+        <p className='text-lg text-[var(--secondary-color)] italic'>
+          Make sure to check out the preferences menu above to customize your
+          learning experience!
         </p>
       </>
     )
@@ -58,6 +66,10 @@ const info = {
           To begin, select at least 3 words, pick a training mode, then hit{' '}
           <b>Go!</b> above and start training now!
         </p>
+        <p className='text-lg text-[var(--secondary-color)] italic'>
+          Make sure to check out the preferences menu above to customize your
+          learning experience!
+        </p>
       </>
     )
   },
@@ -67,15 +79,15 @@ const info = {
     content: (
       <p className='text-lg text-[var(--secondary-color)]'>
         The test consists of five levels, with N1 being the highest level and N5
-        the lowest. N1 covers kanji characters and vocabulary that allow the user to understand
-        Japanese used in business, academia and other high-level environments,
-        N2 covers kanji characters and vocabulary allow the user to have the ability to understand
-        Japanese used in everyday situations, and in a variety of circumstances
-        to a proficient degree, N3 represents vocabulary that allows the user to
-        understand Japanese used in everyday situations to an intermediate
-        degree, N4 represents the ability to understand some basic real-life
-        Japanese, and N5 represents the ability to understand some simple
-        Japanese at a basic level.
+        the lowest. N1 covers kanji characters and vocabulary that allow the
+        user to understand Japanese used in business, academia and other
+        high-level environments, N2 covers kanji characters and vocabulary allow
+        the user to have the ability to understand Japanese used in everyday
+        situations, and in a variety of circumstances to a proficient degree, N3
+        represents vocabulary that allows the user to understand Japanese used
+        in everyday situations to an intermediate degree, N4 represents the
+        ability to understand some basic real-life Japanese, and N5 represents
+        the ability to understand some simple Japanese at a basic level.
       </p>
     )
   },

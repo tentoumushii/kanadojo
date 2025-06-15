@@ -9,7 +9,8 @@ import {
   // FileDiff,
   Sun,
   Moon,
-  Heart
+  Heart,
+  // Settings
   // Github
 } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -69,7 +70,7 @@ const MainMenu = () => {
                   setTheme('light');
                 }}
                 className={clsx(
-                  'hover:cursor-pointer duration-225 hover:scale-120',
+                  'hover:cursor-pointer duration-250 hover:scale-120',
                   'active:scale-100 active:duration-225'
                 )}
               />
@@ -81,16 +82,27 @@ const MainMenu = () => {
                   setTheme('dark');
                 }}
                 className={clsx(
-                  'hover:cursor-pointer duration-225 hover:scale-120',
+                  'hover:cursor-pointer duration-250 hover:scale-120',
                   'active:scale-100 active:duration-225'
                 )}
               />
             )}
+            {/* <Settings
+              size={32}
+              className={clsx(
+                'hover:cursor-pointer duration-250 hover:scale-120',
+                'active:scale-100 active:duration-225'
+              )}
+              onClick={() => {
+                playClick();
+                window.open('/settings', '_self');
+              }}
+            /> */}
             <FontAwesomeIcon
               icon={faDiscord}
               size='2x'
               className={clsx(
-                'hover:cursor-pointer duration-225 hover:scale-120',
+                'hover:cursor-pointer duration-250 hover:scale-120',
                 'active:scale-100 active:duration-225'
               )}
               onClick={() => {
@@ -102,7 +114,7 @@ const MainMenu = () => {
               icon={faGithub}
               size='2x'
               className={clsx(
-                'hover:cursor-pointer duration-225 hover:scale-120',
+                'hover:cursor-pointer duration-250 hover:scale-120',
                 'active:scale-100 active:duration-225'
               )}
               onClick={() => {
@@ -116,7 +128,7 @@ const MainMenu = () => {
             <Heart
               size={32}
               className={clsx(
-                'hover:cursor-pointer duration-225 hover:scale-120',
+                'hover:cursor-pointer duration-250 hover:scale-120',
                 'active:scale-100 active:duration-225',
                 'fill-current animate-bounce text-red-500'
               )}
