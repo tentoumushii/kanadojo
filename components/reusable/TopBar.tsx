@@ -88,13 +88,13 @@ const TopBar: React.FC<ITopBarProps> = ({
         href='/preferences'
         className={clsx(
           'sm:w-1/3 text-2xl p-2 flex flex-row justify-center items-center gap-1.5',
-          buttonBorderStyles
-          ,'group'
+          buttonBorderStyles,
+          'group'
         )}
         onClick={() => playClick()}
       >
         <button className='flex flex-row gap-1.5 items-center py-2'>
-          <Settings className='animate-bounce' />
+          <Settings className='animate-pulse' />
           <span className='group-hover:underline'>Preferences</span>
         </button>
       </Link>
@@ -132,7 +132,10 @@ const TopBar: React.FC<ITopBarProps> = ({
           setSelectedGameMode={setSelectedGameMode}
         />
       )}
-      <Link href={`${pathname}/train/${selectedGameMode}`} className='sm:w-1/3 group'>
+      <Link
+        href={`${pathname}/train/${selectedGameMode}`}
+        className='sm:w-1/3 group'
+      >
         <button
           disabled={!selectedGameMode || !isFilled}
           ref={buttonRef}
@@ -140,9 +143,7 @@ const TopBar: React.FC<ITopBarProps> = ({
             'w-full h-full text-2xl px-2 flex flex-row justify-center items-center gap-1 py-4',
             buttonBorderStyles,
             'text-[var(--border-color)]',
-            selectedGameMode &&
-              isFilled &&
-              'text-[var(--main-color)]'
+            selectedGameMode && isFilled && 'text-[var(--main-color)]'
           )}
           onClick={e => {
             e.currentTarget.blur();
