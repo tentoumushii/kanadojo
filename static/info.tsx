@@ -30,7 +30,7 @@ const info = {
         </p>
         <p className='text-lg text-[var(--secondary-color)] italic'>
           Make sure to check out the preferences menu above to customize your
-          learning experience!
+          learning experience and make KanaDojo truly yours!
         </p>
       </>
     )
@@ -49,7 +49,7 @@ const info = {
         </p>
         <p className='text-lg text-[var(--secondary-color)] italic'>
           Make sure to check out the preferences menu above to customize your
-          learning experience!
+          learning experience and make KanaDojo truly yours!
         </p>
       </>
     )
@@ -68,7 +68,7 @@ const info = {
         </p>
         <p className='text-lg text-[var(--secondary-color)] italic'>
           Make sure to check out the preferences menu above to customize your
-          learning experience!
+          learning experience and make KanaDojo truly yours!
         </p>
       </>
     )
