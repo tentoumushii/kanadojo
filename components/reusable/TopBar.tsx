@@ -94,7 +94,7 @@ const TopBar: React.FC<ITopBarProps> = ({
         onClick={() => playClick()}
       >
         <button className='flex flex-row gap-1.5 items-center py-2'>
-          <Settings />
+          <Settings className='animate-bounce' />
           <span className='group-hover:underline'>Preferences</span>
         </button>
       </Link>
