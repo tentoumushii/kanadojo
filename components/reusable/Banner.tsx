@@ -49,7 +49,7 @@ const Banner = ({
       <div className='flex flex-col md:flex-row gap-3 items-start w-full'>
         <h1 className={clsx('text-4xl font-bold', 'flex gap-2', 'flex-row')}>
           <span className='flex flex-row gap-2 items-center'>KanaDojo</span>
-          <span className={clsx('font-normal')}>かな道場</span>
+          <span className={clsx('font-normal')}>かな道場🏳️‍🌈</span>
         </h1>
         <div className='flex flex-row gap-4 max-md:w-full items-end'>
           <Link href={href} className='w-1/2'>

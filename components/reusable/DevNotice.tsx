@@ -2,7 +2,8 @@
 
 const DevNotice = () => {
   return (
-    <p className='text-lg'>
+    <p className='text-lg text-[var(--secondary-color)]'>
+      Happy Pride Month! 🏳️‍🌈🌈✨
       {/* <i>
         KanaDojo is currently in its public pre-alpha preview release. Feedback,
         wishes or complaints are all welcome in our{' '}
