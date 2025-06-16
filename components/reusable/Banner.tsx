@@ -58,16 +58,14 @@ const Banner = ({
               className={clsx(
                 buttonBorderStyles,
                 'pb-1 pt-2 px-14 w-full',
+                'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
               )}
               onClick={() => {
                 playClick();
                 if (pathname === '/preferences') router.back();
               }}
             >
-              <ChevronsLeft
-                size={32}
-                className='justify-self-center'
-              />
+              <ChevronsLeft size={32} className='justify-self-center' />
             </button>
           </Link>
           <Link href='/' className='w-1/2'>
@@ -76,6 +74,7 @@ const Banner = ({
               className={clsx(
                 buttonBorderStyles,
                 'pb-1 pt-2 px-14 w-full',
+                'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
               )}
               onClick={() => playClick()}
             >

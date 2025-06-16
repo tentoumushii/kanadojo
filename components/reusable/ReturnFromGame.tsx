@@ -66,6 +66,7 @@ const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
         className={clsx(
           'md:w-1/2 p-4 text-3xl flex flex-row justify-center items-center gap-2',
           buttonBorderStyles,
+          'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
           'group flex-1'
         )}
         onClick={() => {

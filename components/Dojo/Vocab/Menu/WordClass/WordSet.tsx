@@ -106,6 +106,8 @@ const WordSet = ({
           className={clsx(
             'p-2 font-normal text-lg flex-none',
             miniButtonBorderStyles,
+            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
+            'active:scale-95 md:active:scale-98 active:duration-200',
             'flex flex-row justify-center items-center gap-1.5'
           )}
           onClick={e => {
@@ -127,7 +129,9 @@ const WordSet = ({
           <button
             className={clsx(
               'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal',
-              miniButtonBorderStyles
+              miniButtonBorderStyles,
+              'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
+              'active:scale-95 md:active:scale-98 active:duration-200'
             )}
             onClick={() => playClick()}
           >

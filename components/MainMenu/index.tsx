@@ -9,7 +9,7 @@ import {
   // FileDiff,
   Sun,
   Moon,
-  Heart,
+  Heart
   // Settings
   // Github
 } from 'lucide-react';
@@ -156,7 +156,8 @@ const MainMenu = () => {
                   'flex-col items-center justify-center',
                   'md:flex-row md:justify-center md:items-center md:gap-1.5',
                   'max-md:aspect-square md:py-6',
-                  'group'
+                  'group',
+                  'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
                 )}
                 onClick={() => playClick()}
               >

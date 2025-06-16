@@ -33,7 +33,6 @@ const GameModes = ({
 
   const gameModes = ['pick', 'reverse-pick', 'input', 'reverse-input'];
 
-
   return (
     <fieldset className='grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:justify-evenly sm:gap-4'>
       {gameModes.map(gameMode => (
@@ -42,6 +41,7 @@ const GameModes = ({
           className={clsx(
             'sm:w-1/4 flex flex-row justify-center items-center',
             buttonBorderStyles,
+            'border-b-2 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
           )}
           onClick={() => playClick()}
         >

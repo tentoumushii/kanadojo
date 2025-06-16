@@ -63,6 +63,7 @@ const Subgroup = () => {
               className={clsx(
                 'group text-2xl text-left px-4 py-2',
                 buttonBorderStyles,
+                'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
                 'flex flex-row items-center gap-1 rounded-xl',
                 'max-md:hidden'
               )}

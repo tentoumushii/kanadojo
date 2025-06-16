@@ -103,6 +103,7 @@ displayKana
           className={clsx(
             'p-2 duration-225 font-normal text-lg flex-none',
             miniButtonBorderStyles,
+            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
             'flex flex-row justify-center items-center gap-1.5'
           )}
           onClick={e => {
@@ -124,7 +125,8 @@ displayKana
           <button
             className={clsx(
               'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal',
-              miniButtonBorderStyles
+              miniButtonBorderStyles,
+              'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
             )}
             onClick={() => playClick()}
           >

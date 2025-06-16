@@ -89,11 +89,12 @@ const TopBar: React.FC<ITopBarProps> = ({
         className={clsx(
           'sm:w-1/3 text-2xl p-2 flex flex-row justify-center items-center gap-1.5',
           buttonBorderStyles,
-          'group'
+          'group',
+          'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
         )}
         onClick={() => playClick()}
       >
-        <button className='flex flex-row gap-1.5 items-center py-2'>
+        <button className={clsx('flex flex-row gap-1.5 items-center py-2 ')}>
           <Settings className='animate-pulse' />
           <span className='group-hover:underline'>Preferences</span>
         </button>
@@ -101,7 +102,8 @@ const TopBar: React.FC<ITopBarProps> = ({
       <button
         className={clsx(
           'text-2xl sm:w-1/3 p-2 flex flex-row justify-center items-center gap-1',
-          buttonBorderStyles
+          buttonBorderStyles,
+          'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
         )}
         onClick={e => {
           playClick();
@@ -143,7 +145,8 @@ const TopBar: React.FC<ITopBarProps> = ({
             'w-full h-full text-2xl px-2 flex flex-row justify-center items-center gap-1 py-4',
             buttonBorderStyles,
             'text-[var(--border-color)]',
-            selectedGameMode && isFilled && 'text-[var(--main-color)]'
+            selectedGameMode && isFilled && 'text-[var(--main-color)]',
+            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
           )}
           onClick={e => {
             e.currentTarget.blur();

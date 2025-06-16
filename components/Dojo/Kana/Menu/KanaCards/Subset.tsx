@@ -112,6 +112,7 @@ const Subset = ({
           className={clsx(
             'p-2 font-normal text-lg md:w-1/2',
             miniButtonBorderStyles,
+            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
             'flex flex-row justify-center items-center gap-1.5'
           )}
           onClick={e => {
