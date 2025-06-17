@@ -37,13 +37,24 @@ const KanjiSet = ({
 
   const [focusedKanjiChar, setFocusedKanjiChar] = useState('');
 
+  const [highlightSet, setHighlightSet] = useState(false);
+
   return (
-    <fieldset className='font-bold flex flex-col items-start gap-3'>
+    <fieldset
+      className='font-bold flex flex-col items-start gap-3'
+      onMouseEnter={() => setHighlightSet(true)}
+      onMouseLeave={() => setHighlightSet(false)}
+    >
       {kanjiList.map((kanjiObj, i) => (
         <div key={kanjiObj.kanjiChar} className='w-full flex flex-col gap-3'>
           <label
-            key={kanjiObj.kanjiChar}
-            className='w-full flex flex-row items-center gap-2'
+            className={clsx(
+              'w-full flex flex-row items-center gap-2',
+              'duration-200 transition-colors ease-in-out',
+              highlightSet
+                ? 'text-[var(--main-color)]'
+                : 'text-[var(--secondary-color)]'
+            )}
             onClick={() => playClick()}
           >
             <input
@@ -64,13 +75,17 @@ const KanjiSet = ({
               {/* Japanese word (centered vertically, appears on hover) */}
               <span
                 className={clsx(
-                  'row-start-1 col-start-1  transition-opacity duration-200  z-10 flex items-center justify-center h-full text-4xl pb-2 ',
-displayKana
+                  'row-start-1 col-start-1 transition-opacity duration-200  z-10 flex items-center justify-center h-full text-4xl pb-2 ',
+                  displayKana
                     ? 'md:group-hover:opacity-0 md:opacity-100'
                     : 'md:group-hover:opacity-100 md:opacity-0',
                   displayKana
-                    ? focusedKanjiChar === kanjiObj.kanjiChar ? 'max-md:opacity-0' : 'max-md:opacity-100'
-                    : focusedKanjiChar === kanjiObj.kanjiChar ? 'max-md:opacity-100' : 'max-md:opacity-0'
+                    ? focusedKanjiChar === kanjiObj.kanjiChar
+                      ? 'max-md:opacity-0'
+                      : 'max-md:opacity-100'
+                    : focusedKanjiChar === kanjiObj.kanjiChar
+                    ? 'max-md:opacity-100'
+                    : 'max-md:opacity-0'
                 )}
               >
                 {kanjiObj.kanjiChar}
@@ -79,13 +94,16 @@ displayKana
               <span
                 className={clsx(
                   'row-start-1 col-start-1  transition-opacity duration-200  text-xl flex items-center justify-center h-full ',
-displayKana
+                  displayKana
                     ? 'md:group-hover:opacity-100 md:opacity-0'
                     : 'md:group-hover:opacity-0 md:opacity-100',
                   displayKana
-                    ? focusedKanjiChar === kanjiObj.kanjiChar ? 'max-md:opacity-100' : 'max-md:opacity-0'
-                    : focusedKanjiChar === kanjiObj.kanjiChar ? 'max-md:opacity-0' : 'max-md:opacity-100'
-
+                    ? focusedKanjiChar === kanjiObj.kanjiChar
+                      ? 'max-md:opacity-100'
+                      : 'max-md:opacity-0'
+                    : focusedKanjiChar === kanjiObj.kanjiChar
+                    ? 'max-md:opacity-0'
+                    : 'max-md:opacity-100'
                 )}
               >
                 {kanjiObj.displayMeanings.join(', ')}
@@ -101,7 +119,7 @@ displayKana
         <button
           type='button'
           className={clsx(
-            'p-2 duration-225 font-normal text-lg flex-none',
+            'p-2 font-normal text-lg flex-none',
             miniButtonBorderStyles,
             'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
             'flex flex-row justify-center items-center gap-1.5'

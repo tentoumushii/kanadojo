@@ -19,7 +19,8 @@ const GameIntel = ({
       className={clsx(
         'p-4 flex flex-col gap-2 items-center justify-center',
         'md:flex-row md:gap-4',
-        cardBorderStyles
+        cardBorderStyles,
+        'text-[var(--secondary-color)]'
       )}
     >
       <div className={clsx('flex flex-col gap-2 items-center justify-center')}>

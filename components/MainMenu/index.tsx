@@ -10,7 +10,6 @@ import {
   Sun,
   Moon,
   Heart
-  // Settings
   // Github
 } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -98,13 +97,15 @@ const MainMenu = () => {
                 window.open('/settings', '_self');
               }}
             /> */}
+
             <FontAwesomeIcon
               icon={faDiscord}
               size='2x'
               className={clsx(
                 'hover:cursor-pointer duration-250 hover:scale-120',
-                'active:scale-100 active:duration-225'
-              )}
+                'active:scale-100 active:duration-225',
+                'md:hidden'
+                )}
               onClick={() => {
                 playClick();
                 window.open('https://discord.gg/CyvBNNrSmb', '_blank');

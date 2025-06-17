@@ -41,7 +41,8 @@ const GameModes = ({
           className={clsx(
             'sm:w-1/4 flex flex-row justify-center items-center',
             buttonBorderStyles,
-            'border-b-2 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
+            'border-b-2 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
+            'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
           )}
           onClick={() => playClick()}
         >
