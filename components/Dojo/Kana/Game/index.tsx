@@ -11,7 +11,6 @@ import useStatsStore from '@/store/useStatsStore';
 import Stats from '@/components/reusable/Stats';
 
 const Game = () => {
-
   const showStats = useStatsStore(state => state.showStats);
 
   const resetStats = useStatsStore(state => state.resetStats);
@@ -25,7 +24,7 @@ const Game = () => {
   return (
     <div
       className={clsx(
-        'flex flex-col gap-8 md:gap-10 items-center min-h-[100dvh] max-w-[100dvw] px-4'
+        'flex flex-col ghttps://www.youtube.com/watch?list=RDy_WEq7hty8c&v=meYgkqvF0JEap-8 md:gap-10 items-center min-h-[100dvh] max-w-[100dvw] px-4',
         // "bg-[url('/wallpapers/neonretrocarcity.jpg')] bg-cover bg-center"
       )}
     >

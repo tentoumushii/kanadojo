@@ -105,7 +105,7 @@ const MainMenu = () => {
                 'hover:cursor-pointer duration-250 hover:scale-120',
                 'active:scale-100 active:duration-225',
                 'md:hidden'
-                )}
+              )}
               onClick={() => {
                 playClick();
                 window.open('https://discord.gg/CyvBNNrSmb', '_blank');
@@ -183,7 +183,7 @@ const MainMenu = () => {
           <Link
             href={link.href}
             key={i}
-            className='p-2 text-sm hover:cursor-pointer hover:underline rounded-2xl flex flex-row gap-1 items-center'
+            className='p-2 text-sm hover:cursor-pointer hover:underline rounded-2xl flex flex-row gap-1 items-center text-[var(--secondary-color)] hover:text-[var(--main-color)]'
             onClick={() => playClick()}
           >
             <link.icon className='size-4' />
