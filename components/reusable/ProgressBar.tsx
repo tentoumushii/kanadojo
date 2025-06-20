@@ -57,7 +57,7 @@ ProgressBarProps) => {
         {[25, 50, 75].map(cp => (
           <div
             key={cp}
-            className='absolute top-0 h-4 w-[0.5] bg-[var(--border-color)] z-0'
+            className='absolute top-0 h-4 w-0 bg-[var(--border-color)] z-0'
             style={{
               left: `calc(${cp}% - 2px)` // Adjust for marker width
             }}
