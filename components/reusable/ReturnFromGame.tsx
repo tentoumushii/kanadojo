@@ -3,19 +3,12 @@ import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useClick } from '@/lib/useAudio';
-import { buttonBorderStyles } from '@/static/styles';
-import { ChartSpline } from 'lucide-react';
-import useStatsStore from '@/store/useStatsStore';
 import { useStopwatch } from 'react-timer-hook';
 import { X } from 'lucide-react';
+import ProgressBar from './ProgressBar';
 
 const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
   const totalTimeStopwatch = useStopwatch({ autoStart: false });
-
-  const toggleStats = useStatsStore(state => state.toggleStats);
-  const setNewTotalMilliseconds = useStatsStore(
-    state => state.setNewTotalMilliseconds
-  );
 
   const { playClick } = useClick();
 
@@ -62,24 +55,7 @@ const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
           )}
         />
       </Link>
-      <button
-        className={clsx(
-          'md:w-1/2 p-4 text-3xl flex flex-row justify-center items-center gap-2',
-          buttonBorderStyles,
-          'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
-          'group flex-1',
-          'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
-        )}
-        onClick={() => {
-          playClick();
-          toggleStats();
-          totalTimeStopwatch.pause();
-          setNewTotalMilliseconds(totalTimeStopwatch.totalMilliseconds);
-        }}
-      >
-        <span className='group-hover:underline'>stats</span>
-        <ChartSpline size={28} />
-      </button>
+      <ProgressBar />
     </div>
   );
 };

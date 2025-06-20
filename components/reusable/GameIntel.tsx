@@ -3,6 +3,11 @@ import { SquareCheck, SquareX } from 'lucide-react';
 import clsx from 'clsx';
 import { cardBorderStyles } from '@/static/styles';
 import useStatsStore from '@/store/useStatsStore';
+import { miniButtonBorderStyles } from '@/static/styles';
+import { ChartSpline } from 'lucide-react';
+import { useStopwatch } from 'react-timer-hook';
+// import { useEffect, useRef } from 'react';
+import { useClick } from '@/lib/useAudio';
 
 const GameIntel = ({
   feedback,
@@ -13,6 +18,19 @@ const GameIntel = ({
 }) => {
   const numCorrectAnswers = useStatsStore(state => state.numCorrectAnswers);
   const numWrongAnswers = useStatsStore(state => state.numWrongAnswers);
+
+  const totalTimeStopwatch = useStopwatch({ autoStart: false });
+
+  const toggleStats = useStatsStore(state => state.toggleStats);
+  const setNewTotalMilliseconds = useStatsStore(
+    state => state.setNewTotalMilliseconds
+  );
+
+  const { playClick } = useClick();
+
+  // useEffect(() => {
+  //   if (!isHidden) totalTimeStopwatch.start();
+  // }, [isHidden]);
 
   return (
     <div
@@ -46,6 +64,24 @@ const GameIntel = ({
           <SquareX />
           <span>{numWrongAnswers}</span>
         </p>
+        <button
+          className={clsx(
+            'p-2 text-xl flex flex-row justify-center items-center gap-2',
+            miniButtonBorderStyles,
+            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
+            'group flex-1',
+            'text-[var(--main-color)]'
+          )}
+          onClick={() => {
+            playClick();
+            toggleStats();
+            totalTimeStopwatch.pause();
+            setNewTotalMilliseconds(totalTimeStopwatch.totalMilliseconds);
+          }}
+        >
+          {/* <span className='group-hover:underline'>stats</span> */}
+          <ChartSpline size={24} />
+        </button>
       </div>
     </div>
   );

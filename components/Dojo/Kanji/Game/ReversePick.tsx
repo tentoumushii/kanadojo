@@ -11,9 +11,9 @@ import GameIntel from '@/components/reusable/GameIntel';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
-import ProgressBar from '@/components/reusable/ProgressBar';
 import useStatsStore from '@/store/useStatsStore';
 // import AnswerSummary from '@/components/reusable/AnswerSummary';
+import Stars from '@/components/reusable/Stars';
 
 const random = new Random();
 
@@ -195,7 +195,7 @@ const ReversePick = ({
       </div>
       {/* )} */}
 
-      <ProgressBar />
+      <Stars />
     </div>
   );
 };

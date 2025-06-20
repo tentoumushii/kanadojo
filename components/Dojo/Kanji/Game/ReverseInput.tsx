@@ -9,8 +9,8 @@ import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/useStats';
-import ProgressBar from '@/components/reusable/ProgressBar';
 import useStatsStore from '@/store/useStatsStore';
+import Stars from '@/components/reusable/Stars';
 
 const random = new Random();
 
@@ -180,7 +180,7 @@ const ReverseInput = ({
         <CircleArrowRight />
       </button>
 
-      <ProgressBar />
+      <Stars />
     </div>
   );
 };

@@ -35,6 +35,9 @@ interface IStatsState {
 
   totalMilliseconds: number;
   setNewTotalMilliseconds: (newTotalMilliseconds: number) => void;
+
+  stars: number;
+  setStars: (newStars: number) => void;
 }
 
 const useStatsStore = create<IStatsState>(set => ({
@@ -93,7 +96,6 @@ const useStatsStore = create<IStatsState>(set => ({
         };
       }
 
-      // Now it's safe to increment
       characterScoresCopy[character][fieldToIncrement] += 1;
 
       characterScoresCopy[character]['accuracy'] =
@@ -120,7 +122,13 @@ const useStatsStore = create<IStatsState>(set => ({
     set(() => ({
       totalMilliseconds: newTotalMilliseconds
     }));
-  }
+  },
+
+  stars: 0,
+  setStars: newStars =>
+    set(() => ({
+      stars: newStars
+    }))
 }));
 
 export default useStatsStore;

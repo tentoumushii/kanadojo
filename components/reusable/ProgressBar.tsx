@@ -1,10 +1,8 @@
 'use client';
 import { useEffect } from 'react';
-import { useState } from 'react';
 import useStatsStore from '@/store/useStatsStore';
 // import useIndefiniteConfetti from '@/lib/hooks/useInfiniteConfetti';
-import { Star } from 'lucide-react';
-import clsx from 'clsx';
+// import { Star } from 'lucide-react';
 
 interface Checkpoint {
   position: number;
@@ -26,9 +24,10 @@ ProgressBarProps) => {
   const score = useStatsStore(state => state.score);
   const setScore = useStatsStore(state => state.setScore);
 
-  const percentage = (score / max) * 100;
+  const stars = useStatsStore(state => state.stars);
+  const setStars = useStatsStore(state => state.setStars);
 
-  const [stars, setStars] = useState(0);
+  const percentage = (score / max) * 100;
 
   // const [active, setActive] = useState(false);
 
@@ -41,12 +40,12 @@ ProgressBarProps) => {
   useEffect(() => {
     if (score >= max) {
       setScore(0);
-      setStars(stars => stars + 1);
+      setStars(stars + 1);
     }
   }, [score]);
 
   return (
-    <div className='relative w-full mt-8 flex flex-col items-center gap-12'>
+    <div className='relative w-full flex flex-col items-center gap-12'>
       {/* Progress Bar Background */}
       <div className='w-full bg-[var(--card-color)] rounded-full h-4 overflow-hidden relative'>
         {/* Progress Indicator */}
@@ -58,37 +57,12 @@ ProgressBarProps) => {
         {[25, 50, 75].map(cp => (
           <div
             key={cp}
-            className='absolute top-0 h-4 w-1 bg-[var(--border-color)] z-0'
+            className='absolute top-0 h-4 w-[0.5] bg-[var(--border-color)] z-0'
             style={{
               left: `calc(${cp}% - 2px)` // Adjust for marker width
             }}
           />
         ))}
-      </div>
-
-      <div className='flex gap-2'>
-        <div className='grid grid-cols-5 md:grid-cols-10 lg:grid-cols-15 xl:grid-cols-20 gap-2'>
-          {Array.from({ length: stars }, (_, index) => (
-            <Star
-              key={index}
-              size={50}
-              className={clsx(
-                stars >= 15
-                  ? 'motion-safe:animate-spin'
-                  : stars >= 10
-                  ? 'motion-safe:animate-bounce'
-                  : stars >= 5
-                  ? 'motion-safe:animate-pulse'
-                  : '',
-
-                'text-[var(--secondary-color)]'
-              )}
-              style={{
-                animationDelay: `${index * 100}ms`
-              }}
-            />
-          ))}
-        </div>
       </div>
     </div>
   );
