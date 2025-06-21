@@ -49,9 +49,9 @@ const themes = [
       {
         id: 'nord',
         backgroundColor: 'hsl(221.05263, 16%, 23%)',
-        cardColor: 'hsl(220.8, 16%, 30%)',
-        borderColor: 'hsl(312.55814, 28%, 70%)',
-        mainColor: 'hsl(92.399994, 28%, 65%)'
+        cardColor: 'hsl(220.8, 15%, 19%)',
+        borderColor: 'hsl(178.88889, 28%, 62%)',
+        mainColor: 'hsl(312.55814, 28%, 70%)'
       },
       {
         id: 'midnight',
