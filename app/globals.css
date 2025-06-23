@@ -122,7 +122,8 @@ body {
   --border-color: hsl(220, 16%, 40%);
 
   --main-color: hsl(92, 28%, 65%);
-  --secondary-color: hsl(92, 14%, 65%);
+  /* --secondary-color: hsl(92, 14%, 65%); */
+  --secondary-color: rgb(200, 157, 191);
 }
 
 /* Midnight Theme */
@@ -167,7 +168,7 @@ body {
 
 /* Lavender Theme */
 [data-theme='lavender'] {
-  --background-color: hsl(220, 20%, 11%);
+  --background-color: hsl(220, 20%, 10%);
   --card-color: hsl(220, 20%, 13%);
   --border-color: hsl(220, 20%, 20%);
 
