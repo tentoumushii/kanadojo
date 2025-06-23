@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { Heart, ChevronsLeft, House } from 'lucide-react';
+import { ChevronsLeft, House } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/lib/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
@@ -51,14 +51,24 @@ const Banner = ({
           <span className='flex flex-row gap-2 items-center'>KanaDojo</span>
           <span className={clsx('font-normal')}>かな道場️</span>
         </h1>
-        <div className='flex flex-row gap-4 max-md:w-full items-end'>
+
+        <button
+          className={clsx(
+            'rounded-xl bg-[var(--card-color)]',
+            'duration-250',
+            'transition-all ease-in-out',
+            'flex flex-row',
+            'w-full md:w-1/4',
+            'border-b-4 border-[var(--border-color)]'
+          )}
+        >
           <Link href={href} className='w-1/2'>
             <button
               ref={escButtonRef}
               className={clsx(
-                buttonBorderStyles,
-                'pb-1 pt-2 px-14 w-full',
-                'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
+                'pb-1 pt-2 w-full',
+                'hover:cursor-pointer',
+                'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]'
               )}
               onClick={() => {
                 playClick();
@@ -68,13 +78,21 @@ const Banner = ({
               <ChevronsLeft size={32} className='justify-self-center' />
             </button>
           </Link>
+
+          <div
+            className={clsx(
+              'border-l-1 h-auto w-0 mx-1',
+              'border-[var(--border-color)]'
+            )}
+          />
+
           <Link href='/' className='w-1/2'>
             <button
               ref={homeButtonRef}
               className={clsx(
-                buttonBorderStyles,
-                'pb-1 pt-2 px-14 w-full',
-                'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
+                'pb-1 pt-2 w-full',
+                'hover:cursor-pointer',
+                'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]'
               )}
               onClick={() => playClick()}
             >
@@ -85,19 +103,7 @@ const Banner = ({
               />
             </button>
           </Link>
-          <Heart
-            size={38}
-            className={clsx(
-              'hover:cursor-pointer duration-225 hover:scale-120',
-              'active:scale-100 active:duration-225',
-              'fill-current animate-bounce text-red-500'
-            )}
-            onClick={() => {
-              playClick();
-              window.open('https://ko-fi.com/kanadojo', '_blank');
-            }}
-          />
-        </div>
+        </button>
       </div>
       {subheading && (
         <h2 className='text-3xl flex flex-row gap-1.5 items-center'>
