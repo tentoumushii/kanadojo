@@ -4,7 +4,6 @@ import { useState } from 'react';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useThemeStore from '@/store/useThemeStore';
 import { useClick } from '@/lib/useAudio';
-import { miniButtonBorderStyles } from '@/static/styles';
 import { Search, MousePointer } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -115,14 +114,23 @@ const KanjiSet = ({
           )}
         </div>
       ))}
-      <div className='flex flex-row gap-2 w-full'>
+
+      <div
+        className={clsx(
+          'rounded-xl',
+          'duration-250',
+          'transition-all ease-in-out',
+          'flex flex-row',
+          'w-full',
+          'border-b-4 border-[var(--border-color)]',
+          'bg-[var(--background-color)]'
+        )}
+      >
         <button
-          type='button'
           className={clsx(
-            'p-2 font-normal text-lg flex-none',
-            miniButtonBorderStyles,
-            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
-            'flex flex-row justify-center items-center gap-1.5'
+            'p-2 font-normal text-lg flex-none hover:cursor-pointer',
+            'flex flex-row justify-center items-center gap-1.5',
+            'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg'
           )}
           onClick={e => {
             playClick();
@@ -133,6 +141,14 @@ const KanjiSet = ({
           <span>select</span>
           <MousePointer size={22} />
         </button>
+
+        <div
+          className={clsx(
+            'border-l-1 h-auto w-0',
+            'border-[var(--border-color)]'
+          )}
+        />
+
         <Link
           href={`/kanji/${group}/${subgroup}/${setName
             .split(' ')
@@ -142,9 +158,8 @@ const KanjiSet = ({
         >
           <button
             className={clsx(
-              'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal',
-              miniButtonBorderStyles,
-              'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
+              'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal hover:cursor-pointer',
+              'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg'
             )}
             onClick={() => playClick()}
           >

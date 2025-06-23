@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ChevronsLeft, House } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/lib/useAudio';
-import { buttonBorderStyles } from '@/static/styles';
 import { useEffect, useRef } from 'react';
 import useThemeStore from '@/store/useThemeStore';
 import { usePathname, useRouter } from 'next/navigation';
@@ -52,7 +51,7 @@ const Banner = ({
           <span className={clsx('font-normal')}>かな道場️</span>
         </h1>
 
-        <button
+        <div
           className={clsx(
             'rounded-xl bg-[var(--card-color)]',
             'duration-250',
@@ -66,22 +65,26 @@ const Banner = ({
             <button
               ref={escButtonRef}
               className={clsx(
-                'pb-1 pt-2 w-full',
+                'w-full h-full py-2',
                 'hover:cursor-pointer',
-                'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]'
+                'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+                'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg'
               )}
               onClick={() => {
                 playClick();
                 if (pathname === '/preferences') router.back();
               }}
             >
-              <ChevronsLeft size={32} className='justify-self-center' />
+              <ChevronsLeft
+                size={32}
+                className='justify-self-center align-self-center'
+              />
             </button>
           </Link>
 
           <div
             className={clsx(
-              'border-l-1 h-auto w-0 mx-1',
+              'border-l-1 h-auto w-0',
               'border-[var(--border-color)]'
             )}
           />
@@ -90,20 +93,21 @@ const Banner = ({
             <button
               ref={homeButtonRef}
               className={clsx(
-                'pb-1 pt-2 w-full',
+                'w-full h-full',
                 'hover:cursor-pointer',
-                'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]'
+                'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+                'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg'
               )}
               onClick={() => playClick()}
             >
               <House
                 size={32}
-                className={clsx('justify-self-center')}
+                className={clsx('justify-self-center align-self-center')}
                 onClick={() => playClick()}
               />
             </button>
           </Link>
-        </button>
+        </div>
       </div>
       {subheading && (
         <h2 className='text-3xl flex flex-row gap-1.5 items-center'>

@@ -4,7 +4,6 @@ import useVocabStore from '@/store/useVocabStore';
 import { useState } from 'react';
 import useThemeStore from '@/store/useThemeStore';
 import { useClick } from '@/lib/useAudio';
-import { miniButtonBorderStyles } from '@/static/styles';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Search, MousePointer } from 'lucide-react';
@@ -112,14 +111,13 @@ const WordSet = ({
           )}
         </div>
       ))}
-      <div className='flex flex-row gap-2 w-full'>
+      {/* <div className='flex flex-row gap-2 w-full'>
         <button
           type='button'
           className={clsx(
             'p-2 font-normal text-lg flex-none',
             miniButtonBorderStyles,
             'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
-            'active:scale-95 md:active:scale-98 active:duration-200',
             'flex flex-row justify-center items-center gap-1.5'
           )}
           onClick={e => {
@@ -143,7 +141,60 @@ const WordSet = ({
               'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal',
               miniButtonBorderStyles,
               'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
-              'active:scale-95 md:active:scale-98 active:duration-200'
+            )}
+            onClick={() => playClick()}
+          >
+            <span className='text-lg group-hover:underline'>inspect</span>
+            <Search size={22} />
+          </button>
+        </Link>
+      </div> */}
+
+      <div
+        className={clsx(
+          'rounded-xl',
+          'duration-250',
+          'transition-all ease-in-out',
+          'flex flex-row',
+          'w-full',
+          'border-b-4 border-[var(--border-color)]',
+          'bg-[var(--background-color)]'
+        )}
+      >
+        <button
+          className={clsx(
+            'p-2 font-normal text-lg flex-none hover:cursor-pointer',
+            'flex flex-row justify-center items-center gap-1.5',
+            'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg'
+          )}
+          onClick={e => {
+            playClick();
+            e.currentTarget.blur();
+            addWords(words);
+          }}
+        >
+          <span>select</span>
+          <MousePointer size={22} />
+        </button>
+
+        <div
+          className={clsx(
+            'border-l-1 h-auto w-0',
+            'border-[var(--border-color)]'
+          )}
+        />
+
+        <Link
+          href={`/vocabulary/${group}/${subgroup}/${wordClass}/${setName
+            .split(' ')
+            .join('-')
+            .toLowerCase()}`}
+          className='flex-1 group'
+        >
+          <button
+            className={clsx(
+              'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal hover:cursor-pointer',
+              'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg'
             )}
             onClick={() => playClick()}
           >
