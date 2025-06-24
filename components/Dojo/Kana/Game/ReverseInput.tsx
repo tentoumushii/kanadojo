@@ -63,7 +63,6 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-    setScore(0);
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === ' ') {

@@ -2,7 +2,10 @@
 import { useEffect } from 'react';
 import useStatsStore from '@/store/useStatsStore';
 // import useIndefiniteConfetti from '@/lib/hooks/useInfiniteConfetti';
-// import { Star } from 'lucide-react';
+import { Random } from 'random-js';
+import { animalIconsLength } from '@/static/icons';
+
+const random = new Random();
 
 interface Checkpoint {
   position: number;
@@ -18,7 +21,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({
-  max = 20
+  max = 25
 }: // checkpoints = [10, 25, 50, 75] // Default checkpoints at 25%, 50%, 75%
 ProgressBarProps) => {
   const score = useStatsStore(state => state.score);
@@ -26,6 +29,8 @@ ProgressBarProps) => {
 
   const stars = useStatsStore(state => state.stars);
   const setStars = useStatsStore(state => state.setStars);
+
+  const addIconIndex = useStatsStore(state => state.addIconIndex);
 
   const percentage = (score / max) * 100;
 
@@ -41,11 +46,13 @@ ProgressBarProps) => {
     if (score >= max) {
       setScore(0);
       setStars(stars + 1);
+      const newIconIndex = random.integer(0, animalIconsLength - 1);
+      addIconIndex(newIconIndex);
     }
   }, [score]);
 
   return (
-    <div className='relative w-full flex flex-col items-center gap-12'>
+    <div className='relative w-full flex flex-col items-center'>
       {/* Progress Bar Background */}
       <div className='w-full bg-[var(--card-color)] rounded-full h-4 overflow-hidden relative'>
         {/* Progress Indicator */}

@@ -55,7 +55,6 @@ const ReverseInput = ({
   const [feedback, setFeedback] = useState(<>{'feedback ~'}</>);
 
   useEffect(() => {
-    setScore(0);
 
     if (inputRef.current) {
       inputRef.current.focus(); // Automatically focuses on the input

@@ -38,6 +38,9 @@ interface IStatsState {
 
   stars: number;
   setStars: (newStars: number) => void;
+
+  iconIndices: number[];
+  addIconIndex: (newIconIndex: number) => void;
 }
 
 const useStatsStore = create<IStatsState>(set => ({
@@ -113,7 +116,10 @@ const useStatsStore = create<IStatsState>(set => ({
       characterHistory: [],
       characterScores: {},
       totalMilliseconds: 0,
-      correctAnswerTimes: []
+      correctAnswerTimes: [],
+      score: 0,
+      stars: 0,
+      iconIndices: []
     }));
   },
 
@@ -128,6 +134,12 @@ const useStatsStore = create<IStatsState>(set => ({
   setStars: newStars =>
     set(() => ({
       stars: newStars
+    })),
+
+  iconIndices: [],
+  addIconIndex: newIconIndex =>
+    set(state => ({
+      iconIndices: [...state.iconIndices, newIconIndex]
     }))
 }));
 
