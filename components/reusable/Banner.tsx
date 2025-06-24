@@ -68,7 +68,8 @@ const Banner = ({
                 'w-full h-full py-2',
                 'hover:cursor-pointer',
                 'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]',
-                'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg'
+                'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg',
+                'duration-250'
               )}
               onClick={() => {
                 playClick();
@@ -96,7 +97,8 @@ const Banner = ({
                 'w-full h-full',
                 'hover:cursor-pointer',
                 'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]',
-                'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg'
+                'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg',
+                'duration-250'
               )}
               onClick={() => playClick()}
             >

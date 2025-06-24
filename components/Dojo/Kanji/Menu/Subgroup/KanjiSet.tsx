@@ -118,8 +118,6 @@ const KanjiSet = ({
       <div
         className={clsx(
           'rounded-xl',
-          'duration-250',
-          'transition-all ease-in-out',
           'flex flex-row',
           'w-full',
           'border-b-4 border-[var(--border-color)]',
@@ -130,7 +128,8 @@ const KanjiSet = ({
           className={clsx(
             'p-2 font-normal text-lg flex-none hover:cursor-pointer',
             'flex flex-row justify-center items-center gap-1.5',
-            'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg'
+            'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg',
+            'duration-250'
           )}
           onClick={e => {
             playClick();
@@ -159,7 +158,8 @@ const KanjiSet = ({
           <button
             className={clsx(
               'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal hover:cursor-pointer',
-              'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg'
+              'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg',
+              'duration-250'
             )}
             onClick={() => playClick()}
           >
