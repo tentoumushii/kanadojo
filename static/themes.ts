@@ -220,6 +220,126 @@ const themes = [
         cardColor: 'hsla(195, 39%, 16%, 1)',
         borderColor: 'hsla(195, 39%, 25%, 1)',
         mainColor: 'hsla(113, 100%, 58%, 1)'
+      },
+      {
+        id: 'midnight-blossom',
+        backgroundColor: 'hsla(265, 40%, 14%, 1)',
+        cardColor: 'hsla(265, 40%, 17%, 1)',
+        borderColor: 'hsla(265, 30%, 27%, 1)',
+        mainColor: 'hsla(330, 75%, 60%, 1)',
+        secondaryColor: 'hsla(285, 60%, 65%, 1)'
+      },
+      {
+        id: 'neon-dusk',
+        backgroundColor: 'hsla(250, 58%, 10%, 1)',
+        cardColor: 'hsla(250, 58%, 15%, 1)',
+        borderColor: 'hsla(250, 40%, 22%, 1)',
+        mainColor: 'hsla(190, 100%, 50%, 1)',
+        secondaryColor: 'hsla(45, 100%, 48%, 1)'
+      },
+      {
+        id: 'mystic-forest',
+        backgroundColor: 'hsla(146, 30%, 12%, 1)',
+        cardColor: 'hsla(146, 32%, 17%, 1)',
+        borderColor: 'hsla(146, 26%, 25%, 1)',
+        mainColor: 'hsla(111, 62%, 45%, 1)',
+        secondaryColor: 'hsla(96, 45%, 60%, 1)'
+      },
+      {
+        id: 'velvet-night',
+        backgroundColor: 'hsla(220, 26%, 13%, 1)',
+        cardColor: 'hsla(220, 26%, 17%, 1)',
+        borderColor: 'hsla(220, 22%, 28%, 1)',
+        mainColor: 'hsla(271, 85%, 57%, 1)',
+        secondaryColor: 'hsla(340, 77%, 53%, 1)'
+      },
+      {
+        id: 'cosmic-charcoal',
+        backgroundColor: 'hsla(210, 15%, 11%, 1)',
+        cardColor: 'hsla(210, 15%, 15%, 1)',
+        borderColor: 'hsla(210, 15%, 25%, 1)',
+        mainColor: 'hsla(15, 95%, 62%, 1)',
+        secondaryColor: 'hsla(29, 100%, 55%, 1)'
+      },
+      {
+        id: 'moonlit-sakura',
+        backgroundColor: 'hsla(255, 32%, 13%, 1)',
+        cardColor: 'hsla(255, 36%, 17%, 1)',
+        borderColor: 'hsla(340, 38%, 30%, 1)',
+        mainColor: 'hsla(328, 70%, 73%, 1)',
+        secondaryColor: 'hsla(340, 100%, 80%, 1)'
+      },
+      {
+        id: 'sapphire-frost',
+        backgroundColor: 'hsla(209, 60%, 10%, 1)',
+        cardColor: 'hsla(209, 60%, 14%, 1)',
+        borderColor: 'hsla(205, 45%, 25%, 1)',
+        mainColor: 'hsla(196, 100%, 68%, 1)',
+        secondaryColor: 'hsla(170, 55%, 67%, 1)'
+      },
+      {
+        id: 'ember-glow',
+        backgroundColor: 'hsla(18, 69%, 13%, 1)',
+        cardColor: 'hsla(18, 70%, 17%, 1)',
+        borderColor: 'hsla(28, 40%, 27%, 1)',
+        mainColor: 'hsla(28, 97%, 58%, 1)',
+        secondaryColor: 'hsla(14, 80%, 59%, 1)'
+      },
+      {
+        id: 'jade-mirage',
+        backgroundColor: 'hsla(163, 21%, 13%, 1)',
+        cardColor: 'hsla(163, 25%, 17%, 1)',
+        borderColor: 'hsla(166, 25%, 27%, 1)',
+        mainColor: 'hsla(150, 66%, 54%, 1)',
+        secondaryColor: 'hsla(170, 64%, 54%, 1)'
+      },
+      {
+        id: 'rosewood-nightfall',
+        backgroundColor: 'hsla(345, 31%, 13%, 1)',
+        cardColor: 'hsla(345, 38%, 18%, 1)',
+        borderColor: 'hsla(356, 30%, 27%, 1)',
+        mainColor: 'hsla(340, 78%, 60%, 1)',
+        secondaryColor: 'hsla(10, 60%, 60%, 1)'
+      },
+      {
+        id: 'nebula-veil',
+        backgroundColor: 'hsla(248, 31%, 11%, 1)',
+        cardColor: 'hsla(263, 41%, 17%, 1)',
+        borderColor: 'hsla(286, 54%, 27%, 1)',
+        mainColor: 'hsla(293, 83%, 74%, 1)',
+        secondaryColor: 'hsla(192, 92%, 71%, 1)'
+      },
+      {
+        id: 'velvet-citrus-dream',
+        backgroundColor: 'hsla(274, 33%, 13%, 1)',
+        cardColor: 'hsla(274, 36%, 17%, 1)',
+        borderColor: 'hsla(47, 90%, 60%, 1)',
+        mainColor: 'hsla(48, 100%, 67%, 1)',
+        secondaryColor: 'hsla(17, 98%, 64%, 1)'
+      },
+      {
+        id: 'arctic-inferno',
+        backgroundColor: 'hsla(217, 44%, 14%, 1)',
+        cardColor: 'hsla(220, 60%, 17%, 1)',
+        borderColor: 'hsla(8, 86%, 54%, 1)',
+        mainColor: 'hsla(6, 96%, 66%, 1)',
+        secondaryColor: 'hsla(181, 100%, 65%, 1)'
+      },
+      {
+        id: 'haunted-lagoon',
+        backgroundColor: 'hsla(194, 80%, 9%, 1)',
+        cardColor: 'hsla(177, 47%, 14%, 1)',
+        borderColor: 'hsla(170, 63%, 30%, 1)',
+        mainColor: 'hsla(168, 81%, 56%, 1)',
+        secondaryColor: 'hsla(117, 39%, 64%, 1)'
+      },
+      {
+        id: 'blood-moon-waltz',
+        backgroundColor: 'hsla(352, 65%, 12%, 1)',
+        cardColor: 'hsla(357, 71%, 18%, 1)',
+        borderColor: 'hsla(17, 81%, 42%, 1)',
+        mainColor: 'hsla(6, 100%, 67%, 1)',
+        secondaryColor: 'hsla(40, 97%, 60%, 1)'
       }
     ]
   }

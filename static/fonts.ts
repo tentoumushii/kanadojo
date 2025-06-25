@@ -18,8 +18,12 @@ import {
   Dela_Gothic_One,
   New_Tegomin,
   Kosugi_Maru,
-  Hina_Mincho
-  ,
+  Hina_Mincho,
+  Shippori_Mincho,
+  Kaisei_Decol,
+  Mochiy_Pop_One,
+  Yuji_Boku,
+  Kaisei_HarunoUmi
 } from 'next/font/google';
 
 const notoSansJP = Noto_Sans_JP({
@@ -139,6 +143,36 @@ const hinaMincho = Hina_Mincho({
   display: 'swap'
 });
 
+const shipporiMincho = Shippori_Mincho({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
+const kaiseiDecol = Kaisei_Decol({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
+const mochiyPopOne = Mochiy_Pop_One({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
+const yujiBoku = Yuji_Boku({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
+const kaiseiHarunoUmi = Kaisei_HarunoUmi({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
 const fonts = [
   {
     name: 'Noto Sans JP',
@@ -219,6 +253,26 @@ const fonts = [
   {
     name: 'Hina Mincho',
     font: hinaMincho
+  },
+  {
+    name: 'Shippori Mincho',
+    font: shipporiMincho
+  },
+  {
+    name: 'Kaisei Decol',
+    font: kaiseiDecol
+  },
+  {
+    name: 'Mochiy Pop One',
+    font: mochiyPopOne
+  },
+  {
+    name: 'Yuji Boku',
+    font: yujiBoku
+  },
+  {
+    name: 'Kaisei HarunoUmi',
+    font: kaiseiHarunoUmi
   }
 ];
 

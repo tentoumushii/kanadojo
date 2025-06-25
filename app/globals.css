@@ -88,7 +88,7 @@ body {
 
 [data-theme='ice-ice-baby'] {
   --background-color: hsla(181, 84%, 79%, 1);
-  --card-color: hsla(181, 84%, 70%, 1); 
+  --card-color: hsla(181, 84%, 70%, 1);
   --border-color: hsla(181, 84%, 50%, 1);
 
   --main-color: hsla(283, 44%, 50%, 1);
@@ -97,7 +97,7 @@ body {
 
 [data-theme='miami'] {
   --background-color: hsla(330, 100%, 66%, 1);
-  --card-color: hsla(330, 100%, 62%, 1); 
+  --card-color: hsla(330, 100%, 62%, 1);
   --border-color: hsla(330, 100%, 55%, 1);
 
   --main-color: hsla(176, 74%, 50%, 1);
@@ -106,7 +106,7 @@ body {
 
 [data-theme='mint'] {
   --background-color: hsla(165, 100%, 41%, 1);
-  --card-color: hsla(165, 100%, 38%, 1); 
+  --card-color: hsla(165, 100%, 38%, 1);
   --border-color: hsla(165, 100%, 30%, 1);
 
   --main-color: hsla(0, 0%, 100%, 1);
@@ -323,4 +323,150 @@ body {
 
   --main-color: hsla(113, 100%, 58%, 1);
   --secondary-color: hsla(113, 50%, 58%, 1);
+}
+
+
+
+
+/* Midnight Blossom Theme */
+[data-theme='midnight-blossom'] {
+  --background-color: hsl(265, 40%, 14%);
+  --card-color: hsl(265, 40%, 17%);
+  --border-color: hsl(265, 30%, 27%);
+
+  --main-color: hsl(330, 75%, 60%);
+  --secondary-color: hsl(285, 60%, 65%);
+}
+
+/* Neon Dusk Theme */
+[data-theme='neon-dusk'] {
+  --background-color: hsl(250, 58%, 10%);
+  --card-color: hsl(250, 58%, 15%);
+  --border-color: hsl(250, 40%, 22%);
+
+  --main-color: hsl(190, 100%, 50%);
+  --secondary-color: hsl(45, 100%, 48%);
+}
+
+/* Mystic Forest Theme */
+[data-theme='mystic-forest'] {
+  --background-color: hsl(146, 30%, 12%);
+  --card-color: hsl(146, 32%, 17%);
+  --border-color: hsl(146, 26%, 25%);
+
+  --main-color: hsl(111, 62%, 45%);
+  --secondary-color: hsl(96, 45%, 60%);
+}
+
+/* Velvet Night Theme */
+[data-theme='velvet-night'] {
+  --background-color: hsl(220, 26%, 13%);
+  --card-color: hsl(220, 26%, 17%);
+  --border-color: hsl(220, 22%, 28%);
+
+  --main-color: hsl(271, 85%, 57%);
+  --secondary-color: hsl(340, 77%, 53%);
+}
+
+/* Cosmic Charcoal Theme */
+[data-theme='cosmic-charcoal'] {
+  --background-color: hsl(210, 15%, 11%);
+  --card-color: hsl(210, 15%, 15%);
+  --border-color: hsl(210, 15%, 25%);
+
+  --main-color: hsl(15, 95%, 62%);
+  --secondary-color: hsl(29, 100%, 55%);
+}
+
+
+/* Moonlit Sakura Theme */
+[data-theme='moonlit-sakura'] {
+  --background-color: hsl(255, 32%, 13%);
+  --card-color: hsl(255, 36%, 17%);
+  --border-color: hsl(340, 38%, 30%);
+  --main-color: hsl(328, 70%, 73%);
+  --secondary-color: hsl(340, 100%, 80%);
+}
+
+/* Sapphire Frost Theme */
+[data-theme='sapphire-frost'] {
+  --background-color: hsl(209, 60%, 10%);
+  --card-color: hsl(209, 60%, 14%);
+  --border-color: hsl(205, 45%, 25%);
+  --main-color: hsl(196, 100%, 68%);
+  --secondary-color: hsl(170, 55%, 67%);
+}
+
+/* Ember Glow Theme */
+[data-theme='ember-glow'] {
+  --background-color: hsl(18, 69%, 13%);
+  --card-color: hsl(18, 70%, 17%);
+  --border-color: hsl(28, 40%, 27%);
+  --main-color: hsl(28, 97%, 58%);
+  --secondary-color: hsl(14, 80%, 59%);
+}
+
+/* Jade Mirage Theme */
+[data-theme='jade-mirage'] {
+  --background-color: hsl(163, 21%, 13%);
+  --card-color: hsl(163, 25%, 17%);
+  --border-color: hsl(166, 25%, 27%);
+  --main-color: hsl(150, 66%, 54%);
+  --secondary-color: hsl(170, 64%, 54%);
+}
+
+/* Rosewood Nightfall Theme */
+[data-theme='rosewood-nightfall'] {
+  --background-color: hsl(345, 31%, 13%);
+  --card-color: hsl(345, 38%, 18%);
+  --border-color: hsl(356, 30%, 27%);
+  --main-color: hsl(340, 78%, 60%);
+  --secondary-color: hsl(10, 60%, 60%);
+}
+
+
+
+/* Nebula Veil Theme */
+[data-theme='nebula-veil'] {
+  --background-color: hsl(248, 31%, 11%);
+  --card-color: hsl(263, 41%, 17%);
+  --border-color: hsl(286, 54%, 27%);
+  --main-color: hsl(293, 83%, 74%);
+  --secondary-color: hsl(192, 92%, 71%);
+}
+
+/* Velvet Citrus Dream Theme */
+[data-theme='velvet-citrus-dream'] {
+  --background-color: hsl(274, 33%, 13%);
+  --card-color: hsl(274, 36%, 17%);
+  --border-color: hsl(47, 90%, 60%);
+  --main-color: hsl(48, 100%, 67%);
+  --secondary-color: hsl(17, 98%, 64%);
+}
+
+/* Arctic Inferno Theme */
+[data-theme='arctic-inferno'] {
+  --background-color: hsl(217, 44%, 14%);
+  --card-color: hsl(220, 60%, 17%);
+  --border-color: hsl(8, 86%, 54%);
+  --main-color: hsl(6, 96%, 66%);
+  --secondary-color: hsl(181, 100%, 65%);
+}
+
+/* Haunted Lagoon Theme */
+[data-theme='haunted-lagoon'] {
+  --background-color: hsl(194, 80%, 9%);
+  --card-color: hsl(177, 47%, 14%);
+  --border-color: hsl(170, 63%, 30%);
+  --main-color: hsl(168, 81%, 56%);
+  --secondary-color: hsl(117, 39%, 64%);
+}
+
+/* Blood Moon Waltz Theme */
+[data-theme='blood-moon-waltz'] {
+  --background-color: hsl(352, 65%, 12%);
+  --card-color: hsl(357, 71%, 18%);
+  --border-color: hsl(17, 81%, 42%);
+  --main-color: hsl(6, 100%, 67%);
+  --secondary-color: hsl(40, 97%, 60%);
 }
