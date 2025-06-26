@@ -23,7 +23,10 @@ import {
   Kaisei_Decol,
   Mochiy_Pop_One,
   Yuji_Boku,
-  Kaisei_HarunoUmi
+  Kaisei_HarunoUmi,
+  Sawarabi_Gothic,
+  Zen_Old_Mincho,
+  Sawarabi_Mincho
 } from 'next/font/google';
 
 const notoSansJP = Noto_Sans_JP({
@@ -173,6 +176,24 @@ const kaiseiHarunoUmi = Kaisei_HarunoUmi({
   display: 'swap'
 });
 
+const sawarabiGothic = Sawarabi_Gothic({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
+const zenOldMincho = Zen_Old_Mincho({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
+const sawarabiMincho = Sawarabi_Mincho({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap'
+});
+
 const fonts = [
   {
     name: 'Noto Sans JP',
@@ -273,6 +294,18 @@ const fonts = [
   {
     name: 'Kaisei HarunoUmi',
     font: kaiseiHarunoUmi
+  },
+  {
+    name: 'Sawarabi Gothic',
+    font: sawarabiGothic
+  },
+  {
+    name: 'Zen Old Mincho',
+    font: zenOldMincho
+  },
+  {
+    name: 'Sawarabi Mincho',
+    font: sawarabiMincho
   }
 ];
 

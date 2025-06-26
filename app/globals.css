@@ -470,3 +470,678 @@ body {
   --main-color: hsl(6, 100%, 67%);
   --secondary-color: hsl(40, 97%, 60%);
 }
+
+/* Celestial Grove Theme */
+[data-theme='celestial-grove'] {
+  --background-color: hsl(170, 35%, 10%);
+  --card-color: hsl(170, 37%, 15%);
+  --border-color: hsl(170, 37%, 25%);
+  --main-color: hsl(86, 68%, 57%);
+  --secondary-color: hsl(43, 93%, 64%);
+}
+
+/* Amethyst Nightfall Theme */
+[data-theme='amethyst-nightfall'] {
+  --background-color: hsl(277, 34%, 12%);
+  --card-color: hsl(277, 38%, 18%);
+  --border-color: hsl(277, 38%, 28%);
+  --main-color: hsl(289, 72%, 63%);
+  --secondary-color: hsl(214, 77%, 65%);
+}
+
+/* Luminous Tide Theme */
+[data-theme='luminous-tide'] {
+  --background-color: hsl(209, 49%, 11%);
+  --card-color: hsl(209, 54%, 16%);
+  --border-color: hsl(209, 54%, 26%);
+  --main-color: hsl(188, 85%, 50%);
+  --secondary-color: hsl(45, 96%, 62%);
+}
+
+/* Enchanted Ember Theme */
+[data-theme='enchanted-ember'] {
+  --background-color: hsl(28, 33%, 11%);
+  --card-color: hsl(28, 37%, 17%);
+  --border-color: hsl(28, 37%, 27%);
+  --main-color: hsl(16, 76%, 61%);
+  --secondary-color: hsl(40, 98%, 54%);
+}
+
+/* Orchid Eclipse Theme */
+[data-theme='orchid-eclipse'] {
+  --background-color: hsl(325, 24%, 14%);
+  --card-color: hsl(325, 27%, 18%);
+  --border-color: hsl(325, 27%, 28%);
+  --main-color: hsl(304, 71%, 67%);
+  --secondary-color: hsl(164, 75%, 54%);
+}
+
+/* Andromeda Dream Theme */
+[data-theme='andromeda-dream'] {
+  --background-color: hsl(264, 51%, 10%);
+  --card-color: hsl(264, 53%, 16%);
+  --border-color: hsl(264, 53%, 27%);
+  --main-color: hsl(312, 76%, 72%);
+  --secondary-color: hsl(194, 100%, 69%);
+}
+
+/* Luminous Nebula Theme */
+[data-theme='luminous-nebula'] {
+  --background-color: hsl(239, 71%, 9%);
+  --card-color: hsl(239, 74%, 16%);
+  --border-color: hsl(239, 74%, 28%);
+  --main-color: hsl(288, 99%, 70%);
+  --secondary-color: hsl(199, 100%, 75%);
+}
+
+/* Seraphic Aurora Theme */
+[data-theme='seraphic-aurora'] {
+  --background-color: hsl(217, 52%, 12%);
+  --card-color: hsl(197, 56%, 18%);
+  --border-color: hsl(197, 56%, 28%);
+  --main-color: hsl(153, 100%, 60%);
+  --secondary-color: hsl(273, 97%, 74%);
+}
+
+/* Cosmic Prism Theme */
+[data-theme='cosmic-prism'] {
+  --background-color: hsl(287, 65%, 11%);
+  --card-color: hsl(287, 72%, 18%);
+  --border-color: hsl(287, 72%, 28%);
+  --main-color: hsl(341, 100%, 71%);
+  --secondary-color: hsl(179, 97%, 68%);
+}
+
+/* Opaline Zodiac Theme */
+[data-theme='opaline-zodiac'] {
+  --background-color: hsl(197, 51%, 13%);
+  --card-color: hsl(197, 56%, 19%);
+  --border-color: hsl(197, 56%, 29%);
+  --main-color: hsl(174, 100%, 67%);
+  --secondary-color: hsl(56, 100%, 73%);
+}
+
+/* Glitching Eden Theme */
+[data-theme='glitching-eden'] {
+  --background-color: hsl(320, 81%, 7%);
+  --card-color: hsl(139, 57%, 17%);
+  --border-color: hsl(139, 57%, 33%);
+  --main-color: hsl(90, 100%, 56%);
+  --secondary-color: hsl(299, 96%, 67%);
+}
+
+/* Solar Paradox Theme */
+[data-theme='solar-paradox'] {
+  --background-color: hsl(57, 91%, 12%);
+  --card-color: hsl(276, 32%, 18%);
+  --border-color: hsl(276, 32%, 31%);
+  --main-color: hsl(50, 100%, 56%);
+  --secondary-color: hsl(201, 100%, 54%);
+}
+
+/* Velvet Abyss Theme */
+[data-theme='velvet-abyss'] {
+  --background-color: hsl(258, 60%, 8%);
+  --card-color: hsl(305, 32%, 16%);
+  --border-color: hsl(305, 32%, 27%);
+  --main-color: hsl(12, 83%, 55%);
+  --secondary-color: hsl(172, 86%, 65%);
+}
+
+/* Prism Infection Theme */
+[data-theme='prism-infection'] {
+  --background-color: hsl(48, 92%, 10%);
+  --card-color: hsl(348, 94%, 15%);
+  --border-color: hsl(348, 94%, 27%);
+  --main-color: hsl(101, 81%, 57%);
+  --secondary-color: hsl(187, 96%, 44%);
+}
+
+/* Radioactive Lagoon Theme */
+[data-theme='radioactive-lagoon'] {
+  --background-color: hsl(161, 79%, 11%);
+  --card-color: hsl(117, 82%, 13%);
+  --border-color: hsl(117, 82%, 22%);
+  --main-color: hsl(60, 100%, 61%);
+  --secondary-color: hsl(310, 94%, 69%);
+}
+
+/* Polaris Veil Theme */
+[data-theme='polaris-veil'] {
+  --background-color: hsl(222, 46%, 12%);
+  --card-color: hsl(222, 46%, 17%);
+  --border-color: hsl(222, 46%, 29%);
+  --main-color: hsl(196, 100%, 72%);
+  --secondary-color: hsl(60, 100%, 73%);
+}
+
+/* Rose Nebula Theme */
+[data-theme='rose-nebula'] {
+  --background-color: hsl(310, 38%, 13%);
+  --card-color: hsl(310, 38%, 19%);
+  --border-color: hsl(310, 38%, 28%);
+  --main-color: hsl(346, 75%, 69%);
+  --secondary-color: hsl(273, 98%, 75%);
+}
+
+/* Azure Twilight Theme */
+[data-theme='azure-twilight'] {
+  --background-color: hsl(219, 37%, 11%);
+  --card-color: hsl(219, 39%, 16%);
+  --border-color: hsl(219, 39%, 27%);
+  --main-color: hsl(187, 97%, 58%);
+  --secondary-color: hsl(261, 74%, 78%);
+}
+
+/* Ethereal Dawn Theme */
+[data-theme='ethereal-dawn'] {
+  --background-color: hsl(263, 52%, 12%);
+  --card-color: hsl(263, 57%, 17%);
+  --border-color: hsl(263, 57%, 29%);
+  --main-color: hsl(41, 98%, 67%);
+  --secondary-color: hsl(172, 78%, 65%);
+}
+
+/* Halcyon Garden Theme */
+[data-theme='halcyon-garden'] {
+  --background-color: hsl(151, 35%, 11%);
+  --card-color: hsl(151, 37%, 17%);
+  --border-color: hsl(151, 37%, 28%);
+  --main-color: hsl(109, 83%, 57%);
+  --secondary-color: hsl(219, 91%, 67%);
+}
+
+/* Hyperion Skies */
+[data-theme='hyperion-skies'] {
+  --background-color: hsl(209, 54%, 11%);
+  --card-color: hsl(209, 57%, 17%);
+  --border-color: hsl(209, 57%, 26%);
+  --main-color: hsl(199, 96%, 68%);
+  --secondary-color: hsl(47, 100%, 63%);
+}
+
+/* Velvet Starlight */
+[data-theme='velvet-starlight'] {
+  --background-color: hsl(291, 39%, 11%);
+  --card-color: hsl(291, 43%, 19%);
+  --border-color: hsl(291, 43%, 32%);
+  --main-color: hsl(317, 94%, 67%);
+  --secondary-color: hsl(235, 92%, 82%);
+}
+
+/* Solaris Orchard */
+[data-theme='solaris-orchard'] {
+  --background-color: hsl(73, 34%, 12%);
+  --card-color: hsl(73, 36%, 18%);
+  --border-color: hsl(73, 36%, 29%);
+  --main-color: hsl(20, 98%, 68%);
+  --secondary-color: hsl(120, 77%, 65%);
+}
+
+/* Astral Mirage */
+[data-theme='astral-mirage'] {
+  --background-color: hsl(191, 75%, 9%);
+  --card-color: hsl(191, 81%, 13%);
+  --border-color: hsl(191, 81%, 27%);
+  --main-color: hsl(271, 97%, 73%);
+  --secondary-color: hsl(47, 94%, 65%);
+}
+
+/* Oceanic Aurora */
+[data-theme='oceanic-aurora'] {
+  --background-color: hsl(204, 67%, 12%);
+  --card-color: hsl(204, 70%, 17%);
+  --border-color: hsl(204, 70%, 27%);
+  --main-color: hsl(162, 92%, 62%);
+  --secondary-color: hsl(280, 78%, 76%);
+}
+
+/* Zephyrite Dream */
+[data-theme='zephyrite-dream'] {
+  --background-color: hsl(157, 29%, 11%);
+  --card-color: hsl(157, 33%, 17%);
+  --border-color: hsl(157, 33%, 29%);
+  --main-color: hsl(196, 93%, 69%);
+  --secondary-color: hsl(98, 82%, 63%);
+}
+
+/* Lapis Cascade */
+[data-theme='lapis-cascade'] {
+  --background-color: hsl(215, 50%, 11%);
+  --card-color: hsl(215, 55%, 17%);
+  --border-color: hsl(215, 55%, 29%);
+  --main-color: hsl(230, 100%, 75%);
+  --secondary-color: hsl(186, 88%, 52%);
+}
+
+/* Lucid Dusk */
+[data-theme='lucid-dusk'] {
+  --background-color: hsl(246, 42%, 13%);
+  --card-color: hsl(246, 45%, 18%);
+  --border-color: hsl(246, 45%, 28%);
+  --main-color: hsl(6, 81%, 68%);
+  --secondary-color: hsl(182, 100%, 68%);
+}
+
+/* Fuchsia Solstice */
+[data-theme='fuchsia-solstice'] {
+  --background-color: hsl(322, 48%, 11%);
+  --card-color: hsl(322, 53%, 16%);
+  --border-color: hsl(322, 53%, 29%);
+  --main-color: hsl(291, 99%, 72%);
+  --secondary-color: hsl(53, 100%, 67%);
+}
+
+/* Sapphire Bloom */
+[data-theme='sapphire-bloom'] {
+  --background-color: hsl(224, 41%, 14%);
+  --card-color: hsl(224, 47%, 19%);
+  --border-color: hsl(224, 47%, 30%);
+  --main-color: hsl(261, 100%, 83%);
+  --secondary-color: hsl(166, 100%, 59%);
+}
+
+/* Citrus Eclipse */
+[data-theme='citrus-eclipse'] {
+  --background-color: hsl(34, 49%, 11%);
+  --card-color: hsl(34, 54%, 16%);
+  --border-color: hsl(34, 54%, 29%);
+  --main-color: hsl(42, 100%, 65%);
+  --secondary-color: hsl(293, 94%, 71%);
+}
+
+/* Celestite Frost */
+[data-theme='celestite-frost'] {
+  --background-color: hsl(196, 43%, 13%);
+  --card-color: hsl(196, 50%, 19%);
+  --border-color: hsl(196, 50%, 29%);
+  --main-color: hsl(196, 100%, 85%);
+  --secondary-color: hsl(314, 86%, 76%);
+}
+
+/* Peony Nightshade */
+[data-theme='peony-nightshade'] {
+  --background-color: hsl(338, 30%, 12%);
+  --card-color: hsl(338, 35%, 19%);
+  --border-color: hsl(338, 35%, 30%);
+  --main-color: hsl(328, 95%, 68%);
+  --secondary-color: hsl(119, 89%, 73%);
+}
+
+/* Topaz Drift */
+[data-theme='topaz-drift'] {
+  --background-color: hsl(172, 34%, 11%);
+  --card-color: hsl(172, 37%, 17%);
+  --border-color: hsl(172, 37%, 29%);
+  --main-color: hsl(45, 98%, 71%);
+  --secondary-color: hsl(18, 88%, 64%);
+}
+
+/* Emberlit Cloud */
+[data-theme='emberlit-cloud'] {
+  --background-color: hsl(10, 40%, 12%);
+  --card-color: hsl(10, 45%, 19%);
+  --border-color: hsl(10, 45%, 29%);
+  --main-color: hsl(16, 100%, 70%);
+  --secondary-color: hsl(181, 92%, 67%);
+}
+
+/* Nebulous Maw */
+[data-theme='nebulous-maw'] {
+  --background-color: hsl(252, 59%, 8%);
+  --card-color: hsl(247, 65%, 18%);
+  --border-color: hsl(247, 65%, 28%);
+  --main-color: hsl(46, 100%, 69%);
+  --secondary-color: hsl(321, 99%, 78%);
+}
+
+/* Epsilon Halo */
+[data-theme='epsilon-halo'] {
+  --background-color: hsl(69, 60%, 8%);
+  --card-color: hsl(102, 59%, 17%);
+  --border-color: hsl(102, 59%, 27%);
+  --main-color: hsl(200, 80%, 73%);
+  --secondary-color: hsl(94, 97%, 60%);
+}
+
+/* Black Opaline */
+[data-theme='black-opaline'] {
+  --background-color: hsl(33, 24%, 10%);
+  --card-color: hsl(233, 23%, 15%);
+  --border-color: hsl(233, 23%, 29%);
+  --main-color: hsl(316, 98%, 66%);
+  --secondary-color: hsl(180, 92%, 63%);
+}
+
+/* Vortex Requiem */
+[data-theme='vortex-requiem'] {
+  --background-color: hsl(290, 51%, 10%);
+  --card-color: hsl(227, 41%, 18%);
+  --border-color: hsl(227, 41%, 29%);
+  --main-color: hsl(192, 100%, 64%);
+  --secondary-color: hsl(292, 100%, 62%);
+}
+
+/* Solar Genesis */
+[data-theme='solar-genesis'] {
+  --background-color: hsl(23, 94%, 7%);
+  --card-color: hsl(27, 88%, 14%);
+  --border-color: hsl(27, 88%, 28%);
+  --main-color: hsl(48, 100%, 74%);
+  --secondary-color: hsl(16, 92%, 66%);
+}
+
+/* Aurora Mechanica */
+[data-theme='aurora-mechanica'] {
+  --background-color: hsl(180, 46%, 8%);
+  --card-color: hsl(127, 62%, 15%);
+  --border-color: hsl(127, 62%, 25%);
+  --main-color: hsl(208, 94%, 59%);
+  --secondary-color: hsl(317, 90%, 69%);
+}
+
+/* Ultraviolet Oracle */
+[data-theme='ultraviolet-oracle'] {
+  --background-color: hsl(265, 81%, 9%);
+  --card-color: hsl(267, 82%, 16%);
+  --border-color: hsl(267, 82%, 29%);
+  --main-color: hsl(210, 100%, 69%);
+  --secondary-color: hsl(273, 93%, 73%);
+}
+
+/* Dusk Vermillion */
+[data-theme='dusk-vermillion'] {
+  --background-color: hsl(12, 83%, 7%);
+  --card-color: hsl(12, 83%, 17%);
+  --border-color: hsl(12, 83%, 29%);
+  --main-color: hsl(340, 91%, 69%);
+  --secondary-color: hsl(19, 100%, 73%);
+}
+
+/* Blue Emberveil */
+[data-theme='blue-emberveil'] {
+  --background-color: hsl(212, 60%, 10%);
+  --card-color: hsl(288, 35%, 16%);
+  --border-color: hsl(288, 35%, 29%);
+  --main-color: hsl(199, 94%, 71%);
+  --secondary-color: hsl(19, 97%, 61%);
+}
+
+/* Genesis Prism */
+[data-theme='genesis-prism'] {
+  --background-color: hsl(39, 60%, 9%);
+  --card-color: hsl(280, 80%, 14%);
+  --border-color: hsl(280, 80%, 28%);
+  --main-color: hsl(102, 78%, 64%);
+  --secondary-color: hsl(325, 75%, 75%);
+}
+
+/* Liminal Bloom */
+[data-theme='liminal-bloom'] {
+  --background-color: hsl(346, 41%, 10%);
+  --card-color: hsl(312, 42%, 18%);
+  --border-color: hsl(312, 42%, 29%);
+  --main-color: hsl(294, 99%, 62%);
+  --secondary-color: hsl(55, 98%, 58%);
+}
+
+/* Nautilus Star */
+[data-theme='nautilus-star'] {
+  --background-color: hsl(205, 47%, 8%);
+  --card-color: hsl(187, 83%, 19%);
+  --border-color: hsl(187, 83%, 30%);
+  --main-color: hsl(207, 95%, 65%);
+  --secondary-color: hsl(30, 92%, 72%);
+}
+
+/* Cardinal Void */
+[data-theme='cardinal-void'] {
+  --background-color: hsl(350, 85%, 9%);
+  --card-color: hsl(347, 86%, 19%);
+  --border-color: hsl(347, 86%, 28%);
+  --main-color: hsl(22, 95%, 65%);
+  --secondary-color: hsl(201, 89%, 52%);
+}
+
+/* Cyanic Wisdom */
+[data-theme='cyanic-wisdom'] {
+  --background-color: hsl(197, 62%, 9%);
+  --card-color: hsl(203, 75%, 15%);
+  --border-color: hsl(203, 75%, 28%);
+  --main-color: hsl(192, 100%, 73%);
+  --secondary-color: hsl(331, 79%, 74%);
+}
+
+/* Twilight Oracle */
+[data-theme='twilight-oracle'] {
+  --background-color: hsl(256, 42%, 12%);
+  --card-color: hsl(333, 61%, 18%);
+  --border-color: hsl(333, 61%, 29%);
+  --main-color: hsl(5, 92%, 66%);
+  --secondary-color: hsl(208, 70%, 70%);
+}
+
+/* Silica Dusk */
+[data-theme='silica-dusk'] {
+  --background-color: hsl(19, 29%, 8%);
+  --card-color: hsl(29, 17%, 14%);
+  --border-color: hsl(29, 17%, 24%);
+  --main-color: hsl(359, 95%, 78%);
+  --secondary-color: hsl(186, 88%, 69%);
+}
+
+/* Galaxy Oracle */
+[data-theme='galaxy-oracle'] {
+  --background-color: hsl(219, 78%, 7%);
+  --card-color: hsl(254, 67%, 14%);
+  --border-color: hsl(254, 67%, 25%);
+  --main-color: hsl(296, 84%, 78%);
+  --secondary-color: hsl(222, 100%, 73%);
+}
+
+/* Fathom Frost */
+[data-theme='fathom-frost'] {
+  --background-color: hsl(200, 58%, 10%);
+  --card-color: hsl(202, 68%, 13%);
+  --border-color: hsl(202, 68%, 27%);
+  --main-color: hsl(123, 84%, 59%);
+  --secondary-color: hsl(319, 91%, 78%);
+}
+
+/* Amber Frostbite */
+[data-theme='amber-frostbite'] {
+  --background-color: hsl(32, 85%, 11%);
+  --card-color: hsl(44, 97%, 13%);
+  --border-color: hsl(44, 97%, 26%);
+  --main-color: hsl(197, 91%, 83%);
+  --secondary-color: hsl(343, 88%, 71%);
+}
+
+/* Verdant Comet */
+[data-theme='verdant-comet'] {
+  --background-color: hsl(123, 35%, 8%);
+  --card-color: hsl(83, 62%, 15%);
+  --border-color: hsl(83, 62%, 27%);
+  --main-color: hsl(127, 100%, 62%);
+  --secondary-color: hsl(364, 98%, 74%);
+}
+
+/* Radiant Umbra */
+[data-theme='radiant-umbra'] {
+  --background-color: hsl(172, 60%, 9%);
+  --card-color: hsl(61, 66%, 16%);
+  --border-color: hsl(61, 66%, 28%);
+  --main-color: hsl(197, 90%, 65%);
+  --secondary-color: hsl(325, 90%, 64%);
+}
+
+/* Magenta Tundra */
+[data-theme='magenta-tundra'] {
+  --background-color: hsl(333, 61%, 9%);
+  --card-color: hsl(314, 89%, 21%);
+  --border-color: hsl(314, 89%, 32%);
+  --main-color: hsl(53, 93%, 69%);
+  --secondary-color: hsl(194, 92%, 79%);
+}
+
+/* Lapis Solara */
+[data-theme='lapis-solara'] {
+  --background-color: hsl(226, 63%, 9%);
+  --card-color: hsl(208, 69%, 18%);
+  --border-color: hsl(208, 69%, 30%);
+  --main-color: hsl(57, 100%, 77%);
+  --secondary-color: hsl(259, 97%, 82%);
+}
+
+/* Neon Haze */
+[data-theme='neon-haze'] {
+  --background-color: hsl(297, 77%, 9%);
+  --card-color: hsl(88, 64%, 16%);
+  --border-color: hsl(88, 64%, 27%);
+  --main-color: hsl(72, 95%, 66%);
+  --secondary-color: hsl(314, 96%, 74%);
+}
+
+/* Lyra Cascade */
+[data-theme='lyra-cascade'] {
+  --background-color: hsl(144, 41%, 9%);
+  --card-color: hsl(221, 62%, 18%);
+  --border-color: hsl(221, 62%, 31%);
+  --main-color: hsl(195, 97%, 69%);
+  --secondary-color: hsl(325, 85%, 73%);
+}
+
+/* Arcane Fathoms */
+[data-theme='arcane-fathoms'] {
+  --background-color: hsl(207, 74%, 10%);
+  --card-color: hsl(272, 80%, 22%);
+  --border-color: hsl(272, 80%, 34%);
+  --main-color: hsl(97, 76%, 66%);
+  --secondary-color: hsl(281, 93%, 80%);
+}
+
+/* Melancholy Halo */
+[data-theme='melancholy-halo'] {
+  --background-color: hsl(222, 29%, 9%);
+  --card-color: hsl(253, 30%, 16%);
+  --border-color: hsl(253, 30%, 27%);
+  --main-color: hsl(257, 94%, 74%);
+  --secondary-color: hsl(159, 96%, 66%);
+}
+
+/* Prism Snowfall */
+[data-theme='prism-snowfall'] {
+  --background-color: hsl(301, 15%, 8%);
+  --card-color: hsl(185, 16%, 20%);
+  --border-color: hsl(185, 16%, 32%);
+  --main-color: hsl(190, 92%, 75%);
+  --secondary-color: hsl(41, 98%, 81%);
+}
+
+/* Infinite Spice */
+[data-theme='infinite-spice'] {
+  --background-color: hsl(36, 86%, 7%);
+  --card-color: hsl(27, 83%, 15%);
+  --border-color: hsl(27, 83%, 29%);
+  --main-color: hsl(22, 98%, 68%);
+  --secondary-color: hsl(199, 92%, 69%);
+}
+
+/* Lotus Specter */
+[data-theme='lotus-specter'] {
+  --background-color: hsl(324, 27%, 8%);
+  --card-color: hsl(345, 64%, 17%);
+  --border-color: hsl(345, 64%, 30%);
+  --main-color: hsl(319, 96%, 76%);
+  --secondary-color: hsl(66, 100%, 73%);
+}
+
+/* Azure Mirage */
+[data-theme='azure-mirage'] {
+  --background-color: hsl(190, 100%, 7%);
+  --card-color: hsl(191, 93%, 16%);
+  --border-color: hsl(191, 93%, 27%);
+  --main-color: hsl(271, 99%, 72%);
+  --secondary-color: hsl(52, 100%, 69%);
+}
+
+/* Polar Rose */
+[data-theme='polar-rose'] {
+  --background-color: hsl(355, 61%, 9%);
+  --card-color: hsl(13, 72%, 17%);
+  --border-color: hsl(13, 72%, 30%);
+  --main-color: hsl(290, 100%, 78%);
+  --secondary-color: hsl(175, 86%, 69%);
+}
+
+/* Ion Ember */
+[data-theme='ion-ember'] {
+  --background-color: hsl(22, 100%, 8%);
+  --card-color: hsl(15, 85%, 17%);
+  --border-color: hsl(15, 85%, 30%);
+  --main-color: hsl(50, 86%, 68%);
+  --secondary-color: hsl(323, 87%, 75%);
+}
+
+/* Cobalt Lumen */
+[data-theme='cobalt-lumen'] {
+  --background-color: hsl(205, 90%, 8%);
+  --card-color: hsl(210, 71%, 18%);
+  --border-color: hsl(210, 71%, 31%);
+  --main-color: hsl(193, 97%, 67%);
+  --secondary-color: hsl(299, 94%, 62%);
+}
+
+/* Mirage Peach */
+[data-theme='mirage-peach'] {
+  --background-color: hsl(19, 63%, 8%);
+  --card-color: hsl(30, 94%, 19%);
+  --border-color: hsl(30, 94%, 32%);
+  --main-color: hsl(24, 98%, 66%);
+  --secondary-color: hsl(266, 96%, 66%);
+}
+
+/* Spectral Mint */
+[data-theme='spectral-mint'] {
+  --background-color: hsl(146, 68%, 8%);
+  --card-color: hsl(163, 82%, 18%);
+  --border-color: hsl(163, 82%, 29%);
+  --main-color: hsl(147, 94%, 78%);
+  --secondary-color: hsl(259, 98%, 72%);
+}
+
+/* Aero Blossom */
+[data-theme='aero-blossom'] {
+  --background-color: hsl(200, 25%, 10%);
+  --card-color: hsl(222, 61%, 18%);
+  --border-color: hsl(222, 61%, 29%);
+  --main-color: hsl(155, 93%, 66%);
+  --secondary-color: hsl(335, 92%, 72%);
+}
+
+/* Antimatter Bloom */
+[data-theme='antimatter-bloom'] {
+  --background-color: hsl(264, 88%, 9%);
+  --card-color: hsl(289, 53%, 15%);
+  --border-color: hsl(289, 53%, 27%);
+  --main-color: hsl(125, 93%, 68%);
+  --secondary-color: hsl(349, 96%, 72%);
+}
+
+/* Golden Lyric */
+[data-theme='golden-lyric'] {
+  --background-color: hsl(45, 60%, 8%);
+  --card-color: hsl(29, 61%, 18%);
+  --border-color: hsl(29, 61%, 28%);
+  --main-color: hsl(49, 97%, 74%);
+  --secondary-color: hsl(286, 89%, 76%);
+}
+
+/* Neon Singularity */
+[data-theme='neon-singularity'] {
+  --background-color: hsl(171, 92%, 8%);
+  --card-color: hsl(83, 93%, 16%);
+  --border-color: hsl(83, 93%, 28%);
+  --main-color: hsl(326, 96%, 72%);
+  --secondary-color: hsl(196, 100%, 68%);
+}
