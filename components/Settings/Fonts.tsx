@@ -20,7 +20,7 @@ const Fonts = () => {
           <label
             key={fontObj.name}
             className={clsx(
-              'flex justify-center items-center ',
+              'flex justify-center items-center',
               buttonBorderStyles,
               'py-4 px-4'
             )}
@@ -39,7 +39,7 @@ const Fonts = () => {
             >
               {fontObj.name === currentFont ? '\u2B24 ' : ''}
               {fontObj.name}
-              {fontObj.name === 'Noto Sans JP' && ' (default)'}
+              {fontObj.name === 'Zen Maru Gothic' && ' (default)'}
               &nbsp;かな道場
             </span>
           </label>

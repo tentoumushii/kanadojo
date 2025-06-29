@@ -68,7 +68,6 @@ const GameIntel = ({
           className={clsx(
             'py-2 px-6 text-xl flex flex-row justify-center items-center gap-2',
             miniButtonBorderStyles,
-            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
             'group flex-1',
             'text-[var(--main-color)]'
           )}

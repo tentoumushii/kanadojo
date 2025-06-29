@@ -44,7 +44,7 @@ const Banner = ({
   }, [hotkeysOn]);
 
   return (
-    <div className='flex flex-col pt-4 gap-1.5 md:gap-1 w-full '>
+    <div className='flex flex-col pt-4 gap-1.5 md:gap-1 w-full'>
       <div className='flex flex-col md:flex-row gap-3 items-start w-full'>
         <h1 className={clsx('text-4xl font-bold', 'flex gap-2', 'flex-row')}>
           <span className='flex flex-row gap-2 items-center'>KanaDojo</span>

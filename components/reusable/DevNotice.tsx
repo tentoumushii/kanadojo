@@ -1,5 +1,3 @@
-// 'use client';
-
 const DevNotice = () => {
   return (
     <p className='text-lg text-[var(--secondary-color)]'>

@@ -196,13 +196,14 @@ const sawarabiMincho = Sawarabi_Mincho({
 
 const fonts = [
   {
-    name: 'Noto Sans JP',
-    font: notoSansJP
-  },
-  {
     name: 'Zen Maru Gothic',
     font: zenMaruGothic
   },
+  {
+    name: 'Noto Sans JP',
+    font: notoSansJP
+  },
+
   {
     name: 'Rampart One',
     font: rampartOne

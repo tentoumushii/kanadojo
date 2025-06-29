@@ -110,7 +110,6 @@ const SelectionMenu = () => {
                   'flex w-full h-full text-2xl p-2',
                   buttonBorderStyles,
 
-            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
                   'flex-col items-center justify-center',
                   'md:flex-row md:justify-center md:items-center md:gap-1.5',
                   'max-md:aspect-square md:py-6',

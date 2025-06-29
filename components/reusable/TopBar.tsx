@@ -90,7 +90,6 @@ const TopBar: React.FC<ITopBarProps> = ({
           'sm:w-1/3 text-2xl p-2 flex flex-row justify-center items-center gap-1.5',
           buttonBorderStyles,
           'group',
-          'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
         )}
         onClick={() => playClick()}
       >
@@ -103,7 +102,6 @@ const TopBar: React.FC<ITopBarProps> = ({
         className={clsx(
           'text-2xl sm:w-1/3 p-2 flex flex-row justify-center items-center gap-1',
           buttonBorderStyles,
-          'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
         )}
         onClick={e => {
           playClick();
@@ -146,7 +144,6 @@ const TopBar: React.FC<ITopBarProps> = ({
             buttonBorderStyles,
             'text-[var(--border-color)]',
             selectedGameMode && isFilled && 'text-[var(--main-color)]',
-            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
           )}
           onClick={e => {
             e.currentTarget.blur();

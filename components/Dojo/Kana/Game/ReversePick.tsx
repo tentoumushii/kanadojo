@@ -99,6 +99,8 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
+    console.log(wrongSelectedAnswers);
+
     const handleKeyDown = (event: KeyboardEvent) => {
       const index = pickGameKeyMappings[event.code];
       if (index !== undefined && index < shuffledVariants.length) {
@@ -187,14 +189,12 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
             type='button'
             disabled={wrongSelectedAnswers.includes(kanaChar)}
             className={clsx(
-              'text-5xl font-semibold py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
+              'text-5xl font-semibold py-4 w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
               buttonBorderStyles,
-              'border-b-4 border-[var(--border-color)]',
-              'text-[var(--border-color)]',
               wrongSelectedAnswers.includes(kanaChar) &&
-                'hover:bg-[var(--card-color)]',
+                'hover:bg-[var(--card-color)] hover:border-[var(--border-color)] text-[var(--border-color)]',
               !wrongSelectedAnswers.includes(kanaChar) &&
-                'hover:scale-110 text-[var(--main-color)] hover:border-[var(--secondary-color)]'
+                'hover:scale-110 text-[var(--main-color)] hover:border-[var(--main-color)]'
             )}
             onClick={() => handleOptionClick(kanaChar)}
           >
@@ -205,6 +205,7 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
           </button>
         ))}
       </div>
+
       <Stars />
       {/* )} */}
     </div>

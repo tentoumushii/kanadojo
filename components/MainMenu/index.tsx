@@ -158,7 +158,6 @@ const MainMenu = () => {
                   'md:flex-row md:justify-center md:items-center md:gap-1.5',
                   'max-md:aspect-square md:py-6',
                   'group',
-                  'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]'
                 )}
                 onClick={() => playClick()}
               >

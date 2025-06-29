@@ -25,7 +25,7 @@ const useThemeStore = create<ThemeState>()(
       setDisplayKana: displayKana => set({ displayKana }),
       theme: 'light',
       setTheme: theme => set({ theme }),
-      font: 'Noto Sans JP',
+      font: 'Zen Maru Gothic',
       setFont: fontName => set({ font: fontName }),
       silentMode: false,
       setSilentMode: silent => set({ silentMode: silent }),
