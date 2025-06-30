@@ -71,6 +71,8 @@ const MainMenu = () => {
                 className={clsx(
                   'hover:cursor-pointer duration-250 hover:scale-120',
                   'active:scale-100 active:duration-225'
+                  ,
+                'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
                 )}
               />
             ) : (
@@ -83,6 +85,8 @@ const MainMenu = () => {
                 className={clsx(
                   'hover:cursor-pointer duration-250 hover:scale-120',
                   'active:scale-100 active:duration-225'
+                  ,
+                'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
                 )}
               />
             )}
@@ -104,7 +108,8 @@ const MainMenu = () => {
               className={clsx(
                 'hover:cursor-pointer duration-250 hover:scale-120',
                 'active:scale-100 active:duration-225',
-                'md:hidden'
+                'md:hidden',
+                'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
               )}
               onClick={() => {
                 playClick();
@@ -116,7 +121,8 @@ const MainMenu = () => {
               size='2x'
               className={clsx(
                 'hover:cursor-pointer duration-250 hover:scale-120',
-                'active:scale-100 active:duration-225'
+                'active:scale-100 active:duration-225',
+                'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
               )}
               onClick={() => {
                 playClick();
@@ -157,7 +163,7 @@ const MainMenu = () => {
                   'flex-col items-center justify-center',
                   'md:flex-row md:justify-center md:items-center md:gap-1.5',
                   'max-md:aspect-square md:py-6',
-                  'group',
+                  'group'
                 )}
                 onClick={() => playClick()}
               >
