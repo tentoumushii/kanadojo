@@ -5,6 +5,9 @@ on:
     branches:
       - main # Trigger when main branch is updated
 
+permissions:
+  contents: write 
+
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
