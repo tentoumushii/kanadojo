@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { ChevronsLeft, House } from 'lucide-react';
+import { ChevronsLeft, Settings, House } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/lib/useAudio';
 import { useEffect, useRef } from 'react';
@@ -55,7 +55,7 @@ const Banner = ({
             'duration-250',
             'transition-all ease-in-out',
             'flex flex-row',
-            'w-full md:w-1/4',
+            'w-full md:w-1/3',
             'border-b-4 border-[var(--border-color)]'
           )}
         >
@@ -65,7 +65,7 @@ const Banner = ({
               className={clsx(
                 'w-full h-full py-2',
                 'hover:cursor-pointer',
-                'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+                'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
                 'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg',
                 'duration-250'
               )}
@@ -94,8 +94,8 @@ const Banner = ({
               className={clsx(
                 'w-full h-full',
                 'hover:cursor-pointer',
-                'text-[var(--main-color)] md:text-[var(--secondary-color)] hover:text-[var(--main-color)]',
-                'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg',
+                'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+                'hover:bg-[var(--border-color)]',
                 'duration-250'
               )}
               onClick={() => playClick()}
@@ -107,10 +107,37 @@ const Banner = ({
               />
             </button>
           </Link>
+
+          <div
+            className={clsx(
+              'border-l-1 h-auto w-0',
+              'border-[var(--border-color)]'
+            )}
+          />
+
+          <Link href='/preferences' className='w-1/2'>
+            <button
+              // ref={homeButtonRef}
+              className={clsx(
+                'w-full h-full',
+                'hover:cursor-pointer',
+                'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+                'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg',
+                'duration-250'
+              )}
+              onClick={() => playClick()}
+            >
+              <Settings
+                size={32}
+                className={clsx('justify-self-center align-self-center')}
+                onClick={() => playClick()}
+              />
+            </button>
+          </Link>
         </div>
       </div>
       {subheading && (
-        <h2 className='text-3xl flex flex-row gap-1.5 items-center'>
+        <h2 className='text-3xl flex flex-row gap-1.5 items-center text-[var(--secondary-color)]'>
           {subheading}
         </h2>
       )}

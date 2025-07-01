@@ -7,7 +7,6 @@ import N4Kanji from '@/static/kanji/N4';
 import N3Kanji from '@/static/kanji/N3';
 import N2Kanji from '@/static/kanji/N2';
 import { cardBorderStyles, buttonBorderStyles } from '@/static/styles';
-import { useParams } from 'next/navigation';
 import { chunkArray } from '@/lib/helperFunctions';
 import { ChevronUp, LibraryBig } from 'lucide-react';
 import { useClick } from '@/lib/useAudio';
@@ -23,10 +22,8 @@ const vocabData = {
 const Subgroup = () => {
   const { playClick } = useClick();
 
-  const params = useParams();
-  const { subgroup } = params;
-
-  const kanjiObjs = vocabData[subgroup as keyof typeof vocabData];
+  // const kanjiObjs = vocabData[subgroup as keyof typeof vocabData];
+  const kanjiObjs = vocabData['n5' as keyof typeof vocabData];
 
   const kanjiSetsTemp = new Array(80)
     .fill({})

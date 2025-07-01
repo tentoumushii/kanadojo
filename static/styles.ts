@@ -10,7 +10,7 @@ export const buttonBorderStyles = clsx(
   'transition-all ease-in-out',
   'hover:bg-[var(--border-color)]',
   // 'active:scale-85 md:active:scale-90 active:duration-300',
-  'border-b-4 border-[var(--border-color)] hover:border-[var(--main-color)]'
+  'border-b-4 border-[var(--border-color)] '
 );
 
 export const miniButtonBorderStyles = clsx(
@@ -19,5 +19,5 @@ export const miniButtonBorderStyles = clsx(
   'transition-all ease-in-out',
   'hover:bg-[var(--border-color)]',
   // 'active:scale-95 md:active:scale-98 active:duration-300',
-  'border-b-4 border-[var(--border-color)] hover:border-[var(--main-color)]'
+  'border-b-4 border-[var(--border-color)] '
 );

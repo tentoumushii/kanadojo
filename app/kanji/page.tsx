@@ -1,5 +1,20 @@
-import SelectionMenu from '@/components/reusable/SelectionMenu';
+import type { Metadata } from 'next';
+import KanjiMenu from '@/components/Dojo/Kanji/Menu';
 
-export default function KanjiGroupSelectPage() {
-  return <SelectionMenu />;
+export const metadata: Metadata = {
+  title: 'KanaDojo: Kanji',
+  description:
+    'The kanji dojo is the place where you can learn and practice the main component of the Japanese writing system - the kanji characters.',
+  openGraph: {
+    title: 'KanaDojo: Kanji',
+    description:
+      'The kanji dojo is the place where you can learn and practice the main component of the Japanese writing system - the kanji characters.',
+    url: 'https://kanadojo.com/kanji',
+    type: 'website',
+    locale: 'en_US'
+  }
+};
+
+export default async function KanjiGroupPage() {
+  return <KanjiMenu  />;
 }

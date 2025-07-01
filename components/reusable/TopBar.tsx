@@ -5,26 +5,21 @@ import Link from 'next/link';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useVocabStore from '@/store/useVocabStore';
 import useThemeStore from '@/store/useThemeStore';
-import GameModes from './GameModes';
 import { useClick } from '@/lib/useAudio';
-import { buttonBorderStyles } from '@/static/styles';
-import { ChevronUp, Settings } from 'lucide-react';
+// import { buttonBorderStyles } from '@/static/styles';
+import { ChevronUp, Play } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 interface ITopBarProps {
   showGameModes: boolean;
   setShowGameModes: React.Dispatch<React.SetStateAction<boolean>>;
-  isSmallScreen: boolean;
   currentDojo: string;
-  setSelectedGameMode: (mode: string) => void;
 }
 
 const TopBar: React.FC<ITopBarProps> = ({
   showGameModes,
   setShowGameModes,
-  isSmallScreen,
-  currentDojo,
-  setSelectedGameMode
+  currentDojo
 }) => {
   const hotkeysOn = useThemeStore(state => state.hotkeysOn);
 
@@ -83,25 +78,24 @@ const TopBar: React.FC<ITopBarProps> = ({
   }, [hotkeysOn]);
 
   return (
-    <div className={clsx('flex flex-col gap-4 sm:flex sm:flex-row sm:gap-4')}>
-      <Link
-        href='/preferences'
-        className={clsx(
-          'sm:w-1/3 text-2xl p-2 flex flex-row justify-center items-center gap-1.5',
-          buttonBorderStyles,
-          'group',
-        )}
-        onClick={() => playClick()}
-      >
-        <button className={clsx('flex flex-row gap-1.5 items-center py-2 ')}>
-          <Settings className='animate-pulse' />
-          <span className='group-hover:underline'>Preferences</span>
-        </button>
-      </Link>
+    <div
+      className={clsx(
+        'flex flex-row',
+        'rounded-xl bg-[var(--card-color)]',
+        'duration-250',
+        'transition-all ease-in-out',
+        'w-full',
+        'border-b-4 border-[var(--border-color)]'
+      )}
+    >
       <button
         className={clsx(
-          'text-2xl sm:w-1/3 p-2 flex flex-row justify-center items-center gap-1',
-          buttonBorderStyles,
+          'text-2xl w-1/2 p-2 flex flex-row justify-center items-center gap-1',
+          'h-full',
+          'hover:cursor-pointer',
+          'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+          'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg',
+          'duration-250'
         )}
         onClick={e => {
           playClick();
@@ -122,36 +116,42 @@ const TopBar: React.FC<ITopBarProps> = ({
           size={24}
         />
         <span className='py-2'>
-          Training Mode:{' '}
+          training mode:{' '}
           {selectedGameMode ? selectedGameMode.split('-').join(' ') : 'not set'}
         </span>
       </button>
-      {isSmallScreen && showGameModes && (
-        <GameModes
-          currentDojo={currentDojo}
-          setSelectedGameMode={setSelectedGameMode}
-        />
-      )}
+
+      <div
+        className={clsx(
+          'border-l-1 h-auto w-0',
+          'border-[var(--border-color)]'
+        )}
+      />
+
       <Link
         href={`${pathname}/train/${selectedGameMode}`}
-        className='sm:w-1/3 group'
+        className='w-1/2 group'
       >
         <button
           disabled={!selectedGameMode || !isFilled}
           ref={buttonRef}
           className={clsx(
             'w-full h-full text-2xl px-2 flex flex-row justify-center items-center gap-1 py-4',
-            buttonBorderStyles,
             'text-[var(--border-color)]',
-            selectedGameMode && isFilled && 'text-[var(--main-color)]',
+            selectedGameMode &&
+              isFilled &&
+              'text-[var(--secondary-color)] hover:text-[var(--main-color)] hover:bg-[var(--border-color)] hover:cursor-pointer',
+            'text-[var(--border-color)]',
+            'rounded-tr-xl rounded-br-lg',
+            'duration-250'
           )}
           onClick={e => {
             e.currentTarget.blur();
             playClick();
           }}
         >
-          <span className='group-hover:underline'>Go!</span>
-          <span className='inline text-base'>{'\u23CE'}</span>
+          {/* <span className='group-hover:underline'>Go!</span> */}
+          <Play />
         </button>
       </Link>
     </div>

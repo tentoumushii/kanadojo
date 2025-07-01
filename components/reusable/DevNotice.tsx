@@ -1,32 +1,32 @@
+// import {
+//   Select,
+//   SelectContent,
+//   SelectGroup,
+//   SelectItem,
+//   SelectLabel,
+//   SelectTrigger,
+//   SelectValue
+// } from '@/components/ui/select';
+
 const DevNotice = () => {
   return (
     <p className='text-lg text-[var(--secondary-color)]'>
       Happy Pride Month! 🏳️‍🌈🌈✨
-      {/* <i>
-        KanaDojo is currently in its public pre-alpha preview release. Feedback,
-        wishes or complaints are all welcome in our{' '}
-        <Link
-          href='https://discord.gg/CyvBNNrSmb'
-          target='_blank'
-          className='hover:underline'
-        >
-          Discord server
-        </Link>
-        !
-      </i> */}
-      {/* <i>
-        KanaDojo is an independent project maintained by a solo developer. If you love
-        KanaDojo and want to see it grow and improve, as well as to help us cover
-        server costs, please consider{' '}
-        <Link
-          className='underline'
-          target='_blank'
-          href='https://ko-fi.com/kanadojo'
-        >
-          donating
-        </Link>
-        . Thank you so much! 💖
-      </i> */}
+      {/* <Select>
+        <SelectTrigger className='w-[180px]'>
+          <SelectValue placeholder='Select a fruit' />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value='apple'>Apple</SelectItem>
+            <SelectItem value='banana'>Banana</SelectItem>
+            <SelectItem value='blueberry'>Blueberry</SelectItem>
+            <SelectItem value='grapes'>Grapes</SelectItem>
+            <SelectItem value='pineapple'>Pineapple</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select> */}
     </p>
   );
 };

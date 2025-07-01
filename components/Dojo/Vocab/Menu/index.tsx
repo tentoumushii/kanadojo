@@ -5,12 +5,10 @@ import Banner from '@/components/reusable/Banner';
 import Info from '@/components/reusable/Info';
 import GameModes from '@/components/reusable/GameModes';
 import WordClass from './WordClass';
-import { useMediaQuery } from 'react-responsive';
 import useVocabStore from '@/store/useVocabStore';
 import { IWordClass } from '@/lib/interfaces';
 
 const WordsMenu = ({ group, subgroup, wordClass }: IWordClass) => {
-  const isSmallScreen = useMediaQuery({ maxWidth: 640 });
 
   const [showGameModes, setShowGameModes] = useState(false);
 
@@ -32,11 +30,9 @@ const WordsMenu = ({ group, subgroup, wordClass }: IWordClass) => {
       <TopBar
         showGameModes={showGameModes}
         setShowGameModes={setShowGameModes}
-        isSmallScreen={isSmallScreen}
         currentDojo='vocabulary'
-        setSelectedGameMode={setSelectedGameMode}
       />
-      {!isSmallScreen && showGameModes && (
+      { showGameModes && (
         <GameModes
           currentDojo='vocab'
           setSelectedGameMode={setSelectedGameMode}

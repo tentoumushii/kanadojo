@@ -6,12 +6,9 @@ import Banner from '@/components/reusable/Banner';
 import Info from '@/components/reusable/Info';
 import GameModes from '@/components/reusable/GameModes';
 import KanaCards from './KanaCards';
-import { useMediaQuery } from 'react-responsive';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 
 const KanaMenu = () => {
-  const isSmallScreen = useMediaQuery({ maxWidth: 640 });
-
   const [showGameModes, setShowGameModes] = useState(false);
 
   const setSelectedGameMode = useKanaKanjiStore(
@@ -25,11 +22,9 @@ const KanaMenu = () => {
         <TopBar
           showGameModes={showGameModes}
           setShowGameModes={setShowGameModes}
-          isSmallScreen={isSmallScreen}
           currentDojo='kana'
-          setSelectedGameMode={setSelectedGameMode}
         />
-        {!isSmallScreen && showGameModes && (
+        {showGameModes && (
           <GameModes
             currentDojo='kana'
             setSelectedGameMode={setSelectedGameMode}

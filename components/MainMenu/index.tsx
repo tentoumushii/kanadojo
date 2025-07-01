@@ -16,7 +16,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import clsx from 'clsx';
 import { useClick } from '@/lib/useAudio';
-import { buttonBorderStyles } from '@/static/styles';
 import useThemeStore from '@/store/useThemeStore';
 
 const MainMenu = () => {
@@ -70,9 +69,8 @@ const MainMenu = () => {
                 }}
                 className={clsx(
                   'hover:cursor-pointer duration-250 hover:scale-120',
-                  'active:scale-100 active:duration-225'
-                  ,
-                'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
+                  'active:scale-100 active:duration-225',
+                  'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
                 )}
               />
             ) : (
@@ -84,9 +82,8 @@ const MainMenu = () => {
                 }}
                 className={clsx(
                   'hover:cursor-pointer duration-250 hover:scale-120',
-                  'active:scale-100 active:duration-225'
-                  ,
-                'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
+                  'active:scale-100 active:duration-225',
+                  'text-[var(--secondary-color)] hover:text-[var(--main-color)]'
                 )}
               />
             )}
@@ -147,34 +144,60 @@ const MainMenu = () => {
           </div>
         </div>
         <Info currentDojo='mainMenu' />
-        <div className='w-full grid grid-cols-2 gap-4 flex-none'>
+        <div
+          // className='w-full grid grid-cols-2 gap-4 flex-none'
+          className={clsx(
+            'rounded-xl bg-[var(--card-color)]',
+            'duration-250',
+            'transition-all ease-in-out',
+            'flex flex-row',
+            'w-full',
+            'border-b-4 border-[var(--border-color)]'
+          )}
+        >
           {links.map((link, i) => (
-            <Link
-              href={link.href}
-              key={i}
-              className={clsx(
-                link.name_en === 'Vocabulary' && 'md:col-span-full'
-              )}
-            >
-              <button
+            <>
+              <Link
+                href={link.href}
+                key={i}
                 className={clsx(
-                  'flex w-full h-full text-2xl',
-                  buttonBorderStyles,
-                  'flex-col items-center justify-center',
-                  'md:flex-row md:justify-center md:items-center md:gap-1.5',
-                  'max-md:aspect-square md:py-6',
-                  'group'
+                  // link.name_en === 'Vocabulary' && 'md:col-span-full'
+                  'w-full'
                 )}
-                onClick={() => playClick()}
               >
-                <span lang='en' className='group-hover:underline'>
-                  {link.name_en}
-                </span>
-                <span lang='ja' className='font-normal'>
-                  {link.name_ja}
-                </span>
-              </button>
-            </Link>
+                <button
+                  className={clsx(
+                    'flex w-full h-full text-2xl',
+                    'flex-col items-center justify-center',
+                    'md:flex-row md:justify-center md:items-center md:gap-1.5',
+                    'max-md:aspect-square md:py-8',
+                    'group',
+                    i === 0 && 'rounded-tl-xl rounded-bl-lg',
+                    i === links.length - 1 && 'rounded-tr-xl rounded-br-lg',
+                    'hover:cursor-pointer',
+                    'hover:bg-[var(--border-color)]',
+                    'duration-250'
+                  )}
+                  onClick={() => playClick()}
+                >
+                  <span lang='en' className=''>
+                    {link.name_en}
+                  </span>
+                  <span lang='ja' className='font-normal'>
+                    {link.name_ja}
+                  </span>
+                </button>
+              </Link>
+
+              {i < links.length - 1 && (
+                <div
+                  className={clsx(
+                    'border-l-1 h-auto w-0',
+                    'border-[var(--border-color)]'
+                  )}
+                />
+              )}
+            </>
           ))}
         </div>
       </div>
@@ -188,7 +211,7 @@ const MainMenu = () => {
           <Link
             href={link.href}
             key={i}
-            className='p-2 text-sm hover:cursor-pointer hover:underline rounded-2xl flex flex-row gap-1 items-center text-[var(--secondary-color)] hover:text-[var(--main-color)]'
+            className='p-2 text-sm hover:cursor-pointer  rounded-2xl flex flex-row gap-1 items-center text-[var(--secondary-color)] hover:text-[var(--main-color)]'
             onClick={() => playClick()}
           >
             <link.icon className='size-4' />
