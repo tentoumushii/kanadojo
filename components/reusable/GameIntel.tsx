@@ -1,5 +1,5 @@
 'use client';
-import { SquareCheck, SquareX } from 'lucide-react';
+import { SquareCheck, SquareX, Star } from 'lucide-react';
 import clsx from 'clsx';
 import { cardBorderStyles } from '@/static/styles';
 import useStatsStore from '@/store/useStatsStore';
@@ -18,6 +18,7 @@ const GameIntel = ({
 }) => {
   const numCorrectAnswers = useStatsStore(state => state.numCorrectAnswers);
   const numWrongAnswers = useStatsStore(state => state.numWrongAnswers);
+  const numStars = useStatsStore(state => state.stars);
 
   const totalTimeStopwatch = useStopwatch({ autoStart: false });
 
@@ -64,6 +65,11 @@ const GameIntel = ({
           <SquareX />
           <span>{numWrongAnswers}</span>
         </p>
+        <p className='text-xl flex flex-row items-center gap-1.5'>
+          <Star />
+          <span>{numStars}</span>
+        </p>
+
         <button
           className={clsx(
             'py-2 px-6 text-xl flex flex-row justify-center items-center gap-2',
