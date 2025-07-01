@@ -65,7 +65,7 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
   useEffect(() => {
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === ' ') {
+      if (event.key === '/') {
         buttonRef.current?.click();
       }
     };

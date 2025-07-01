@@ -30,8 +30,6 @@ const Banner = ({
         escButtonRef.current?.click();
       } else if (event.key.toLowerCase() === 'h') {
         homeButtonRef.current?.click();
-      } else if (event.code === 'Space' || event.key === ' ') {
-        event.preventDefault();
       } else if (event.key.toLowerCase() === 'p') {
         router.push('');
       }
