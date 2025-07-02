@@ -113,7 +113,6 @@ const WordSet = ({
           'rounded-xl',
           'flex flex-row',
           'w-full',
-          'border-b-4 border-[var(--border-color)]',
           'bg-[var(--background-color)]'
         )}
       >

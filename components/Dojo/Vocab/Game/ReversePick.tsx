@@ -173,7 +173,6 @@ const ReversePick = ({
             className={clsx(
               'text-4xl py-4 px-2 rounded-xl w-full md:w-1/4 flex flex-row justify-center items-center gap-1',
               buttonBorderStyles,
-              'border-b-4 border-[var(--border-color)]',
               'active:scale-95 md:active:scale-98 active:duration-200',
               'text-[var(--border-color)]',
               wrongSelectedAnswers.includes(word) &&

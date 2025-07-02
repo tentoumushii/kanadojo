@@ -162,10 +162,9 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
       <button
         ref={buttonRef}
         className={clsx(
-          'text-xl font-medium py-4 px-16 rounded-3xl hover:scale-105',
+          'text-xl font-medium py-4 px-16 rounded-3xl',
           'flex flex-row items-end gap-2',
           buttonBorderStyles,
-          'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
           'active:scale-95 md:active:scale-98 active:duration-200'
         )}
         onClick={handleSkip}

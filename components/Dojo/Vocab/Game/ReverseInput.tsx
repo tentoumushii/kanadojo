@@ -166,9 +166,8 @@ const ReverseInput = ({
       <button
         ref={buttonRef}
         className={clsx(
-          'text-xl font-medium  py-4 px-16 hover:scale-105',
+          'text-xl font-medium  py-4 px-16 ',
           buttonBorderStyles,
-          'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
           'flex flex-row items-end gap-2',
           'active:scale-95 md:active:scale-98 active:duration-225'
         )}
