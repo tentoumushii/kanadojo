@@ -78,7 +78,8 @@ const Banner = ({
               'hover:cursor-pointer',
               'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
               'hover:bg-[var(--border-color)] rounded-tl-2xl rounded-bl-2xl',
-              'duration-250'
+              'duration-250',
+              'max-md:py-4'
             )}
             onClick={() => {
               playClick();

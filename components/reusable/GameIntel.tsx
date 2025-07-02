@@ -36,14 +36,16 @@ const GameIntel = ({
   return (
     <div
       className={clsx(
-        ' flex flex-col gap-2 items-center justify-center',
-        'md:flex-row md:gap-0',
+        ' flex flex-col  items-center justify-center',
+        'md:flex-row ',
         cardBorderStyles,
         'text-[var(--secondary-color)]'
       )}
     >
       <div
-        className={clsx('flex flex-col gap-2 items-center justify-center py-4')}
+        className={clsx(
+          'flex flex-col gap-2 items-center justify-center py-2 md:py-4'
+        )}
       >
         <p className='text-xl px-4'>training mode: {gameMode}</p>
         <hr className='border-t-1 w-full border-[var(--border-color)]' />
@@ -61,9 +63,7 @@ const GameIntel = ({
       />
 
       <div
-        className={clsx(
-          'flex flex-row gap-3 items-center justify-center p-4'
-        )}
+        className={clsx('flex flex-row gap-3 items-center justify-center p-4')}
       >
         <p className='text-xl flex flex-row items-center gap-1'>
           <SquareCheck />
