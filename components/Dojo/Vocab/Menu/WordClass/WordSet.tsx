@@ -28,23 +28,15 @@ const WordSet = ({
 
   const [focusedWord, setFocusedWord] = useState('');
 
-  const [highlightSet, setHighlightSet] = useState(false);
-
   return (
-    <fieldset
-      className='font-bold flex flex-col items-start gap-3'
-      onMouseEnter={() => setHighlightSet(true)}
-      onMouseLeave={() => setHighlightSet(false)}
-    >
+    <fieldset className='font-bold flex flex-col items-start gap-3'>
       {words.map((wordObj, i) => (
         <div key={wordObj.word} className='w-full flex flex-col gap-3'>
           <label
             className={clsx(
               'w-full flex flex-row items-center gap-2 ',
               'duration-200 transition-colors ease-in-out',
-              highlightSet
-                ? 'text-[var(--main-color)]'
-                : 'text-[var(--secondary-color)]'
+              'text-[var(--secondary-color)]'
             )}
             onClick={() => playClick()}
           >

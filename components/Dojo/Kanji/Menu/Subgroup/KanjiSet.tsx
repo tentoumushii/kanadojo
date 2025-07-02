@@ -31,23 +31,15 @@ const KanjiSet = ({
 
   const [focusedKanjiChar, setFocusedKanjiChar] = useState('');
 
-  const [highlightSet, setHighlightSet] = useState(false);
-
   return (
-    <fieldset
-      className='font-bold flex flex-col items-start gap-3'
-      onMouseEnter={() => setHighlightSet(true)}
-      onMouseLeave={() => setHighlightSet(false)}
-    >
+    <fieldset className='font-bold flex flex-col items-start gap-3'>
       {kanjiList.map((kanjiObj, i) => (
         <div key={kanjiObj.kanjiChar} className='w-full flex flex-col gap-3'>
           <label
             className={clsx(
               'w-full flex flex-row items-center gap-2 ',
               'duration-200 transition-colors ease-in-out',
-              highlightSet
-                ? 'text-[var(--main-color)]'
-                : 'text-[var(--secondary-color)]'
+              'text-[var(--secondary-color)]'
             )}
             onClick={() => playClick()}
           >
@@ -104,7 +96,7 @@ const KanjiSet = ({
               </span>
             </span>
           </label>
-          {i !== kanjiList.length - 1 && (
+          {i < kanjiList.length - 1 && (
             <hr className='w-full border-t-1 border-[var(--border-color)]' />
           )}
         </div>

@@ -63,7 +63,6 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === '/') {
         buttonRef.current?.click();
@@ -164,7 +163,8 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
           'text-xl font-medium  py-4 px-16 ',
           'flex flex-row items-end gap-2',
           buttonBorderStyles,
-          'active:scale-95 md:active:scale-98 active:duration-200'
+          'active:scale-95 md:active:scale-98 active:duration-200',
+          'text-[var(--secondary-color)]'
         )}
         onClick={handleSkip}
       >

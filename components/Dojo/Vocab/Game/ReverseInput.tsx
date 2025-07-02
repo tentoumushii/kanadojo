@@ -54,7 +54,6 @@ const ReverseInput = ({
   const [feedback, setFeedback] = useState(<>{'feedback ~'}</>);
 
   useEffect(() => {
-
     if (inputRef.current) {
       inputRef.current.focus(); // Automatically focuses on the input
     }
@@ -169,7 +168,8 @@ const ReverseInput = ({
           'text-xl font-medium  py-4 px-16 ',
           buttonBorderStyles,
           'flex flex-row items-end gap-2',
-          'active:scale-95 md:active:scale-98 active:duration-225'
+          'active:scale-95 md:active:scale-98 active:duration-225',
+          'text-[var(--secondary-color)]'
         )}
         onClick={handleSkip}
       >
@@ -177,7 +177,7 @@ const ReverseInput = ({
         <CircleArrowRight />
       </button>
 
-      <Stars/>
+      <Stars />
     </div>
   );
 };

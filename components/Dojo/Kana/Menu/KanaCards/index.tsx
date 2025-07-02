@@ -164,7 +164,6 @@ const Hiragana = () => {
             <div
               className={clsx(
                 'sm:border-l-1 sm:h-auto sm:w-0',
-                'border-[var(--border-color)]',
                 'border-t-1 w-full border-[var(--border-color)]'
               )}
             />

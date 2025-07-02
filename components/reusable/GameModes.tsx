@@ -39,7 +39,7 @@ const GameModes = ({
         'duration-250',
         'transition-all ease-in-out',
         'flex flex-col md:flex-row',
-        'w-full ',
+        'w-full '
       )}
     >
       {gameModes.map((gameMode, i) => (
@@ -65,16 +65,13 @@ const GameModes = ({
               className='hidden'
             />
             <span className='text-lg font-medium py-2 px-1 sm:px-2 text-center flex flex-row justify-center items-center gap-1.5'>
-              {gameMode === selectedGameMode ? '\u2B24 ' : ''}
+              <span className='text-[var(--main-color)]'>{gameMode === selectedGameMode ? '\u2B24 ' : ''}</span>
               {gameMode.split('-').join(' ')}
               {gameMode.toLowerCase() === 'pick' && (
                 <MousePointerClick size={20} className='mt-1' />
               )}
               {gameMode.toLowerCase() === 'reverse-pick' && (
-                <MousePointerClick
-                  size={20}
-                  className='mt-1 scale-x-[-1]'
-                />
+                <MousePointerClick size={20} className='mt-1 scale-x-[-1]' />
               )}
               {gameMode.toLowerCase() === 'input' && (
                 <Keyboard size={20} className='mt-1' />
