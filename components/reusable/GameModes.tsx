@@ -30,18 +30,16 @@ const GameModes = ({
     selectedGameMode = selectedGameModeVocab;
   }
 
-  const gameModes = ['pick', 'reverse-pick', 'input', 'reverse-input'];
+  const gameModes = ['Pick', 'Reverse-Pick', 'Input', 'Reverse-Input'];
 
   return (
     <fieldset
       className={clsx(
-        'flex flex-row ',
-        'rounded-xl bg-[var(--card-color)]',
+        'rounded-2xl bg-[var(--card-color)]',
         'duration-250',
         'transition-all ease-in-out',
-        'flex flex-row',
+        'flex flex-col md:flex-row',
         'w-full ',
-        'border-b-4 border-[var(--border-color)]'
       )}
     >
       {gameModes.map((gameMode, i) => (
@@ -49,13 +47,13 @@ const GameModes = ({
           <label
             key={gameMode}
             className={clsx(
-              'sm:w-1/4 flex flex-row justify-center items-center',
+              'flex justify-center items-center',
               'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
-              'w-full h-full py-2',
+              'w-full py-2',
               'hover:cursor-pointer',
               'hover:bg-[var(--border-color)]',
-              i === 0 && 'rounded-tl-xl rounded-bl-lg',
-              i === gameModes.length - 1 && 'rounded-tr-xl rounded-br-lg',
+              i === 0 && 'rounded-tl-2xl rounded-bl-2xl',
+              i === gameModes.length - 1 && 'rounded-tr-2xl rounded-br-2xl',
               'duration-250'
             )}
             onClick={() => playClick()}
@@ -69,29 +67,30 @@ const GameModes = ({
             <span className='text-lg font-medium py-2 px-1 sm:px-2 text-center flex flex-row justify-center items-center gap-1.5'>
               {gameMode === selectedGameMode ? '\u2B24 ' : ''}
               {gameMode.split('-').join(' ')}
+              {gameMode.toLowerCase() === 'pick' && (
+                <MousePointerClick size={20} className='mt-1' />
+              )}
+              {gameMode.toLowerCase() === 'reverse-pick' && (
+                <MousePointerClick
+                  size={20}
+                  className='mt-1 scale-x-[-1]'
+                />
+              )}
+              {gameMode.toLowerCase() === 'input' && (
+                <Keyboard size={20} className='mt-1' />
+              )}
+              {gameMode.toLowerCase() === 'reverse-input' && (
+                <Keyboard size={20} className='mt-1 scale-y-[-1]' />
+              )}
             </span>
-            {gameMode === 'pick' && (
-              <MousePointerClick size={20} className='mt-0 md:mt-1' />
-            )}
-            {gameMode === 'reverse-pick' && (
-              <MousePointerClick
-                size={20}
-                className='mt-0 md:mt-1 scale-x-[-1]'
-              />
-            )}
-            {gameMode === 'input' && (
-              <Keyboard size={20} className='mt-0 md:mt-1' />
-            )}
-            {gameMode === 'reverse-input' && (
-              <Keyboard size={20} className='mt-0 md:mt-1 scale-y-[-1]' />
-            )}
           </label>
 
           {i < gameModes.length - 1 && (
             <div
               className={clsx(
-                'border-l-1 h-auto w-0',
-                'border-[var(--border-color)]'
+                'md:border-l-1 md:h-auto md:w-0',
+                'border-[var(--border-color)]',
+                'border-t-1 w-full border-[var(--border-color)]'
               )}
             />
           )}

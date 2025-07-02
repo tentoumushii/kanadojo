@@ -6,11 +6,12 @@ import N5Kanji from '@/static/kanji/N5';
 import N4Kanji from '@/static/kanji/N4';
 import N3Kanji from '@/static/kanji/N3';
 import N2Kanji from '@/static/kanji/N2';
-import { cardBorderStyles, buttonBorderStyles } from '@/static/styles';
+import { cardBorderStyles } from '@/static/styles';
 import { chunkArray } from '@/lib/helperFunctions';
-import { ChevronUp, LibraryBig } from 'lucide-react';
+import { ChevronUp, Boxes, BookMarked } from 'lucide-react';
 import { useClick } from '@/lib/useAudio';
 import useGridColumns from '@/lib/useGridColumns';
+import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 
 const vocabData = {
   n5: N5Kanji,
@@ -20,10 +21,14 @@ const vocabData = {
 };
 
 const Subgroup = () => {
+  const selectedKanjiCollection = useKanaKanjiStore(
+    state => state.selectedKanjiCollection
+  );
+
   const { playClick } = useClick();
 
-  // const kanjiObjs = vocabData[subgroup as keyof typeof vocabData];
-  const kanjiObjs = vocabData['n5' as keyof typeof vocabData];
+  const kanjiObjs =
+    vocabData[selectedKanjiCollection as keyof typeof vocabData];
 
   const kanjiSetsTemp = new Array(80)
     .fill({})
@@ -46,9 +51,12 @@ const Subgroup = () => {
         const lastSetInRow = (rowIndex + 1) * numColumns;
 
         return (
-          <div key={`row-${rowIndex}`} className='flex flex-col gap-4'>
+          <div
+            key={`row-${rowIndex}`}
+            className={clsx('flex flex-col py-4 gap-4', cardBorderStyles)}
+          >
             {/* Clickable row header to toggle collapse */}
-            <button
+            <h3
               onClick={() => {
                 playClick();
                 setCollapsedRows(prev =>
@@ -58,11 +66,10 @@ const Subgroup = () => {
                 );
               }}
               className={clsx(
-                'group text-2xl text-left px-4 py-2',
-                buttonBorderStyles,
-                'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
-                'flex flex-row items-center gap-1 rounded-xl',
-                'max-md:hidden'
+                'group text-3xl ml-4 ',
+                'flex flex-row items-center gap-2 rounded-xl hover:cursor-pointer',
+
+                collapsedRows.includes(rowIndex) && 'mb-1.5'
               )}
             >
               <ChevronUp
@@ -70,20 +77,23 @@ const Subgroup = () => {
                   'duration-250',
                   'text-[var(--border-color)]',
                   'max-md:group-active:text-[var(--text-color)]',
-                  'md:group-hover:text-[var(--text-color)]',
+                  'md:group-hover:text-[var(--text-color)] mt-0.5',
                   collapsedRows.includes(rowIndex) && 'rotate-180'
                 )}
                 size={24}
               />
               Sets {firstSetInRow}-{lastSetInRow}
-              <LibraryBig />
-            </button>
+              <Boxes
+                className='mt-1.5 text-[var(--secondary-color)]'
+                size={28}
+              />
+            </h3>
 
             {/* Conditionally render the row content */}
             {!collapsedRows.includes(rowIndex) && (
               <div
                 className={clsx(
-                  'flex flex-col w-full gap-4',
+                  'flex flex-col w-full',
                   'md:items-start md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'
                 )}
               >
@@ -91,11 +101,13 @@ const Subgroup = () => {
                   <div
                     key={kanjiSetTemp.id + kanjiSetTemp.name}
                     className={clsx(
-                      'flex flex-col gap-2 p-4 h-full',
-                      cardBorderStyles
+                      'flex flex-col gap-2 px-4  h-full',
+                      'border-[var(--border-color)] md:border-r-1'
                     )}
                   >
-                    <p className='text-2xl'>{kanjiSetTemp.name}</p>
+                    <p className='text-2xl flex items-center gap-1.5'>
+                      {kanjiSetTemp.name} <BookMarked className='mt-0.5 text-[var(--secondary-color)]' />
+                    </p>
                     <KanjiSet
                       kanjiList={kanjiObjs.slice(
                         kanjiSetTemp.start,

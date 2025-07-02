@@ -161,7 +161,7 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
             type='button'
             disabled={wrongSelectedAnswers.includes(romajiChar)}
             className={clsx(
-              'text-5xl font-semibold py-4 w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
+              'text-5xl font-semibold pb-6 pt-3  w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
               buttonBorderStyles,
               wrongSelectedAnswers.includes(romajiChar) &&
                 'hover:bg-[var(--card-color)] hover:border-[var(--border-color)] text-[var(--border-color)]',

@@ -23,6 +23,9 @@ interface IFormState {
   addKanjiObj: (kanji: IKanjiObj) => void;
   addKanjiObjs: (kanjis: IKanjiObj[]) => void;
   clearKanjiObjs: () => void;
+
+  selectedKanjiCollection: string;
+  setSelectedKanjiCollection: (collection: string) => void;
 }
 
 const useKanaKanjiStore = create<IFormState>(set => ({
@@ -80,7 +83,11 @@ const useKanaKanjiStore = create<IFormState>(set => ({
     set(() => ({
       selectedKanjiObjs: []
     }));
-  }
+  },
+
+  selectedKanjiCollection: 'n5',
+  setSelectedKanjiCollection: collection =>
+    set({ selectedKanjiCollection: collection })
 }));
 
 export default useKanaKanjiStore;

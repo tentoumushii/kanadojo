@@ -117,7 +117,7 @@ body {
 
 /* Nord Theme */
 [data-theme='nord'] {
-  --background-color: hsl(220, 16%, 23%);
+  --background-color: hsl(220, 16%, 20%);
   --card-color: hsl(220, 16%, 30%);
   --border-color: hsl(220, 16%, 40%);
 
@@ -128,7 +128,7 @@ body {
 
 /* Midnight Theme */
 [data-theme='midnight'] {
-  --background-color: hsl(221, 15%, 18%);
+  --background-color: hsl(221, 15%, 15%);
   --card-color: hsl(221, 15%, 20%);
   --border-color: hsl(221, 15%, 30%);
 

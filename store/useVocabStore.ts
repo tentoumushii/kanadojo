@@ -14,6 +14,9 @@ interface IFormState {
   addWordObj: (kanji: IWordObj) => void;
   addWordObjs: (kanjis: IWordObj[]) => void;
   clearWordObjs: () => void;
+
+  selectedVocabCollection: string;
+  setSelectedVocabCollection: (collection: string) => void;
 }
 
 const useVocabStore = create<IFormState>(set => ({
@@ -50,7 +53,11 @@ const useVocabStore = create<IFormState>(set => ({
     set(() => ({
       selectedWordObjs: []
     }));
-  }
+  },
+
+  selectedVocabCollection: 'n5',
+  setSelectedVocabCollection: collection =>
+    set({ selectedVocabCollection: collection })
 }));
 
 export default useVocabStore;

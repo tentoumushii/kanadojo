@@ -4,7 +4,6 @@ import useVocabStore from '@/store/useVocabStore';
 import { useState } from 'react';
 import useThemeStore from '@/store/useThemeStore';
 import { useClick } from '@/lib/useAudio';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Search, MousePointer } from 'lucide-react';
 
@@ -20,9 +19,6 @@ const WordSet = ({
   }[];
   setName: string;
 }) => {
-  const params = useParams();
-  const { group, subgroup, wordClass } = params;
-
   const { playClick } = useClick();
 
   const selectedWordObjs = useVocabStore(state => state.selectedWordObjs);
@@ -111,44 +107,6 @@ const WordSet = ({
           )}
         </div>
       ))}
-      {/* <div className='flex flex-row gap-2 w-full'>
-        <button
-          type='button'
-          className={clsx(
-            'p-2 font-normal text-lg flex-none',
-            miniButtonBorderStyles,
-            'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
-            'flex flex-row justify-center items-center gap-1.5'
-          )}
-          onClick={e => {
-            playClick();
-            e.currentTarget.blur();
-            addWords(words);
-          }}
-        >
-          <span>select</span>
-          <MousePointer size={22} />
-        </button>
-        <Link
-          href={`/vocabulary/${group}/${subgroup}/${wordClass}/${setName
-            .split(' ')
-            .join('-')
-            .toLowerCase()}`}
-          className='flex-1 group'
-        >
-          <button
-            className={clsx(
-              'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal',
-              miniButtonBorderStyles,
-              'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
-            )}
-            onClick={() => playClick()}
-          >
-            <span className='text-lg group-hover:underline'>inspect</span>
-            <Search size={22} />
-          </button>
-        </Link>
-      </div> */}
 
       <div
         className={clsx(
@@ -184,10 +142,7 @@ const WordSet = ({
         />
 
         <Link
-          href={`/vocabulary/${group}/${subgroup}/${wordClass}/${setName
-            .split(' ')
-            .join('-')
-            .toLowerCase()}`}
+          href={`/vocabulary/${setName.split(' ').join('-').toLowerCase()}`}
           className='flex-1 group'
         >
           <button

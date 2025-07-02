@@ -42,105 +42,109 @@ const Banner = ({
   }, [hotkeysOn]);
 
   return (
-    <div className='flex flex-col pt-4 gap-1.5 md:gap-1 w-full'>
-      <div className='flex flex-col md:flex-row gap-3 items-start w-full'>
-        <h1 className={clsx('text-4xl font-bold', 'flex gap-2', 'flex-row')}>
-          <span className='flex flex-row gap-2 items-center'>KanaDojo</span>
+    <div
+      className={clsx(
+        'flex pt-4',
+        'flex flex-col md:flex-row gap-2 md:gap-4 w-full'
+      )}
+    >
+      <div className={clsx('text-4xl font-bold', 'flex flex-col gap-2')}>
+        <h1 className='flex flex-row gap-1 items-center'>
+          <span className=''>KanaDojo</span>
           <span className={clsx('font-normal')}>かな道場️</span>
         </h1>
+        {subheading && (
+          <h2 className='text-3xl flex flex-row gap-1.5 items-center text-[var(--secondary-color)]  font-normal'>
+            {subheading}
+          </h2>
+        )}
+      </div>
+
+      <div
+        className={clsx(
+          'rounded-2xl bg-[var(--card-color)]',
+          'duration-250',
+          'transition-all ease-in-out',
+          'flex flex-row',
+          'w-full md:w-1/3 h-full'
+          // 'border-b-4 border-[var(--border-color)]'
+        )}
+      >
+        <Link href={href} className='w-1/3'>
+          <button
+            ref={escButtonRef}
+            className={clsx(
+              'w-full h-full py-2',
+              'hover:cursor-pointer',
+              'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+              'hover:bg-[var(--border-color)] rounded-tl-2xl rounded-bl-2xl',
+              'duration-250'
+            )}
+            onClick={() => {
+              playClick();
+              if (pathname === '/preferences') router.back();
+            }}
+          >
+            <ChevronsLeft
+              size={32}
+              className='justify-self-center align-self-center'
+            />
+          </button>
+        </Link>
 
         <div
           className={clsx(
-            'rounded-xl bg-[var(--card-color)]',
-            'duration-250',
-            'transition-all ease-in-out',
-            'flex flex-row',
-            'w-full md:w-1/3',
-            'border-b-4 border-[var(--border-color)]'
+            'border-l-1 h-auto w-0',
+            'border-[var(--border-color)]'
           )}
-        >
-          <Link href={href} className='w-1/2'>
-            <button
-              ref={escButtonRef}
-              className={clsx(
-                'w-full h-full py-2',
-                'hover:cursor-pointer',
-                'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
-                'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg',
-                'duration-250'
-              )}
-              onClick={() => {
-                playClick();
-                if (pathname === '/preferences') router.back();
-              }}
-            >
-              <ChevronsLeft
-                size={32}
-                className='justify-self-center align-self-center'
-              />
-            </button>
-          </Link>
+        />
 
-          <div
+        <Link href='/' className='w-1/3'>
+          <button
+            ref={homeButtonRef}
             className={clsx(
-              'border-l-1 h-auto w-0',
-              'border-[var(--border-color)]'
+              'w-full h-full',
+              'hover:cursor-pointer',
+              'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+              'hover:bg-[var(--border-color)]',
+              'duration-250'
             )}
-          />
-
-          <Link href='/' className='w-1/2'>
-            <button
-              ref={homeButtonRef}
-              className={clsx(
-                'w-full h-full',
-                'hover:cursor-pointer',
-                'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
-                'hover:bg-[var(--border-color)]',
-                'duration-250'
-              )}
+            onClick={() => playClick()}
+          >
+            <House
+              size={32}
+              className={clsx('justify-self-center align-self-center')}
               onClick={() => playClick()}
-            >
-              <House
-                size={32}
-                className={clsx('justify-self-center align-self-center')}
-                onClick={() => playClick()}
-              />
-            </button>
-          </Link>
+            />
+          </button>
+        </Link>
 
-          <div
+        <div
+          className={clsx(
+            'border-l-1 h-auto w-0',
+            'border-[var(--border-color)]'
+          )}
+        />
+
+        <Link href='/preferences' className='w-1/3'>
+          <button
             className={clsx(
-              'border-l-1 h-auto w-0',
-              'border-[var(--border-color)]'
+              'w-full h-full',
+              'hover:cursor-pointer',
+              'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+              'hover:bg-[var(--border-color)] rounded-tr-2xl rounded-br-2xl',
+              'duration-250'
             )}
-          />
-
-          <Link href='/preferences' className='w-1/2'>
-            <button
-              // ref={homeButtonRef}
-              className={clsx(
-                'w-full h-full',
-                'hover:cursor-pointer',
-                'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
-                'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg',
-                'duration-250'
-              )}
+            onClick={() => playClick()}
+          >
+            <Settings
+              size={32}
+              className={clsx('justify-self-center align-self-center')}
               onClick={() => playClick()}
-            >
-              <Settings
-                size={32}
-                className={clsx('justify-self-center align-self-center')}
-                onClick={() => playClick()}
-              />
-            </button>
-          </Link>
-        </div>
+            />
+          </button>
+        </Link>
       </div>
-      {subheading && (
-        <h2 className='text-3xl flex flex-row gap-1.5 items-center text-[var(--secondary-color)]'>
-          {subheading}
-        </h2>
-      )}
     </div>
   );
 };

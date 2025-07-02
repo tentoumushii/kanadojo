@@ -3,11 +3,11 @@ import clsx from 'clsx';
 import WordSet from './WordSet';
 import { chunkArray } from '@/lib/helperFunctions';
 import { useState } from 'react';
-import { cardBorderStyles, buttonBorderStyles } from '@/static/styles';
-import { IWordClass } from '@/lib/interfaces';
+import { cardBorderStyles } from '@/static/styles';
 import useGridColumns from '@/lib/useGridColumns';
 import { useClick } from '@/lib/useAudio';
-import { ChevronUp, LibraryBig } from 'lucide-react';
+import { ChevronUp, Boxes } from 'lucide-react';
+import useVocabStore from '@/store/useVocabStore';
 
 import N5Nouns from '@/static/vocab/jlpt/n5/nouns';
 import N5Adjectives from '@/static/vocab/jlpt/n5/adjectives';
@@ -59,11 +59,15 @@ const vocabData = {
   joyo: {}
 };
 
-const WordClass = ({ group, subgroup, wordClass }: IWordClass) => {
+const WordClass = () => {
+  const selectedVocabCollection = useVocabStore(
+    state => state.selectedVocabCollection
+  );
+
   const { playClick } = useClick();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const words = (vocabData[group] as any)[subgroup][wordClass];
+  const words = (vocabData['jlpt'] as any)[selectedVocabCollection]['nouns'];
 
   const vocabSetsTemp = new Array(80)
     .fill({})
@@ -86,9 +90,12 @@ const WordClass = ({ group, subgroup, wordClass }: IWordClass) => {
         const lastSetInRow = (rowIndex + 1) * numColumns;
 
         return (
-          <div key={`row-${rowIndex}`} className='flex flex-col gap-4'>
+          <div
+            key={`row-${rowIndex}`}
+            className={clsx('flex flex-col py-4 gap-4', cardBorderStyles)}
+          >
             {/* Clickable row header to toggle collapse */}
-            <button
+            <h3
               onClick={() => {
                 playClick();
                 setCollapsedRows(prev =>
@@ -98,11 +105,10 @@ const WordClass = ({ group, subgroup, wordClass }: IWordClass) => {
                 );
               }}
               className={clsx(
-                'group text-2xl text-left px-4 py-2',
-                buttonBorderStyles,
-                'border-b-4 border-[var(--border-color)] hover:border-[var(--secondary-color)]',
-                'flex flex-row items-center gap-1 rounded-xl',
-                'max-md:hidden'
+                'group text-3xl ml-4 ',
+                'flex flex-row items-center gap-2 rounded-xl hover:cursor-pointer',
+
+                collapsedRows.includes(rowIndex) && 'mb-1.5'
               )}
             >
               <ChevronUp
@@ -110,20 +116,23 @@ const WordClass = ({ group, subgroup, wordClass }: IWordClass) => {
                   'duration-250',
                   'text-[var(--border-color)]',
                   'max-md:group-active:text-[var(--text-color)]',
-                  'md:group-hover:text-[var(--text-color)]',
+                  'md:group-hover:text-[var(--text-color)] mt-0.5',
                   collapsedRows.includes(rowIndex) && 'rotate-180'
                 )}
                 size={24}
               />
               Sets {firstSetInRow}-{lastSetInRow}
-              <LibraryBig />
-            </button>
+              <Boxes
+                className='mt-1.5 text-[var(--secondary-color)]'
+                size={28}
+              />
+            </h3>
 
             {/* Conditionally render the row content */}
             {!collapsedRows.includes(rowIndex) && (
               <div
                 className={clsx(
-                  'flex flex-col w-full gap-4',
+                  'flex flex-col w-full',
                   'md:items-start md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'
                 )}
               >
@@ -131,8 +140,8 @@ const WordClass = ({ group, subgroup, wordClass }: IWordClass) => {
                   <div
                     key={vocabSetTemp.id + vocabSetTemp.name}
                     className={clsx(
-                      'flex flex-col gap-2 p-4 h-full',
-                      cardBorderStyles
+                      'flex flex-col gap-2 px-4  h-full',
+                      'border-[var(--border-color)] md:border-r-1'
                     )}
                   >
                     <p className='text-2xl'>{vocabSetTemp.name}</p>

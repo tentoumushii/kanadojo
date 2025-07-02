@@ -6,6 +6,7 @@ import Info from '@/components/reusable/Info';
 import GameModes from '@/components/reusable/GameModes';
 import Subgroup from './Subgroup';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
+import CollectionSelector from '@/components/reusable/CollectionSelector';
 
 const KanjiMenu = () => {
   const [showGameModes, setShowGameModes] = useState(false);
@@ -34,6 +35,7 @@ const KanjiMenu = () => {
           setSelectedGameMode={setSelectedGameMode}
         />
       )}
+      <CollectionSelector />
       <Info currentDojo='kanjiMenu' />
       <Subgroup />
     </div>

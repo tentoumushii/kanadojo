@@ -81,11 +81,11 @@ const TopBar: React.FC<ITopBarProps> = ({
     <div
       className={clsx(
         'flex flex-row',
-        'rounded-xl bg-[var(--card-color)]',
+        'rounded-2xl bg-[var(--card-color)]',
         'duration-250',
         'transition-all ease-in-out',
         'w-full',
-        'border-b-4 border-[var(--border-color)]'
+        // 'border-b-4 border-[var(--border-color)]'
       )}
     >
       <button
@@ -94,7 +94,7 @@ const TopBar: React.FC<ITopBarProps> = ({
           'h-full',
           'hover:cursor-pointer',
           'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
-          'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg',
+          'hover:bg-[var(--border-color)] rounded-tl-2xl rounded-bl-2xl',
           'duration-250'
         )}
         onClick={e => {
@@ -116,7 +116,7 @@ const TopBar: React.FC<ITopBarProps> = ({
           size={24}
         />
         <span className='py-2'>
-          training mode:{' '}
+          Training Mode:{' '}
           {selectedGameMode ? selectedGameMode.split('-').join(' ') : 'not set'}
         </span>
       </button>
@@ -142,7 +142,7 @@ const TopBar: React.FC<ITopBarProps> = ({
               isFilled &&
               'text-[var(--secondary-color)] hover:text-[var(--main-color)] hover:bg-[var(--border-color)] hover:cursor-pointer',
             'text-[var(--border-color)]',
-            'rounded-tr-xl rounded-br-lg',
+            'rounded-tr-2xl rounded-br-2xl',
             'duration-250'
           )}
           onClick={e => {
@@ -151,7 +151,10 @@ const TopBar: React.FC<ITopBarProps> = ({
           }}
         >
           {/* <span className='group-hover:underline'>Go!</span> */}
-          <Play />
+          <Play
+            // className={clsx(selectedGameMode && isFilled && 'animate-pulse')}
+            size={32}
+          />
         </button>
       </Link>
     </div>

@@ -147,12 +147,12 @@ const MainMenu = () => {
         <div
           // className='w-full grid grid-cols-2 gap-4 flex-none'
           className={clsx(
-            'rounded-xl bg-[var(--card-color)]',
+            'rounded-2xl bg-[var(--card-color)]',
             'duration-250',
             'transition-all ease-in-out',
-            'flex flex-row',
-            'w-full',
-            'border-b-4 border-[var(--border-color)]'
+            'flex flex-col md:flex-row',
+            'w-full'
+            // 'border-b-4 border-[var(--border-color)]'
           )}
         >
           {links.map((link, i) => (
@@ -168,12 +168,11 @@ const MainMenu = () => {
                 <button
                   className={clsx(
                     'flex w-full h-full text-2xl',
-                    'flex-col items-center justify-center',
-                    'md:flex-row md:justify-center md:items-center md:gap-1.5',
-                    'max-md:aspect-square md:py-8',
+                    'flex-row justify-center items-center gap-1.5',
+                    'py-8',
                     'group',
-                    i === 0 && 'rounded-tl-xl rounded-bl-lg',
-                    i === links.length - 1 && 'rounded-tr-xl rounded-br-lg',
+                    i === 0 && 'rounded-tl-2xl rounded-bl-2xl',
+                    i === links.length - 1 && 'rounded-tr-2xl rounded-br-2xl',
                     'hover:cursor-pointer',
                     'hover:bg-[var(--border-color)]',
                     'duration-250'
@@ -183,7 +182,7 @@ const MainMenu = () => {
                   <span lang='en' className=''>
                     {link.name_en}
                   </span>
-                  <span lang='ja' className='font-normal'>
+                  <span lang='ja' className='font-normal text-[var(--secondary-color)] group-hover:text-[var(--main-color)]'>
                     {link.name_ja}
                   </span>
                 </button>
@@ -192,8 +191,9 @@ const MainMenu = () => {
               {i < links.length - 1 && (
                 <div
                   className={clsx(
-                    'border-l-1 h-auto w-0',
-                    'border-[var(--border-color)]'
+                    'md:border-l-1 md:h-auto md:w-0',
+                    'border-[var(--border-color)]',
+                    'border-t-1 w-full border-[var(--border-color)]'
                   )}
                 />
               )}
@@ -204,7 +204,7 @@ const MainMenu = () => {
       <div
         className={clsx(
           'fixed bottom-3 flex flex-row gap-2',
-          ' max-md:bg-[var(--border-color)] rounded-xl'
+          'max-md:bg-[var(--border-color)] rounded-xl'
         )}
       >
         {legalLinks.map((link, i) => (

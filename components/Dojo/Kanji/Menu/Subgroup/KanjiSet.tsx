@@ -48,7 +48,7 @@ const KanjiSet = ({
         <div key={kanjiObj.kanjiChar} className='w-full flex flex-col gap-3'>
           <label
             className={clsx(
-              'w-full flex flex-row items-center gap-2',
+              'w-full flex flex-row items-center gap-2 ',
               'duration-200 transition-colors ease-in-out',
               highlightSet
                 ? 'text-[var(--main-color)]'
@@ -120,7 +120,7 @@ const KanjiSet = ({
           'rounded-xl',
           'flex flex-row',
           'w-full',
-          'border-b-4 border-[var(--border-color)]',
+          // 'border-b-4 border-[var(--border-color)]',
           'bg-[var(--background-color)]'
         )}
       >
@@ -128,7 +128,7 @@ const KanjiSet = ({
           className={clsx(
             'p-2 font-normal text-lg flex-none hover:cursor-pointer',
             'flex flex-row justify-center items-center gap-1.5',
-            'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-lg',
+            'hover:bg-[var(--border-color)] rounded-tl-xl rounded-bl-xl',
             'duration-250'
           )}
           onClick={e => {
@@ -158,12 +158,12 @@ const KanjiSet = ({
           <button
             className={clsx(
               'flex flex-row justify-center items-center gap-1.5 p-2 w-full font-normal hover:cursor-pointer',
-              'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-lg',
+              'hover:bg-[var(--border-color)] rounded-tr-xl rounded-br-xl',
               'duration-250'
             )}
             onClick={() => playClick()}
           >
-            <span className='text-lg group-hover:underline'>inspect</span>
+            <span className='text-lg '>inspect</span>
             <Search size={22} />
           </button>
         </Link>

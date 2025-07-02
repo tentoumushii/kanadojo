@@ -6,10 +6,9 @@ import Info from '@/components/reusable/Info';
 import GameModes from '@/components/reusable/GameModes';
 import WordClass from './WordClass';
 import useVocabStore from '@/store/useVocabStore';
-import { IWordClass } from '@/lib/interfaces';
+import CollectionSelector from '@/components/reusable/CollectionSelector';
 
-const WordsMenu = ({ group, subgroup, wordClass }: IWordClass) => {
-
+const WordsMenu = () => {
   const [showGameModes, setShowGameModes] = useState(false);
 
   const setSelectedGameMode = useVocabStore(
@@ -24,22 +23,21 @@ const WordsMenu = ({ group, subgroup, wordClass }: IWordClass) => {
 
   return (
     <div className='flex flex-col gap-4 min-h-[100dvh] max-w-[100dvw] px-4 sm:px-8 md:px-20 lg:px-30 xl:px-40 2xl:px-60 pb-20'>
-      <Banner
-        subheading={`Vocabulary 語彙, ${group.toUpperCase()} ${subgroup.toUpperCase()}, ${wordClass.toUpperCase()}`}
-      />
+      <Banner subheading={`Vocabulary 語彙`} />
       <TopBar
         showGameModes={showGameModes}
         setShowGameModes={setShowGameModes}
         currentDojo='vocabulary'
       />
-      { showGameModes && (
+      {showGameModes && (
         <GameModes
           currentDojo='vocab'
           setSelectedGameMode={setSelectedGameMode}
         />
       )}
+      <CollectionSelector />
       <Info currentDojo='vocabularyMenu' />
-      <WordClass group={group} subgroup={subgroup} wordClass={wordClass} />
+      <WordClass />
     </div>
   );
 };

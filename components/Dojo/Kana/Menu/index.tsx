@@ -17,7 +17,7 @@ const KanaMenu = () => {
 
   return (
     <div className='min-h-[100dvh] max-w-[100dvw] px-4 sm:px-8 md:px-20 lg:px-30 xl:px-60 2xl:px-80 pb-20'>
-      <div className={clsx('flex flex-col gap-4')}>
+      <div className={clsx('flex flex-col gap-4 ')}>
         <Banner subheading='Kana かな' />
         <TopBar
           showGameModes={showGameModes}

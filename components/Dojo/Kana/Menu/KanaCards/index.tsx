@@ -59,101 +59,117 @@ const Hiragana = () => {
   ]);
 
   return (
-    <div className='flex flex-col gap-4 xs:flex-row xs:items-start w-full'>
-      {kanaGroups.map(kanaGroup => (
-        <form
-          className={clsx(
-            'flex flex-col w-full gap-2 xs:w-1/2 p-4 rounded-2xl',
-            cardBorderStyles
-          )}
-          key={kanaGroup.name}
-        >
-          <legend
+    <div
+      className={clsx(
+        'flex flex-col gap-2 sm:flex-row w-full ',
+        cardBorderStyles
+      )}
+    >
+      {kanaGroups.map((kanaGroup, i) => (
+        <>
+          <form
             className={clsx(
-              'group text-2xl hover:cursor-pointer',
-              'flex flex-row items-center gap-1'
+              'flex flex-col w-full gap-2 sm:w-1/2 p-4 rounded-2xl',
             )}
-            onClick={() => {
-              playClick();
-              if (hiddenSubsets.includes(kanaGroup.name.toLowerCase())) {
-                const filteredHiddenSubsets = hiddenSubsets.filter(
-                  subset => subset !== kanaGroup.name.toLowerCase()
-                );
-                setHiddenSubsets(filteredHiddenSubsets);
-                return;
-              }
-              setHiddenSubsets([
-                ...hiddenSubsets,
-                kanaGroup.name.toLowerCase()
-              ]);
-            }}
+            key={kanaGroup.name}
           >
-            <ChevronUp
+            <legend
               className={clsx(
-                'duration-300',
-                'text-[var(--border-color)]',
-                'max-md:group-active:text-[var(--text-color)]',
-                'md:group-hover:text-[var(--text-color)]',
-                hiddenSubsets.includes(kanaGroup.name.toLowerCase()) &&
-                  'rotate-180'
+                'group text-2xl hover:cursor-pointer',
+                'flex flex-row items-center gap-1'
               )}
-            />
-            <span>{kanaGroup.name}</span>
-          </legend>
-          {!hiddenSubsets.includes(kanaGroup.name.toLowerCase()) &&
-            kanaGroup.subsets.map((subset, i) => (
-              <div key={i} className='flex flex-col w-full gap-2'>
-                <div>
-                  <h4
-                    className={clsx(
-                      'group text-xl hover:cursor-pointer',
-                      'flex flex-row items-center gap-1'
-                    )}
-                    onClick={() => {
-                      playClick();
-
-                      if (hiddenSubsets.includes(subset.name.toLowerCase())) {
-                        const filteredHiddenSubsets = hiddenSubsets.filter(
-                          currentSubset =>
-                            currentSubset !== subset.name.toLowerCase()
-                        );
-                        setHiddenSubsets(filteredHiddenSubsets);
-                        return;
-                      }
-                      setHiddenSubsets([
-                        ...hiddenSubsets,
-                        subset.name.toLowerCase()
-                      ]);
-                    }}
-                  >
-                    <ChevronUp
+              onClick={() => {
+                playClick();
+                if (hiddenSubsets.includes(kanaGroup.name.toLowerCase())) {
+                  const filteredHiddenSubsets = hiddenSubsets.filter(
+                    subset => subset !== kanaGroup.name.toLowerCase()
+                  );
+                  setHiddenSubsets(filteredHiddenSubsets);
+                  return;
+                }
+                setHiddenSubsets([
+                  ...hiddenSubsets,
+                  kanaGroup.name.toLowerCase()
+                ]);
+              }}
+            >
+              <ChevronUp
+                className={clsx(
+                  'duration-300',
+                  'text-[var(--border-color)]',
+                  'max-md:group-active:text-[var(--text-color)]',
+                  'md:group-hover:text-[var(--text-color)]',
+                  hiddenSubsets.includes(kanaGroup.name.toLowerCase()) &&
+                    'rotate-180'
+                )}
+              />
+              <span>{kanaGroup.name}</span>
+            </legend>
+            {!hiddenSubsets.includes(kanaGroup.name.toLowerCase()) &&
+              kanaGroup.subsets.map((subset, i) => (
+                <div key={i} className='flex flex-col w-full gap-2'>
+                  <div>
+                    <h4
                       className={clsx(
-                        'duration-300',
-                        'text-[var(--border-color)]',
-                        'max-md:group-active:text-[var(--text-color)]',
-                        'md:group-hover:text-[var(--text-color)]',
-                        hiddenSubsets.includes(subset.name.toLowerCase()) &&
-                          'rotate-180'
+                        'group text-xl hover:cursor-pointer',
+                        'flex flex-row items-center gap-1'
                       )}
-                      size={24}
-                    />
-                    <span>{subset.name.slice(1)}</span>
-                  </h4>
-                  {!hiddenSubsets.includes(subset.name.toLowerCase()) && (
-                    <Subset
-                      sliceRange={subset.sliceRange}
-                      group={kanaGroup.name}
-                      subgroup={subset.name}
-                    />
+                      onClick={() => {
+                        playClick();
+
+                        if (hiddenSubsets.includes(subset.name.toLowerCase())) {
+                          const filteredHiddenSubsets = hiddenSubsets.filter(
+                            currentSubset =>
+                              currentSubset !== subset.name.toLowerCase()
+                          );
+                          setHiddenSubsets(filteredHiddenSubsets);
+                          return;
+                        }
+                        setHiddenSubsets([
+                          ...hiddenSubsets,
+                          subset.name.toLowerCase()
+                        ]);
+                      }}
+                    >
+                      <ChevronUp
+                        className={clsx(
+                          'duration-300',
+                          'text-[var(--border-color)]',
+                          'max-md:group-active:text-[var(--text-color)]',
+                          'md:group-hover:text-[var(--text-color)]',
+                          hiddenSubsets.includes(subset.name.toLowerCase()) &&
+                            'rotate-180'
+                        )}
+                        size={24}
+                      />
+                      <span>{subset.name.slice(1)}</span>
+                    </h4>
+                    {!hiddenSubsets.includes(subset.name.toLowerCase()) && (
+                      <Subset
+                        sliceRange={subset.sliceRange}
+                        group={kanaGroup.name}
+                        subgroup={subset.name}
+                      />
+                    )}
+                  </div>
+
+                  {i < kanaGroup.subsets.length - 1 && (
+                    <hr className='border-t-1 border-[var(--border-color)]' />
                   )}
                 </div>
+              ))}
+          </form>
 
-                {i < kanaGroup.subsets.length - 1 && (
-                  <hr className='border-t-2 border-[var(--border-color)]' />
-                )}
-              </div>
-            ))}
-        </form>
+          {i < kanaGroups.length - 1 && (
+            <div
+              className={clsx(
+                'sm:border-l-1 sm:h-auto sm:w-0',
+                'border-[var(--border-color)]',
+                'border-t-1 w-full border-[var(--border-color)]'
+              )}
+            />
+          )}
+        </>
       ))}
     </div>
   );

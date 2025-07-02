@@ -36,17 +36,22 @@ const GameIntel = ({
   return (
     <div
       className={clsx(
-        'p-4 flex flex-col gap-2 items-center justify-center',
-        'md:flex-row md:gap-4',
+        ' flex flex-col gap-2 items-center justify-center',
+        'md:flex-row md:gap-0',
         cardBorderStyles,
         'text-[var(--secondary-color)]'
       )}
     >
-      <div className={clsx('flex flex-col gap-2 items-center justify-center')}>
-        <p className='text-xl'>training mode: {gameMode}</p>
+      <div
+        className={clsx('flex flex-col gap-2 items-center justify-center py-4')}
+      >
+        <p className='text-xl px-4'>training mode: {gameMode}</p>
         <hr className='border-t-1 w-full border-[var(--border-color)]' />
-        <p className='text-xl flex flex-row items-center gap-1.5'>{feedback}</p>
+        <p className='text-xl flex flex-row items-center gap-1.5 px-4'>
+          {feedback}
+        </p>
       </div>
+
       <div
         className={clsx(
           'border-t-1 w-full',
@@ -54,18 +59,21 @@ const GameIntel = ({
           'border-[var(--border-color)]'
         )}
       />
+
       <div
-        className={clsx('flex flex-row gap-2.5 items-center justify-center')}
+        className={clsx(
+          'flex flex-row gap-3 items-center justify-center p-4'
+        )}
       >
-        <p className='text-xl flex flex-row items-center gap-1.5'>
+        <p className='text-xl flex flex-row items-center gap-1'>
           <SquareCheck />
           <span>{numCorrectAnswers}</span>
         </p>
-        <p className='text-xl flex flex-row items-center gap-1.5'>
+        <p className='text-xl flex flex-row items-center gap-1'>
           <SquareX />
           <span>{numWrongAnswers}</span>
         </p>
-        <p className='text-xl flex flex-row items-center gap-1.5'>
+        <p className='text-xl flex flex-row items-center gap-1'>
           <Star />
           <span>{numStars}</span>
         </p>
