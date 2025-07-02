@@ -6,7 +6,6 @@ import useThemeStore from '@/store/useThemeStore';
 import { useClick } from '@/lib/useAudio';
 import { Search, MousePointer } from 'lucide-react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 
 const KanjiSet = ({
   kanjiList,
@@ -23,10 +22,6 @@ const KanjiSet = ({
   }[];
   setName: string;
 }) => {
-  const params = useParams();
-
-  const { group, subgroup } = params;
-
   const { playClick } = useClick();
 
   const selectedKanjiObjs = useKanaKanjiStore(state => state.selectedKanjiObjs);
@@ -149,10 +144,7 @@ const KanjiSet = ({
         />
 
         <Link
-          href={`/kanji/${group}/${subgroup}/${setName
-            .split(' ')
-            .join('-')
-            .toLowerCase()}`}
+          href={`/kanji/${setName.split(' ').join('-').toLowerCase()}`}
           className='flex-1 group'
         >
           <button

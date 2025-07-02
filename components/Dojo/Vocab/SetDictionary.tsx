@@ -1,27 +1,18 @@
 'use client';
 import clsx from 'clsx';
 import Banner from '@/components/reusable/Banner';
-import { ISet, IWord } from '@/lib/interfaces';
+import { IWord, ISet } from '@/lib/interfaces';
 import { cardBorderStyles } from '@/static/styles';
+import useVocabStore from '@/store/useVocabStore';
+import { useParams } from 'next/navigation';
+
 import N5Nouns from '@/static/vocab/jlpt/n5/nouns';
-import N5Verbs from '@/static/vocab/jlpt/n5/verbs';
-import N5Adjectives from '@/static/vocab/jlpt/n5/adjectives';
-import N5Adverbs from '@/static/vocab/jlpt/n5/adverbs';
 
 import N4Nouns from '@/static/vocab/jlpt/n4/nouns';
-import N4Adjectives from '@/static/vocab/jlpt/n4/adjectives';
-import N4Verbs from '@/static/vocab/jlpt/n4/verbs';
-import N4Adverbs from '@/static/vocab/jlpt/n4/adverbs';
 
 import N3Nouns from '@/static/vocab/jlpt/n3/nouns';
-import N3Adjectives from '@/static/vocab/jlpt/n3/adjectives';
-import N3Verbs from '@/static/vocab/jlpt/n3/verbs';
-import N3Adverbs from '@/static/vocab/jlpt/n3/adverbs';
 
 import N2Nouns from '@/static/vocab/jlpt/n2/nouns';
-import N2Adjectives from '@/static/vocab/jlpt/n2/adjectives';
-import N2Verbs from '@/static/vocab/jlpt/n2/verbs';
-import N2Adverbs from '@/static/vocab/jlpt/n2/adverbs';
 
 const createVocabSetRanges = (numSets: number) =>
   Array.from({ length: numSets }, (_, i) => i + 1).reduce(
@@ -37,28 +28,16 @@ const vocabSetSliceRanges = createVocabSetRanges(200);
 const vocabData = {
   jlpt: {
     n5: {
-      nouns: N5Nouns,
-      verbs: N5Verbs,
-      adjectives: N5Adjectives,
-      adverbs: N5Adverbs
+      nouns: N5Nouns
     },
     n4: {
-      nouns: N4Nouns,
-      verbs: N4Verbs,
-      adjectives: N4Adjectives,
-      adverbs: N4Adverbs
+      nouns: N4Nouns
     },
     n3: {
-      nouns: N3Nouns,
-      adjectives: N3Adjectives,
-      verbs: N3Verbs,
-      adverbs: N3Adverbs
+      nouns: N3Nouns
     },
     n2: {
-      nouns: N2Nouns,
-      adjectives: N2Adjectives,
-      verbs: N2Verbs,
-      adverbs: N2Adverbs
+      nouns: N2Nouns
     }
   },
   joyo: {}
@@ -67,20 +46,35 @@ const vocabData = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type VocabData = Record<string, Record<string, any>>;
 
-const SetDictionary = ({ group, subgroup, wordClass, set }: ISet) => {
+const SetDictionary = () => {
+  const selectedVocabCollection = useVocabStore(
+    state => state.selectedVocabCollection
+  );
+
+  const jlptToCollectionMap = {
+    n5: 'Collection 1',
+    n4: 'Collection 2',
+    n3: 'Collection 3',
+    n2: 'Collection 4'
+  };
+
+  const params = useParams();
+  const { set } = params as unknown as ISet;
+
   const sliceRange =
     vocabSetSliceRanges[set as keyof typeof vocabSetSliceRanges];
 
   return (
     <div className='min-h-[100dvh] max-w-[100dvw] px-4 sm:px-8 md:px-20 lg:px-30 xl:px-40 2xl:px-60 flex flex-col gap-4 pb-10'>
       <Banner
-        subheading={`${group.toUpperCase()} ${subgroup.toUpperCase()}, ${wordClass.toUpperCase()}, ${set
-          .split('-')
-          .join('  ')
-          .toUpperCase()}`}
+        subheading={`Vocabulary 語彙, ${
+          jlptToCollectionMap[
+            selectedVocabCollection as keyof typeof jlptToCollectionMap
+          ]
+        }, ${set.split('-').join(' ').toUpperCase()}`}
       />
       <div className={clsx('flex flex-col', cardBorderStyles)}>
-        {(vocabData as VocabData)[group][subgroup][wordClass]
+        {(vocabData as VocabData)['jlpt'][selectedVocabCollection]['nouns']
           .slice(sliceRange[0], sliceRange[1])
           .map((wordObj: IWord, i: number) => (
             <div
@@ -97,7 +91,8 @@ const SetDictionary = ({ group, subgroup, wordClass, set }: ISet) => {
                 <span
                   className={clsx(
                     'rounded-lg px-2 py-0.5 flex flex-row items-center',
-                    'bg-[var(--border-color)] text-lg'
+                    'bg-[var(--border-color)] text-lg',
+                    'text-[var(--secondary-color)] '
                   )}
                 >
                   {wordObj.reading}

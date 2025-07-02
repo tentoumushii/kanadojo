@@ -8,6 +8,7 @@ import N2KanjiArray from '@/static/kanji/N2';
 import Banner from '@/components/reusable/Banner';
 import { useParams } from 'next/navigation';
 import { ISet } from '@/lib/interfaces';
+import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 
 const createKanjiSetRanges = (numSets: number) =>
   Array.from({ length: numSets }, (_, i) => i + 1).reduce(
@@ -28,8 +29,19 @@ const displayKanjiArray = {
 };
 
 const KanjiSetDictionary = () => {
+  const selectedKanjiCollection = useKanaKanjiStore(
+    state => state.selectedKanjiCollection
+  );
+
+  const jlptToCollectionMap = {
+    n5: 'Collection 1',
+    n4: 'Collection 2',
+    n3: 'Collection 3',
+    n2: 'Collection 4'
+  };
+
   const params = useParams();
-  const { set, subgroup } = params as unknown as ISet;
+  const { set } = params as unknown as ISet;
 
   const sliceRange =
     kanjiSetSliceRanges[set as keyof typeof kanjiSetSliceRanges];
@@ -37,13 +49,16 @@ const KanjiSetDictionary = () => {
   return (
     <div className='min-h-[100dvh] max-w-[100dvw] px-4 sm:px-8 md:px-20 lg:px-30 xl:px-40 2xl:px-60 flex flex-col gap-4 pb-10'>
       <Banner
-        subheading={`JLPT ${subgroup.toUpperCase()}, ${set
-          .split('-')
-          .join('  ')
-          .toUpperCase()}`}
+        subheading={`Kanji 漢字, ${
+          jlptToCollectionMap[
+            selectedKanjiCollection as keyof typeof jlptToCollectionMap
+          ]
+        }, ${set.split('-').join('  ').toUpperCase()}`}
       />
       <div className={clsx('flex flex-col', cardBorderStyles)}>
-        {displayKanjiArray[subgroup as keyof typeof displayKanjiArray]
+        {displayKanjiArray[
+          selectedKanjiCollection as keyof typeof displayKanjiArray
+        ]
           .slice(sliceRange[0], sliceRange[1])
           .map((kanjiObj, i) => (
             <div
@@ -81,7 +96,8 @@ const KanjiSetDictionary = () => {
                         key={onyomiReading}
                         className={clsx(
                           'rounded-lg px-1.5 py-1 flex flex-row items-center text-sm md:text-base',
-                          'bg-[var(--border-color)]'
+                          'bg-[var(--border-color)]',
+                          'text-[var(--secondary-color)]'
                         )}
                       >
                         {onyomiReading}
@@ -115,7 +131,8 @@ const KanjiSetDictionary = () => {
                         key={kunyomiReading}
                         className={clsx(
                           'rounded-lg px-1.5 py-1 flex flex-row items-center text-sm md:text-base',
-                          'bg-[var(--border-color)]'
+                          'bg-[var(--border-color)]',
+                          'text-[var(--secondary-color)]'
                         )}
                       >
                         {kunyomiReading}
