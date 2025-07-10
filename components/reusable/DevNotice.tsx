@@ -11,7 +11,6 @@
 const DevNotice = () => {
   return (
     <p className='text-lg text-[var(--secondary-color)]'>
-      Happy Independence Day! 🇺🇸 🇺🇸 🇺🇸 🎆✨
       {/* <Select>
         <SelectTrigger className='w-[180px]'>
           <SelectValue placeholder='Select a fruit' />

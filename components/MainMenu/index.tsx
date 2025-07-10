@@ -27,17 +27,17 @@ const MainMenu = () => {
   const links = [
     {
       name_en: 'Kana',
-      name_ja: 'かな',
+      name_ja: 'あ',
       href: '/kana'
     },
     {
       name_en: 'Kanji',
-      name_ja: '漢字',
+      name_ja: '見',
       href: '/kanji'
     },
     {
       name_en: 'Vocabulary',
-      name_ja: '語彙',
+      name_ja: '彙',
       href: '/vocabulary'
     }
     // {
@@ -143,7 +143,7 @@ const MainMenu = () => {
             />
           </div>
         </div>
-        <Info currentDojo='mainMenu' />
+        <Info />
         <div
           // className='w-full grid grid-cols-2 gap-4 flex-none'
           className={clsx(
@@ -168,7 +168,7 @@ const MainMenu = () => {
                 <button
                   className={clsx(
                     'flex w-full h-full text-2xl',
-                    'flex-row justify-center items-center gap-1.5',
+                    ' justify-center items-center gap-1.5',
                     'py-8',
                     'group',
                     i === 0 && 'rounded-tl-2xl rounded-bl-2xl',
@@ -179,11 +179,14 @@ const MainMenu = () => {
                   )}
                   onClick={() => playClick()}
                 >
+                  <span
+                    lang='ja'
+                    className='font-normal text-[var(--secondary-color)]'
+                  >
+                    {link.name_ja}
+                  </span>
                   <span lang='en' className=''>
                     {link.name_en}
-                  </span>
-                  <span lang='ja' className='font-normal text-[var(--secondary-color)] group-hover:text-[var(--main-color)]'>
-                    {link.name_ja}
                   </span>
                 </button>
               </Link>

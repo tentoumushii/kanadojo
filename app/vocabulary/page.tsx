@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import WordsMenu from '@/components/Dojo/Vocab/Menu';
+import DojoMenu from '@/components/reusable/DojoMenu';
 
 export const metadata: Metadata = {
   title: 'KanaDojo: Vocabulary',
@@ -16,5 +16,5 @@ export const metadata: Metadata = {
 };
 
 export default function VocabPage() {
-  return <WordsMenu />;
+  return <DojoMenu />;
 }

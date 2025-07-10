@@ -6,20 +6,17 @@ import { cardBorderStyles } from '@/static/styles';
 import { ChevronUp } from 'lucide-react';
 import info from '@/static/info';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
-const Info = ({ currentDojo }: { currentDojo: string }) => {
-  const { header, content } = info[currentDojo as keyof typeof info];
+const Info = () => {
+  const pathname = usePathname();
+
+  const { header, content } = info[pathname as keyof typeof info];
 
   const { playClick } = useClick();
 
   const [showInfo, setShowInfo] = useState(
-    [
-      'kanaMenu',
-      'kanjiMenu',
-      'vocabularyMenu',
-      'mainMenu',
-      'sentencesMenu'
-    ].includes(currentDojo)
+    ['/kana', '/kanji', '/vocabulary', '/', '/sentences'].includes(pathname)
       ? true
       : false
   );
@@ -40,7 +37,6 @@ const Info = ({ currentDojo }: { currentDojo: string }) => {
           playClick();
           setShowInfo(showInfo => !showInfo);
         }}
-
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, ease: 'linear' }}

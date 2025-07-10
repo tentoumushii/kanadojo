@@ -40,23 +40,15 @@ const Subset = ({
   const displayKana = useThemeStore(state => state.displayKana);
   const [focusedRow, setFocusedRow] = useState('');
 
-  const [highlightSet, setHighlightSet] = useState(false);
-
   return (
-    <fieldset
-      className='font-bold flex flex-col items-start gap-1'
-      onMouseEnter={() => setHighlightSet(true)}
-      onMouseLeave={() => setHighlightSet(false)}
-    >
+    <fieldset className='font-bold flex flex-col items-start gap-1'>
       {kanaGroups.map((group, i) => (
         <div key={group.groupName} className='w-full flex flex-col gap-1'>
           <label
             className={clsx(
               'w-full flex flex-row items-center gap-2',
               'duration-200 transition-colors ease-in-out',
-              highlightSet
-                ? 'text-[var(--main-color)]'
-                : 'text-[var(--secondary-color)]'
+              'text-[var(--secondary-color)]'
             )}
             onClick={() => playClick()}
           >
@@ -79,7 +71,9 @@ const Subset = ({
             >
               <span
                 className={clsx(
-                  'row-start-1 col-start-1  transition-opacity duration-200  z-10 flex items-center justify-center h-full text-3xl pb-1',
+                  'row-start-1 col-start-1  transition-all duration-200  z-10 flex items-center justify-center h-full text-3xl pb-1',
+                  kanaGroupIndices.includes(i + sliceRange[0]) &&
+                    'text-[var(--main-color)]',
                   displayKana
                     ? 'md:group-hover:opacity-0 md:opacity-100'
                     : 'md:group-hover:opacity-100 md:opacity-0',

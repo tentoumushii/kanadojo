@@ -69,7 +69,7 @@ const Hiragana = () => {
         <>
           <form
             className={clsx(
-              'flex flex-col w-full gap-2 sm:w-1/2 p-4 rounded-2xl',
+              'flex flex-col w-full gap-2 sm:w-1/2 p-4 rounded-2xl'
             )}
             key={kanaGroup.name}
           >
@@ -103,7 +103,10 @@ const Hiragana = () => {
                     'rotate-180'
                 )}
               />
-              <span>{kanaGroup.name}</span>
+              <h3 className='flex items-center gap-2'>
+                <span>{kanaGroup.name.split(' ')[0]}</span>
+                <span className='text-[var(--secondary-color)]'>{kanaGroup.name.split(' ')[1]}</span>
+              </h3>
             </legend>
             {!hiddenSubsets.includes(kanaGroup.name.toLowerCase()) &&
               kanaGroup.subsets.map((subset, i) => (
@@ -153,9 +156,10 @@ const Hiragana = () => {
                     )}
                   </div>
 
-                  {i < kanaGroup.subsets.length - 1 && (
-                    <hr className='border-t-1 border-[var(--border-color)]' />
-                  )}
+                  {i < kanaGroup.subsets.length - 1 &&
+                    !hiddenSubsets.includes(kanaGroup.name.toLowerCase()) && (
+                      <hr className='border-t-1 border-[var(--border-color)]' />
+                    )}
                 </div>
               ))}
           </form>

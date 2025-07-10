@@ -6,9 +6,9 @@ import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useVocabStore from '@/store/useVocabStore';
 import useThemeStore from '@/store/useThemeStore';
 import { useClick } from '@/lib/useAudio';
-// import { buttonBorderStyles } from '@/static/styles';
-import { ChevronUp, Play } from 'lucide-react';
+import { ChevronUp, Play, LandPlot } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useShallow } from 'zustand/react/shallow';
 
 interface ITopBarProps {
   showGameModes: boolean;
@@ -18,8 +18,7 @@ interface ITopBarProps {
 
 const TopBar: React.FC<ITopBarProps> = ({
   showGameModes,
-  setShowGameModes,
-  currentDojo
+  setShowGameModes
 }) => {
   const hotkeysOn = useThemeStore(state => state.hotkeysOn);
 
@@ -27,32 +26,36 @@ const TopBar: React.FC<ITopBarProps> = ({
 
   const { playClick } = useClick();
 
-  let selectedGameMode = useKanaKanjiStore(state =>
-    currentDojo === 'kana'
-      ? state.selectedGameModeKana
-      : currentDojo === 'kanji'
-      ? state.selectedGameModeKanji
-      : ''
+  const { selectedGameModeKana, selectedGameModeKanji } = useKanaKanjiStore(
+    useShallow(state => ({
+      selectedGameModeKana: state.selectedGameModeKana,
+      selectedGameModeKanji: state.selectedGameModeKanji
+    }))
   );
 
   const selectedGameModeVocab = useVocabStore(
-    state => state.selectedGameModeVocab
+    useShallow(state => state.selectedGameModeVocab)
   );
 
-  if (currentDojo === 'vocabulary') {
-    selectedGameMode = selectedGameModeVocab;
-  }
+  const selectedGameMode =
+    pathname === '/kana'
+      ? selectedGameModeKana
+      : pathname === '/kanji'
+      ? selectedGameModeKanji
+      : pathname === '/vocabulary'
+      ? selectedGameModeVocab
+      : '';
 
   const kanaGroupIndices = useKanaKanjiStore(state => state.kanaGroupIndices);
   const selectedKanjiObjs = useKanaKanjiStore(state => state.selectedKanjiObjs);
   const selectedWordObjs = useVocabStore(state => state.selectedWordObjs);
 
   const isFilled =
-    currentDojo === 'kana'
+    pathname === '/kana'
       ? kanaGroupIndices.length !== 0
-      : currentDojo === 'kanji'
+      : pathname === '/kanji'
       ? selectedKanjiObjs.length >= 3
-      : currentDojo === 'vocabulary'
+      : pathname === '/vocabulary'
       ? selectedWordObjs.length >= 3
       : false;
 
@@ -67,7 +70,6 @@ const TopBar: React.FC<ITopBarProps> = ({
       if (event.key === 'Enter') {
         buttonRef.current?.click();
       } else if (event.code === 'Space' || event.key === ' ') {
-        event.preventDefault();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -84,16 +86,18 @@ const TopBar: React.FC<ITopBarProps> = ({
         'rounded-2xl bg-[var(--card-color)]',
         'duration-250',
         'transition-all ease-in-out',
-        'w-full',
+        'w-full'
         // 'border-b-4 border-[var(--border-color)]'
       )}
     >
       <button
         className={clsx(
-          'text-2xl w-1/2 p-2 flex flex-row justify-center items-center gap-1',
+          'text-2xl w-1/2 p-2 flex flex-row justify-center items-center gap-2',
           'h-full',
           'hover:cursor-pointer',
-          'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+          selectedGameMode
+            ? 'text-[var(--main-color)]'
+            : 'text-[var(--secondary-color)]',
           'hover:bg-[var(--border-color)] rounded-tl-2xl rounded-bl-2xl',
           'duration-250'
         )}
@@ -115,10 +119,8 @@ const TopBar: React.FC<ITopBarProps> = ({
           )}
           size={24}
         />
-        <span className='py-2'>
-          Training Mode:{' '}
-          {selectedGameMode ? selectedGameMode.split('-').join(' ') : 'not set'}
-        </span>
+        <LandPlot />
+        {selectedGameMode ? selectedGameMode.split('-').join(' ') : 'not set'}
       </button>
 
       <div
@@ -140,7 +142,7 @@ const TopBar: React.FC<ITopBarProps> = ({
             'text-[var(--border-color)]',
             selectedGameMode &&
               isFilled &&
-              'text-[var(--secondary-color)] hover:text-[var(--main-color)] hover:bg-[var(--border-color)] hover:cursor-pointer',
+              'text-[var(--main-color)] hover:bg-[var(--border-color)] hover:cursor-pointer',
             'text-[var(--border-color)]',
             'rounded-tr-2xl rounded-br-2xl',
             'duration-250'

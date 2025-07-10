@@ -4,31 +4,54 @@ import useVocabStore from '@/store/useVocabStore';
 import { MousePointerClick, Keyboard } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/lib/useAudio';
+import { usePathname } from 'next/navigation';
+import { useShallow } from 'zustand/react/shallow';
 
-const GameModes = ({
-  currentDojo,
-  setSelectedGameMode
-}: {
-  currentDojo: string;
-  setSelectedGameMode: (mode: string) => void;
-}) => {
+const GameModes = () => {
+  const pathname = usePathname();
+
   const { playClick } = useClick();
 
-  let selectedGameMode = useKanaKanjiStore(state =>
-    currentDojo === 'kana'
-      ? state.selectedGameModeKana
-      : currentDojo === 'kanji'
-      ? state.selectedGameModeKanji
-      : ''
+  const { selectedGameModeKana, selectedGameModeKanji } = useKanaKanjiStore(
+    useShallow(state => ({
+      selectedGameModeKana: state.selectedGameModeKana,
+      selectedGameModeKanji: state.selectedGameModeKanji
+    }))
   );
 
   const selectedGameModeVocab = useVocabStore(
-    state => state.selectedGameModeVocab
+    useShallow(state => state.selectedGameModeVocab)
   );
 
-  if (currentDojo === 'vocabulary') {
-    selectedGameMode = selectedGameModeVocab;
-  }
+  const selectedGameMode =
+    pathname === '/kana'
+      ? selectedGameModeKana
+      : pathname === '/kanji'
+      ? selectedGameModeKanji
+      : pathname === '/vocabulary'
+      ? selectedGameModeVocab
+      : '';
+
+  const { setSelectedGameModeKana, setSelectedGameModeKanji } =
+    useKanaKanjiStore(
+      useShallow(state => ({
+        setSelectedGameModeKana: state.setSelectedGameModeKana,
+        setSelectedGameModeKanji: state.setSelectedGameModeKanji
+      }))
+    );
+
+  const setSelectedGameModeVocab = useVocabStore(
+    useShallow(state => state.setSelectedGameModeVocab)
+  );
+
+  const setSelectedGameMode =
+    pathname === '/kana'
+      ? setSelectedGameModeKana
+      : pathname === '/kanji'
+      ? setSelectedGameModeKanji
+      : pathname === '/vocabulary'
+      ? setSelectedGameModeVocab
+      : () => {};
 
   const gameModes = ['Pick', 'Reverse-Pick', 'Input', 'Reverse-Input'];
 
@@ -39,7 +62,7 @@ const GameModes = ({
         'duration-250',
         'transition-all ease-in-out',
         'flex flex-col md:flex-row',
-        'w-full ',
+        'w-full '
       )}
     >
       {gameModes.map((gameMode, i) => (
@@ -48,7 +71,7 @@ const GameModes = ({
             key={gameMode}
             className={clsx(
               'flex justify-center items-center',
-              'text-[var(--secondary-color)] hover:text-[var(--main-color)]',
+              'text-[var(--secondary-color)]',
               'w-full py-2',
               'hover:cursor-pointer',
               'hover:bg-[var(--border-color)]',
@@ -71,10 +94,7 @@ const GameModes = ({
                 <MousePointerClick size={20} className='mt-1' />
               )}
               {gameMode.toLowerCase() === 'reverse-pick' && (
-                <MousePointerClick
-                  size={20}
-                  className='mt-1 scale-x-[-1]'
-                />
+                <MousePointerClick size={20} className='mt-1 scale-x-[-1]' />
               )}
               {gameMode.toLowerCase() === 'input' && (
                 <Keyboard size={20} className='mt-1' />

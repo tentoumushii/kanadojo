@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import KanaMenu from '@/components/Dojo/Kana/Menu';
+import DojoMenu from '@/components/reusable/DojoMenu';
 
 export const metadata: Metadata = {
   title: 'KanaDojo: Kana',
@@ -16,5 +16,5 @@ export const metadata: Metadata = {
 };
 
 export default function KanaPage() {
-  return <KanaMenu />;
+  return <DojoMenu />;
 }

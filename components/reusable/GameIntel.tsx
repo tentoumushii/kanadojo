@@ -1,12 +1,11 @@
 'use client';
-import { SquareCheck, SquareX, Star } from 'lucide-react';
+import { SquareCheck, SquareX, Star, LandPlot } from 'lucide-react';
 import clsx from 'clsx';
 import { cardBorderStyles } from '@/static/styles';
 import useStatsStore from '@/store/useStatsStore';
 import { miniButtonBorderStyles } from '@/static/styles';
 import { ChartSpline } from 'lucide-react';
 import { useStopwatch } from 'react-timer-hook';
-// import { useEffect, useRef } from 'react';
 import { useClick } from '@/lib/useAudio';
 
 const GameIntel = ({
@@ -47,7 +46,10 @@ const GameIntel = ({
           'flex flex-col gap-2 items-center justify-center py-2 md:py-4'
         )}
       >
-        <p className='text-xl px-4'>training mode: {gameMode}</p>
+        <p className='text-xl px-4 flex items-center gap-2'>
+          <LandPlot />
+          {gameMode}
+        </p>
         <hr className='border-t-1 w-full border-[var(--border-color)]' />
         <p className='text-xl flex flex-row items-center gap-1.5 px-4'>
           {feedback}

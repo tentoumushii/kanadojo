@@ -1,7 +1,7 @@
 import DevNotice from '@/components/reusable/DevNotice';
 
 const info = {
-  mainMenu: {
+  '/': {
     header: <span>Welcome to KanaDojo!</span>,
     content: (
       <>
@@ -16,7 +16,7 @@ const info = {
       </>
     )
   },
-  kanaMenu: {
+  '/kana': {
     header: <span>Welcome to the kana (hiragana and katakana) dojo!</span>,
     content: (
       <>
@@ -29,13 +29,13 @@ const info = {
           mode, then hit <b>Go!</b> above and start training now!
         </p>
         <p className='text-lg text-[var(--secondary-color)] italic'>
-          Make sure to check out the preferences menu above to customize your
-          learning experience and make KanaDojo truly yours!
+          Make sure to check out the preferences menu to customize your learning
+          experience and make KanaDojo uniquely yours!
         </p>
       </>
     )
   },
-  kanjiMenu: {
+  '/kanji': {
     header: <span>Welcome to the kanji dojo!</span>,
     content: (
       <>
@@ -48,13 +48,13 @@ const info = {
           <b>Go!</b> above and start training now!
         </p>
         <p className='text-lg text-[var(--secondary-color)] italic'>
-          Make sure to check out the preferences menu above to customize your
-          learning experience and make KanaDojo truly yours!
+          Make sure to check out the preferences menu to customize your learning
+          experience and make KanaDojo uniquely yours!
         </p>
       </>
     )
   },
-  vocabularyMenu: {
+  '/vocabulary': {
     header: <span>Welcome to the vocabulary dojo!</span>,
     content: (
       <>
@@ -67,8 +67,8 @@ const info = {
           <b>Go!</b> above and start training now!
         </p>
         <p className='text-lg text-[var(--secondary-color)] italic'>
-          Make sure to check out the preferences menu above to customize your
-          learning experience and make KanaDojo truly yours!
+          Make sure to check out the preferences menu to customize your learning
+          experience and make KanaDojo uniquely yours!
         </p>
       </>
     )
