@@ -1,6 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import Banner from '@/components/reusable/Banner';
+// import Banner from '@/components/reusable/Banner';
 import { IWord, ISet } from '@/lib/interfaces';
 import { cardBorderStyles } from '@/static/styles';
 import useVocabStore from '@/store/useVocabStore';
@@ -13,6 +13,11 @@ import N4Nouns from '@/static/vocab/jlpt/n4/nouns';
 import N3Nouns from '@/static/vocab/jlpt/n3/nouns';
 
 import N2Nouns from '@/static/vocab/jlpt/n2/nouns';
+
+import { ChevronsLeft } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { buttonBorderStyles } from '@/static/styles';
 
 const createVocabSetRanges = (numSets: number) =>
   Array.from({ length: numSets }, (_, i) => i + 1).reduce(
@@ -51,12 +56,15 @@ const SetDictionary = () => {
     state => state.selectedVocabCollection
   );
 
-  const jlptToCollectionMap = {
-    n5: 'Collection 1',
-    n4: 'Collection 2',
-    n3: 'Collection 3',
-    n2: 'Collection 4'
-  };
+  const pathname = usePathname();
+  const href = pathname.split('/').slice(0, -1).join('/');
+
+  // const jlptToCollectionMap = {
+  //   n5: 'Collection 1',
+  //   n4: 'Collection 2',
+  //   n3: 'Collection 3',
+  //   n2: 'Collection 4'
+  // };
 
   const params = useParams();
   const { set } = params as unknown as ISet;
@@ -66,13 +74,18 @@ const SetDictionary = () => {
 
   return (
     <div className='min-h-[100dvh] max-w-[100dvw] px-4 sm:px-8 md:px-20 lg:px-30 xl:px-40 2xl:px-60 flex flex-col gap-4 pb-10'>
-      <Banner
+      {/* <Banner
         subheading={`Vocabulary 語彙, ${
           jlptToCollectionMap[
             selectedVocabCollection as keyof typeof jlptToCollectionMap
           ]
         }, ${set.split('-').join(' ').toUpperCase()}`}
-      />
+      /> */}
+      <Link href={href}>
+        <button className={clsx(buttonBorderStyles,'py-4 px-8 mt-4')}>
+          <ChevronsLeft />
+        </button>
+      </Link>
       <div className={clsx('flex flex-col', cardBorderStyles)}>
         {(vocabData as VocabData)['jlpt'][selectedVocabCollection]['nouns']
           .slice(sliceRange[0], sliceRange[1])

@@ -1,5 +1,10 @@
 module.exports = {
-  content: ['./**/*.{js,ts,jsx,tsx,mdx}'],
+content: [
+  './app/**/*.{ts,tsx}',
+  './components/**/*.{ts,tsx}',
+  './static/styles.ts',
+  './static/info.tsx',
+],
   theme: {
     extend: {
       keyframes: {

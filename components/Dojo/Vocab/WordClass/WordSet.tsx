@@ -144,7 +144,7 @@ const WordSet = ({
             )}
             onClick={() => playClick()}
           >
-            <span className='text-lg group-hover:underline'>inspect</span>
+            <span className='text-lg '>inspect</span>
             <Search size={22} />
           </button>
         </Link>

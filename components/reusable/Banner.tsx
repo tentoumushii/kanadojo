@@ -15,10 +15,9 @@ const Banner = () => {
       : pathname === '/preferences'
       ? 'Preferences 設'
       : '';
-
   return (
     <h2 className={clsx('text-3xl pt-6', 'flex items-center gap-2')}>
-      <span className='text-[var(--secondary-color)]'>
+      <span className="text-[var(--secondary-color)]">
         {subheading.split(' ')[1]}
       </span>
       <span>{subheading.split(' ')[0]}</span>
