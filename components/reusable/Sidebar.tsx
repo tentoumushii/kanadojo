@@ -41,7 +41,7 @@ const Sidebar = () => {
     <div
       className={clsx(
         'flex lg:flex-col lg:items-start lg:gap-2',
-        'lg:w-1/5',
+        'lg:w-1/5 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto',
         'lg:pt-6',
         'max-lg:fixed max-lg:bottom-0 max-lg:w-full',
         'max-lg:bg-[var(--card-color)]',
@@ -55,15 +55,14 @@ const Sidebar = () => {
           'max-lg:hidden max-2xl:flex-col'
         )}
       >
-        <span className='font-bold'>KanaDojo</span>
+        <span className="font-bold">KanaDojo</span>
         <span className={clsx('font-normal text-[var(--secondary-color)]')}>
           かな道場️
         </span>
       </h1>
       <Link
-        href='/'
+        href="/"
         className={clsx(
-
           'text-2xl  duration-250 transition-all lg:py-2 lg:px-4 max-lg:p-3 rounded-xl  lg:w-full flex max-lg:justify-center items-center gap-2',
           pathname === '/'
             ? 'text-[var(--main-color)] bg-[var(--border-color)] lg:bg-[var(--card-color)]'
@@ -71,11 +70,11 @@ const Sidebar = () => {
         )}
         onClick={playClick}
       >
-        <House className='' />
-        <span className='max-lg:hidden'>Home</span>
+        <House className="" />
+        <span className="max-lg:hidden">Home</span>
       </Link>
       <Link
-        href='/kana'
+        href="/kana"
         className={clsx(
           'text-2xl  duration-250 transition-all lg:py-2 lg:px-4 max-lg:px-3 max-lg:py-2 rounded-xl  lg:w-full flex max-lg:justify-center items-center gap-2',
           pathname === '/kana'
@@ -84,28 +83,23 @@ const Sidebar = () => {
         )}
         onClick={playClick}
       >
-        あ 
-        <span className='max-lg:hidden'>Kana</span>
+        あ<span className="max-lg:hidden">Kana</span>
       </Link>
       <Link
-        href='/kanji'
+        href="/kanji"
         className={clsx(
-
           'text-2xl  duration-250 transition-all lg:py-2 lg:px-4 max-lg:px-3 max-lg:py-2 rounded-xl lg:w-full flex max-lg:justify-center items-center gap-2',
           pathname === '/kanji'
-
             ? 'text-[var(--main-color)] bg-[var(--border-color)] lg:bg-[var(--card-color)]'
             : 'hover:bg-[var(--card-color)] text-[var(--secondary-color)]'
         )}
         onClick={playClick}
       >
-        見
-        <span className='max-lg:hidden'> Kanji</span>
+        見<span className="max-lg:hidden"> Kanji</span>
       </Link>
       <Link
-        href='/vocabulary'
+        href="/vocabulary"
         className={clsx(
-
           'text-2xl  duration-250 transition-all lg:py-2 lg:px-4 max-lg:px-3 max-lg:py-2 rounded-xl lg:w-full flex max-lg:justify-center items-center gap-2',
           pathname === '/vocabulary'
             ? 'text-[var(--main-color)] bg-[var(--border-color)] lg:bg-[var(--card-color)]'
@@ -113,13 +107,11 @@ const Sidebar = () => {
         )}
         onClick={playClick}
       >
-        彙
-        <span className='max-lg:hidden'> Vocabulary</span>
+        彙<span className="max-lg:hidden"> Vocabulary</span>
       </Link>
       <Link
-        href='/preferences'
+        href="/preferences"
         className={clsx(
-
           'text-2xl  duration-250 transition-all lg:py-2 lg:px-4 max-lg:px-3 max-lg:py-2 rounded-xl lg:w-full flex max-lg:justify-center items-center gap-2',
           pathname === '/preferences'
             ? 'text-[var(--main-color)] bg-[var(--border-color)] lg:bg-[var(--card-color)]'
@@ -127,8 +119,8 @@ const Sidebar = () => {
         )}
         onClick={playClick}
       >
-        <Settings className='' />
-        <span className='max-lg:hidden'>Preferences</span>
+        <Settings className="" />
+        <span className="max-lg:hidden">Preferences</span>
       </Link>
     </div>
   );
