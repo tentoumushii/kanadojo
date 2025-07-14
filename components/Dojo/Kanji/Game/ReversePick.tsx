@@ -5,12 +5,12 @@ import { CircleCheck } from 'lucide-react';
 import { CircleX } from 'lucide-react';
 import { Random } from 'random-js';
 import { IKanjiObj } from '@/store/useKanaKanjiStore';
-import { useCorrect, useError } from '@/lib/useAudio';
+import { useCorrect, useError } from '@/lib/hooks/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
 import GameIntel from '@/components/reusable/GameIntel';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 // import AnswerSummary from '@/components/reusable/AnswerSummary';
 import Stars from '@/components/reusable/Stars';
@@ -19,7 +19,7 @@ const random = new Random();
 
 const ReversePick = ({
   selectedKanjiObjs,
-  isHidden
+  isHidden,
 }: {
   selectedKanjiObjs: IKanjiObj[];
   isHidden: boolean;
@@ -34,7 +34,7 @@ const ReversePick = ({
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playCorrect } = useCorrect();
@@ -83,7 +83,6 @@ const ReversePick = ({
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
-
     const handleKeyDown = (event: KeyboardEvent) => {
       const index = pickGameKeyMappings[event.code];
       if (index !== undefined && index < shuffledKanjiChars.length) {
@@ -130,7 +129,7 @@ const ReversePick = ({
       setFeedback(
         <>
           <span>{`correct! ${correctMeaning} = ${kanjiChar} `}</span>
-          <CircleCheck className='inline' />
+          <CircleCheck className="inline" />
         </>
       );
     } else {
@@ -138,7 +137,7 @@ const ReversePick = ({
       setFeedback(
         <>
           <span>{`incorrect! ${correctMeaning} ≠ ${kanjiChar} `}</span>
-          <CircleX className='inline' />
+          <CircleX className="inline" />
         </>
       );
       playErrorTwice();
@@ -160,18 +159,21 @@ const ReversePick = ({
         isHidden ? 'hidden' : ''
       )}
     >
-      <GameIntel feedback={feedback} gameMode='reverse pick' />
-      <p className='text-6xl md:text-8xl'>{correctMeaning}</p>
+      <GameIntel
+        feedback={feedback}
+        gameMode="reverse pick"
+      />
+      <p className="text-6xl md:text-8xl">{correctMeaning}</p>
       {/* {displayAnswerSummary && <AnswerSummary payload={correctKanjiObj} payloadType='kanji' />} */}
       {/* {!displayAnswerSummary && ( */}
-      <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
+      <div className="flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly">
         {shuffledKanjiChars.map((kanjiChar, i) => (
           <button
             ref={elem => {
               buttonRefs.current[i] = elem;
             }}
             key={kanjiChar + i}
-            type='button'
+            type="button"
             disabled={wrongSelectedAnswers.includes(kanjiChar)}
             className={clsx(
               'text-5xl py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
@@ -184,8 +186,8 @@ const ReversePick = ({
             )}
             onClick={() => handleOptionClick(kanjiChar)}
           >
-            <span lang='ja'>{kanjiChar}</span>
-            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+            <span lang="ja">{kanjiChar}</span>
+            <span className="hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1">
               {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
             </span>
           </button>

@@ -9,15 +9,15 @@ import N2Kanji from '@/static/kanji/N2';
 import { cardBorderStyles } from '@/static/styles';
 import { chunkArray } from '@/lib/helperFunctions';
 import { ChevronUp, Boxes, BookMarked } from 'lucide-react';
-import { useClick } from '@/lib/useAudio';
-import useGridColumns from '@/lib/useGridColumns';
+import { useClick } from '@/lib/hooks/useAudio';
+import useGridColumns from '@/lib/hooks/useGridColumns';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 
 const vocabData = {
   n5: N5Kanji,
   n4: N4Kanji,
   n3: N3Kanji,
-  n2: N2Kanji
+  n2: N2Kanji,
 };
 
 const Subgroup = () => {
@@ -37,7 +37,7 @@ const Subgroup = () => {
       name: `Set ${i + 1}`,
       start: i * 10,
       end: (i + 1) * 10,
-      id: `set-${i + 1}`
+      id: `set-${i + 1}`,
     }));
 
   const [collapsedRows, setCollapsedRows] = useState<number[]>([]);
@@ -45,7 +45,7 @@ const Subgroup = () => {
   const numColumns = useGridColumns();
 
   return (
-    <div className='flex flex-col w-full gap-4'>
+    <div className="flex flex-col w-full gap-4">
       {chunkArray(kanjiSetsTemp, numColumns).map((rowSets, rowIndex) => {
         const firstSetInRow = rowIndex * numColumns + 1;
         const lastSetInRow = (rowIndex + 1) * numColumns;
@@ -84,7 +84,7 @@ const Subgroup = () => {
               />
               Sets {firstSetInRow}-{lastSetInRow}
               <Boxes
-                className='mt-1.5 text-[var(--secondary-color)]'
+                className="mt-1.5 text-[var(--secondary-color)]"
                 size={28}
               />
             </h3>
@@ -105,8 +105,9 @@ const Subgroup = () => {
                       'border-[var(--border-color)] md:border-r-1'
                     )}
                   >
-                    <p className='text-2xl flex items-center gap-1.5'>
-                      {kanjiSetTemp.name} <BookMarked className='mt-0.5 text-[var(--secondary-color)]' />
+                    <p className="text-2xl flex items-center gap-1.5">
+                      {kanjiSetTemp.name}{' '}
+                      <BookMarked className="mt-0.5 text-[var(--secondary-color)]" />
                     </p>
                     <KanjiSet
                       kanjiList={kanjiObjs.slice(

@@ -4,11 +4,11 @@ import { CircleCheck, CircleX, CircleArrowRight } from 'lucide-react';
 import { Random } from 'random-js';
 import clsx from 'clsx';
 import { IKanjiObj } from '@/store/useKanaKanjiStore';
-import { useClick, useCorrect, useError } from '@/lib/useAudio';
+import { useClick, useCorrect, useError } from '@/lib/hooks/useAudio';
 import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 import Stars from '@/components/reusable/Stars';
 

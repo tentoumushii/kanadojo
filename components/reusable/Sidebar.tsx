@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { House, Settings } from 'lucide-react';
 import clsx from 'clsx';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 import { useEffect, useRef } from 'react';
 import useThemeStore from '@/store/useThemeStore';
 import { usePathname, useRouter } from 'next/navigation';

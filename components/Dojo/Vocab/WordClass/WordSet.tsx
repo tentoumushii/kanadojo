@@ -3,13 +3,13 @@ import clsx from 'clsx';
 import useVocabStore from '@/store/useVocabStore';
 import { useState } from 'react';
 import useThemeStore from '@/store/useThemeStore';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 import Link from 'next/link';
 import { Search, MousePointer } from 'lucide-react';
 
 const WordSet = ({
   words,
-  setName
+  setName,
 }: {
   words: {
     word: string;
@@ -29,9 +29,12 @@ const WordSet = ({
   const [focusedWord, setFocusedWord] = useState('');
 
   return (
-    <fieldset className='font-bold flex flex-col items-start gap-3'>
+    <fieldset className="font-bold flex flex-col items-start gap-3">
       {words.map((wordObj, i) => (
-        <div key={wordObj.word} className='w-full flex flex-col gap-3'>
+        <div
+          key={wordObj.word}
+          className="w-full flex flex-col gap-3"
+        >
           <label
             className={clsx(
               'w-full flex flex-row items-center gap-2 ',
@@ -41,7 +44,7 @@ const WordSet = ({
             onClick={() => playClick()}
           >
             <input
-              type='checkbox'
+              type="checkbox"
               value={wordObj.word}
               checked={selectedWordObjs
                 .map(currentWordObj => currentWordObj.word)
@@ -52,7 +55,7 @@ const WordSet = ({
               }}
             />
             <span
-              className='group relative grid w-full font-normal  min-h-auto place-items-start hover:cursor-pointer'
+              className="group relative grid w-full font-normal  min-h-auto place-items-start hover:cursor-pointer"
               onTouchStart={() => setFocusedWord(wordObj.word)}
             >
               {/* Japanese word (centered vertically, appears on hover) */}
@@ -95,7 +98,7 @@ const WordSet = ({
           </label>
 
           {i !== words.length - 1 && (
-            <hr className='w-full border-t-1 border-[var(--border-color)]' />
+            <hr className="w-full border-t-1 border-[var(--border-color)]" />
           )}
         </div>
       ))}
@@ -134,7 +137,7 @@ const WordSet = ({
 
         <Link
           href={`/vocabulary/${setName.split(' ').join('-').toLowerCase()}`}
-          className='flex-1 group'
+          className="flex-1 group"
         >
           <button
             className={clsx(
@@ -144,7 +147,7 @@ const WordSet = ({
             )}
             onClick={() => playClick()}
           >
-            <span className='text-lg '>inspect</span>
+            <span className="text-lg ">inspect</span>
             <Search size={22} />
           </button>
         </Link>

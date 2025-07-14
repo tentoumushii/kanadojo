@@ -19,7 +19,7 @@ import {
 import useStatsStore from '@/store/useStatsStore';
 import { ChevronsLeft } from 'lucide-react';
 import { findHighestCounts } from '@/lib/helperFunctions';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 
 const Stats = () => {
   const { playClick } = useClick();
@@ -189,7 +189,9 @@ const Stats = () => {
               )}
               key={statsField.field}
             >
-              <span className='text-[var(--secondary-color)]'>{statsField.field + ': '}</span>
+              <span className="text-[var(--secondary-color)]">
+                {statsField.field + ': '}
+              </span>
               <span>{statsField.value}</span>
               {statsField.icons.map((Icon, i) => (
                 <Icon
@@ -217,7 +219,9 @@ const Stats = () => {
               )}
               key={statsField.field}
             >
-              <span className='text-[var(--secondary-color)]'>{statsField.field + ': '}</span>
+              <span className="text-[var(--secondary-color)]">
+                {statsField.field + ': '}
+              </span>
               <span>{statsField.value}</span>
               {statsField.icons.map((Icon, i) => (
                 <Icon
@@ -244,7 +248,9 @@ const Stats = () => {
               )}
               key={statsField.field}
             >
-              <span className='text-[var(--secondary-color)]'>{statsField.field + ': '}</span>
+              <span className="text-[var(--secondary-color)]">
+                {statsField.field + ': '}
+              </span>
               <span>{statsField.value}</span>
               {statsField.icons.map((Icon, i) => (
                 <Icon

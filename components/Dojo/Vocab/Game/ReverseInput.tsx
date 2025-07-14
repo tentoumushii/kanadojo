@@ -4,11 +4,11 @@ import { CircleCheck, CircleX, CircleArrowRight } from 'lucide-react';
 import { Random } from 'random-js';
 import clsx from 'clsx';
 import { IWordObj } from '@/store/useVocabStore';
-import { useClick, useCorrect, useError } from '@/lib/useAudio';
+import { useClick, useCorrect, useError } from '@/lib/hooks/useAudio';
 import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 import Stars from '@/components/reusable/Stars';
 
@@ -16,7 +16,7 @@ const random = new Random();
 
 const ReverseInput = ({
   selectedWordObjs,
-  isHidden
+  isHidden,
 }: {
   selectedWordObjs: IWordObj[];
   isHidden: boolean;
@@ -31,7 +31,7 @@ const ReverseInput = ({
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playClick } = useClick();
@@ -54,7 +54,6 @@ const ReverseInput = ({
   const [feedback, setFeedback] = useState(<>{'feedback ~'}</>);
 
   useEffect(() => {
-
     if (inputRef.current) {
       inputRef.current.focus(); // Automatically focuses on the input
     }
@@ -103,7 +102,7 @@ const ReverseInput = ({
         setFeedback(
           <>
             <span>{`correct! ${correctMeaning} = ${inputValue.trim()} `}</span>
-            <CircleCheck className='inline' />
+            <CircleCheck className="inline" />
           </>
         );
       } else {
@@ -111,7 +110,7 @@ const ReverseInput = ({
         setFeedback(
           <>
             <span>{`incorrect! ${correctMeaning} ≠ ${inputValue} `}</span>
-            <CircleX className='inline' />
+            <CircleX className="inline" />
           </>
         );
         playErrorTwice();
@@ -150,14 +149,20 @@ const ReverseInput = ({
         isHidden ? 'hidden' : ''
       )}
     >
-      <GameIntel feedback={feedback} gameMode='reverse input' />
-      <p className='text-5xl sm:text-8xl' lang='en'>
+      <GameIntel
+        feedback={feedback}
+        gameMode="reverse input"
+      />
+      <p
+        className="text-5xl sm:text-8xl"
+        lang="en"
+      >
         {correctMeaning}
       </p>
       <input
-        lang='ja'
+        lang="ja"
         ref={inputRef}
-        type='text'
+        type="text"
         value={inputValue}
         className={clsx(
           'border-b-2 pb-1 text-center  focus:outline-none  text-2xl lg:text-5xl',
@@ -181,7 +186,7 @@ const ReverseInput = ({
         <CircleArrowRight />
       </button>
 
-      <Stars/>
+      <Stars />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useVocabStore from '@/store/useVocabStore';
 import useThemeStore from '@/store/useThemeStore';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 import { ChevronUp, Play, LandPlot } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useShallow } from 'zustand/react/shallow';
@@ -18,7 +18,7 @@ interface ITopBarProps {
 
 const TopBar: React.FC<ITopBarProps> = ({
   showGameModes,
-  setShowGameModes
+  setShowGameModes,
 }) => {
   const hotkeysOn = useThemeStore(state => state.hotkeysOn);
 
@@ -29,7 +29,7 @@ const TopBar: React.FC<ITopBarProps> = ({
   const { selectedGameModeKana, selectedGameModeKanji } = useKanaKanjiStore(
     useShallow(state => ({
       selectedGameModeKana: state.selectedGameModeKana,
-      selectedGameModeKanji: state.selectedGameModeKanji
+      selectedGameModeKanji: state.selectedGameModeKanji,
     }))
   );
 
@@ -132,7 +132,7 @@ const TopBar: React.FC<ITopBarProps> = ({
 
       <Link
         href={`${pathname}/train/${selectedGameMode}`}
-        className='w-1/2 group'
+        className="w-1/2 group"
       >
         <button
           disabled={!selectedGameMode || !isFilled}

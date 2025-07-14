@@ -3,7 +3,7 @@ import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useVocabStore from '@/store/useVocabStore';
 import { MousePointerClick, Keyboard } from 'lucide-react';
 import clsx from 'clsx';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 import { usePathname } from 'next/navigation';
 import { useShallow } from 'zustand/react/shallow';
 

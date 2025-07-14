@@ -6,12 +6,12 @@ import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import { CircleCheck } from 'lucide-react';
 import { CircleX } from 'lucide-react';
 import { Random } from 'random-js';
-import { useCorrect, useError } from '@/lib/useAudio';
+import { useCorrect, useError } from '@/lib/hooks/useAudio';
 import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 import Stars from '@/components/reusable/Stars';
 
@@ -28,7 +28,7 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playCorrect } = useCorrect();
@@ -119,7 +119,7 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
       setFeedback(
         <>
           <span>{`correct! ${correctKanaChar} = ${correctRomajiChar} `}</span>
-          <CircleCheck className='inline' />
+          <CircleCheck className="inline" />
         </>
       );
     } else {
@@ -127,7 +127,7 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
       setFeedback(
         <>
           <span>{`incorrect! ${correctKanaChar} ≠ ${romajiChar} `}</span>
-          <CircleX className='inline' />
+          <CircleX className="inline" />
         </>
       );
       playErrorTwice();
@@ -149,16 +149,19 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
         isHidden ? 'hidden' : ''
       )}
     >
-      <GameIntel feedback={feedback} gameMode='pick' />
-      <p className='text-8xl sm:text-9xl font-medium'>{correctKanaChar}</p>
-      <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
+      <GameIntel
+        feedback={feedback}
+        gameMode="pick"
+      />
+      <p className="text-8xl sm:text-9xl font-medium">{correctKanaChar}</p>
+      <div className="flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly">
         {shuffledVariants.map((romajiChar, i) => (
           <button
             ref={elem => {
               buttonRefs.current[i] = elem;
             }}
             key={romajiChar + i}
-            type='button'
+            type="button"
             disabled={wrongSelectedAnswers.includes(romajiChar)}
             className={clsx(
               'text-5xl font-semibold pb-6 pt-3  w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
@@ -171,7 +174,7 @@ const Pick = ({ isHidden }: { isHidden: boolean }) => {
             onClick={() => handleOptionClick(romajiChar)}
           >
             <span>{romajiChar}</span>
-            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+            <span className="hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1">
               {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
             </span>
           </button>

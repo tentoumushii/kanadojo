@@ -5,12 +5,12 @@ import { CircleCheck } from 'lucide-react';
 import { CircleX } from 'lucide-react';
 import { Random } from 'random-js';
 import { IWordObj } from '@/store/useVocabStore';
-import { useCorrect, useError } from '@/lib/useAudio';
+import { useCorrect, useError } from '@/lib/hooks/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
 import GameIntel from '@/components/reusable/GameIntel';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 import Stars from '@/components/reusable/Stars';
 
@@ -18,7 +18,7 @@ const random = new Random();
 
 const Pick = ({
   selectedWordObjs,
-  isHidden
+  isHidden,
 }: {
   selectedWordObjs: IWordObj[];
   isHidden: boolean;
@@ -33,7 +33,7 @@ const Pick = ({
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playCorrect } = useCorrect();
@@ -79,7 +79,6 @@ const Pick = ({
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
-
     const handleKeyDown = (event: KeyboardEvent) => {
       const index = pickGameKeyMappings[event.code];
       if (index !== undefined && index < shuffledMeanings.length) {
@@ -121,7 +120,7 @@ const Pick = ({
       setFeedback(
         <>
           <span>{`correct! ${correctWord} = ${meaning} `}</span>
-          <CircleCheck className='inline' />
+          <CircleCheck className="inline" />
         </>
       );
     } else {
@@ -129,7 +128,7 @@ const Pick = ({
       setFeedback(
         <>
           <span>{`incorrect! ${correctWord} ≠ ${meaning} `}</span>
-          <CircleX className='inline' />
+          <CircleX className="inline" />
         </>
       );
       playErrorTwice();
@@ -152,8 +151,14 @@ const Pick = ({
         'max-md:mb-8'
       )}
     >
-      <GameIntel feedback={feedback} gameMode='pick' />
-      <p className='text-6xl md:text-9xl text-center' lang='ja'>
+      <GameIntel
+        feedback={feedback}
+        gameMode="pick"
+      />
+      <p
+        className="text-6xl md:text-9xl text-center"
+        lang="ja"
+      >
         {correctWord}
       </p>
       <div
@@ -168,7 +173,7 @@ const Pick = ({
               buttonRefs.current[i] = elem;
             }}
             key={meaning + i}
-            type='button'
+            type="button"
             disabled={wrongSelectedAnswers.includes(meaning)}
             className={clsx(
               'text-3xl py-4 px-2 rounded-xl w-full md:w-1/4 flex flex-row justify-center items-center gap-1',
@@ -182,8 +187,8 @@ const Pick = ({
             )}
             onClick={() => handleOptionClick(meaning)}
           >
-            <span lang='ja'>{meaning}</span>
-            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+            <span lang="ja">{meaning}</span>
+            <span className="hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1">
               {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
             </span>
           </button>

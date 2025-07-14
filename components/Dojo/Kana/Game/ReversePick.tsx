@@ -5,12 +5,12 @@ import { kana } from '@/static/kana';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import { CircleCheck, CircleX } from 'lucide-react';
 import { Random } from 'random-js';
-import { useCorrect, useError } from '@/lib/useAudio';
+import { useCorrect, useError } from '@/lib/hooks/useAudio';
 import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 // import AnswerSummary from '@/components/reusable/AnswerSummary';
 import Stars from '@/components/reusable/Stars';
@@ -28,7 +28,7 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playCorrect } = useCorrect();
@@ -175,18 +175,21 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
         isHidden ? 'hidden' : ''
       )}
     >
-      <GameIntel feedback={feedback} gameMode='reverse pick' />
-      <p className='text-8xl sm:text-9xl font-medium'>{correctRomajiChar}</p>
+      <GameIntel
+        feedback={feedback}
+        gameMode="reverse pick"
+      />
+      <p className="text-8xl sm:text-9xl font-medium">{correctRomajiChar}</p>
       {/* {displayAnswerSummary && <AnswerSummary />} */}
       {/* {!displayAnswerSummary && ( */}
-      <div className='flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly'>
+      <div className="flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly">
         {shuffledVariants.map((kanaChar, i) => (
           <button
             ref={elem => {
               buttonRefs.current[i] = elem;
             }}
             key={kanaChar + i}
-            type='button'
+            type="button"
             disabled={wrongSelectedAnswers.includes(kanaChar)}
             className={clsx(
               'text-5xl font-semibold py-4 w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
@@ -199,7 +202,7 @@ const ReversePick = ({ isHidden }: { isHidden: boolean }) => {
             onClick={() => handleOptionClick(kanaChar)}
           >
             <span>{kanaChar}</span>
-            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+            <span className="hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1">
               {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
             </span>
           </button>

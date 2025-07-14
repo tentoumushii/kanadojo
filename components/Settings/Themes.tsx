@@ -3,7 +3,7 @@ import { createElement } from 'react';
 import themes from '@/static/themes';
 import useThemeStore from '@/store/useThemeStore';
 import clsx from 'clsx';
-import { useClick, useLong } from '@/lib/useAudio';
+import { useClick, useLong } from '@/lib/hooks/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
 import { useState } from 'react';
 
@@ -16,10 +16,13 @@ const Themes = () => {
   const [isHovered, setIsHovered] = useState('');
 
   return (
-    <div className='flex flex-col gap-6'>
+    <div className="flex flex-col gap-6">
       {themes.map((themeSet, i) => (
-        <div key={i} className='flex flex-col gap-3'>
-          <h4 className='text-xl flex flex-row items-center gap-1.5'>
+        <div
+          key={i}
+          className="flex flex-col gap-3"
+        >
+          <h4 className="text-xl flex flex-row items-center gap-1.5">
             {createElement(themeSet.icon)}
             <span>{themeSet.name}</span>
           </h4>
@@ -37,7 +40,7 @@ const Themes = () => {
                     isHovered === currentTheme.id
                       ? currentTheme.borderColor
                       : currentTheme.backgroundColor,
-                  borderColor: currentTheme.borderColor
+                  borderColor: currentTheme.borderColor,
                 }}
                 onMouseEnter={() => setIsHovered(currentTheme.id)}
                 onMouseLeave={() => setIsHovered('')}
@@ -52,8 +55,8 @@ const Themes = () => {
                 }}
               >
                 <input
-                  type='radio'
-                  name='selectedTheme'
+                  type="radio"
+                  name="selectedTheme"
                   onChange={() => {
                     setTheme(currentTheme.id);
                     // @ts-expect-error gtag fix
@@ -67,18 +70,33 @@ const Themes = () => {
                         {
                           event_category: 'Theme Change',
                           event_label: currentTheme.id,
-                          value: 1
+                          value: 1,
                         }
                       );
                     }
                   }}
-                  className='hidden'
+                  className="hidden"
                 />
-                <span className='text-center text-lg'>
-                  {currentTheme.id === theme ? '\u2B24 ' : ''}
+                <span className="text-center text-lg flex items-center gap-1.5">
+                  <span>{currentTheme.id === theme ? '\u2B24 ' : ''}</span>
                   {currentTheme.id === 'long'
                     ? 'long loooooooong theme'
-                    : currentTheme.id.split('-').join(' ')}
+                    : currentTheme.id.split('-').map((themeNamePart, i) => (
+                        <span
+                          key={themeNamePart + Math.random() * 9999}
+                          style={{
+                            color:
+                              process.env.NODE_ENV !== 'production'
+                                ? i === 0
+                                  ? currentTheme.mainColor
+                                  : currentTheme.secondaryColor
+                                : undefined,
+                          }}
+                        >
+                          {i > 0 && ' '}
+                          {themeNamePart}
+                        </span>
+                      ))}
                 </span>
               </label>
             ))}

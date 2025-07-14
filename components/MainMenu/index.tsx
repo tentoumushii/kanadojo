@@ -9,13 +9,13 @@ import {
   // FileDiff,
   Sun,
   Moon,
-  Heart
+  Heart,
   // Github
 } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import clsx from 'clsx';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 import useThemeStore from '@/store/useThemeStore';
 
 const MainMenu = () => {
@@ -28,18 +28,18 @@ const MainMenu = () => {
     {
       name_en: 'Kana',
       name_ja: 'あ',
-      href: '/kana'
+      href: '/kana',
     },
     {
       name_en: 'Kanji',
       name_ja: '見',
-      href: '/kanji'
+      href: '/kanji',
     },
     {
       name_en: 'Vocabulary',
       name_ja: '彙',
-      href: '/vocabulary'
-    }
+      href: '/vocabulary',
+    },
     // {
     //   name_en: 'Sentences',
     //   name_ja: '文',
@@ -50,16 +50,16 @@ const MainMenu = () => {
   const legalLinks = [
     { name: 'terms', href: '/terms', icon: ScrollText },
     { name: 'privacy', href: '/privacy', icon: Cookie },
-    { name: 'security', href: '/security', icon: FileLock2 }
+    { name: 'security', href: '/security', icon: FileLock2 },
     // { name: 'patch notes', href: '/patch-notes', icon: FileDiff }
   ];
 
   return (
-    <div className='flex flex-row justify-center max-w-[100dvw] min-h-[100dvh]'>
-      <div className='pt-5 pb-16 flex flex-col items-center md:justify-center gap-4 px-4 w-full sm:w-3/4 lg:w-1/2 3xl:w-2/5'>
-        <div className='flex flex-row justify-between items-center w-full px-1 gap-2'>
+    <div className="flex flex-row justify-center max-w-[100dvw] min-h-[100dvh]">
+      <div className="pt-5 pb-16 flex flex-col items-center md:justify-center gap-4 px-4 w-full sm:w-3/4 lg:w-1/2 3xl:w-2/5">
+        <div className="flex flex-row justify-between items-center w-full px-1 gap-2">
           <Banner />
-          <div className='flex flex-row justify-end gap-2 w-1/2 md:w-1/3'>
+          <div className="flex flex-row justify-end gap-2 w-1/2 md:w-1/3">
             {theme === 'dark' ? (
               <Moon
                 size={32}
@@ -101,7 +101,7 @@ const MainMenu = () => {
 
             <FontAwesomeIcon
               icon={faDiscord}
-              size='2x'
+              size="2x"
               className={clsx(
                 'hover:cursor-pointer duration-250 hover:scale-120',
                 'active:scale-100 active:duration-225',
@@ -115,7 +115,7 @@ const MainMenu = () => {
             />
             <FontAwesomeIcon
               icon={faGithub}
-              size='2x'
+              size="2x"
               className={clsx(
                 'hover:cursor-pointer duration-250 hover:scale-120',
                 'active:scale-100 active:duration-225',
@@ -180,12 +180,15 @@ const MainMenu = () => {
                   onClick={() => playClick()}
                 >
                   <span
-                    lang='ja'
-                    className='font-normal text-[var(--secondary-color)]'
+                    lang="ja"
+                    className="font-normal text-[var(--secondary-color)]"
                   >
                     {link.name_ja}
                   </span>
-                  <span lang='en' className=''>
+                  <span
+                    lang="en"
+                    className=""
+                  >
                     {link.name_en}
                   </span>
                 </button>
@@ -214,10 +217,10 @@ const MainMenu = () => {
           <Link
             href={link.href}
             key={i}
-            className='p-2 text-sm hover:cursor-pointer  rounded-2xl flex flex-row gap-1 items-center text-[var(--secondary-color)] hover:text-[var(--main-color)]'
+            className="p-2 text-sm hover:cursor-pointer  rounded-2xl flex flex-row gap-1 items-center text-[var(--secondary-color)] hover:text-[var(--main-color)]"
             onClick={() => playClick()}
           >
-            <link.icon className='size-4' />
+            <link.icon className="size-4" />
             <span>{link.name}</span>
           </Link>
         ))}

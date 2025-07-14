@@ -5,11 +5,11 @@ import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import { CircleCheck, CircleX, CircleArrowRight } from 'lucide-react';
 import { Random } from 'random-js';
 import clsx from 'clsx';
-import { useClick, useCorrect, useError } from '@/lib/useAudio';
+import { useClick, useCorrect, useError } from '@/lib/hooks/useAudio';
 import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 import Stars from '@/components/reusable/Stars';
 
@@ -26,7 +26,7 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playClick } = useClick();
@@ -63,7 +63,6 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === '/') {
         buttonRef.current?.click();
@@ -104,7 +103,7 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
         setFeedback(
           <>
             <span>{`correct! ${correctKanaChar} = ${correctRomajiChar} `}</span>
-            <CircleCheck className='inline' />
+            <CircleCheck className="inline" />
           </>
         );
       } else {
@@ -112,7 +111,7 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
         setFeedback(
           <>
             <span>{`incorrect! ${correctKanaChar} ≠ ${inputValue} `}</span>
-            <CircleX className='inline' />
+            <CircleX className="inline" />
           </>
         );
         playErrorTwice();
@@ -148,11 +147,14 @@ const Input = ({ isHidden }: { isHidden: boolean }) => {
         isHidden ? 'hidden' : ''
       )}
     >
-      <GameIntel feedback={feedback} gameMode='input' />
-      <p className='text-8xl sm:text-9xl font-medium'>{correctKanaChar}</p>
+      <GameIntel
+        feedback={feedback}
+        gameMode="input"
+      />
+      <p className="text-8xl sm:text-9xl font-medium">{correctKanaChar}</p>
       <input
         ref={inputRef}
-        type='text'
+        type="text"
         value={inputValue}
         className={clsx(
           'border-b-2 pb-1 text-center  focus:outline-none  text-2xl lg:text-5xl',

@@ -4,11 +4,11 @@ import { CircleCheck, CircleX, CircleArrowRight } from 'lucide-react';
 import { Random } from 'random-js';
 import clsx from 'clsx';
 import { IWordObj } from '@/store/useVocabStore';
-import { useClick, useCorrect, useError } from '@/lib/useAudio';
+import { useClick, useCorrect, useError } from '@/lib/hooks/useAudio';
 import GameIntel from '@/components/reusable/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 import Stars from '@/components/reusable/Stars';
 
@@ -16,7 +16,7 @@ const random = new Random();
 
 const Input = ({
   selectedWordObjs,
-  isHidden
+  isHidden,
 }: {
   selectedWordObjs: IWordObj[];
   isHidden: boolean;
@@ -31,7 +31,7 @@ const Input = ({
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playClick } = useClick();
@@ -54,7 +54,6 @@ const Input = ({
   const [feedback, setFeedback] = useState(<>{'feedback ~'}</>);
 
   useEffect(() => {
-
     if (inputRef.current) {
       inputRef.current.focus(); // Automatically focuses on the input
     }
@@ -104,7 +103,7 @@ const Input = ({
             <span>
               {`correct! ${correctWord} = ${inputValue.trim().toLowerCase()} `}
             </span>
-            <CircleCheck className='inline' />
+            <CircleCheck className="inline" />
           </>
         );
       } else {
@@ -112,7 +111,7 @@ const Input = ({
         setFeedback(
           <>
             <span>{`incorrect! ${correctWord} ≠ ${inputValue} `}</span>
-            <CircleX className='inline' />
+            <CircleX className="inline" />
           </>
         );
         playErrorTwice();
@@ -149,14 +148,20 @@ const Input = ({
         isHidden ? 'hidden' : ''
       )}
     >
-      <GameIntel feedback={feedback} gameMode='input' />
-      <p className='text-5xl md:text-9xl text-center' lang='ja'>
+      <GameIntel
+        feedback={feedback}
+        gameMode="input"
+      />
+      <p
+        className="text-5xl md:text-9xl text-center"
+        lang="ja"
+      >
         {correctWord}
       </p>
       <input
-        lang='en'
+        lang="en"
         ref={inputRef}
-        type='text'
+        type="text"
         value={inputValue}
         className={clsx(
           'border-b-2 pb-1 text-center  focus:outline-none  text-2xl lg:text-5xl',
@@ -180,7 +185,7 @@ const Input = ({
         <CircleArrowRight />
       </button>
 
-      <Stars/>
+      <Stars />
     </div>
   );
 };

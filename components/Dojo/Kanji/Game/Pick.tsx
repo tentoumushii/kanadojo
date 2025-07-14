@@ -5,12 +5,12 @@ import { CircleCheck } from 'lucide-react';
 import { CircleX } from 'lucide-react';
 import { Random } from 'random-js';
 import { IKanjiObj } from '@/store/useKanaKanjiStore';
-import { useCorrect, useError } from '@/lib/useAudio';
+import { useCorrect, useError } from '@/lib/hooks/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
 import GameIntel from '@/components/reusable/GameIntel';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 import Stars from '@/components/reusable/Stars';
 
@@ -18,7 +18,7 @@ const random = new Random();
 
 const Pick = ({
   selectedKanjiObjs,
-  isHidden
+  isHidden,
 }: {
   selectedKanjiObjs: IKanjiObj[];
   isHidden: boolean;
@@ -33,7 +33,7 @@ const Pick = ({
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playCorrect } = useCorrect();
@@ -79,7 +79,6 @@ const Pick = ({
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
-
     const handleKeyDown = (event: KeyboardEvent) => {
       const index = pickGameKeyMappings[event.code];
       if (index !== undefined && index < shuffledMeanings.length) {
@@ -123,7 +122,7 @@ const Pick = ({
       setFeedback(
         <>
           <span>{`correct! ${correctKanjiChar} = ${meaning} `}</span>
-          <CircleCheck className='inline' />
+          <CircleCheck className="inline" />
         </>
       );
     } else {
@@ -131,7 +130,7 @@ const Pick = ({
       setFeedback(
         <>
           <span>{`incorrect! ${correctKanjiChar} ≠ ${meaning} `}</span>
-          <CircleX className='inline' />
+          <CircleX className="inline" />
         </>
       );
       playErrorTwice();
@@ -154,9 +153,15 @@ const Pick = ({
         'max-md:pb-12'
       )}
     >
-      <GameIntel feedback={feedback} gameMode='pick' />
+      <GameIntel
+        feedback={feedback}
+        gameMode="pick"
+      />
 
-      <p className='text-9xl' lang='ja'>
+      <p
+        className="text-9xl"
+        lang="ja"
+      >
         {correctKanjiChar}
       </p>
       <div
@@ -172,7 +177,7 @@ const Pick = ({
               buttonRefs.current[i] = elem;
             }}
             key={meaning + i}
-            type='button'
+            type="button"
             disabled={wrongSelectedAnswers.includes(meaning)}
             className={clsx(
               'text-4xl py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
@@ -185,8 +190,8 @@ const Pick = ({
             )}
             onClick={() => handleOptionClick(meaning)}
           >
-            <span lang='ja'>{meaning}</span>
-            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+            <span lang="ja">{meaning}</span>
+            <span className="hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1">
               {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
             </span>
           </button>

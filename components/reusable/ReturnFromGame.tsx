@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 import { useStopwatch } from 'react-timer-hook';
 import { X } from 'lucide-react';
 import ProgressBar from './ProgressBar';
@@ -44,7 +44,7 @@ const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
     >
       <Link
         href={href}
-        className=''
+        className=""
         ref={buttonRef}
         onClick={() => playClick()}
       >

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { kana } from '@/static/kana';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useThemeStore from '@/store/useThemeStore';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 import { miniButtonBorderStyles } from '@/static/styles';
 import { MousePointer } from 'lucide-react';
 import { useState } from 'react';
@@ -16,13 +16,13 @@ const finalCharactersInEachGroup = [
   'k.b.w',
   'k.d.p',
   'k.y.py',
-  'k.f.ts'
+  'k.f.ts',
 ];
 
 const Subset = ({
   sliceRange,
   // group,
-  subgroup
+  subgroup,
 }: {
   sliceRange: number[];
   group: string;
@@ -41,9 +41,12 @@ const Subset = ({
   const [focusedRow, setFocusedRow] = useState('');
 
   return (
-    <fieldset className='font-bold flex flex-col items-start gap-1'>
+    <fieldset className="font-bold flex flex-col items-start gap-1">
       {kanaGroups.map((group, i) => (
-        <div key={group.groupName} className='w-full flex flex-col gap-1'>
+        <div
+          key={group.groupName}
+          className="w-full flex flex-col gap-1"
+        >
           <label
             className={clsx(
               'w-full flex flex-row items-center gap-2',
@@ -53,7 +56,7 @@ const Subset = ({
             onClick={() => playClick()}
           >
             <input
-              type='checkbox'
+              type="checkbox"
               // className='accent-[var(--main-color)]'
               value={group.groupName}
               checked={kanaGroupIndices.includes(i + sliceRange[0])}
@@ -63,7 +66,7 @@ const Subset = ({
               }}
             />
             <motion.div
-              className='group relative grid w-full font-normal min-h-auto place-items-start hover:cursor-pointer'
+              className="group relative grid w-full font-normal min-h-auto place-items-start hover:cursor-pointer"
               onTouchStart={() => setFocusedRow(group.groupName)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -108,13 +111,13 @@ const Subset = ({
             </motion.div>
           </label>
           {!finalCharactersInEachGroup.includes(group.groupName) && (
-            <hr className='border-t-1 w-full border-[var(--border-color)]' />
+            <hr className="border-t-1 w-full border-[var(--border-color)]" />
           )}
         </div>
       ))}
-      <div className='flex flex-row gap-2 w-full'>
+      <div className="flex flex-row gap-2 w-full">
         <button
-          type='button'
+          type="button"
           className={clsx(
             'p-2 font-normal text-lg md:w-1/2',
             miniButtonBorderStyles,

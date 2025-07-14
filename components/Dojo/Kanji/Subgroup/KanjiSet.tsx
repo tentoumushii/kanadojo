@@ -3,13 +3,13 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useThemeStore from '@/store/useThemeStore';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 import { Search, MousePointer } from 'lucide-react';
 import Link from 'next/link';
 
 const KanjiSet = ({
   kanjiList,
-  setName: setName
+  setName: setName,
 }: {
   kanjiList: {
     id: number;
@@ -32,9 +32,12 @@ const KanjiSet = ({
   const [focusedKanjiChar, setFocusedKanjiChar] = useState('');
 
   return (
-    <fieldset className='font-bold flex flex-col items-start gap-3'>
+    <fieldset className="font-bold flex flex-col items-start gap-3">
       {kanjiList.map((kanjiObj, i) => (
-        <div key={kanjiObj.kanjiChar} className='w-full flex flex-col gap-3'>
+        <div
+          key={kanjiObj.kanjiChar}
+          className="w-full flex flex-col gap-3"
+        >
           <label
             className={clsx(
               'w-full flex flex-row items-center gap-2 ',
@@ -44,7 +47,7 @@ const KanjiSet = ({
             onClick={() => playClick()}
           >
             <input
-              type='checkbox'
+              type="checkbox"
               value={kanjiObj.kanjiChar}
               checked={selectedKanjiObjs
                 .map(currentKanjiObj => currentKanjiObj.kanjiChar)
@@ -55,7 +58,7 @@ const KanjiSet = ({
               }}
             />
             <span
-              className='group relative grid w-full font-normal  min-h-auto place-items-start hover:cursor-pointer'
+              className="group relative grid w-full font-normal  min-h-auto place-items-start hover:cursor-pointer"
               onTouchStart={() => setFocusedKanjiChar(kanjiObj.kanjiChar)}
             >
               {/* Japanese word (centered vertically, appears on hover) */}
@@ -97,7 +100,7 @@ const KanjiSet = ({
             </span>
           </label>
           {i !== kanjiList.length - 1 && (
-            <hr className='w-full border-t-1 border-[var(--border-color)]' />
+            <hr className="w-full border-t-1 border-[var(--border-color)]" />
           )}
         </div>
       ))}
@@ -137,7 +140,7 @@ const KanjiSet = ({
 
         <Link
           href={`/kanji/${setName.split(' ').join('-').toLowerCase()}`}
-          className='flex-1 group'
+          className="flex-1 group"
         >
           <button
             className={clsx(
@@ -147,7 +150,7 @@ const KanjiSet = ({
             )}
             onClick={() => playClick()}
           >
-            <span className='text-lg '>inspect</span>
+            <span className="text-lg ">inspect</span>
             <Search size={22} />
           </button>
         </Link>

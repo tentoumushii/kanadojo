@@ -5,12 +5,12 @@ import { CircleCheck } from 'lucide-react';
 import { CircleX } from 'lucide-react';
 import { Random } from 'random-js';
 import { IWordObj } from '@/store/useVocabStore';
-import { useCorrect, useError } from '@/lib/useAudio';
+import { useCorrect, useError } from '@/lib/hooks/useAudio';
 import { buttonBorderStyles } from '@/static/styles';
 import GameIntel from '@/components/reusable/GameIntel';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
-import useStats from '@/lib/useStats';
+import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
 import Stars from '@/components/reusable/Stars';
 
@@ -18,7 +18,7 @@ const random = new Random();
 
 const ReversePick = ({
   selectedWordObjs,
-  isHidden
+  isHidden,
 }: {
   selectedWordObjs: IWordObj[];
   isHidden: boolean;
@@ -33,7 +33,7 @@ const ReversePick = ({
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playCorrect } = useCorrect();
@@ -79,7 +79,6 @@ const ReversePick = ({
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
-
     const handleKeyDown = (event: KeyboardEvent) => {
       const index = pickGameKeyMappings[event.code];
       if (index !== undefined && index < shuffledWords.length) {
@@ -123,7 +122,7 @@ const ReversePick = ({
       setFeedback(
         <>
           <span>{`correct! ${correctMeaning} = ${word} `}</span>
-          <CircleCheck className='inline' />
+          <CircleCheck className="inline" />
         </>
       );
     } else {
@@ -131,7 +130,7 @@ const ReversePick = ({
       setFeedback(
         <>
           <span>{`incorrect! ${correctMeaning} ≠ ${word} `}</span>
-          <CircleX className='inline' />
+          <CircleX className="inline" />
         </>
       );
       playErrorTwice();
@@ -154,8 +153,11 @@ const ReversePick = ({
         'max-md:mb-8'
       )}
     >
-      <GameIntel feedback={feedback} gameMode='reverse pick' />
-      <p className='text-4xl md:text-7xl text-center'>{correctMeaning}</p>
+      <GameIntel
+        feedback={feedback}
+        gameMode="reverse pick"
+      />
+      <p className="text-4xl md:text-7xl text-center">{correctMeaning}</p>
       <div
         className={clsx(
           'flex flex-col w-full gap-6 md:gap-0 md:justify-evenly',
@@ -168,7 +170,7 @@ const ReversePick = ({
               buttonRefs.current[i] = elem;
             }}
             key={word + i}
-            type='button'
+            type="button"
             disabled={wrongSelectedAnswers.includes(word)}
             className={clsx(
               'text-4xl py-4 px-2 rounded-xl w-full md:w-1/4 flex flex-row justify-center items-center gap-1',
@@ -182,8 +184,8 @@ const ReversePick = ({
             )}
             onClick={() => handleOptionClick(word)}
           >
-            <span lang='ja'>{word}</span>
-            <span className='hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1'>
+            <span lang="ja">{word}</span>
+            <span className="hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1">
               {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
             </span>
           </button>

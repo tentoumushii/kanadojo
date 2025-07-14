@@ -4,8 +4,8 @@ import WordSet from './WordSet';
 import { chunkArray } from '@/lib/helperFunctions';
 import { useState } from 'react';
 import { cardBorderStyles } from '@/static/styles';
-import useGridColumns from '@/lib/useGridColumns';
-import { useClick } from '@/lib/useAudio';
+import useGridColumns from '@/lib/hooks/useGridColumns';
+import { useClick } from '@/lib/hooks/useAudio';
 import { ChevronUp, Boxes } from 'lucide-react';
 import useVocabStore from '@/store/useVocabStore';
 
@@ -35,28 +35,28 @@ const vocabData = {
       nouns: N5Nouns,
       verbs: N5Verbs,
       adjectives: N5Adjectives,
-      adverbs: N5Adverbs
+      adverbs: N5Adverbs,
     },
     n4: {
       nouns: N4Nouns,
       verbs: N4Verbs,
       adjectives: N4Adjectives,
-      adverbs: N4Adverbs
+      adverbs: N4Adverbs,
     },
     n3: {
       nouns: N3Nouns,
       adjectives: N3Adjectives,
       verbs: N3Verbs,
-      adverbs: N3Adverbs
+      adverbs: N3Adverbs,
     },
     n2: {
       nouns: N2Nouns,
       adjectives: N2Adjectives,
       verbs: N2Verbs,
-      adverbs: N2Adverbs
-    }
+      adverbs: N2Adverbs,
+    },
   },
-  joyo: {}
+  joyo: {},
 };
 
 const WordClass = () => {
@@ -76,7 +76,7 @@ const WordClass = () => {
       name: `Set ${i + 1}`,
       start: i * 10,
       end: (i + 1) * 10,
-      id: `set-${i + 1}`
+      id: `set-${i + 1}`,
     }));
 
   const [collapsedRows, setCollapsedRows] = useState<number[]>([]);
@@ -84,7 +84,7 @@ const WordClass = () => {
   const numColumns = useGridColumns();
 
   return (
-    <div className='flex flex-col w-full gap-4'>
+    <div className="flex flex-col w-full gap-4">
       {chunkArray(vocabSetsTemp, numColumns).map((rowSets, rowIndex) => {
         const firstSetInRow = rowIndex * numColumns + 1;
         const lastSetInRow = (rowIndex + 1) * numColumns;
@@ -123,7 +123,7 @@ const WordClass = () => {
               />
               Sets {firstSetInRow}-{lastSetInRow}
               <Boxes
-                className='mt-1.5 text-[var(--secondary-color)]'
+                className="mt-1.5 text-[var(--secondary-color)]"
                 size={28}
               />
             </h3>
@@ -144,7 +144,7 @@ const WordClass = () => {
                       'border-[var(--border-color)] md:border-r-1'
                     )}
                   >
-                    <p className='text-2xl'>{vocabSetTemp.name}</p>
+                    <p className="text-2xl">{vocabSetTemp.name}</p>
                     <WordSet
                       words={words.slice(vocabSetTemp.start, vocabSetTemp.end)}
                       setName={vocabSetTemp.name}

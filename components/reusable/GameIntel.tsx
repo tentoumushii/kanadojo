@@ -6,11 +6,11 @@ import useStatsStore from '@/store/useStatsStore';
 import { miniButtonBorderStyles } from '@/static/styles';
 import { ChartSpline } from 'lucide-react';
 import { useStopwatch } from 'react-timer-hook';
-import { useClick } from '@/lib/useAudio';
+import { useClick } from '@/lib/hooks/useAudio';
 
 const GameIntel = ({
   feedback,
-  gameMode
+  gameMode,
 }: {
   feedback: React.ReactElement;
   gameMode: string;
@@ -46,12 +46,12 @@ const GameIntel = ({
           'flex flex-col gap-2 items-center justify-center py-2 md:py-4'
         )}
       >
-        <p className='text-xl px-4 flex items-center gap-2'>
+        <p className="text-xl px-4 flex items-center gap-2">
           <LandPlot />
           {gameMode}
         </p>
-        <hr className='border-t-1 w-full border-[var(--border-color)]' />
-        <p className='text-xl flex flex-row items-center gap-1.5 px-4'>
+        <hr className="border-t-1 w-full border-[var(--border-color)]" />
+        <p className="text-xl flex flex-row items-center gap-1.5 px-4">
           {feedback}
         </p>
       </div>
@@ -67,15 +67,15 @@ const GameIntel = ({
       <div
         className={clsx('flex flex-row gap-3 items-center justify-center p-4')}
       >
-        <p className='text-xl flex flex-row items-center gap-1'>
+        <p className="text-xl flex flex-row items-center gap-1">
           <SquareCheck />
           <span>{numCorrectAnswers}</span>
         </p>
-        <p className='text-xl flex flex-row items-center gap-1'>
+        <p className="text-xl flex flex-row items-center gap-1">
           <SquareX />
           <span>{numWrongAnswers}</span>
         </p>
-        <p className='text-xl flex flex-row items-center gap-1'>
+        <p className="text-xl flex flex-row items-center gap-1">
           <Star />
           <span>{numStars}</span>
         </p>
