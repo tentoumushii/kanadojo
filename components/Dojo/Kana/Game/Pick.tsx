@@ -7,13 +7,13 @@ import { CircleCheck } from 'lucide-react';
 import { CircleX } from 'lucide-react';
 import { Random } from 'random-js';
 import { useCorrect, useError } from '@/lib/hooks/useAudio';
-import GameIntel from '@/components/reusable/GameIntel';
+import GameIntel from '@/components/reusable/Game/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { pickGameKeyMappings } from '@/lib/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
-import Stars from '@/components/reusable/Stars';
+import Stars from '@/components/reusable/Game/Stars';
 
 const random = new Random();
 

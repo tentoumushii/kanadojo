@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Banner from './Banner';
-import Info from '@/components/reusable/Info';
+import Info from '@/components/reusable/Menu/Info';
 import {
   ScrollText,
   FileLock2,

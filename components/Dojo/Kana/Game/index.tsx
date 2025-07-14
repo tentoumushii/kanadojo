@@ -1,14 +1,14 @@
 'use client';
 import clsx from 'clsx';
 import { useEffect } from 'react';
-import Return from '@/components/reusable/ReturnFromGame';
+import Return from '@/components/reusable/Game/ReturnFromGame';
 import Pick from './Pick';
 import ReversePick from './ReversePick';
 import Input from './Input';
 import ReverseInput from './ReverseInput';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useStatsStore from '@/store/useStatsStore';
-import Stats from '@/components/reusable/Stats';
+import Stats from '@/components/reusable/Game/Stats';
 
 const Game = () => {
   const showStats = useStatsStore(state => state.showStats);
@@ -24,12 +24,15 @@ const Game = () => {
   return (
     <div
       className={clsx(
-        'flex flex-col gap-6 md:gap-10 items-center min-h-[100dvh] max-w-[100dvw] px-4',
+        'flex flex-col gap-6 md:gap-10 items-center min-h-[100dvh] max-w-[100dvw] px-4'
         // "bg-[url('/wallpapers/neonretrocarcity.jpg')] bg-cover bg-center"
       )}
     >
       {showStats && <Stats />}
-      <Return isHidden={showStats} href='/kana' />
+      <Return
+        isHidden={showStats}
+        href="/kana"
+      />
       {gameMode.toLowerCase() === 'pick' ? (
         <Pick isHidden={showStats} />
       ) : gameMode.toLowerCase() === 'reverse-pick' ? (

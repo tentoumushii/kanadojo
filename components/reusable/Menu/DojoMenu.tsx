@@ -1,14 +1,14 @@
 'use client';
 import clsx from 'clsx';
-import TopBar from '@/components/reusable/TopBar';
+import TopBar from '@/components/reusable/Menu/TopBar';
 import { useState, useEffect } from 'react';
-import Sidebar from '@/components/reusable/Sidebar';
-import Info from '@/components/reusable/Info';
-import GameModes from '@/components/reusable/GameModes';
+import Sidebar from '@/components/reusable/Menu/Sidebar';
+import Info from '@/components/reusable/Menu/Info';
+import GameModes from '@/components/reusable/Menu/GameModes';
 import KanaCards from '@/components/Dojo/Kana/KanaCards';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
-import Banner from '@/components/reusable/Banner';
-import CollectionSelector from '@/components/reusable/CollectionSelector';
+import Banner from '@/components/reusable/Menu/Banner';
+import CollectionSelector from '@/components/reusable/Menu/CollectionSelector';
 import Subgroup from '@/components/Dojo/Kanji/Subgroup';
 import { usePathname } from 'next/navigation';
 import WordClass from '@/components/Dojo/Vocab/WordClass';
@@ -29,7 +29,7 @@ const DojoMenu = () => {
   }, []);
 
   return (
-    <div className='min-h-[100dvh] max-w-[100dvw] lg:pl-2 lg:pr-20 flex gap-4'>
+    <div className="min-h-[100dvh] max-w-[100dvw] lg:pl-2 lg:pr-20 flex gap-4">
       <Sidebar />
       <div
         className={clsx(
@@ -38,12 +38,18 @@ const DojoMenu = () => {
           'max-lg:hidden'
         )}
       />
-      <div className={clsx('flex flex-col gap-4', 'w-full lg:w-4/5 lg:px-0 px-4 md:px-8 ', 'pb-20')}>
+      <div
+        className={clsx(
+          'flex flex-col gap-4',
+          'w-full lg:w-4/5 lg:px-0 px-4 md:px-8 ',
+          'pb-20'
+        )}
+      >
         <Banner />
         <TopBar
           showGameModes={showGameModes}
           setShowGameModes={setShowGameModes}
-          currentDojo='kana'
+          currentDojo="kana"
         />
         {showGameModes && <GameModes />}
         {(pathname === '/kanji' || pathname === '/vocabulary') && (

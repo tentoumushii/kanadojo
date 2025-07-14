@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import DojoMenu from '@/components/reusable/DojoMenu';
+import DojoMenu from '@/components/reusable/Menu/DojoMenu';
 
 export const metadata: Metadata = {
   title: 'KanaDojo: Vocabulary',
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
       'The vocabulary dojo is the place where you can learn and practice the words and vocabulary used in day-to-day Japanese.',
     url: 'https://kanadojo.com/vocabulary',
     type: 'website',
-    locale: 'en_US'
-  }
+    locale: 'en_US',
+  },
 };
 
 export default function VocabPage() {

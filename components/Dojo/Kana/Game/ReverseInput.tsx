@@ -6,12 +6,12 @@ import { CircleCheck, CircleX, CircleArrowRight } from 'lucide-react';
 import { Random } from 'random-js';
 import clsx from 'clsx';
 import { useClick, useCorrect, useError } from '@/lib/hooks/useAudio';
-import GameIntel from '@/components/reusable/GameIntel';
+import GameIntel from '@/components/reusable/Game/GameIntel';
 import { buttonBorderStyles } from '@/static/styles';
 import { useStopwatch } from 'react-timer-hook';
 import useStats from '@/lib/hooks/useStats';
 import useStatsStore from '@/store/useStatsStore';
-import Stars from '@/components/reusable/Stars';
+import Stars from '@/components/reusable/Game/Stars';
 
 const random = new Random();
 
