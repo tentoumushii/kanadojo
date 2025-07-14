@@ -23,7 +23,7 @@ const Return = ({ isHidden, href }: { isHidden: boolean; href: string }) => {
       if (event.key === 'Escape') {
         buttonRef.current?.click();
       } else if (event.code === 'Space' || event.key === ' ') {
-        event.preventDefault();
+        // event.preventDefault();
       }
     };
     window.addEventListener('keydown', handleKeyDown);

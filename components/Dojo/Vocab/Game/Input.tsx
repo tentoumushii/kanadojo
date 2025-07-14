@@ -168,7 +168,8 @@ const Input = ({
           'text-xl font-medium py-4 px-16 ',
           buttonBorderStyles,
           'flex flex-row items-end gap-2',
-          'active:scale-95 md:active:scale-98 active:duration-225'
+          'active:scale-95 md:active:scale-98 active:duration-225',
+          'text-[var(--secondary-color)]'
         )}
         onClick={handleSkip}
       >

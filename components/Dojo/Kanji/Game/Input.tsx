@@ -16,7 +16,7 @@ const random = new Random();
 
 const Input = ({
   selectedKanjiObjs,
-  isHidden
+  isHidden,
 }: {
   selectedKanjiObjs: IKanjiObj[];
   isHidden: boolean;
@@ -31,7 +31,7 @@ const Input = ({
     incrementWrongAnswers,
     addCharacterToHistory,
     addCorrectAnswerTime,
-    incrementCharacterScore
+    incrementCharacterScore,
   } = useStats();
 
   const { playClick } = useClick();
@@ -40,7 +40,6 @@ const Input = ({
 
   const [inputValue, setInputValue] = useState('');
 
-  const inputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   const [correctKanjiChar, setCorrectKanjiChar] = useState(
@@ -54,25 +53,18 @@ const Input = ({
   const [feedback, setFeedback] = useState(<>{'feedback ~'}</>);
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.code === 'Space') {
+        buttonRef.current?.click();
+      }
+    };
 
-    if (inputRef.current) {
-      inputRef.current.focus(); // Automatically focuses on the input
-    }
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
-
-  // useEffect(() => {
-  //   const handleKeyDown = (event: KeyboardEvent) => {
-  //     if (event.ctrlKey && event.code === 'Space') {
-  //       buttonRef.current?.click();
-  //     }
-  //   };
-
-  //   window.addEventListener('keydown', handleKeyDown);
-
-  //   return () => {
-  //     window.removeEventListener('keydown', handleKeyDown);
-  //   };
-  // }, []);
 
   useEffect(() => {
     if (isHidden) speedStopwatch.pause();
@@ -107,7 +99,7 @@ const Input = ({
                 .trim()
                 .toLowerCase()} `}
             </span>
-            <CircleCheck className='inline' />
+            <CircleCheck className="inline" />
           </>
         );
       } else {
@@ -115,7 +107,7 @@ const Input = ({
         setFeedback(
           <>
             <span>{`incorrect! ${correctKanjiChar} ≠ ${inputValue} `}</span>
-            <CircleX className='inline' />
+            <CircleX className="inline" />
           </>
         );
         playErrorTwice();
@@ -154,18 +146,23 @@ const Input = ({
         isHidden ? 'hidden' : ''
       )}
     >
-      <GameIntel feedback={feedback} gameMode='input' />
-      <p className='text-8xl sm:text-9xl' lang='ja'>
+      <GameIntel
+        feedback={feedback}
+        gameMode="input"
+      />
+      <p
+        className="text-8xl sm:text-9xl"
+        lang="ja"
+      >
         {correctKanjiChar}
       </p>
       <input
-        lang='en'
-        ref={inputRef}
-        type='text'
+        type="text"
         value={inputValue}
-        className='border-b-2 pb-1 text-center border-gray-600 focus:outline-none focus:border-gray-400 text-2xl lg:text-5xl'
+        className="border-b-2 pb-1 text-center border-red-500 focus:outline-none focus:border-gray-400 text-2xl lg:text-5xl"
         onChange={e => setInputValue(e.target.value)}
         onKeyDown={handleEnter}
+        autoFocus
       />
       <button
         ref={buttonRef}
@@ -173,7 +170,8 @@ const Input = ({
           'text-xl font-medium py-4 px-16',
           buttonBorderStyles,
           'active:scale-95 md:active:scale-98 active:duration-200',
-          'flex flex-row items-end gap-2'
+          'flex flex-row items-end gap-2',
+          'text-[var(--secondary-color)]'
         )}
         onClick={handleSkip}
       >

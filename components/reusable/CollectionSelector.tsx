@@ -39,7 +39,7 @@ const CollectionSelector = () => {
     'Collection 1 (JLPT N5)',
     'Collection 2 (JLPT N4)',
     'Collection 3 (JLPT N3)',
-    'Collection 4 (JLPT N2)'
+    'Collection 4 (JLPT N2)',
   ];
 
   return (
@@ -70,7 +70,7 @@ const CollectionSelector = () => {
               setSelectedCollection(collection.slice(-3, -1).toLowerCase())
             }
           >
-            <span className='text-[var(--secondary-color)]'>
+            <span className="text-[var(--secondary-color)]">
               {collection.slice(-3, -1).toLowerCase() === selectedCollection
                 ? '\u2B24'
                 : ''}

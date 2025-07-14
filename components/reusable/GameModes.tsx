@@ -15,7 +15,7 @@ const GameModes = () => {
   const { selectedGameModeKana, selectedGameModeKanji } = useKanaKanjiStore(
     useShallow(state => ({
       selectedGameModeKana: state.selectedGameModeKana,
-      selectedGameModeKanji: state.selectedGameModeKanji
+      selectedGameModeKanji: state.selectedGameModeKanji,
     }))
   );
 
@@ -36,7 +36,7 @@ const GameModes = () => {
     useKanaKanjiStore(
       useShallow(state => ({
         setSelectedGameModeKana: state.setSelectedGameModeKana,
-        setSelectedGameModeKanji: state.setSelectedGameModeKanji
+        setSelectedGameModeKanji: state.setSelectedGameModeKanji,
       }))
     );
 
@@ -82,25 +82,37 @@ const GameModes = () => {
             onClick={() => playClick()}
           >
             <input
-              type='radio'
-              name='selectedGameMode'
+              type="radio"
+              name="selectedGameMode"
               onChange={() => setSelectedGameMode(gameMode)}
-              className='hidden'
+              className="hidden"
             />
-            <span className='text-lg font-medium py-2 px-1 sm:px-2 text-center flex flex-row justify-center items-center gap-1.5'>
+            <span className="text-lg font-medium py-2 px-1 sm:px-2 text-center flex flex-row justify-center items-center gap-1.5">
               {gameMode === selectedGameMode ? '\u2B24 ' : ''}
               {gameMode.split('-').join(' ')}
               {gameMode.toLowerCase() === 'pick' && (
-                <MousePointerClick size={20} className='mt-1' />
+                <MousePointerClick
+                  size={20}
+                  className="mt-1"
+                />
               )}
               {gameMode.toLowerCase() === 'reverse-pick' && (
-                <MousePointerClick size={20} className='mt-1 scale-x-[-1]' />
+                <MousePointerClick
+                  size={20}
+                  className="mt-1 scale-x-[-1]"
+                />
               )}
               {gameMode.toLowerCase() === 'input' && (
-                <Keyboard size={20} className='mt-1' />
+                <Keyboard
+                  size={20}
+                  className="mt-1"
+                />
               )}
               {gameMode.toLowerCase() === 'reverse-input' && (
-                <Keyboard size={20} className='mt-1 scale-y-[-1]' />
+                <Keyboard
+                  size={20}
+                  className="mt-1 scale-y-[-1]"
+                />
               )}
             </span>
           </label>
