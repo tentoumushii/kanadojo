@@ -17,8 +17,12 @@ import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import clsx from 'clsx';
 import { useClick } from '@/lib/hooks/useAudio';
 import useThemeStore from '@/store/useThemeStore';
+import Decorations from './Decorations';
+import { useMediaQuery } from 'react-responsive';
 
 const MainMenu = () => {
+  const isLG = useMediaQuery({ minWidth: 1024 });
+
   const theme = useThemeStore(state => state.theme);
   const setTheme = useThemeStore(state => state.setTheme);
 
@@ -55,8 +59,18 @@ const MainMenu = () => {
   ];
 
   return (
-    <div className="flex flex-row justify-center max-w-[100dvw] min-h-[100dvh]">
-      <div className="pt-5 pb-16 flex flex-col items-center md:justify-center gap-4 px-4 w-full sm:w-3/4 lg:w-1/2 3xl:w-2/5">
+    <div
+      className={clsx(
+        'flex flex-row justify-center max-w-[100dvw] min-h-[100dvh]'
+      )}
+    >
+      {isLG && <Decorations />}
+      <div
+        className={clsx(
+          'pt-5 pb-16 flex flex-col items-center md:justify-center gap-4 px-4 w-full sm:w-3/4 lg:w-1/2 3xl:w-2/5 ',
+          'opacity-90 z-50'
+        )}
+      >
         <div className="flex flex-row justify-between items-center w-full px-1 gap-2">
           <Banner />
           <div className="flex flex-row justify-end gap-2 w-1/2 md:w-1/3">
@@ -145,14 +159,12 @@ const MainMenu = () => {
         </div>
         <Info />
         <div
-          // className='w-full grid grid-cols-2 gap-4 flex-none'
           className={clsx(
             'rounded-2xl bg-[var(--card-color)]',
             'duration-250',
             'transition-all ease-in-out',
             'flex flex-col md:flex-row',
             'w-full'
-            // 'border-b-4 border-[var(--border-color)]'
           )}
         >
           {links.map((link, i) => (
@@ -160,10 +172,7 @@ const MainMenu = () => {
               <Link
                 href={link.href}
                 key={i}
-                className={clsx(
-                  // link.name_en === 'Vocabulary' && 'md:col-span-full'
-                  'w-full'
-                )}
+                className={clsx('w-full')}
               >
                 <button
                   className={clsx(
