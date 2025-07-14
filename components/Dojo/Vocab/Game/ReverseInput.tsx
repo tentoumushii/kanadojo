@@ -159,7 +159,10 @@ const ReverseInput = ({
         ref={inputRef}
         type='text'
         value={inputValue}
-        className='border-b-2 pb-1 text-center border-gray-600 focus:outline-none focus:border-gray-400 text-2xl lg:text-7xl'
+        className={clsx(
+          'border-b-2 pb-1 text-center  focus:outline-none  text-2xl lg:text-5xl',
+          'border-[var(--card-color)] focus:border-[var(--border-color)]'
+        )}
         onChange={e => setInputValue(e.target.value)}
         onKeyDown={handleEnter}
       />
