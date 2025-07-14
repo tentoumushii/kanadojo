@@ -14,7 +14,7 @@ import {
   CircleDivide,
   Flame,
   Shapes,
-  Sigma
+  Sigma,
 } from 'lucide-react';
 import useStatsStore from '@/store/useStatsStore';
 import { ChevronsLeft } from 'lucide-react';
@@ -48,70 +48,80 @@ const Stats = () => {
     highestCorrectChars,
     highestCorrectCharsValue,
     highestWrongChars,
-    highestWrongCharsValue
+    highestWrongCharsValue,
   } = findHighestCounts(characterScores);
 
   const statsFields = [
     {
-      content: `training time: ${totalMinutes} minute${
+      field: 'training time',
+      value: `${totalMinutes} minute${
         totalMinutes === 1 ? '' : 's'
       }, ${seconds} seconds (paused)`,
-      icons: [Hourglass]
+      icons: [Hourglass],
     },
     {
-      content: `correct answers: ${numCorrectAnswers}`,
-      icons: [SquareCheck]
-    },
-    { content: `wrong answers: ${numWrongAnswers}`, icons: [SquareX] },
-    {
-      content: `accuracy: ${
-        Number.isNaN(accuracy) ? '~' : accuracy.toFixed(1) + '%'
-      }`,
-      icons: [Target]
+      field: 'correct answers',
+      value: `${numCorrectAnswers}`,
+      icons: [SquareCheck],
     },
     {
-      content: `average time per correct answer: ${
+      field: 'wrong answers',
+      value: `${numWrongAnswers}`,
+      icons: [SquareX],
+    },
+    {
+      field: 'accuracy',
+      value: `${Number.isNaN(accuracy) ? '~' : accuracy.toFixed(1) + '%'}`,
+      icons: [Target],
+    },
+    {
+      field: 'average time per correct answer',
+      value: `${
         averageCorrectAnswerTime
           ? averageCorrectAnswerTime.toFixed(2) + 's'
           : '~'
       }`,
-      icons: [Timer]
+      icons: [Timer],
     },
 
     {
-      content: `fastest correct answer: ${
+      field: 'fastest correct answer',
+      value: `${
         fastestCorrectAnswer !== 'Infinity' ? fastestCorrectAnswer + 's' : '~'
       }`,
-      icons: [Flame]
+      icons: [Flame],
     },
     {
-      content: `slowest correct answer: ${
+      field: 'slowest correct answer',
+      value: `${
         slowestCorrectAnswer !== '-Infinity' ? slowestCorrectAnswer + 's' : '~'
       }`,
-      icons: [ClockFading]
+      icons: [ClockFading],
     },
     {
-      content: `correct / incorrect answers ratio: ${
+      field: 'correct / incorrect answers ratio',
+      value: `${
         Number.isNaN(ciRatio)
           ? '~'
           : ciRatio === Infinity
           ? '∞'
           : ciRatio.toFixed(2)
       }`,
-      icons: [CircleDivide]
+      icons: [CircleDivide],
     },
     {
-      content: `characters played: ${characterHistory.length}`,
-      icons: [Sigma]
+      field: 'characters played',
+      value: `${characterHistory.length}`,
+      icons: [Sigma],
     },
     {
-      content: `unique characters played: ${
-        [...new Set(characterHistory)].length
-      }`,
-      icons: [Shapes]
+      field: 'unique characters played',
+      value: `${[...new Set(characterHistory)].length}`,
+      icons: [Shapes],
     },
     {
-      content: `easiest characters: ${
+      field: 'easiest characters',
+      value: `${
         highestCorrectChars.length >= 1
           ? highestCorrectChars.join(', ') +
             ' - ' +
@@ -119,10 +129,11 @@ const Stats = () => {
             ' correct answers'
           : '~'
       }`,
-      icons: [Clover]
+      icons: [Clover],
     },
     {
-      content: `hardest characters: ${
+      field: 'hardest characters',
+      value: `${
         highestWrongChars.length >= 1
           ? highestWrongChars.join(', ') +
             ' - ' +
@@ -130,14 +141,14 @@ const Stats = () => {
             ' wrong answers'
           : '~'
       }`,
-      icons: [HeartCrack]
-    }
+      icons: [HeartCrack],
+    },
   ];
 
   return (
-    <div className='flex flex-col items-center justify-center gap-4 max-w-[100dvw] min-h-[100dvh] p-4'>
+    <div className="flex flex-col items-center justify-center gap-4 max-w-[100dvw] min-h-[100dvh] p-4">
       <h2
-        className='group text-4xl flex flex-row items-center gap-2.5 hover:cursor-pointer'
+        className="group text-4xl flex flex-row items-center gap-2.5 hover:cursor-pointer"
         onClick={() => {
           playClick();
           toggleStats();
@@ -145,12 +156,15 @@ const Stats = () => {
       >
         <ChevronsLeft
           className={clsx(
-            'text-[var(--main-color)] mt-2',
-            'md:text-[var(--border-color)] md:group-hover:text-[var(--main-color)]'
+            'text-[var(--secondary-color)] mt-2',
+            'md:text-[var(--border-color)] md:group-hover:text-[var(--secondary-color)]'
           )}
         />
         <span>Statistics</span>
-        <ChartSpline size={30} className='mt-1.5' />
+        <ChartSpline
+          size={30}
+          className="mt-1.5"
+        />
       </h2>
       <div
         className={clsx(
@@ -170,14 +184,18 @@ const Stats = () => {
           {statsFields.slice(0, 4).map(statsField => (
             <p
               className={clsx(
-                'bg-[var(--background-color)] rounded-xl p-2 border-[var(--border-color)] border-1',
+                'bg-[var(--background-color)] rounded-xl p-2 border-[var(--border-color)]',
                 'flex flex-row items-center justify-start gap-1.5'
               )}
-              key={statsField.content}
+              key={statsField.field}
             >
-              <span>{statsField.content}</span>
+              <span className='text-[var(--secondary-color)]'>{statsField.field + ': '}</span>
+              <span>{statsField.value}</span>
               {statsField.icons.map((Icon, i) => (
-                <Icon size={24} key={i} />
+                <Icon
+                  size={24}
+                  key={i}
+                />
               ))}
             </p>
           ))}
@@ -194,14 +212,18 @@ const Stats = () => {
           {statsFields.slice(4, 8).map(statsField => (
             <p
               className={clsx(
-                'bg-[var(--background-color)] rounded-xl p-2 border-[var(--border-color)] border-1',
+                'bg-[var(--background-color)] rounded-xl p-2 border-[var(--border-color)] ',
                 'flex flex-row items-center justify-start gap-1.5'
               )}
-              key={statsField.content}
+              key={statsField.field}
             >
-              <span>{statsField.content}</span>
+              <span className='text-[var(--secondary-color)]'>{statsField.field + ': '}</span>
+              <span>{statsField.value}</span>
               {statsField.icons.map((Icon, i) => (
-                <Icon size={24} key={i} />
+                <Icon
+                  size={24}
+                  key={i}
+                />
               ))}
             </p>
           ))}
@@ -217,14 +239,18 @@ const Stats = () => {
           {statsFields.slice(8, 20).map(statsField => (
             <p
               className={clsx(
-                'bg-[var(--background-color)] rounded-xl p-2 border-[var(--border-color)] border-1',
+                'bg-[var(--background-color)] rounded-xl p-2 border-[var(--border-color)]',
                 'flex flex-row items-center justify-start gap-1.5'
               )}
-              key={statsField.content}
+              key={statsField.field}
             >
-              <span>{statsField.content}</span>
+              <span className='text-[var(--secondary-color)]'>{statsField.field + ': '}</span>
+              <span>{statsField.value}</span>
               {statsField.icons.map((Icon, i) => (
-                <Icon size={24} key={i} />
+                <Icon
+                  size={24}
+                  key={i}
+                />
               ))}
             </p>
           ))}
