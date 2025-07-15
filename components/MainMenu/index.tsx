@@ -219,7 +219,8 @@ const MainMenu = () => {
       <div
         className={clsx(
           'fixed bottom-3 flex flex-row gap-2',
-          'max-md:bg-[var(--border-color)] rounded-xl'
+          'bg-[var(--card-color)] rounded-xl z-50',
+          'opacity-90'
         )}
       >
         {legalLinks.map((link, i) => (

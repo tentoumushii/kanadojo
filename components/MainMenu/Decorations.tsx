@@ -3,65 +3,22 @@ import { useEffect, useState } from 'react';
 import themes from '../../static/themes';
 import fonts from '@/static/fonts';
 import clsx from 'clsx';
+import N5Kanji from '@/static/kanji/N5';
+import N4Kanji from '@/static/kanji/N4';
+import N3Kanji from '@/static/kanji/N3';
 
-// List of kanji characters (common ones)
 const kanjiList = [
-  '一',
-  '二',
-  '三',
-  '四',
-  '五',
-  '六',
-  '七',
-  '八',
-  '九',
-  '十',
-  '日',
-  '月',
-  '火',
-  '水',
-  '木',
-  '金',
-  '土',
-  '人',
-  '子',
-  '女',
-  '山',
-  '川',
-  '田',
-  '空',
-  '気',
-  '生',
-  '年',
-  '大',
-  '中',
-  '小',
-  '学',
-  '校',
-  '先',
-  '生',
-  '本',
-  '友',
-  '間',
-  '上',
-  '下',
-  '左',
-  '右',
-  '見',
-  '行',
-  '食',
-  '飲',
-  '読',
-  '書',
-  '話',
-  '聞',
-  '来',
+  ...N5Kanji.map(kanji => kanji.kanjiChar),
+  ...N4Kanji.map(kanji => kanji.kanjiChar),
+  ...N3Kanji.map(kanji => kanji.kanjiChar),
 ];
+
+const shuffledKanjiList = kanjiList.sort(() => Math.random() - 0.5);
 
 // Tailwind animations
 const animations = [
   'animate-pulse',
-  //   'animate-bounce',
+  // 'animate-bounce',
   //   'animate-ping',
   //   'animate-spin',
 ];
@@ -109,9 +66,12 @@ const KanjiCharacter = ({ char }: { char: string }) => {
 
   return (
     <span
-      className={`text-4xl md:text-5xl lg:text-6xl m-1 transition-all duration-1000 ${styles.fontClass} ${styles.animation}`}
-      style={{ color: styles.color }}
+      className={`text-4xl transition-all duration-1000 ${styles.fontClass} ${styles.animation}`}
       aria-hidden="true"
+      style={{
+        color: styles.color,
+        animationDelay: `${Math.random() * 1000}ms`,
+      }}
     >
       {char}
     </span>
@@ -119,22 +79,18 @@ const KanjiCharacter = ({ char }: { char: string }) => {
 };
 
 const Decorations = () => {
-  const shuffledKanjiList = kanjiList.sort(() => Math.random() - 0.5);
-
   return (
     <div
       className={clsx(
-        'fixed inset-0 overflow-hidden pointer-events-none opacity-50'
+        'fixed inset-0 overflow-hidden pointer-events-none opacity-25'
       )}
     >
-      <div className="grid grid-cols-10 gap-1 p-4 h-full w-full">
+      <div className="grid grid-cols-28 gap-0.5 p-2 h-full w-full">
         {shuffledKanjiList.map((char, index) => (
-          <div
+          <KanjiCharacter
+            char={char}
             key={index}
-            className="flex items-center justify-center "
-          >
-            <KanjiCharacter char={char} />
-          </div>
+          />
         ))}
       </div>
     </div>
