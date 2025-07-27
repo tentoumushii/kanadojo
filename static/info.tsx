@@ -46,7 +46,7 @@ const info = {
           of the Japanese writing system - the kanji characters.
         </p>
         <p className="text-lg text-[var(--secondary-color)]">
-          To begin, select at least 3 characters, pick a training mode, then hit{' '}
+          To begin, select at least 1 set, pick a training mode, then hit{' '}
           <b>Go!</b> below and start training now!
         </p>
         <p className="text-lg text-[var(--secondary-color)] italic">
@@ -67,7 +67,7 @@ const info = {
           words used in day-to-day Japanese.
         </p>
         <p className="text-lg text-[var(--secondary-color)]">
-          To begin, select at least 3 words, pick a training mode, then hit{' '}
+          To begin, select at least 1 set, pick a training mode, then hit{' '}
           <b>Go!</b> below and start training now!
         </p>
         <p className="text-lg text-[var(--secondary-color)] italic">

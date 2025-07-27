@@ -1,59 +1,38 @@
 'use client';
 import clsx from 'clsx';
-import WordSet from './WordSet';
 import { chunkArray } from '@/lib/helperFunctions';
 import { useState } from 'react';
 import { cardBorderStyles } from '@/static/styles';
 import useGridColumns from '@/lib/hooks/useGridColumns';
 import { useClick } from '@/lib/hooks/useAudio';
-import { ChevronUp, Boxes } from 'lucide-react';
+import {
+  ChevronUp,
+  Boxes,
+  CircleCheck,
+  Circle,
+  MousePointer,
+} from 'lucide-react';
 import useVocabStore from '@/store/useVocabStore';
+import VocabSetDictionary from '@/components/Dojo/Vocab/SetDictionary';
 
 import N5Nouns from '@/static/vocab/jlpt/n5/nouns';
-import N5Adjectives from '@/static/vocab/jlpt/n5/adjectives';
-import N5Verbs from '@/static/vocab/jlpt/n5/verbs';
-import N5Adverbs from '@/static/vocab/jlpt/n5/adverbs';
-
 import N4Nouns from '@/static/vocab/jlpt/n4/nouns';
-import N4Adjectives from '@/static/vocab/jlpt/n4/adjectives';
-import N4Verbs from '@/static/vocab/jlpt/n4/verbs';
-import N4Adverbs from '@/static/vocab/jlpt/n4/adverbs';
-
 import N3Nouns from '@/static/vocab/jlpt/n3/nouns';
-import N3Adjectives from '@/static/vocab/jlpt/n3/adjectives';
-import N3Verbs from '@/static/vocab/jlpt/n3/verbs';
-import N3Adverbs from '@/static/vocab/jlpt/n3/adverbs';
-
 import N2Nouns from '@/static/vocab/jlpt/n2/nouns';
-import N2Adjectives from '@/static/vocab/jlpt/n2/adjectives';
-import N2Verbs from '@/static/vocab/jlpt/n2/verbs';
-import N2Adverbs from '@/static/vocab/jlpt/n2/adverbs';
 
 const vocabData = {
   jlpt: {
     n5: {
       nouns: N5Nouns,
-      verbs: N5Verbs,
-      adjectives: N5Adjectives,
-      adverbs: N5Adverbs,
     },
     n4: {
       nouns: N4Nouns,
-      verbs: N4Verbs,
-      adjectives: N4Adjectives,
-      adverbs: N4Adverbs,
     },
     n3: {
       nouns: N3Nouns,
-      adjectives: N3Adjectives,
-      verbs: N3Verbs,
-      adverbs: N3Adverbs,
     },
     n2: {
       nouns: N2Nouns,
-      adjectives: N2Adjectives,
-      verbs: N2Verbs,
-      adverbs: N2Adverbs,
     },
   },
   joyo: {},
@@ -63,6 +42,15 @@ const WordClass = () => {
   const selectedVocabCollection = useVocabStore(
     state => state.selectedVocabCollection
   );
+
+  const selectedVocabSets = useVocabStore(state => state.selectedVocabSets);
+  const setSelectedVocabSets = useVocabStore(
+    state => state.setSelectedVocabSets
+  );
+  const addWordObjs = useVocabStore(state => state.addWordObjs);
+
+  const selectedWordObjs = useVocabStore(state => state.selectedWordObjs);
+  console.log('selectedWordObjs', selectedWordObjs);
 
   const { playClick } = useClick();
 
@@ -133,22 +121,66 @@ const WordClass = () => {
               <div
                 className={clsx(
                   'flex flex-col w-full',
-                  'md:items-start md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'
+
+                  'md:items-start md:grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3'
                 )}
               >
-                {rowSets.map(vocabSetTemp => (
+                {rowSets.map((vocabSetTemp, i) => (
                   <div
                     key={vocabSetTemp.id + vocabSetTemp.name}
                     className={clsx(
-                      'flex flex-col gap-2 px-4  h-full',
-                      'border-[var(--border-color)] md:border-r-1'
+                      'flex flex-col px-4 h-full',
+                      'border-[var(--border-color)]',
+                      i < rowSets.length - 1 && 'md:border-r-1'
                     )}
                   >
-                    <p className="text-2xl">{vocabSetTemp.name}</p>
-                    <WordSet
-                      words={words.slice(vocabSetTemp.start, vocabSetTemp.end)}
-                      setName={vocabSetTemp.name}
-                    />
+                    <button
+                      className={clsx(
+                        'text-2xl flex justify-center items-center gap-2 group',
+                        // miniButtonBorderStyles,
+                        'rounded-xl bg-[var(--background-color)] hover:cursor-pointer',
+                        'duration-250',
+                        'transition-all ease-in-out',
+
+                        'px-2 py-3',
+
+                        selectedVocabSets.includes(vocabSetTemp.name) &&
+                          'bg-[var(--border-color)]'
+                      )}
+                      onClick={e => {
+                        e.currentTarget.blur();
+
+                        playClick();
+                        if (selectedVocabSets.includes(vocabSetTemp.name)) {
+                          setSelectedVocabSets(
+                            selectedVocabSets.filter(
+                              set => set !== vocabSetTemp.name
+                            )
+                          );
+                          addWordObjs(
+                            words.slice(vocabSetTemp.start, vocabSetTemp.end)
+                          );
+                        } else {
+                          setSelectedVocabSets([
+                            ...new Set(
+                              selectedVocabSets.concat(vocabSetTemp.name)
+                            ),
+                          ]);
+                          addWordObjs(
+                            words.slice(vocabSetTemp.start, vocabSetTemp.end)
+                          );
+                        }
+                      }}
+                    >
+                      {selectedVocabSets.includes(vocabSetTemp.name) ? (
+                        <CircleCheck className="mt-0.5 text-[var(--secondary-color)]" />
+                      ) : (
+                        <Circle className="mt-0.5 text-[var(--secondary-color)]" />
+                      )}
+                      {vocabSetTemp.name}
+                      <MousePointer className="mt-0.5 text-[var(--secondary-color)] " />
+                    </button>
+                    <VocabSetDictionary set={vocabSetTemp.name} />
                   </div>
                 ))}
               </div>

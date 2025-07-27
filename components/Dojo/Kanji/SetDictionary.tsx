@@ -5,7 +5,6 @@ import N5KanjiArray from '@/static/kanji/N5';
 import N4KanjiArray from '@/static/kanji/N4';
 import N3KanjiArray from '@/static/kanji/N3';
 import N2KanjiArray from '@/static/kanji/N2';
-// import Banner from '@/components/reusable/Banner';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 
 const createKanjiSetRanges = (numSets: number) =>
@@ -92,41 +91,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
                     </span>
                   ))}
                 </div>
-                {/*HR Divider*/}
-                {/* <div
-                  className={clsx(
-                    'border-t-1 w-full',
-                    // 'md:border-l-1 md:h-auto md:border-t-0 md:w-0 md:mx-1',
-                    'border-[var(--border-color)]',
-                    kanjiObj.onyomi[0] === '' ||
-                      ((kanjiObj.kunyomi[0] === '' ||
-                        kanjiObj.onyomi.length === 0 ||
-                        kanjiObj.kunyomi.length === 0) &&
-                        'hidden')
-                  )}
-                /> */}
-                {/*HR Divider*/}
-                {/* <div
-                  className={clsx(
-                    'flex flex-row gap-2',
-                    (kanjiObj.kunyomi[0] === '' ||
-                      kanjiObj.kunyomi.length === 0) &&
-                      'hidden'
-                  )}
-                >
-                  {kanjiObj.kunyomi.slice(0, 2).map(kunyomiReading => (
-                    <span
-                      key={kunyomiReading}
-                      className={clsx(
-                        'rounded-lg px-1.5 py-1 flex flex-row items-center text-sm md:text-base',
-                        'bg-[var(--border-color)]',
-                        'text-[var(--secondary-color)]'
-                      )}
-                    >
-                      {kunyomiReading}
-                    </span>
-                  ))}
-                </div> */}
+
                 <div
                   className={clsx(
                     'bg-[var(--background-color)] rounded-lg',
