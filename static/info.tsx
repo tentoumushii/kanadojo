@@ -5,79 +5,85 @@ const info = {
     header: <span>Welcome to KanaDojo!</span>,
     content: (
       <>
-        <p className='text-lg text-[var(--secondary-color)]'>
+        <p className="text-lg text-[var(--secondary-color)]">
           KanaDojo is a fun, minimalist, aesthetic platform for learning and
           practicing Japanese online.
         </p>
-        <p className='text-lg text-[var(--secondary-color)]'>
+        <p className="text-lg text-[var(--secondary-color)]">
           To begin, select a dojo, pick a training mode and start training now!
         </p>
         <DevNotice />
       </>
-    )
+    ),
   },
   '/kana': {
     header: <span>Welcome to the kana (hiragana and katakana) dojo!</span>,
     content: (
       <>
-        <p className='text-lg text-[var(--secondary-color)]'>
+        <p className="text-lg text-[var(--secondary-color)]">
           This is the place where you can learn and practice the two core
           syllabaries of Japanese - Hiragana and Katakana.
         </p>
-        <p className='text-lg text-[var(--secondary-color)]'>
+        <p className="text-lg text-[var(--secondary-color)]">
           To begin, select at least one group of characters, pick a training
-          mode, then hit <b>Go!</b> above and start training now!
+          mode, then hit <b>Go!</b> below and start training now!
         </p>
-        <p className='text-lg text-[var(--secondary-color)] italic'>
+        <p className="text-lg text-[var(--secondary-color)] italic">
           Make sure to check out the preferences menu to customize your learning
-          experience and make KanaDojo uniquely yours!
+          experience and make{' '}
+          <span className="text-[var(--main-color)]">KanaDojo</span> uniquely
+          yours!
         </p>
       </>
-    )
+    ),
   },
   '/kanji': {
     header: <span>Welcome to the kanji dojo!</span>,
     content: (
       <>
-        <p className='text-lg text-[var(--secondary-color)]'>
+        <p className="text-lg text-[var(--secondary-color)]">
           This is the place where you can learn and practice the main component
           of the Japanese writing system - the kanji characters.
         </p>
-        <p className='text-lg text-[var(--secondary-color)]'>
+        <p className="text-lg text-[var(--secondary-color)]">
           To begin, select at least 3 characters, pick a training mode, then hit{' '}
-          <b>Go!</b> above and start training now!
+          <b>Go!</b> below and start training now!
         </p>
-        <p className='text-lg text-[var(--secondary-color)] italic'>
+        <p className="text-lg text-[var(--secondary-color)] italic">
           Make sure to check out the preferences menu to customize your learning
-          experience and make KanaDojo uniquely yours!
+          experience and make{' '}
+          <span className="text-[var(--main-color)]">KanaDojo</span> uniquely
+          yours!
         </p>
       </>
-    )
+    ),
   },
   '/vocabulary': {
     header: <span>Welcome to the vocabulary dojo!</span>,
     content: (
       <>
-        <p className='text-lg text-[var(--secondary-color)]'>
+        <p className="text-lg text-[var(--secondary-color)]">
           This is the place where you can learn and practice the most common
           words used in day-to-day Japanese.
         </p>
-        <p className='text-lg text-[var(--secondary-color)]'>
+        <p className="text-lg text-[var(--secondary-color)]">
           To begin, select at least 3 words, pick a training mode, then hit{' '}
-          <b>Go!</b> above and start training now!
+          <b>Go!</b> below and start training now!
         </p>
-        <p className='text-lg text-[var(--secondary-color)] italic'>
+        <p className="text-lg text-[var(--secondary-color)] italic">
           Make sure to check out the preferences menu to customize your learning
-          experience and make KanaDojo uniquely yours!
+          experience and make{' '}
+          <span className="text-[var(--main-color)]">KanaDojo</span> uniquely
+          yours!
         </p>
       </>
-    )
+    ),
   },
 
   jlptMenu: {
     header: <span>About the JLPT kanji/vocabulary groups</span>,
     content: (
-      <p className='text-lg text-[var(--secondary-color)]'>
+      <p className="text-lg text-[var(--secondary-color)]">
         The test consists of five levels, with N1 being the highest level and N5
         the lowest. N1 covers kanji characters and vocabulary that allow the
         user to understand Japanese used in business, academia and other
@@ -89,12 +95,12 @@ const info = {
         ability to understand some basic real-life Japanese, and N5 represents
         the ability to understand some simple Japanese at a basic level.
       </p>
-    )
+    ),
   },
   groupMenu: {
     header: <span>About the Japanese Language Proficiency Test (JLPT)</span>,
     content: (
-      <p className='text-lg text-[var(--secondary-color)]'>
+      <p className="text-lg text-[var(--secondary-color)]">
         JLPT (short for Japanese-Language Proficiency Test) is a standardized
         criterion-referenced test to evaluate and certify Japanese language
         proficiency for non-native speakers.
@@ -109,12 +115,12 @@ const info = {
         learners all over the world to study Japanese effectively and
         systematically.
       </p>
-    )
+    ),
   },
   wordClassMenu: {
     header: <span>About word types</span>,
     content: (
-      <p className='text-lg text-[var(--secondary-color)]'>
+      <p className="text-lg text-[var(--secondary-color)]">
         Word types categorize words based on their function and meaning in a
         sentence. Nouns name people, places, things, or ideas - like
         &quot;dog&quot;, &quot;city&quot;, &quot;happiness&quot;, and so on.
@@ -127,8 +133,8 @@ const info = {
         &quot;quickly&quot;, &quot;slowly&quot;, &quot;poorly&quot;,
         &quot;very&quot;, &quot;yesterday&quot;, and so on.
       </p>
-    )
-  }
+    ),
+  },
 };
 
 export default info;

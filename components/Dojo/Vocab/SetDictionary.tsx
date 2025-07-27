@@ -68,6 +68,7 @@ const SetDictionary = () => {
 
   const params = useParams();
   const { set } = params as unknown as ISet;
+  console.log('SET', set);
 
   const sliceRange =
     vocabSetSliceRanges[set as keyof typeof vocabSetSliceRanges];

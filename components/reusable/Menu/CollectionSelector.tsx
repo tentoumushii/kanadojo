@@ -36,10 +36,10 @@ const CollectionSelector = () => {
       : () => {};
 
   const collections = [
-    'Collection 1 (JLPT N5)',
-    'Collection 2 (JLPT N4)',
-    'Collection 3 (JLPT N3)',
-    'Collection 4 (JLPT N2)',
+    {name: 'n5', displayName: 'Unit 1'},
+    {name: 'n4', displayName: 'Unit 2'},
+    {name: 'n3', displayName: 'Unit 3'},
+    {name: 'n2', displayName: 'Unit 4'},
   ];
 
   return (
@@ -67,15 +67,17 @@ const CollectionSelector = () => {
               'duration-250'
             )}
             onClick={() =>
-              setSelectedCollection(collection.slice(-3, -1).toLowerCase())
+              setSelectedCollection(collection.name)
             }
           >
             <span className="text-[var(--secondary-color)]">
-              {collection.slice(-3, -1).toLowerCase() === selectedCollection
+              {collection.name === selectedCollection
                 ? '\u2B24'
                 : ''}
             </span>
-            {collection}
+            <span className="text-2xl">
+              {collection.displayName}
+            </span>
           </button>
 
           {i < collections.length - 1 && (

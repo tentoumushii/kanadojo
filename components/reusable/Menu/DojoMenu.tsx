@@ -6,26 +6,26 @@ import Sidebar from '@/components/reusable/Menu/Sidebar';
 import Info from '@/components/reusable/Menu/Info';
 import GameModes from '@/components/reusable/Menu/GameModes';
 import KanaCards from '@/components/Dojo/Kana/KanaCards';
-import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import Banner from '@/components/reusable/Menu/Banner';
 import CollectionSelector from '@/components/reusable/Menu/CollectionSelector';
 import Subgroup from '@/components/Dojo/Kanji/Subgroup';
 import { usePathname } from 'next/navigation';
 import WordClass from '@/components/Dojo/Vocab/WordClass';
-import useVocabStore from '@/store/useVocabStore';
+// import useKanaKanjiStore from '@/store/useKanaKanjiStore';
+// import useVocabStore from '@/store/useVocabStore';
 
 const DojoMenu = () => {
   const pathname = usePathname();
 
   const [showGameModes, setShowGameModes] = useState(false);
 
-  const clearKanji = useKanaKanjiStore(state => state.clearKanjiObjs);
+  // const clearKanji = useKanaKanjiStore(state => state.clearKanjiObjs);
 
-  const clearWords = useVocabStore(state => state.clearWordObjs);
+  // const clearWords = useVocabStore(state => state.clearWordObjs);
 
   useEffect(() => {
-    clearKanji();
-    clearWords();
+    // clearKanji();
+    // clearWords();
   }, []);
 
   return (
@@ -46,16 +46,18 @@ const DojoMenu = () => {
         )}
       >
         <Banner />
+
+        <Info />
+        {(pathname === '/kanji' || pathname === '/vocabulary') && (
+          <CollectionSelector />
+        )}
         <TopBar
           showGameModes={showGameModes}
           setShowGameModes={setShowGameModes}
           currentDojo="kana"
         />
         {showGameModes && <GameModes />}
-        {(pathname === '/kanji' || pathname === '/vocabulary') && (
-          <CollectionSelector />
-        )}
-        <Info />
+
         {pathname === '/kana' ? (
           <KanaCards />
         ) : pathname === '/kanji' ? (

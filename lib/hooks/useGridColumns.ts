@@ -5,7 +5,7 @@ const useGridColumns = () => {
   const isLG = useMediaQuery({ minWidth: 1024 }); // 3 cols
   const isMD = useMediaQuery({ minWidth: 768 }); // 2 cols
 
-  return is2XL ? 4 : isLG ? 3 : isMD ? 2 : 1;
+  return is2XL ? 3 : isLG ? 2 : isMD ? 1 : 1;
 };
 
 export default useGridColumns;

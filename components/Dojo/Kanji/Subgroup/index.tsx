@@ -1,17 +1,23 @@
 'use client';
 import { useState } from 'react';
 import clsx from 'clsx';
-import KanjiSet from './KanjiSet';
 import N5Kanji from '@/static/kanji/N5';
 import N4Kanji from '@/static/kanji/N4';
 import N3Kanji from '@/static/kanji/N3';
 import N2Kanji from '@/static/kanji/N2';
-import { cardBorderStyles } from '@/static/styles';
+import { cardBorderStyles,  } from '@/static/styles';
 import { chunkArray } from '@/lib/helperFunctions';
-import { ChevronUp, Boxes, BookMarked } from 'lucide-react';
+import {
+  ChevronUp,
+  Boxes,
+  MousePointer,
+  CircleCheck,
+  Circle,
+} from 'lucide-react';
 import { useClick } from '@/lib/hooks/useAudio';
 import useGridColumns from '@/lib/hooks/useGridColumns';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
+import KanjiSetDictionary from '@/components/Dojo/Kanji/SetDictionary';
 
 const vocabData = {
   n5: N5Kanji,
@@ -24,6 +30,14 @@ const Subgroup = () => {
   const selectedKanjiCollection = useKanaKanjiStore(
     state => state.selectedKanjiCollection
   );
+  const selectedKanjiSets = useKanaKanjiStore(state => state.selectedKanjiSets);
+  const setSelectedKanjiSets = useKanaKanjiStore(
+    state => state.setSelectedKanjiSets
+  );
+  const addKanjiObjs = useKanaKanjiStore(state => state.addKanjiObjs);
+
+  const selectedKanjiObjs = useKanaKanjiStore(state => state.selectedKanjiObjs);
+  console.log('selectedKanjiObjs', selectedKanjiObjs);
 
   const { playClick } = useClick();
 
@@ -82,11 +96,11 @@ const Subgroup = () => {
                 )}
                 size={24}
               />
-              Sets {firstSetInRow}-{lastSetInRow}
               <Boxes
-                className="mt-1.5 text-[var(--secondary-color)]"
+                className=" text-[var(--secondary-color)]"
                 size={28}
               />
+              Sets {firstSetInRow}-{lastSetInRow}
             </h3>
 
             {/* Conditionally render the row content */}
@@ -94,28 +108,71 @@ const Subgroup = () => {
               <div
                 className={clsx(
                   'flex flex-col w-full',
-                  'md:items-start md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'
+                  'md:items-start md:grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3'
                 )}
               >
-                {rowSets.map(kanjiSetTemp => (
+                {rowSets.map((kanjiSetTemp, i) => (
                   <div
                     key={kanjiSetTemp.id + kanjiSetTemp.name}
                     className={clsx(
-                      'flex flex-col gap-2 px-4  h-full',
-                      'border-[var(--border-color)] md:border-r-1'
+                      'flex flex-col px-4 h-full',
+                      'border-[var(--border-color)]',
+                      i < rowSets.length - 1 && 'md:border-r-1'
                     )}
                   >
-                    <p className="text-2xl flex items-center gap-1.5">
-                      {kanjiSetTemp.name}{' '}
-                      <BookMarked className="mt-0.5 text-[var(--secondary-color)]" />
-                    </p>
-                    <KanjiSet
-                      kanjiList={kanjiObjs.slice(
-                        kanjiSetTemp.start,
-                        kanjiSetTemp.end
+                    <button
+                      className={clsx(
+                        'text-2xl flex justify-center items-center gap-2 group',
+                        // miniButtonBorderStyles,
+                        'rounded-xl bg-[var(--background-color)] hover:cursor-pointer',
+                        'duration-250',
+                        'transition-all ease-in-out',
+
+                        'px-2 py-3',
+
+                        selectedKanjiSets.includes(kanjiSetTemp.name) &&
+                          'bg-[var(--border-color)]'
                       )}
-                      setName={kanjiSetTemp.name}
-                    />
+                      onClick={e => {
+                        e.currentTarget.blur();
+
+                        playClick();
+                        if (selectedKanjiSets.includes(kanjiSetTemp.name)) {
+                          setSelectedKanjiSets(
+                            selectedKanjiSets.filter(
+                              set => set !== kanjiSetTemp.name
+                            )
+                          );
+                          addKanjiObjs(
+                            kanjiObjs.slice(
+                              kanjiSetTemp.start,
+                              kanjiSetTemp.end
+                            )
+                          );
+                        } else {
+                          setSelectedKanjiSets([
+                            ...new Set(
+                              selectedKanjiSets.concat(kanjiSetTemp.name)
+                            ),
+                          ]);
+                          addKanjiObjs(
+                            kanjiObjs.slice(
+                              kanjiSetTemp.start,
+                              kanjiSetTemp.end
+                            )
+                          );
+                        }
+                      }}
+                    >
+                      {selectedKanjiSets.includes(kanjiSetTemp.name) ? (
+                        <CircleCheck className="mt-0.5 text-[var(--secondary-color)]" />
+                      ) : (
+                        <Circle className="mt-0.5 text-[var(--secondary-color)]" />
+                      )}
+                      {kanjiSetTemp.name}
+                      <MousePointer className="mt-0.5 text-[var(--secondary-color)] " />
+                    </button>
+                    <KanjiSetDictionary set={kanjiSetTemp.name} />
                   </div>
                 ))}
               </div>

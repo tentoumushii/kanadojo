@@ -35,15 +35,16 @@ const MainMenu = () => {
       href: '/kana',
     },
     {
-      name_en: 'Kanji',
-      name_ja: '見',
-      href: '/kanji',
-    },
-    {
       name_en: 'Vocabulary',
       name_ja: '彙',
       href: '/vocabulary',
     },
+    {
+      name_en: 'Kanji',
+      name_ja: '見',
+      href: '/kanji',
+    },
+
     // {
     //   name_en: 'Sentences',
     //   name_ja: '文',
@@ -64,7 +65,7 @@ const MainMenu = () => {
         'flex flex-row justify-center max-w-[100dvw] min-h-[100dvh]'
       )}
     >
-      {isLG && <Decorations />}
+      {isLG && process.env.NODE_ENV === 'production' && <Decorations />}
       <div
         className={clsx(
           'pt-5 pb-16 flex flex-col items-center md:justify-center gap-4 px-4 w-full sm:w-3/4 lg:w-1/2 3xl:w-2/5 ',

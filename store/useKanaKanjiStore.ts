@@ -26,6 +26,9 @@ interface IFormState {
 
   selectedKanjiCollection: string;
   setSelectedKanjiCollection: (collection: string) => void;
+
+  selectedKanjiSets: string[];
+  setSelectedKanjiSets: (sets: string[]) => void;
 }
 
 const useKanaKanjiStore = create<IFormState>(set => ({
@@ -38,7 +41,7 @@ const useKanaKanjiStore = create<IFormState>(set => ({
     set(state => ({
       kanaGroupIndices: state.kanaGroupIndices.includes(kanaGroupIndex)
         ? state.kanaGroupIndices.filter(index => index !== kanaGroupIndex) // Remove if present
-        : [...state.kanaGroupIndices, kanaGroupIndex] // Add if not present
+        : [...state.kanaGroupIndices, kanaGroupIndex], // Add if not present
     })),
   addKanaGroupIndices: kanaGroupIndices =>
     set(state => ({
@@ -46,7 +49,7 @@ const useKanaKanjiStore = create<IFormState>(set => ({
         state.kanaGroupIndices.includes(i)
       )
         ? state.kanaGroupIndices.filter(i => !kanaGroupIndices.includes(i)) // Remove if present
-        : [...new Set([...state.kanaGroupIndices, ...kanaGroupIndices])]
+        : [...new Set([...state.kanaGroupIndices, ...kanaGroupIndices])],
     })),
 
   // KANJI
@@ -62,7 +65,7 @@ const useKanaKanjiStore = create<IFormState>(set => ({
         ? state.selectedKanjiObjs.filter(
             currentKanjiObj => currentKanjiObj.kanjiChar !== kanjiObj.kanjiChar
           )
-        : [...state.selectedKanjiObjs, kanjiObj]
+        : [...state.selectedKanjiObjs, kanjiObj],
     })),
   addKanjiObjs: kanjiObjs =>
     set(state => ({
@@ -77,17 +80,20 @@ const useKanaKanjiStore = create<IFormState>(set => ({
                 .map(currentKanjiObj => currentKanjiObj.kanjiChar)
                 .includes(currentKanjiObj.kanjiChar)
           )
-        : [...new Set([...state.selectedKanjiObjs, ...kanjiObjs])]
+        : [...new Set([...state.selectedKanjiObjs, ...kanjiObjs])],
     })),
   clearKanjiObjs: () => {
     set(() => ({
-      selectedKanjiObjs: []
+      selectedKanjiObjs: [],
     }));
   },
 
   selectedKanjiCollection: 'n5',
   setSelectedKanjiCollection: collection =>
-    set({ selectedKanjiCollection: collection })
+    set({ selectedKanjiCollection: collection }),
+
+  selectedKanjiSets: [],
+  setSelectedKanjiSets: sets => set({ selectedKanjiSets: sets }),
 }));
 
 export default useKanaKanjiStore;
