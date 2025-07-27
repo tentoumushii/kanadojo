@@ -21,6 +21,7 @@ interface IFormState {
 
   selectedVocabSets: string[];
   setSelectedVocabSets: (sets: string[]) => void;
+  clearVocabSets: () => void;
 }
 
 const useVocabStore = create<IFormState>(set => ({
@@ -67,6 +68,11 @@ const useVocabStore = create<IFormState>(set => ({
 
   selectedVocabSets: [],
   setSelectedVocabSets: sets => set({ selectedVocabSets: sets }),
+  clearVocabSets: () => {
+    set(() => ({
+      selectedVocabSets: []
+    }));
+  },
 }));
 
 export default useVocabStore;

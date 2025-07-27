@@ -36,12 +36,12 @@ const MainMenu = () => {
     },
     {
       name_en: 'Vocabulary',
-      name_ja: '彙',
+      name_ja: '言',
       href: '/vocabulary',
     },
     {
       name_en: 'Kanji',
-      name_ja: '見',
+      name_ja: '出',
       href: '/kanji',
     },
 

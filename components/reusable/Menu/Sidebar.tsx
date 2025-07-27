@@ -96,7 +96,7 @@ const Sidebar = () => {
         )}
         onClick={playClick}
       >
-        彙<span className="max-lg:hidden"> Vocabulary</span>
+        言<span className="max-lg:hidden"> Vocabulary</span>
       </Link>
       <Link
         href="/kanji"
@@ -108,7 +108,7 @@ const Sidebar = () => {
         )}
         onClick={playClick}
       >
-        見<span className="max-lg:hidden"> Kanji</span>
+        出<span className="max-lg:hidden"> Kanji</span>
       </Link>
       <Link
         href="/preferences"

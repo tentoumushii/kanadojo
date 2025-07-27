@@ -5,7 +5,7 @@ import N5Kanji from '@/static/kanji/N5';
 import N4Kanji from '@/static/kanji/N4';
 import N3Kanji from '@/static/kanji/N3';
 import N2Kanji from '@/static/kanji/N2';
-import { cardBorderStyles,  } from '@/static/styles';
+import { cardBorderStyles } from '@/static/styles';
 import { chunkArray } from '@/lib/helperFunctions';
 import {
   ChevronUp,
@@ -19,15 +19,29 @@ import useGridColumns from '@/lib/hooks/useGridColumns';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import KanjiSetDictionary from '@/components/Dojo/Kanji/SetDictionary';
 
-const vocabData = {
-  n5: N5Kanji,
-  n4: N4Kanji,
-  n3: N3Kanji,
-  n2: N2Kanji,
+const kanjiCollections = {
+  n5: { data: N5Kanji, name: 'N5', prevLength: 0 },
+  n4: {
+    data: N4Kanji,
+    name: 'N4',
+    prevLength: Math.ceil(N5Kanji.length / 10),
+  },
+  n3: {
+    data: N3Kanji,
+    name: 'N3',
+    prevLength: Math.ceil((N5Kanji.length + N4Kanji.length) / 10),
+  },
+  n2: {
+    data: N2Kanji,
+    name: 'N2',
+    prevLength: Math.ceil(
+      (N5Kanji.length + N4Kanji.length + N3Kanji.length) / 10
+    ),
+  },
 };
 
 const Subgroup = () => {
-  const selectedKanjiCollection = useKanaKanjiStore(
+  const selectedKanjiCollectionName = useKanaKanjiStore(
     state => state.selectedKanjiCollection
   );
   const selectedKanjiSets = useKanaKanjiStore(state => state.selectedKanjiSets);
@@ -41,17 +55,20 @@ const Subgroup = () => {
 
   const { playClick } = useClick();
 
-  const kanjiObjs =
-    vocabData[selectedKanjiCollection as keyof typeof vocabData];
+  const selectedKanjiCollection =
+    kanjiCollections[
+      selectedKanjiCollectionName as keyof typeof kanjiCollections
+    ];
 
-  const kanjiSetsTemp = new Array(80)
+  const kanjiSetsTemp = new Array(
+    Math.ceil(selectedKanjiCollection.data.length / 10)
+  )
     .fill({})
-    .slice(0, Math.ceil(kanjiObjs.length / 10))
     .map((obj, i) => ({
-      name: `Set ${i + 1}`,
-      start: i * 10,
-      end: (i + 1) * 10,
-      id: `set-${i + 1}`,
+      name: `Set ${selectedKanjiCollection.prevLength + i + 1}`,
+      start: i,
+      end: i + 1,
+      id: `Set ${i + 1}`,
     }));
 
   const [collapsedRows, setCollapsedRows] = useState<number[]>([]);
@@ -100,7 +117,8 @@ const Subgroup = () => {
                 className=" text-[var(--secondary-color)]"
                 size={28}
               />
-              Sets {firstSetInRow}-{lastSetInRow}
+              Sets {selectedKanjiCollection.prevLength + firstSetInRow}-
+              {selectedKanjiCollection.prevLength + lastSetInRow}
             </h3>
 
             {/* Conditionally render the row content */}
@@ -144,9 +162,9 @@ const Subgroup = () => {
                             )
                           );
                           addKanjiObjs(
-                            kanjiObjs.slice(
-                              kanjiSetTemp.start,
-                              kanjiSetTemp.end
+                            selectedKanjiCollection.data.slice(
+                              kanjiSetTemp.start * 10,
+                              kanjiSetTemp.end * 10
                             )
                           );
                         } else {
@@ -155,10 +173,11 @@ const Subgroup = () => {
                               selectedKanjiSets.concat(kanjiSetTemp.name)
                             ),
                           ]);
+                          console.log(kanjiSetTemp.start, kanjiSetTemp.end);
                           addKanjiObjs(
-                            kanjiObjs.slice(
-                              kanjiSetTemp.start,
-                              kanjiSetTemp.end
+                            selectedKanjiCollection.data.slice(
+                              kanjiSetTemp.start * 10,
+                              kanjiSetTemp.end * 10
                             )
                           );
                         }
@@ -172,7 +191,7 @@ const Subgroup = () => {
                       {kanjiSetTemp.name}
                       <MousePointer className="mt-0.5 text-[var(--secondary-color)] " />
                     </button>
-                    <KanjiSetDictionary set={kanjiSetTemp.name} />
+                    <KanjiSetDictionary set={kanjiSetTemp.id} />
                   </div>
                 ))}
               </div>

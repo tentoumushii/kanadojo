@@ -19,6 +19,12 @@ const CollectionSelector = () => {
     state => state.setSelectedVocabCollection
   );
 
+  const clearKanjiObjs = useKanaKanjiStore(state => state.clearKanjiObjs);
+  const clearWordObjs = useVocabStore(state => state.clearWordObjs);
+
+  const clearKanjiSets = useKanaKanjiStore(state => state.clearKanjiSets);
+  const clearVocabSets = useVocabStore(state => state.clearVocabSets);
+
   const pathname = usePathname();
 
   const selectedCollection =
@@ -36,10 +42,10 @@ const CollectionSelector = () => {
       : () => {};
 
   const collections = [
-    {name: 'n5', displayName: 'Unit 1'},
-    {name: 'n4', displayName: 'Unit 2'},
-    {name: 'n3', displayName: 'Unit 3'},
-    {name: 'n2', displayName: 'Unit 4'},
+    { name: 'n5', displayName: 'Unit 1' },
+    { name: 'n4', displayName: 'Unit 2' },
+    { name: 'n3', displayName: 'Unit 3' },
+    { name: 'n2', displayName: 'Unit 4' },
   ];
 
   return (
@@ -66,18 +72,21 @@ const CollectionSelector = () => {
               i === collections.length - 1 && 'rounded-tr-2xl rounded-br-2xl',
               'duration-250'
             )}
-            onClick={() =>
-              setSelectedCollection(collection.name)
-            }
+            onClick={() => {
+              setSelectedCollection(collection.name);
+              if (pathname === '/kanji') {
+                clearKanjiObjs();
+                clearKanjiSets();
+              } else if (pathname === '/vocabulary') {
+                clearWordObjs();
+                clearVocabSets();
+              }
+            }}
           >
             <span className="text-[var(--secondary-color)]">
-              {collection.name === selectedCollection
-                ? '\u2B24'
-                : ''}
+              {collection.name === selectedCollection ? '\u2B24' : ''}
             </span>
-            <span className="text-2xl">
-              {collection.displayName}
-            </span>
+            <span className="text-2xl">{collection.displayName}</span>
           </button>
 
           {i < collections.length - 1 && (

@@ -18,7 +18,7 @@ const createKanjiSetRanges = (numSets: number) =>
 
 const kanjiSetSliceRanges = createKanjiSetRanges(200);
 
-const displayKanjiArray = {
+const kanjiCollections = {
   n5: N5KanjiArray,
   n4: N4KanjiArray,
   n3: N3KanjiArray,
@@ -29,15 +29,15 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
   const selectedKanjiCollection = useKanaKanjiStore(
     state => state.selectedKanjiCollection
   );
+  const displayKanjiCollection =
+    kanjiCollections[selectedKanjiCollection as keyof typeof kanjiCollections];
 
   const sliceRange =
     kanjiSetSliceRanges[set as keyof typeof kanjiSetSliceRanges];
 
   return (
     <div className={clsx('flex flex-col', cardBorderStyles)}>
-      {displayKanjiArray[
-        selectedKanjiCollection as keyof typeof displayKanjiArray
-      ]
+      {displayKanjiCollection
         .slice(sliceRange[0], sliceRange[1])
         .map((kanjiObj, i) => (
           <div

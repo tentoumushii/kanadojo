@@ -44,13 +44,15 @@ const SetDictionary = ({ set }: { set: string }) => {
   const selectedVocabCollection = useVocabStore(
     state => state.selectedVocabCollection
   );
+  const displayVocabCollection =
+    (vocabData as VocabData)['jlpt'][selectedVocabCollection]['nouns'];
 
   const sliceRange =
     vocabSetSliceRanges[set as keyof typeof vocabSetSliceRanges];
 
   return (
     <div className={clsx('flex flex-col', cardBorderStyles)}>
-      {(vocabData as VocabData)['jlpt'][selectedVocabCollection]['nouns']
+      {displayVocabCollection
         .slice(sliceRange[0], sliceRange[1])
         .map((wordObj: IWord, i: number) => (
           <div

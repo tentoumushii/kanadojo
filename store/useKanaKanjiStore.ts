@@ -29,6 +29,7 @@ interface IFormState {
 
   selectedKanjiSets: string[];
   setSelectedKanjiSets: (sets: string[]) => void;
+  clearKanjiSets: () => void;
 }
 
 const useKanaKanjiStore = create<IFormState>(set => ({
@@ -94,6 +95,11 @@ const useKanaKanjiStore = create<IFormState>(set => ({
 
   selectedKanjiSets: [],
   setSelectedKanjiSets: sets => set({ selectedKanjiSets: sets }),
+  clearKanjiSets: () => {
+    set(() => ({
+      selectedKanjiSets: [],
+    }));
+  },
 }));
 
 export default useKanaKanjiStore;

@@ -20,26 +20,33 @@ import N4Nouns from '@/static/vocab/jlpt/n4/nouns';
 import N3Nouns from '@/static/vocab/jlpt/n3/nouns';
 import N2Nouns from '@/static/vocab/jlpt/n2/nouns';
 
-const vocabData = {
-  jlpt: {
-    n5: {
-      nouns: N5Nouns,
-    },
-    n4: {
-      nouns: N4Nouns,
-    },
-    n3: {
-      nouns: N3Nouns,
-    },
-    n2: {
-      nouns: N2Nouns,
-    },
+const vocabCollections = {
+  n5: {
+    data: N5Nouns,
+    name: 'N5',
+    prevLength: 0,
   },
-  joyo: {},
+  n4: {
+    data: N4Nouns,
+    name: 'N4',
+    prevLength: Math.ceil(N5Nouns.length / 10),
+  },
+  n3: {
+    data: N3Nouns,
+    name: 'N3',
+    prevLength: Math.ceil((N5Nouns.length + N4Nouns.length) / 10),
+  },
+  n2: {
+    data: N2Nouns,
+    name: 'N2',
+    prevLength: Math.ceil(
+      (N5Nouns.length + N4Nouns.length + N3Nouns.length) / 10
+    ),
+  },
 };
 
 const WordClass = () => {
-  const selectedVocabCollection = useVocabStore(
+  const selectedVocabCollectionName = useVocabStore(
     state => state.selectedVocabCollection
   );
 
@@ -55,16 +62,19 @@ const WordClass = () => {
   const { playClick } = useClick();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const words = (vocabData['jlpt'] as any)[selectedVocabCollection]['nouns'];
+  const selectedVocabCollection = (vocabCollections as any)[
+    selectedVocabCollectionName
+  ];
 
-  const vocabSetsTemp = new Array(80)
+  const vocabSetsTemp = new Array(
+    Math.ceil(selectedVocabCollection.data.length / 10)
+  )
     .fill({})
-    .slice(0, Math.ceil(words.length / 10))
     .map((obj, i) => ({
-      name: `Set ${i + 1}`,
-      start: i * 10,
-      end: (i + 1) * 10,
-      id: `set-${i + 1}`,
+      name: `Set ${selectedVocabCollection.prevLength + i + 1}`,
+      start: i,
+      end: i + 1,
+      id: `Set ${i + 1}`,
     }));
 
   const [collapsedRows, setCollapsedRows] = useState<number[]>([]);
@@ -109,7 +119,8 @@ const WordClass = () => {
                 )}
                 size={24}
               />
-              Sets {firstSetInRow}-{lastSetInRow}
+              Sets {selectedVocabCollection.prevLength + firstSetInRow}-
+              {selectedVocabCollection.prevLength + lastSetInRow}
               <Boxes
                 className="mt-1.5 text-[var(--secondary-color)]"
                 size={28}
@@ -158,7 +169,10 @@ const WordClass = () => {
                             )
                           );
                           addWordObjs(
-                            words.slice(vocabSetTemp.start, vocabSetTemp.end)
+                            selectedVocabCollection.data.slice(
+                              vocabSetTemp.start * 10,
+                              vocabSetTemp.end * 10
+                            )
                           );
                         } else {
                           setSelectedVocabSets([
@@ -167,7 +181,10 @@ const WordClass = () => {
                             ),
                           ]);
                           addWordObjs(
-                            words.slice(vocabSetTemp.start, vocabSetTemp.end)
+                            selectedVocabCollection.data.slice(
+                              vocabSetTemp.start * 10,
+                              vocabSetTemp.end * 10
+                            )
                           );
                         }
                       }}
@@ -180,7 +197,7 @@ const WordClass = () => {
                       {vocabSetTemp.name}
                       <MousePointer className="mt-0.5 text-[var(--secondary-color)] " />
                     </button>
-                    <VocabSetDictionary set={vocabSetTemp.name} />
+                    <VocabSetDictionary set={vocabSetTemp.id} />
                   </div>
                 ))}
               </div>
