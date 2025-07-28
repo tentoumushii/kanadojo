@@ -11,17 +11,12 @@ import CollectionSelector from '@/components/reusable/Menu/CollectionSelector';
 import Subgroup from '@/components/Dojo/Kanji/Subgroup';
 import { usePathname } from 'next/navigation';
 import WordClass from '@/components/Dojo/Vocab/WordClass';
-// import useKanaKanjiStore from '@/store/useKanaKanjiStore';
-// import useVocabStore from '@/store/useVocabStore';
 
 const DojoMenu = () => {
   const pathname = usePathname();
 
   const [showGameModes, setShowGameModes] = useState(false);
 
-  // const clearKanji = useKanaKanjiStore(state => state.clearKanjiObjs);
-
-  // const clearWords = useVocabStore(state => state.clearWordObjs);
 
   useEffect(() => {
     // clearKanji();

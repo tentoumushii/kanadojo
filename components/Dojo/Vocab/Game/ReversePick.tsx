@@ -173,7 +173,7 @@ const ReversePick = ({
             type="button"
             disabled={wrongSelectedAnswers.includes(word)}
             className={clsx(
-              'text-4xl py-4 px-2 rounded-xl w-full md:w-1/4 flex flex-row justify-center items-center gap-1',
+              'text-4xl py-4 px-2 rounded-xl w-full md:w-1/4 flex flex-row justify-center items-center gap-1.5',
               buttonBorderStyles,
               'active:scale-95 md:active:scale-98 active:duration-200',
               'text-[var(--border-color)]',
@@ -185,7 +185,12 @@ const ReversePick = ({
             onClick={() => handleOptionClick(word)}
           >
             <span lang="ja">{word}</span>
-            <span className="hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1">
+            <span
+              className={clsx(
+                'hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1',
+                'text-[var(--secondary-color)]'
+              )}
+            >
               {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
             </span>
           </button>

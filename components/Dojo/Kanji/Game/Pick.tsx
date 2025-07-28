@@ -180,7 +180,7 @@ const Pick = ({
             type="button"
             disabled={wrongSelectedAnswers.includes(meaning)}
             className={clsx(
-              'text-4xl py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1',
+              'text-4xl py-4 rounded-xl w-full sm:w-1/5 flex flex-row justify-center items-center gap-1.5',
               buttonBorderStyles,
               'text-[var(--border-color)]',
               wrongSelectedAnswers.includes(meaning) &&
@@ -191,7 +191,12 @@ const Pick = ({
             onClick={() => handleOptionClick(meaning)}
           >
             <span lang="ja">{meaning}</span>
-            <span className="hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1">
+            <span
+              className={clsx(
+                'hidden lg:inline text-xs rounded-full bg-[var(--border-color)] px-1',
+                'text-[var(--secondary-color)]'
+              )}
+            >
               {i + 1 === 1 ? '1' : i + 1 === 2 ? '2' : '3'}
             </span>
           </button>

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 export const cardBorderStyles = clsx(
-  'rounded-xl bg-[var(--card-color)] border-[var(--border-color)]'
+  'rounded-xl bg-[var(--card-color)]'
 );
 
 export const buttonBorderStyles = clsx(

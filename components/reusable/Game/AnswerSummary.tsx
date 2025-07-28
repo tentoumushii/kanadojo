@@ -5,34 +5,37 @@ import { CircleArrowRight } from 'lucide-react';
 
 const AnswerSummary = ({
   payload,
-  // payloadType
-}: {
+}: // payloadType
+{
   payload: IKanjiObj;
   // payloadType: string;
 }) => {
   return (
-    <div className='flex flex-col items-center w-full gap-2'>
+    <div className="flex flex-col items-center w-full gap-2">
       <div
         key={payload.id}
         className={clsx(
           'flex flex-row justify-center items-center gap-4 p-4 w-full '
         )}
       >
-        <div className='relative w-full max-w-[100px] aspect-square flex items-center justify-center'>
+        <div className="relative w-full max-w-[100px] aspect-square flex items-center justify-center">
           {/* 4-segment square background */}
-          <div className='absolute inset-0 grid grid-cols-2 grid-rows-2 border-1 border-[var(--border-color)] rounded-xl bg-[var(--background-color)]'>
-            <div className='border-r border-b border-[var(--border-color)]'></div>
-            <div className='border-b border-[var(--border-color)]'></div>
-            <div className='border-r border-[var(--border-color)]'></div>
-            <div className=''></div>
+          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 border-1 border-[var(--border-color)] rounded-xl bg-[var(--background-color)]">
+            <div className="border-r border-b border-[var(--border-color)]"></div>
+            <div className="border-b border-[var(--border-color)]"></div>
+            <div className="border-r border-[var(--border-color)]"></div>
+            <div className=""></div>
           </div>
 
-          <p lang='ja' className='text-7xl pb-2 relative z-10'>
+          <p
+            lang="ja"
+            className="text-7xl pb-2 relative z-10"
+          >
             {payload.kanjiChar}
           </p>
         </div>
-        <div className='flex flex-col gap-2'>
-          <div className='flex flex-col md:flex md:flex-row gap-2 w-full'>
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col md:flex md:flex-row gap-2 w-full">
             <div
               className={clsx(
                 'flex flex-row gap-2',
@@ -45,7 +48,8 @@ const AnswerSummary = ({
                   key={onyomiReading}
                   className={clsx(
                     'rounded-lg px-1.5 py-1 flex flex-row items-center text-sm md:text-base',
-                    'bg-[var(--border-color)]'
+                    'bg-[var(--border-color)]',
+                    'text-[var(--secondary-color)]'
                   )}
                 >
                   {onyomiReading}
@@ -78,7 +82,8 @@ const AnswerSummary = ({
                   key={kunyomiReading}
                   className={clsx(
                     'rounded-lg px-1.5 py-1 flex flex-row items-center text-sm md:text-base',
-                    'bg-[var(--border-color)]'
+                    'bg-[var(--border-color)]',
+                    'text-[var(--secondary-color)]'
                   )}
                 >
                   {kunyomiReading}
@@ -86,7 +91,7 @@ const AnswerSummary = ({
               ))}
             </div>
           </div>
-          <p className='text-xl md:text-2xl'>
+          <p className="text-xl md:text-2xl">
             {payload.fullDisplayMeanings.join(', ')}
           </p>
         </div>

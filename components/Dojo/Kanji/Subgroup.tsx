@@ -9,7 +9,6 @@ import { cardBorderStyles } from '@/static/styles';
 import { chunkArray } from '@/lib/helperFunctions';
 import {
   ChevronUp,
-  Boxes,
   MousePointer,
   CircleCheck,
   Circle,
@@ -112,10 +111,6 @@ const Subgroup = () => {
                   collapsedRows.includes(rowIndex) && 'rotate-180'
                 )}
                 size={24}
-              />
-              <Boxes
-                className=" text-[var(--secondary-color)]"
-                size={28}
               />
               Sets {selectedKanjiCollection.prevLength + firstSetInRow}-
               {selectedKanjiCollection.prevLength + lastSetInRow}

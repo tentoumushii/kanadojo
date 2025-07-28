@@ -21,7 +21,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({
-  max = 25
+  max = 20
 }: // checkpoints = [10, 25, 50, 75] // Default checkpoints at 25%, 50%, 75%
 ProgressBarProps) => {
   const score = useStatsStore(state => state.score);

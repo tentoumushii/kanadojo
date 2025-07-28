@@ -7,14 +7,12 @@ import useGridColumns from '@/lib/hooks/useGridColumns';
 import { useClick } from '@/lib/hooks/useAudio';
 import {
   ChevronUp,
-  Boxes,
   CircleCheck,
   Circle,
   MousePointer,
 } from 'lucide-react';
 import useVocabStore from '@/store/useVocabStore';
 import VocabSetDictionary from '@/components/Dojo/Vocab/SetDictionary';
-
 import N5Nouns from '@/static/vocab/jlpt/n5/nouns';
 import N4Nouns from '@/static/vocab/jlpt/n4/nouns';
 import N3Nouns from '@/static/vocab/jlpt/n3/nouns';
@@ -121,10 +119,6 @@ const WordClass = () => {
               />
               Sets {selectedVocabCollection.prevLength + firstSetInRow}-
               {selectedVocabCollection.prevLength + lastSetInRow}
-              <Boxes
-                className="mt-1.5 text-[var(--secondary-color)]"
-                size={28}
-              />
             </h3>
 
             {/* Conditionally render the row content */}

@@ -68,7 +68,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
               <div className="flex flex-col gap-2 w-full">
                 <div
                   className={clsx(
-                    'bg-[var(--background-color)] rounded-lg',
+                    'bg-[var(--background-color)] rounded-xl',
 
                     'flex flex-row gap-2',
                     (kanjiObj.onyomi[0] === '' ||
@@ -94,7 +94,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
 
                 <div
                   className={clsx(
-                    'bg-[var(--background-color)] rounded-lg',
+                    'bg-[var(--background-color)] rounded-xl',
 
                     'flex flex-row gap-2',
                     (kanjiObj.kunyomi[0] === '' ||

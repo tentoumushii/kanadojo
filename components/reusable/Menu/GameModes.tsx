@@ -87,31 +87,31 @@ const GameModes = () => {
               onChange={() => setSelectedGameMode(gameMode)}
               className="hidden"
             />
-            <span className="text-lg font-medium py-2 px-1 sm:px-2 text-center flex flex-row justify-center items-center gap-1.5">
-              {gameMode === selectedGameMode ? '\u2B24 ' : ''}
-              {gameMode.split('-').join(' ')}
+            <span className="text-lg font-medium py-2 px-1 sm:px-2 text-center flex flex-row justify-center items-center gap-2">
+              <span className='mb-0.5 text-[var(--main-color)]'>{gameMode === selectedGameMode ? '\u2B24 ' : ''}</span>
+              <span>{gameMode.split('-').join(' ')}</span>
               {gameMode.toLowerCase() === 'pick' && (
                 <MousePointerClick
-                  size={20}
-                  className="mt-1"
+                  size={22}
+                  className="text-[var(--main-color)]"
                 />
               )}
               {gameMode.toLowerCase() === 'reverse-pick' && (
                 <MousePointerClick
-                  size={20}
-                  className="mt-1 scale-x-[-1]"
+                  size={22}
+                  className=" scale-x-[-1] text-[var(--main-color)]"
                 />
               )}
               {gameMode.toLowerCase() === 'input' && (
                 <Keyboard
-                  size={20}
-                  className="mt-1"
+                  size={22}
+                  className="text-[var(--main-color)]"
                 />
               )}
               {gameMode.toLowerCase() === 'reverse-input' && (
                 <Keyboard
-                  size={20}
-                  className="mt-1 scale-y-[-1]"
+                  size={22}
+                  className="scale-y-[-1] text-[var(--main-color)]"
                 />
               )}
             </span>
