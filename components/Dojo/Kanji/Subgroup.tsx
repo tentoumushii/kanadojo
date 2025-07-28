@@ -7,12 +7,7 @@ import N3Kanji from '@/static/kanji/N3';
 import N2Kanji from '@/static/kanji/N2';
 import { cardBorderStyles } from '@/static/styles';
 import { chunkArray } from '@/lib/helperFunctions';
-import {
-  ChevronUp,
-  MousePointer,
-  CircleCheck,
-  Circle,
-} from 'lucide-react';
+import { ChevronUp, MousePointer, CircleCheck, Circle } from 'lucide-react';
 import { useClick } from '@/lib/hooks/useAudio';
 import useGridColumns from '@/lib/hooks/useGridColumns';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
@@ -127,7 +122,7 @@ const Subgroup = () => {
                   <div
                     key={kanjiSetTemp.id + kanjiSetTemp.name}
                     className={clsx(
-                      'flex flex-col px-4 h-full',
+                      'flex flex-col md:px-4 h-full',
                       'border-[var(--border-color)]',
                       i < rowSets.length - 1 && 'md:border-r-1'
                     )}
@@ -140,7 +135,7 @@ const Subgroup = () => {
                         'duration-250',
                         'transition-all ease-in-out',
 
-                        'px-2 py-3',
+                        'px-2 py-3 max-md:mx-4',
 
                         selectedKanjiSets.includes(kanjiSetTemp.name) &&
                           'bg-[var(--border-color)]'

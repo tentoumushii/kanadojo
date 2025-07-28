@@ -43,7 +43,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
           <div
             key={kanjiObj.id}
             className={clsx(
-              'flex flex-col justify-start items-center gap-2 py-4',
+              'flex flex-col justify-start items-center gap-2 py-4 max-md:px-4',
               i !== 9 && 'border-b-1 border-[var(--border-color)]'
             )}
           >
@@ -65,11 +65,11 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2 w-full">
+              <div className="flex flex-col gap-2 w-full ">
                 <div
                   className={clsx(
+                    'h-1/2',
                     'bg-[var(--background-color)] rounded-xl',
-
                     'flex flex-row gap-2',
                     (kanjiObj.onyomi[0] === '' ||
                       kanjiObj.onyomi.length === 0) &&
@@ -94,6 +94,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
 
                 <div
                   className={clsx(
+                    'h-1/2',
                     'bg-[var(--background-color)] rounded-xl',
 
                     'flex flex-row gap-2',

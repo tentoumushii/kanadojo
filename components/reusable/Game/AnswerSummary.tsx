@@ -18,7 +18,7 @@ const AnswerSummary = ({
           'flex flex-row justify-center items-center gap-4 p-4 w-full '
         )}
       >
-        <div className="relative w-full max-w-[100px] aspect-square flex items-center justify-center">
+        <div className="relative w-full max-w-[150px] aspect-square flex items-center justify-center">
           {/* 4-segment square background */}
           <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 border-1 border-[var(--border-color)] rounded-xl bg-[var(--background-color)]">
             <div className="border-r border-b border-[var(--border-color)]"></div>
@@ -29,7 +29,7 @@ const AnswerSummary = ({
 
           <p
             lang="ja"
-            className="text-7xl pb-2 relative z-10"
+            className="text-9xl pb-2 relative z-10"
           >
             {payload.kanjiChar}
           </p>

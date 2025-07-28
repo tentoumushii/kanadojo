@@ -1,6 +1,5 @@
 'use client';
 import clsx from 'clsx';
-import { buttonBorderStyles } from '@/static/styles';
 import {
   Hourglass,
   SquareCheck,
@@ -149,36 +148,36 @@ const Stats = () => {
     <div className="flex flex-col items-center justify-center gap-4 max-w-[100dvw] min-h-[100dvh] py-4">
       <h2
         className={clsx(
-          'group text-4xl flex flex-row items-center gap-2.5 hover:cursor-pointer px-8 py-4 ',
-          buttonBorderStyles
+          'group text-4xl flex flex-row items-center gap-2.5 hover:cursor-pointer px-8 py-4 '
+          // buttonBorderStyles
         )}
         onClick={() => {
           playClick();
           toggleStats();
         }}
       >
-        <ChevronsLeft className={clsx('text-[var(--secondary-color)] mt-1')} />
+        <ChevronsLeft
+          className={clsx(
+            'text-[var(--secondary-color)] md:text-[var(--border-color)] group-hover:text-[var(--secondary-color)] mt-1 duration-250'
+          )}
+          size={32}
+        />
         <span>Statistics</span>
         <ChartSpline
           size={30}
-          className="mt-1.5 text-[var(--secondary-color)]"
+          className="mt-1.5"
         />
       </h2>
       <div
-        className={clsx('flex flex-col items-start', 'md:flex-row md:gap-8')}
+        className={clsx('flex flex-col items-start', 'md:flex-row md:gap-10')}
       >
         <div className={clsx('flex flex-col gap-4 py-4 items-start')}>
           <h3 className={clsx('w-full text-2xl')}>General</h3>
-          <div
-            className={clsx(
-              'flex flex-col gap-4',
-              'bg-[var(--card-color)] rounded-xl py-4'
-            )}
-          >
+          <div className={clsx('flex flex-col gap-4')}>
             {statsFields.slice(0, 4).map((statsField, i) => (
               <p
                 className={clsx(
-                  'flex flex-row items-center justify-start gap-1.5 px-4',
+                  'flex flex-row items-center justify-start gap-1.5',
                   i < 3 && 'border-b-1 border-[var(--border-color)] pb-4'
                 )}
                 key={statsField.field}
@@ -200,16 +199,11 @@ const Stats = () => {
         <div className={clsx('flex flex-col gap-4 py-4 items-start')}>
           <h3 className={clsx('w-full text-2xl ')}>Answers</h3>
 
-          <div
-            className={clsx(
-              'flex flex-col gap-4',
-              'bg-[var(--card-color)] rounded-xl py-4'
-            )}
-          >
+          <div className={clsx('flex flex-col gap-4')}>
             {statsFields.slice(4, 8).map((statsField, i) => (
               <p
                 className={clsx(
-                  'flex flex-row items-center justify-start gap-1.5 px-4',
+                  'flex flex-row items-center justify-start gap-1.5',
                   i < 3 && 'border-b-1 border-[var(--border-color)] pb-4'
                 )}
                 key={statsField.field}
@@ -230,32 +224,27 @@ const Stats = () => {
         </div>
         <div className={clsx('flex flex-col gap-4 py-4 items-start')}>
           <h3 className={clsx('w-full text-2xl')}>Characters</h3>
-          <div
-            className={clsx(
-              'flex flex-col gap-4',
-              'bg-[var(--card-color)] rounded-xl py-4'
-            )}
-          >
+          <div className={clsx('flex flex-col gap-4')}>
             {statsFields.slice(8, 20).map((statsField, i) => (
               <p
                 className={clsx(
-                  'flex flex-row items-center justify-start gap-1.5 px-4',
+                  'flex flex-row items-center justify-start gap-1.5 ',
                   i < 3 && 'border-b-1 border-[var(--border-color)] pb-4'
                 )}
                 key={statsField.field}
               >
                 <span className="text-[var(--secondary-color)]">
-                {statsField.field + ': '}
-              </span>
-              <span>{statsField.value}</span>
-              {statsField.icons.map((Icon, i) => (
-                <Icon
-                  size={24}
-                  key={i}
-                />
-              ))}
-            </p>
-          ))}
+                  {statsField.field + ': '}
+                </span>
+                <span>{statsField.value}</span>
+                {statsField.icons.map((Icon, i) => (
+                  <Icon
+                    size={24}
+                    key={i}
+                  />
+                ))}
+              </p>
+            ))}
           </div>
         </div>
       </div>
