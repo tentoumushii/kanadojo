@@ -54,8 +54,7 @@ const WordClass = () => {
   );
   const addWordObjs = useVocabStore(state => state.addWordObjs);
 
-  const selectedWordObjs = useVocabStore(state => state.selectedWordObjs);
-  console.log('selectedWordObjs', selectedWordObjs);
+  // const selectedWordObjs = useVocabStore(state => state.selectedWordObjs);
 
   const { playClick } = useClick();
 

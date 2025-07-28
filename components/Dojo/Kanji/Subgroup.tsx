@@ -49,8 +49,7 @@ const Subgroup = () => {
   );
   const addKanjiObjs = useKanaKanjiStore(state => state.addKanjiObjs);
 
-  const selectedKanjiObjs = useKanaKanjiStore(state => state.selectedKanjiObjs);
-  console.log('selectedKanjiObjs', selectedKanjiObjs);
+  // const selectedKanjiObjs = useKanaKanjiStore(state => state.selectedKanjiObjs);
 
   const { playClick } = useClick();
 

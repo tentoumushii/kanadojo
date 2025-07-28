@@ -133,8 +133,10 @@ const CollectionSelector = () => {
               'w-full',
               'hover:cursor-pointer',
               // 'hover:bg-[var(--border-color)]',
-              i === 0 && 'rounded-tl-2xl rounded-bl-2xl',
-              i === collections.length - 1 && 'rounded-tr-2xl rounded-br-2xl',
+              i === 0 &&
+                'max-md:rounded-tl-2xl max-md:rounded-tr-2xl md:rounded-tl-2xl md:rounded-bl-2xl',
+              i === collections.length - 1 &&
+                'max-md:rounded-bl-2xl max-md:rounded-br-2xl md:rounded-tr-2xl md:rounded-br-2xl',
               'duration-250',
               collection.name === selectedCollection &&
                 'bg-[var(--border-color)]'
