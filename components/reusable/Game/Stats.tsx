@@ -148,7 +148,7 @@ const Stats = () => {
     <div className="flex flex-col items-center justify-center gap-4 max-w-[100dvw] min-h-[100dvh] py-4">
       <h2
         className={clsx(
-          'group text-4xl flex flex-row items-center gap-2.5 hover:cursor-pointer px-8 py-4 '
+          'group text-4xl flex flex-row items-center gap-2.5 hover:cursor-pointer'
           // buttonBorderStyles
         )}
         onClick={() => {

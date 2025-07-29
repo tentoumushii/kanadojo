@@ -8,9 +8,9 @@ import GameModes from '@/components/reusable/Menu/GameModes';
 import KanaCards from '@/components/Dojo/Kana/KanaCards';
 import Banner from '@/components/reusable/Menu/Banner';
 import CollectionSelector from '@/components/reusable/Menu/CollectionSelector';
-import Subgroup from '@/components/Dojo/Kanji/Subgroup';
+import Subgroup from '@/components/Dojo/Kanji';
 import { usePathname } from 'next/navigation';
-import WordClass from '@/components/Dojo/Vocab/WordClass';
+import WordClass from '@/components/Dojo/Vocab';
 
 const DojoMenu = () => {
   const pathname = usePathname();

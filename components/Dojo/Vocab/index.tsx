@@ -5,12 +5,7 @@ import { useState } from 'react';
 import { cardBorderStyles } from '@/static/styles';
 import useGridColumns from '@/lib/hooks/useGridColumns';
 import { useClick } from '@/lib/hooks/useAudio';
-import {
-  ChevronUp,
-  CircleCheck,
-  Circle,
-  MousePointer,
-} from 'lucide-react';
+import { ChevronUp, CircleCheck, Circle, MousePointer } from 'lucide-react';
 import useVocabStore from '@/store/useVocabStore';
 import VocabSetDictionary from '@/components/Dojo/Vocab/SetDictionary';
 import N5Nouns from '@/static/vocab/jlpt/n5/nouns';
@@ -22,25 +17,25 @@ const vocabCollections = {
   n5: {
     data: N5Nouns,
     name: 'N5',
-    prevLength: 0,
+    prevLength: 0
   },
   n4: {
     data: N4Nouns,
     name: 'N4',
-    prevLength: Math.ceil(N5Nouns.length / 10),
+    prevLength: Math.ceil(N5Nouns.length / 10)
   },
   n3: {
     data: N3Nouns,
     name: 'N3',
-    prevLength: Math.ceil((N5Nouns.length + N4Nouns.length) / 10),
+    prevLength: Math.ceil((N5Nouns.length + N4Nouns.length) / 10)
   },
   n2: {
     data: N2Nouns,
     name: 'N2',
     prevLength: Math.ceil(
       (N5Nouns.length + N4Nouns.length + N3Nouns.length) / 10
-    ),
-  },
+    )
+  }
 };
 
 const WordClass = () => {
@@ -71,7 +66,7 @@ const WordClass = () => {
       name: `Set ${selectedVocabCollection.prevLength + i + 1}`,
       start: i,
       end: i + 1,
-      id: `Set ${i + 1}`,
+      id: `Set ${i + 1}`
     }));
 
   const [collapsedRows, setCollapsedRows] = useState<number[]>([]);
@@ -79,7 +74,7 @@ const WordClass = () => {
   const numColumns = useGridColumns();
 
   return (
-    <div className="flex flex-col w-full gap-4">
+    <div className='flex flex-col w-full gap-4'>
       {chunkArray(vocabSetsTemp, numColumns).map((rowSets, rowIndex) => {
         const firstSetInRow = rowIndex * numColumns + 1;
         const lastSetInRow = (rowIndex + 1) * numColumns;
@@ -110,14 +105,19 @@ const WordClass = () => {
                 className={clsx(
                   'duration-250',
                   'text-[var(--border-color)]',
-                  'max-md:group-active:text-[var(--text-color)]',
-                  'md:group-hover:text-[var(--text-color)] mt-0.5',
+                  'max-md:group-active:text-[var(--secondary-color)]',
+                  'md:group-hover:text-[var(--secondary-color)]',
                   collapsedRows.includes(rowIndex) && 'rotate-180'
                 )}
-                size={24}
+                size={28}
               />
-              Sets {selectedVocabCollection.prevLength + firstSetInRow}-
-              {selectedVocabCollection.prevLength + lastSetInRow}
+              <span className='max-lg:hidden'>
+                Sets {selectedVocabCollection.prevLength + firstSetInRow}-
+                {selectedVocabCollection.prevLength + lastSetInRow}
+              </span>
+              <span className='lg:hidden'>
+                Set {selectedVocabCollection.prevLength + firstSetInRow}
+              </span>
             </h3>
 
             {/* Conditionally render the row content */}
@@ -126,14 +126,14 @@ const WordClass = () => {
                 className={clsx(
                   'flex flex-col w-full',
 
-                  'md:items-start md:grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3'
+                  'md:items-start md:grid lg:grid-cols-2 2xl:grid-cols-3'
                 )}
               >
                 {rowSets.map((vocabSetTemp, i) => (
                   <div
                     key={vocabSetTemp.id + vocabSetTemp.name}
                     className={clsx(
-                      'flex flex-col px-4 h-full',
+                      'flex flex-col md:px-4 h-full',
                       'border-[var(--border-color)]',
                       i < rowSets.length - 1 && 'md:border-r-1'
                     )}
@@ -146,7 +146,7 @@ const WordClass = () => {
                         'duration-250',
                         'transition-all ease-in-out',
 
-                        'px-2 py-3',
+                        'px-2 py-3 max-md:mx-4',
 
                         selectedVocabSets.includes(vocabSetTemp.name) &&
                           'bg-[var(--border-color)]'
@@ -171,7 +171,7 @@ const WordClass = () => {
                           setSelectedVocabSets([
                             ...new Set(
                               selectedVocabSets.concat(vocabSetTemp.name)
-                            ),
+                            )
                           ]);
                           addWordObjs(
                             selectedVocabCollection.data.slice(
@@ -183,12 +183,12 @@ const WordClass = () => {
                       }}
                     >
                       {selectedVocabSets.includes(vocabSetTemp.name) ? (
-                        <CircleCheck className="mt-0.5 text-[var(--secondary-color)]" />
+                        <CircleCheck className='mt-0.5 text-[var(--secondary-color)]' />
                       ) : (
-                        <Circle className="mt-0.5 text-[var(--secondary-color)]" />
+                        <Circle className='mt-0.5 text-[var(--secondary-color)]' />
                       )}
                       {vocabSetTemp.name}
-                      <MousePointer className="mt-0.5 text-[var(--secondary-color)] " />
+                      <MousePointer className='mt-0.5 text-[var(--secondary-color)] ' />
                     </button>
                     <VocabSetDictionary set={vocabSetTemp.id} />
                   </div>

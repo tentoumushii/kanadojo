@@ -11,7 +11,7 @@ import {
   N5VocabLength,
   N4VocabLength,
   N3VocabLength,
-  N2VocabLength,
+  N2VocabLength
 } from '@/static/unitSets';
 import { useClick } from '@/lib/hooks/useAudio';
 
@@ -20,14 +20,14 @@ const numCollectionSets = {
     n5: Math.ceil(N5KanjiLength / 10),
     n4: Math.ceil(N4KanjiLength / 10),
     n3: Math.ceil(N3KanjiLength / 10),
-    n2: Math.ceil(N2KanjiLength / 10),
+    n2: Math.ceil(N2KanjiLength / 10)
   },
   '/vocabulary': {
     n5: Math.ceil(N5VocabLength / 10),
     n4: Math.ceil(N4VocabLength / 10),
     n3: Math.ceil(N3VocabLength / 10),
-    n2: Math.ceil(N2VocabLength / 10),
-  },
+    n2: Math.ceil(N2VocabLength / 10)
+  }
 };
 
 const CollectionSelector = () => {
@@ -74,7 +74,7 @@ const CollectionSelector = () => {
       name: 'n5',
       displayName: `Unit 1, Sets 1-${
         numCollectionSets[pathname as keyof typeof numCollectionSets].n5
-      }`,
+      }`
     },
     {
       name: 'n4',
@@ -83,7 +83,7 @@ const CollectionSelector = () => {
       }-${
         numCollectionSets[pathname as keyof typeof numCollectionSets].n5 +
         numCollectionSets[pathname as keyof typeof numCollectionSets].n4
-      }`,
+      }`
     },
     {
       name: 'n3',
@@ -95,7 +95,7 @@ const CollectionSelector = () => {
         numCollectionSets[pathname as keyof typeof numCollectionSets].n5 +
         numCollectionSets[pathname as keyof typeof numCollectionSets].n4 +
         numCollectionSets[pathname as keyof typeof numCollectionSets].n3
-      }`,
+      }`
     },
     {
       name: 'n2',
@@ -109,8 +109,8 @@ const CollectionSelector = () => {
         numCollectionSets[pathname as keyof typeof numCollectionSets].n4 +
         numCollectionSets[pathname as keyof typeof numCollectionSets].n3 +
         numCollectionSets[pathname as keyof typeof numCollectionSets].n2
-      }`,
-    },
+      }`
+    }
   ];
 
   return (
@@ -124,12 +124,12 @@ const CollectionSelector = () => {
       )}
     >
       {collections.map((collection, i) => (
-        <>
+        <div key={i} className={clsx('flex flex-col md:flex-row', 'w-full ')}>
           <button
             key={i}
             className={clsx(
-              'flex justify-center items-end gap-2.5 py-6 text-xl',
-              'text-[var(--main-color)] ',
+              'flex justify-center items-center gap-2.5',
+              'text-[var(--main-color)] text-xl',
               'w-full',
               'hover:cursor-pointer',
               // 'hover:bg-[var(--border-color)]',
@@ -154,15 +154,18 @@ const CollectionSelector = () => {
               }
             }}
           >
-            <span className="text-[var(--secondary-color)] mb-1">
+            {/* <span className='w-1/4 text-4xl flex justify-center items-center bg-[var(--secondary-color)] text-[var(--background-color)]'>
+              {i+1}
+            </span> */}
+            <span className='text-[var(--secondary-color)] mb-1'>
               {collection.name === selectedCollection ? '\u2B24' : ''}
             </span>
-            <span className="text-2xl">
+            <span className='text-2xl py-6 '>
               {collection.displayName.split(', ')[0]}
             </span>
-            <span className="text-lg text-[var(--secondary-color)]">
+            {/* <span className='text-lg text-[var(--secondary-color)]'>
               {collection.displayName.split(', ')[1]}
-            </span>
+            </span> */}
           </button>
 
           {i < collections.length - 1 && (
@@ -174,7 +177,7 @@ const CollectionSelector = () => {
               )}
             />
           )}
-        </>
+        </div>
       ))}
     </div>
   );

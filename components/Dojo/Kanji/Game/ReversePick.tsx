@@ -165,7 +165,7 @@ const ReversePick = ({
       />
       {/* {!displayAnswerSummary && ( */}
         <p className="text-6xl md:text-8xl">{correctMeaning}</p>
-       {/* )}  */}
+      {/* )} */}
       {/* {displayAnswerSummary && <AnswerSummary payload={correctKanjiObj} />} */}
       {/* {!displayAnswerSummary && ( */}
         <div className="flex flex-row w-full gap-5 sm:gap-0 sm:justify-evenly">
@@ -200,7 +200,7 @@ const ReversePick = ({
             </button>
           ))}
         </div>
-       {/* )}  */}
+      {/* )} */}
 
       <Stars />
     </div>

@@ -15,7 +15,7 @@ const AnswerSummary = ({
       <div
         key={payload.id}
         className={clsx(
-          'flex flex-row justify-center items-center gap-4 p-4 w-full '
+          'flex flex-row justify-center gap-4 p-4 w-full bg-purple-500'
         )}
       >
         <div className="relative w-full max-w-[150px] aspect-square flex items-center justify-center">
@@ -34,11 +34,11 @@ const AnswerSummary = ({
             {payload.kanjiChar}
           </p>
         </div>
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col md:flex md:flex-row gap-2 w-full">
+        <div className="flex flex-col gap-2 bg-green-400 h-full">
+          <div className="flex flex-col md:flex md:flex-row gap-2   ">
             <div
               className={clsx(
-                'flex flex-row gap-2',
+                'flex flex-row gap-2 ',
                 (payload.onyomi[0] === '' || payload.onyomi.length === 0) &&
                   'hidden'
               )}
@@ -91,7 +91,7 @@ const AnswerSummary = ({
               ))}
             </div>
           </div>
-          <p className="text-xl md:text-2xl">
+          <p className="text-xl md:text-2xl bg-red-500 ">
             {payload.fullDisplayMeanings.join(', ')}
           </p>
         </div>

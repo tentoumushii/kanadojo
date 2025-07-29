@@ -9,6 +9,7 @@ import { useClick } from '@/lib/hooks/useAudio';
 import { ChevronUp, Play, LandPlot } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useShallow } from 'zustand/react/shallow';
+import { MousePointerClick, Keyboard } from 'lucide-react';
 
 interface ITopBarProps {
   showGameModes: boolean;
@@ -18,7 +19,7 @@ interface ITopBarProps {
 
 const TopBar: React.FC<ITopBarProps> = ({
   showGameModes,
-  setShowGameModes,
+  setShowGameModes
 }) => {
   const hotkeysOn = useThemeStore(state => state.hotkeysOn);
 
@@ -29,7 +30,7 @@ const TopBar: React.FC<ITopBarProps> = ({
   const { selectedGameModeKana, selectedGameModeKanji } = useKanaKanjiStore(
     useShallow(state => ({
       selectedGameModeKana: state.selectedGameModeKana,
-      selectedGameModeKanji: state.selectedGameModeKanji,
+      selectedGameModeKanji: state.selectedGameModeKanji
     }))
   );
 
@@ -54,9 +55,9 @@ const TopBar: React.FC<ITopBarProps> = ({
     pathname === '/kana'
       ? kanaGroupIndices.length !== 0
       : pathname === '/kanji'
-      ? selectedKanjiObjs.length >= 3
+      ? selectedKanjiObjs.length >= 10
       : pathname === '/vocabulary'
-      ? selectedWordObjs.length >= 3
+      ? selectedWordObjs.length >= 10
       : false;
 
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -87,7 +88,6 @@ const TopBar: React.FC<ITopBarProps> = ({
         'duration-250',
         'transition-all ease-in-out',
         'w-full'
-        // 'border-b-4 border-[var(--border-color)]'
       )}
     >
       <button
@@ -113,14 +113,35 @@ const TopBar: React.FC<ITopBarProps> = ({
           className={clsx(
             'duration-250',
             focus === 'gameModes'
-              ? 'text-[var(--text-color)]'
+              ? 'text-[var(--secondary-color)]'
               : 'text-[var(--border-color)]',
             !showGameModes && 'rotate-180'
           )}
           size={24}
         />
-        <LandPlot />
+        <LandPlot className='' />
         {selectedGameMode ? selectedGameMode.split('-').join(' ') : 'not set'}
+        {selectedGameMode.toLowerCase() === 'pick' && (
+          <MousePointerClick
+            size={22}
+            className='text-[var(--secondary-color)]'
+          />
+        )}
+        {selectedGameMode.toLowerCase() === 'reverse-pick' && (
+          <MousePointerClick
+            size={22}
+            className=' scale-x-[-1] text-[var(--secondary-color)]'
+          />
+        )}
+        {selectedGameMode.toLowerCase() === 'input' && (
+          <Keyboard size={22} className='text-[var(--secondary-color)]' />
+        )}
+        {selectedGameMode.toLowerCase() === 'reverse-input' && (
+          <Keyboard
+            size={22}
+            className='scale-y-[-1] text-[var(--secondary-color)]'
+          />
+        )}
       </button>
 
       <div
@@ -132,7 +153,7 @@ const TopBar: React.FC<ITopBarProps> = ({
 
       <Link
         href={`${pathname}/train/${selectedGameMode}`}
-        className="w-1/2 group"
+        className='w-1/2 group'
       >
         <button
           disabled={!selectedGameMode || !isFilled}

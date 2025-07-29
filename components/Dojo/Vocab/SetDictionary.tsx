@@ -13,7 +13,7 @@ const createVocabSetRanges = (numSets: number) =>
   Array.from({ length: numSets }, (_, i) => i + 1).reduce(
     (acc, curr) => ({
       ...acc,
-      [`Set ${curr}`]: [(curr - 1) * 10, curr * 10],
+      [`Set ${curr}`]: [(curr - 1) * 10, curr * 10]
     }),
     {}
   );
@@ -23,18 +23,18 @@ const vocabSetSliceRanges = createVocabSetRanges(200);
 const vocabData = {
   jlpt: {
     n5: {
-      nouns: N5Nouns,
+      nouns: N5Nouns
     },
     n4: {
-      nouns: N4Nouns,
+      nouns: N4Nouns
     },
     n3: {
-      nouns: N3Nouns,
+      nouns: N3Nouns
     },
     n2: {
-      nouns: N2Nouns,
-    },
-  },
+      nouns: N2Nouns
+    }
+  }
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -44,8 +44,9 @@ const SetDictionary = ({ set }: { set: string }) => {
   const selectedVocabCollection = useVocabStore(
     state => state.selectedVocabCollection
   );
-  const displayVocabCollection =
-    (vocabData as VocabData)['jlpt'][selectedVocabCollection]['nouns'];
+  const displayVocabCollection = (vocabData as VocabData)['jlpt'][
+    selectedVocabCollection
+  ]['nouns'];
 
   const sliceRange =
     vocabSetSliceRanges[set as keyof typeof vocabSetSliceRanges];
@@ -58,17 +59,14 @@ const SetDictionary = ({ set }: { set: string }) => {
           <div
             key={wordObj.word}
             className={clsx(
-              'flex flex-col justify-start items-start gap-4 py-4 ',
+              'flex flex-col justify-start items-start gap-4 py-4 max-md:px-4',
               i !== 9 && 'border-b-1 border-[var(--border-color)]'
             )}
           >
-            <p
-              lang="ja"
-              className="text-5xl"
-            >
+            <p lang='ja' className='text-6xl md:text-5xl'>
               {wordObj.word}
             </p>
-            <div className="flex flex-col gap-2 items-start">
+            <div className='flex flex-col gap-2 items-start'>
               <span
                 className={clsx(
                   'rounded-lg px-2 py-1 flex flex-row items-center',
@@ -78,7 +76,7 @@ const SetDictionary = ({ set }: { set: string }) => {
               >
                 {wordObj.reading}
               </span>
-              <p className="text-xl md:text-2xl text-[var(--secondary-color)]">
+              <p className='text-xl md:text-2xl text-[var(--secondary-color)]'>
                 {wordObj.displayMeanings.join(', ')}
               </p>
             </div>
