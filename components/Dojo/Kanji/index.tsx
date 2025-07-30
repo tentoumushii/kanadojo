@@ -7,7 +7,7 @@ import N3Kanji from '@/static/kanji/N3';
 import N2Kanji from '@/static/kanji/N2';
 import { cardBorderStyles } from '@/static/styles';
 import { chunkArray } from '@/lib/helperFunctions';
-import { ChevronUp, MousePointer, CircleCheck, Circle } from 'lucide-react';
+import { ChevronUp, CircleCheck, Circle } from 'lucide-react';
 import { useClick } from '@/lib/hooks/useAudio';
 import useGridColumns from '@/lib/hooks/useGridColumns';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
@@ -18,20 +18,20 @@ const kanjiCollections = {
   n4: {
     data: N4Kanji,
     name: 'N4',
-    prevLength: Math.ceil(N5Kanji.length / 10),
+    prevLength: Math.ceil(N5Kanji.length / 10)
   },
   n3: {
     data: N3Kanji,
     name: 'N3',
-    prevLength: Math.ceil((N5Kanji.length + N4Kanji.length) / 10),
+    prevLength: Math.ceil((N5Kanji.length + N4Kanji.length) / 10)
   },
   n2: {
     data: N2Kanji,
     name: 'N2',
     prevLength: Math.ceil(
       (N5Kanji.length + N4Kanji.length + N3Kanji.length) / 10
-    ),
-  },
+    )
+  }
 };
 
 const Subgroup = () => {
@@ -61,7 +61,7 @@ const Subgroup = () => {
       name: `Set ${selectedKanjiCollection.prevLength + i + 1}`,
       start: i,
       end: i + 1,
-      id: `Set ${i + 1}`,
+      id: `Set ${i + 1}`
     }));
 
   const [collapsedRows, setCollapsedRows] = useState<number[]>([]);
@@ -69,7 +69,7 @@ const Subgroup = () => {
   const numColumns = useGridColumns();
 
   return (
-    <div className="flex flex-col w-full gap-4">
+    <div className='flex flex-col w-full gap-4'>
       {chunkArray(kanjiSetsTemp, numColumns).map((rowSets, rowIndex) => {
         const firstSetInRow = rowIndex * numColumns + 1;
         const lastSetInRow = (rowIndex + 1) * numColumns;
@@ -106,8 +106,13 @@ const Subgroup = () => {
                 )}
                 size={24}
               />
-              Sets {selectedKanjiCollection.prevLength + firstSetInRow}-
-              {selectedKanjiCollection.prevLength + lastSetInRow}
+              <span className='max-lg:hidden'>
+                Sets {selectedKanjiCollection.prevLength + firstSetInRow}-
+                {selectedKanjiCollection.prevLength + lastSetInRow}
+              </span>
+              <span className='lg:hidden'>
+                Set {selectedKanjiCollection.prevLength + firstSetInRow}
+              </span>
             </h3>
 
             {/* Conditionally render the row content */}
@@ -160,7 +165,7 @@ const Subgroup = () => {
                           setSelectedKanjiSets([
                             ...new Set(
                               selectedKanjiSets.concat(kanjiSetTemp.name)
-                            ),
+                            )
                           ]);
                           console.log(kanjiSetTemp.start, kanjiSetTemp.end);
                           addKanjiObjs(
@@ -173,12 +178,12 @@ const Subgroup = () => {
                       }}
                     >
                       {selectedKanjiSets.includes(kanjiSetTemp.name) ? (
-                        <CircleCheck className="mt-0.5 text-[var(--secondary-color)]" />
+                        <CircleCheck className='mt-0.5 text-[var(--secondary-color)]' />
                       ) : (
-                        <Circle className="mt-0.5 text-[var(--secondary-color)]" />
+                        <Circle className='mt-0.5 text-[var(--secondary-color)] animate-pulse' />
                       )}
                       {kanjiSetTemp.name}
-                      <MousePointer className="mt-0.5 text-[var(--secondary-color)] " />
+                      {/* <MousePointer2 className='mt-0.5 text-[var(--secondary-color)] ' /> */}
                     </button>
                     <KanjiSetDictionary set={kanjiSetTemp.id} />
                   </div>

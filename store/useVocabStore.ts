@@ -18,14 +18,13 @@ interface IFormState {
   selectedVocabCollection: string;
   setSelectedVocabCollection: (collection: string) => void;
 
-
   selectedVocabSets: string[];
   setSelectedVocabSets: (sets: string[]) => void;
   clearVocabSets: () => void;
 }
 
 const useVocabStore = create<IFormState>(set => ({
-  selectedGameModeVocab: '',
+  selectedGameModeVocab: 'Pick',
   selectedWordObjs: [],
   setSelectedGameModeVocab: gameMode =>
     set({ selectedGameModeVocab: gameMode }),
@@ -62,17 +61,14 @@ const useVocabStore = create<IFormState>(set => ({
 
   selectedVocabCollection: 'n5',
   setSelectedVocabCollection: collection =>
-    set({ selectedVocabCollection: collection })
-  ,
-
-
+    set({ selectedVocabCollection: collection }),
   selectedVocabSets: [],
   setSelectedVocabSets: sets => set({ selectedVocabSets: sets }),
   clearVocabSets: () => {
     set(() => ({
       selectedVocabSets: []
     }));
-  },
+  }
 }));
 
 export default useVocabStore;

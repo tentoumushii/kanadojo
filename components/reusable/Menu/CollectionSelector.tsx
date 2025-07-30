@@ -128,7 +128,7 @@ const CollectionSelector = () => {
           <button
             key={i}
             className={clsx(
-              'flex justify-center items-center gap-2.5',
+              'flex justify-center items-center gap-2.5 py-6',
               'text-[var(--main-color)] text-xl',
               'w-full',
               'hover:cursor-pointer',
@@ -157,13 +157,13 @@ const CollectionSelector = () => {
             {/* <span className='w-1/4 text-4xl flex justify-center items-center bg-[var(--secondary-color)] text-[var(--background-color)]'>
               {i+1}
             </span> */}
-            <span className='text-[var(--secondary-color)] mb-1'>
+            <span className='text-[var(--secondary-color)] mb-0.5'>
               {collection.name === selectedCollection ? '\u2B24' : ''}
             </span>
-            <span className='text-2xl py-6 '>
+            <span className='text-2xl'>
               {collection.displayName.split(', ')[0]}
             </span>
-            {/* <span className='text-lg text-[var(--secondary-color)]'>
+            {/* <span className='text-sm text-[var(--secondary-color)] pt-2'>
               {collection.displayName.split(', ')[1]}
             </span> */}
           </button>

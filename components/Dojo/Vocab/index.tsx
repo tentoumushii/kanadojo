@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { cardBorderStyles } from '@/static/styles';
 import useGridColumns from '@/lib/hooks/useGridColumns';
 import { useClick } from '@/lib/hooks/useAudio';
-import { ChevronUp, CircleCheck, Circle, MousePointer } from 'lucide-react';
+import { ChevronUp, CircleCheck, Circle,  } from 'lucide-react';
 import useVocabStore from '@/store/useVocabStore';
 import VocabSetDictionary from '@/components/Dojo/Vocab/SetDictionary';
 import N5Nouns from '@/static/vocab/jlpt/n5/nouns';
@@ -185,10 +185,10 @@ const WordClass = () => {
                       {selectedVocabSets.includes(vocabSetTemp.name) ? (
                         <CircleCheck className='mt-0.5 text-[var(--secondary-color)]' />
                       ) : (
-                        <Circle className='mt-0.5 text-[var(--secondary-color)]' />
+                        <Circle className='mt-0.5 text-[var(--secondary-color)] animate-pulse' />
                       )}
                       {vocabSetTemp.name}
-                      <MousePointer className='mt-0.5 text-[var(--secondary-color)] ' />
+                      {/* <MousePointer className='mt-0.5 text-[var(--secondary-color)] ' /> */}
                     </button>
                     <VocabSetDictionary set={vocabSetTemp.id} />
                   </div>
