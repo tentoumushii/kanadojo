@@ -6,7 +6,7 @@ import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useVocabStore from '@/store/useVocabStore';
 import useThemeStore from '@/store/useThemeStore';
 import { useClick } from '@/lib/hooks/useAudio';
-import { ChevronUp, Play, LandPlot } from 'lucide-react';
+import { ChevronUp, Play } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useShallow } from 'zustand/react/shallow';
 import { MousePointerClick, Keyboard } from 'lucide-react';
@@ -119,7 +119,6 @@ const TopBar: React.FC<ITopBarProps> = ({
           )}
           size={24}
         />
-        <LandPlot className='' />
         {selectedGameMode ? selectedGameMode.split('-').join(' ') : 'not set'}
         {selectedGameMode.toLowerCase() === 'pick' && (
           <MousePointerClick

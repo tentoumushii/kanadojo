@@ -11,7 +11,7 @@ const createKanjiSetRanges = (numSets: number) =>
   Array.from({ length: numSets }, (_, i) => i + 1).reduce(
     (acc, curr) => ({
       ...acc,
-      [`Set ${curr}`]: [(curr - 1) * 10, curr * 10],
+      [`Set ${curr}`]: [(curr - 1) * 10, curr * 10]
     }),
     {}
   );
@@ -22,7 +22,7 @@ const kanjiCollections = {
   n5: N5KanjiArray,
   n4: N4KanjiArray,
   n3: N3KanjiArray,
-  n2: N2KanjiArray,
+  n2: N2KanjiArray
 };
 
 const KanjiSetDictionary = ({ set }: { set: string }) => {
@@ -47,30 +47,28 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
               i !== 9 && 'border-b-1 border-[var(--border-color)]'
             )}
           >
-            <div className="flex flex-row w-full gap-4">
-              <div className="relative w-full max-w-[100px] aspect-square flex items-center justify-center ">
+            <div className='flex flex-row w-full gap-4'>
+              <div className='relative w-full max-w-[100px] aspect-square flex items-center justify-center '>
                 {/* 4-segment square background */}
-                <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 border-1 border-[var(--border-color)] rounded-xl bg-[var(--background-color)]">
-                  <div className=" border-r border-b border-[var(--border-color)]"></div>
-                  <div className=" border-b border-[var(--border-color)]"></div>
-                  <div className=" border-r border-[var(--border-color)]"></div>
-                  <div className=""></div>
+                <div className='absolute inset-0 grid grid-cols-2 grid-rows-2 border-1 border-[var(--border-color)] rounded-xl bg-[var(--background-color)]'>
+                  <div className=' border-r border-b border-[var(--border-color)]'></div>
+                  <div className=' border-b border-[var(--border-color)]'></div>
+                  <div className=' border-r border-[var(--border-color)]'></div>
+                  <div className=''></div>
                 </div>
 
-                <p
-                  lang="ja"
-                  className="text-7xl pb-2 relative z-10"
-                >
+                <p lang='ja' className='text-7xl pb-2 relative z-10'>
                   {kanjiObj.kanjiChar}
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2 w-full ">
+              <div className='flex flex-col gap-2 w-full'>
                 <div
                   className={clsx(
                     'h-1/2',
                     'bg-[var(--background-color)] rounded-xl',
                     'flex flex-row gap-2',
+                    // 'border-1 border-[var(--border-color)]',
                     (kanjiObj.onyomi[0] === '' ||
                       kanjiObj.onyomi.length === 0) &&
                       'hidden'
@@ -96,7 +94,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
                   className={clsx(
                     'h-1/2',
                     'bg-[var(--background-color)] rounded-xl',
-
+                    // 'border-1 border-[var(--border-color)]',
                     'flex flex-row gap-2',
                     (kanjiObj.kunyomi[0] === '' ||
                       kanjiObj.kunyomi.length === 0) &&
@@ -120,7 +118,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
               </div>
             </div>
 
-            <p className="text-xl md:text-2xl w-full text-[var(--secondary-color)]">
+            <p className='text-xl md:text-2xl w-full text-[var(--secondary-color)]'>
               {kanjiObj.fullDisplayMeanings.join(', ')}
             </p>
           </div>

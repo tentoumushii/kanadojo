@@ -180,7 +180,7 @@ const Subgroup = () => {
                       {selectedKanjiSets.includes(kanjiSetTemp.name) ? (
                         <CircleCheck className='mt-0.5 text-[var(--secondary-color)]' />
                       ) : (
-                        <Circle className='mt-0.5 text-[var(--secondary-color)] animate-pulse' />
+                        <Circle className='mt-0.5 text-[var(--border-color)] ' />
                       )}
                       {kanjiSetTemp.name}
                       {/* <MousePointer2 className='mt-0.5 text-[var(--secondary-color)] ' /> */}

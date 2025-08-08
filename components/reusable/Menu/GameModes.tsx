@@ -1,7 +1,7 @@
 'use client';
 import useKanaKanjiStore from '@/store/useKanaKanjiStore';
 import useVocabStore from '@/store/useVocabStore';
-import { MousePointerClick, Keyboard } from 'lucide-react';
+import { MousePointerClick, Keyboard, CircleCheck, Circle } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/lib/hooks/useAudio';
 import { usePathname } from 'next/navigation';
@@ -74,7 +74,7 @@ const GameModes = () => {
               'text-[var(--secondary-color)]',
               'w-full py-2',
               'hover:cursor-pointer',
-              'hover:bg-[var(--border-color)]',
+              // 'hover:bg-[var(--border-color)]',
               i === 0 && 'rounded-tl-2xl rounded-bl-2xl',
               i === gameModes.length - 1 && 'rounded-tr-2xl rounded-br-2xl',
               'duration-250'
@@ -88,9 +88,11 @@ const GameModes = () => {
               className='hidden'
             />
             <span className='text-lg font-medium py-2 px-1 sm:px-2 text-center flex flex-row justify-center items-center gap-2'>
-              <span className='mb-0.5 text-[var(--main-color)]'>
-                {gameMode === selectedGameMode ? '\u2B24 ' : ''}
-              </span>
+              {gameMode === selectedGameMode ? (
+                <CircleCheck className='text-[var(--main-color)]' />
+              ) : (
+                <Circle className='text-[var(--border-color)]' />
+              )}
               <span>{gameMode.split('-').join(' ')}</span>
               {gameMode.toLowerCase() === 'pick' && (
                 <MousePointerClick

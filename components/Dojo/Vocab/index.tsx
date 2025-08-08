@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { cardBorderStyles } from '@/static/styles';
 import useGridColumns from '@/lib/hooks/useGridColumns';
 import { useClick } from '@/lib/hooks/useAudio';
-import { ChevronUp, CircleCheck, Circle,  } from 'lucide-react';
+import { ChevronUp, CircleCheck, Circle } from 'lucide-react';
 import useVocabStore from '@/store/useVocabStore';
 import VocabSetDictionary from '@/components/Dojo/Vocab/SetDictionary';
 import N5Nouns from '@/static/vocab/jlpt/n5/nouns';
@@ -141,7 +141,6 @@ const WordClass = () => {
                     <button
                       className={clsx(
                         'text-2xl flex justify-center items-center gap-2 group',
-                        // miniButtonBorderStyles,
                         'rounded-xl bg-[var(--background-color)] hover:cursor-pointer',
                         'duration-250',
                         'transition-all ease-in-out',
@@ -183,9 +182,9 @@ const WordClass = () => {
                       }}
                     >
                       {selectedVocabSets.includes(vocabSetTemp.name) ? (
-                        <CircleCheck className='mt-0.5 text-[var(--secondary-color)]' />
+                        <CircleCheck className='mt-0.5 text-[var(--secondary-color)] duration-250' />
                       ) : (
-                        <Circle className='mt-0.5 text-[var(--secondary-color)] animate-pulse' />
+                        <Circle className='mt-0.5 text-[var(--border-color)] duration-250' />
                       )}
                       {vocabSetTemp.name}
                       {/* <MousePointer className='mt-0.5 text-[var(--secondary-color)] ' /> */}

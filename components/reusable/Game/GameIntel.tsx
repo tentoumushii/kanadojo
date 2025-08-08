@@ -10,7 +10,7 @@ import { useClick } from '@/lib/hooks/useAudio';
 
 const GameIntel = ({
   feedback,
-  gameMode,
+  gameMode
 }: {
   feedback: React.ReactElement;
   gameMode: string;
@@ -43,15 +43,14 @@ const GameIntel = ({
     >
       <div
         className={clsx(
-          'flex flex-col gap-2 items-center justify-center py-2 md:py-4'
+          'flex flex-col gap-2 items-center justify-center py-2 w-full'
         )}
       >
-        <p className="text-xl px-4 flex items-center gap-2">
+        <p className='text-xl px-4 flex justify-center items-center w-full gap-2 py-2'>
           <LandPlot />
           {gameMode}
         </p>
-        <hr className="border-t-1 w-full border-[var(--border-color)]" />
-        <p className="text-xl flex flex-row items-center gap-1.5 px-4">
+        <p className='text-xl flex justify-center items-center gap-1.5 px-4 py-2 border-t-1 w-full  border-[var(--border-color)]'>
           {feedback}
         </p>
       </div>
@@ -67,15 +66,15 @@ const GameIntel = ({
       <div
         className={clsx('flex flex-row gap-3 items-center justify-center p-4')}
       >
-        <p className="text-xl flex flex-row items-center gap-1">
+        <p className='text-xl flex flex-row items-center gap-1'>
           <SquareCheck />
           <span>{numCorrectAnswers}</span>
         </p>
-        <p className="text-xl flex flex-row items-center gap-1">
+        <p className='text-xl flex flex-row items-center gap-1'>
           <SquareX />
           <span>{numWrongAnswers}</span>
         </p>
-        <p className="text-xl flex flex-row items-center gap-1">
+        <p className='text-xl flex flex-row items-center gap-1'>
           <Star />
           <span>{numStars}</span>
         </p>

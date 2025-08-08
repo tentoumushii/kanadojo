@@ -14,6 +14,7 @@ import {
   N2VocabLength
 } from '@/static/unitSets';
 import { useClick } from '@/lib/hooks/useAudio';
+import { CircleCheck, Circle } from 'lucide-react';
 
 const numCollectionSets = {
   '/kanji': {
@@ -157,9 +158,11 @@ const CollectionSelector = () => {
             {/* <span className='w-1/4 text-4xl flex justify-center items-center bg-[var(--secondary-color)] text-[var(--background-color)]'>
               {i+1}
             </span> */}
-            <span className='text-[var(--secondary-color)] mb-0.5'>
-              {collection.name === selectedCollection ? '\u2B24' : ''}
-            </span>
+            {collection.name === selectedCollection ? (
+              <CircleCheck className='text-[var(--secondary-color)]' />
+            ) : (
+              <Circle className='text-[var(--border-color)]' />
+            )}
             <span className='text-2xl'>
               {collection.displayName.split(', ')[0]}
             </span>

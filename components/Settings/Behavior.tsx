@@ -35,6 +35,8 @@ const Behavior = () => {
             buttonBorderStyles,
             'text-center text-lg',
             'w-1/2 md:w-1/4 p-4'
+            ,
+            'text-[var(--secondary-color)]'
           )}
           onClick={() => {
             playClick();
@@ -49,6 +51,8 @@ const Behavior = () => {
             buttonBorderStyles,
             'text-center text-lg',
             'w-1/2 md:w-1/4 p-4'
+            ,
+            'text-[var(--secondary-color)]'
           )}
           onClick={() => {
             playClick();
@@ -67,6 +71,8 @@ const Behavior = () => {
             'text-center text-lg',
             'w-1/2 md:w-1/4 p-4',
             'flex flex-row gap-1.5 justify-center items-end'
+            ,
+            'text-[var(--secondary-color)]'
           )}
           onClick={() => {
             playClick();
@@ -88,6 +94,8 @@ const Behavior = () => {
             'text-center text-lg',
             'w-1/2 md:w-1/4 p-4',
             'flex flex-row gap-1.5 justify-center items-end'
+            ,
+            'text-[var(--secondary-color)]'
           )}
           onClick={() => {
             playClick();
@@ -112,6 +120,8 @@ const Behavior = () => {
             'text-center text-lg',
             'w-1/2 md:w-1/4 p-4',
             'flex flex-row gap-1.5 justify-center items-end'
+            ,
+            'text-[var(--secondary-color)]'
           )}
           onClick={() => {
             playClick();
@@ -133,6 +143,8 @@ const Behavior = () => {
             'text-center text-lg',
             'w-1/2 md:w-1/4 p-4',
             'flex flex-row gap-1.5 justify-center items-end'
+            ,
+            'text-[var(--secondary-color)]'
           )}
           onClick={() => {
             playClick();

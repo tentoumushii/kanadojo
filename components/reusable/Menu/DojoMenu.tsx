@@ -17,22 +17,14 @@ const DojoMenu = () => {
 
   const [showGameModes, setShowGameModes] = useState(false);
 
-
   useEffect(() => {
     // clearKanji();
     // clearWords();
   }, []);
 
   return (
-    <div className="min-h-[100dvh] max-w-[100dvw] lg:pl-2 lg:pr-20 flex gap-4">
+    <div className='min-h-[100dvh] max-w-[100dvw] lg:pr-20 flex gap-4'>
       <Sidebar />
-      <div
-        className={clsx(
-          'border-l-2 h-auto w-0',
-          'border-[var(--border-color)]',
-          'max-lg:hidden'
-        )}
-      />
       <div
         className={clsx(
           'flex flex-col gap-4',
@@ -49,7 +41,7 @@ const DojoMenu = () => {
         <TopBar
           showGameModes={showGameModes}
           setShowGameModes={setShowGameModes}
-          currentDojo="kana"
+          currentDojo='kana'
         />
         {showGameModes && <GameModes />}
 
