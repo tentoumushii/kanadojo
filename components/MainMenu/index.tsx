@@ -68,7 +68,7 @@ const MainMenu = () => {
       {isLG && process.env.NODE_ENV === 'production' && <Decorations />}
       <div
         className={clsx(
-          'pt-5 pb-16 flex flex-col items-center md:justify-center gap-4 px-4 w-full sm:w-3/4 lg:w-1/2 3xl:w-2/5 ',
+          'max-md:pt-4 pb-16 flex flex-col items-center md:justify-center gap-4 px-4 w-full sm:w-3/4 lg:w-1/2 3xl:w-2/5 ',
           'opacity-90 z-50'
         )}
       >

@@ -1,5 +1,5 @@
 'use client';
-import { SquareCheck, SquareX, Star, LandPlot } from 'lucide-react';
+import { SquareCheck, SquareX, Star, LandPlot, Heart } from 'lucide-react';
 import clsx from 'clsx';
 import { cardBorderStyles } from '@/static/styles';
 import useStatsStore from '@/store/useStatsStore';
@@ -49,6 +49,18 @@ const GameIntel = ({
         <p className='text-xl px-4 flex justify-center items-center w-full gap-2 py-2'>
           <LandPlot />
           {gameMode}
+          <Heart
+            size={24}
+            className={clsx(
+              'hover:cursor-pointer duration-250 hover:scale-120',
+              'active:scale-100 active:duration-225',
+              'fill-current animate-pulse text-red-500 text-[var(--main-color)]'
+            )}
+            onClick={() => {
+              playClick();
+              window.open('https://ko-fi.com/kanadojo', '_blank');
+            }}
+          />
         </p>
         <p className='text-xl flex justify-center items-center gap-1.5 px-4 py-2 border-t-1 w-full  border-[var(--border-color)]'>
           {feedback}

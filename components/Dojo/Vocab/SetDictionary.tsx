@@ -69,8 +69,8 @@ const SetDictionary = ({ set }: { set: string }) => {
             <div className='flex flex-col gap-2 items-start'>
               <span
                 className={clsx(
-                  'rounded-lg px-2 py-1 flex flex-row items-center',
-                  'bg-[var(--border-color)] text-lg',
+                  'rounded-xl px-2 py-1 flex flex-row items-center',
+                  'bg-[var(--background-color)] text-lg',
                   'text-[var(--secondary-color)] '
                 )}
               >

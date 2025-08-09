@@ -66,7 +66,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
                 <div
                   className={clsx(
                     'h-1/2',
-                    'bg-[var(--background-color)] rounded-xl',
+                    'bg-[var(--background-color)] rounded-2xl',
                     'flex flex-row gap-2',
                     // 'border-1 border-[var(--border-color)]',
                     (kanjiObj.onyomi[0] === '' ||
@@ -82,7 +82,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
                         'text-[var(--secondary-color)] w-full ',
 
                         i < kanjiObj.onyomi.slice(0, 2).length - 1 &&
-                          'border-r-2 border-[var(--card-color)]'
+                          'border-r-1 border-[var(--card-color)]'
                       )}
                     >
                       {onyomiReading}
@@ -93,7 +93,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
                 <div
                   className={clsx(
                     'h-1/2',
-                    'bg-[var(--background-color)] rounded-xl',
+                    'bg-[var(--background-color)] rounded-2xl',
                     // 'border-1 border-[var(--border-color)]',
                     'flex flex-row gap-2',
                     (kanjiObj.kunyomi[0] === '' ||
@@ -108,7 +108,7 @@ const KanjiSetDictionary = ({ set }: { set: string }) => {
                         'px-2 py-1 flex flex-row justify-center items-center text-sm md:text-base',
                         'text-[var(--secondary-color)] w-full ',
                         i < kanjiObj.kunyomi.slice(0, 2).length - 1 &&
-                          'border-r-2 border-[var(--card-color)]'
+                          'border-r-1 border-[var(--card-color)]'
                       )}
                     >
                       {kunyomiReading}
