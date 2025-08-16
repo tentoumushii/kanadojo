@@ -9,7 +9,7 @@ const Banner = () => {
     pathname === '/kana'
       ? 'Kana あ'
       : pathname === '/kanji'
-      ? 'Kanji 出'
+      ? 'Kanji 間'
       : pathname === '/vocabulary'
       ? 'Vocabulary 言'
       : pathname === '/preferences'

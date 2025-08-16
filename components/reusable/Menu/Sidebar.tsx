@@ -109,7 +109,7 @@ const Sidebar = () => {
         )}
         onClick={playClick}
       >
-        出<span className='max-lg:hidden'> Kanji</span>
+        間<span className='max-lg:hidden'> Kanji</span>
       </Link>
       <Link
         href='/preferences'
