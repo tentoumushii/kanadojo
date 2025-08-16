@@ -1,4 +1,5 @@
 'use client';
+import { lazy, Suspense } from 'react';
 import Link from 'next/link';
 import Banner from './Banner';
 import Info from '@/components/reusable/Menu/Info';
@@ -17,8 +18,9 @@ import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import clsx from 'clsx';
 import { useClick } from '@/lib/hooks/useAudio';
 import useThemeStore from '@/store/useThemeStore';
-import Decorations from './Decorations';
 import { useMediaQuery } from 'react-responsive';
+
+const Decorations = lazy(() => import('./Decorations'));
 
 const MainMenu = () => {
   const isLG = useMediaQuery({ minWidth: 1024 });
@@ -66,7 +68,11 @@ const MainMenu = () => {
         'flex flex-row justify-center max-w-[100dvw] min-h-[100dvh]'
       )}
     >
-      {isLG && process.env.NODE_ENV === 'production' && <Decorations />}
+      {isLG && (
+        <Suspense fallback={<></>}>
+          <Decorations />
+        </Suspense>
+      )}
       <div
         className={clsx(
           'max-md:pt-4 pb-16 flex flex-col items-center md:justify-center gap-4 px-4 w-full sm:w-3/4 lg:w-1/2 3xl:w-2/5 ',
