@@ -56,6 +56,9 @@ const PostWrapper = ({ textContent }: { textContent: string }) => {
               className='border border-[var(--border-color)] px-2 py-1'
               {...props}
             />
+          ),
+          hr: props => (
+            <hr className='border-[var(--border-color)]' {...props} />
           )
         }}
       >
