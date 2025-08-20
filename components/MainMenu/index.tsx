@@ -11,10 +11,9 @@ import {
   Sun,
   Moon,
   Heart
-  // Github
 } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import clsx from 'clsx';
 import { useClick } from '@/lib/hooks/useAudio';
 import useThemeStore from '@/store/useThemeStore';
@@ -135,7 +134,7 @@ const MainMenu = () => {
                 window.open('https://discord.gg/CyvBNNrSmb', '_blank');
               }}
             />
-            {/* <FontAwesomeIcon
+            <FontAwesomeIcon
               icon={faGithub}
               size='2x'
               className={clsx(
@@ -151,7 +150,6 @@ const MainMenu = () => {
                 );
               }}
             />
- */}
             <Heart
               size={32}
               className={clsx(
